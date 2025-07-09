@@ -1,71 +1,71 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Llull Lab</title>
   <style>
     body {
+      background-color: #000;
+      color: #fff;
       margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #0f0f0f;
-      color: #ffffff;
+      text-align: center;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      text-align: center;
+      align-items: center;
+      height: 100vh;
+      animation: fadeIn 2s ease-in-out;
     }
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.2em;
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    p {
-      max-width: 600px;
-      margin-bottom: 1.5em;
-      line-height: 1.5;
+
+    img {
+      max-width: 60vw;
+      max-height: 40vh;
+      height: auto;
+      margin-bottom: 40px;
     }
-    nav {
-      margin-bottom: 2em;
+
+    .text {
+      line-height: 1.8;
+      font-size: 4vw;
+      max-width: 90%;
     }
-    nav a {
-      color: #00ccff;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
+
+    .email {
+      margin-top: 30px;
+      font-size: 3.5vw;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      font-size: 0.9em;
-      color: #aaaaaa;
-      position: absolute;
-      bottom: 20px;
+
+    @media (min-width: 768px) {
+      .text {
+        font-size: 18px;
+      }
+
+      .email {
+        font-size: 16px;
+      }
+
+      img {
+        max-width: 300px;
+      }
     }
   </style>
 </head>
 <body>
-
-<div style="text-align: center; margin-top: 20px;">
-  <img src="LULL Logo.png" alt="Llull Lab Logo" style="width: 200px; max-width: 90%;">
-</div>
-
-  <h1>Llull Lab</h1>
-  <p>Llull Lab is a research initiative intervening in social and political transformation through mathematical experimentation.</p>
-  <nav>
-    <a href="#">About</a>
-    <a href="#">Projects</a>
-    <a href="#">Reports</a>
-    <a href="#">Research Areas</a>
-    <a href="#">Team</a>
-    <a href="#">Contact</a>
-  </nav>
-  <footer>
-    Contact us: contact@llulllab.com
-  </footer>
+  <img src="LULL Logo.png" alt="Llull Lab Logo">
+  <div class="text">
+    <p>Site en cours de construction.<br>Merci de votre patience.</p>
+    <p>Website under construction.<br>Thank you for your patience.</p>
+  </div>
+  <div class="email">
+    contact@llulllab.com
+  </div>
 </body>
 </html>
