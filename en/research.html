@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,33 +6,144 @@
   <title>Llull Lab – Research</title>
   <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     body {
+      animation: fadeIn 2s ease-in-out;
       background-color: #000;
       color: #fff;
       margin: 0;
       font-family: 'Spectral', serif;
-      padding: 60px 30px;
-    }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 5%;
     }
 
-    p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.8;
+    img {
+      max-width: 60vw;
+      max-height: 40vh;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      padding: 10px 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #fff;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .content {
+      max-width: 1000px;
+      text-align: left;
+      margin-top: 40px;
+      font-size: 1.1em;
+      line-height: 1.7em;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-top: 1.5em;
+    }
+
+    ul {
+      padding-left: 1.2em;
     }
   </style>
 </head>
 <body>
 
-  <h1>Research</h1>
-  <p>Discover the lab’s research directions and ongoing projects.</p>
+  <img src="../LULL Logo.png" alt="Llull Lab Logo">
+
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="people.html">People</a>
+    <a href="research.html">Research</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="updates.html">Updates</a>
+    <a href="archive.html">Archive</a>
+  </div>
+
+  <div class="content">
+    <h1>Current Research Focuses</h1>
+
+    <h2>Core Methodologies</h2>
+    <ul>
+      <li>Mathematical Methodology</li>
+      <li>Functional Ontology</li>
+    </ul>
+
+    <h2>Semantic & Cultural Systems</h2>
+    <ul>
+      <li>Ambivalence-Centered Semantic Geometry</li>
+      <li>Ritual Modeling</li>
+      <li>Machine Psychoanalysis</li>
+    </ul>
+
+    <h2>Computational Imagination</h2>
+    <ul>
+      <li>Computational Humor</li>
+      <li>Computational Meta-Ethics</li>
+    </ul>
+
+    <h2>Urban Metabolic Systems</h2>
+    <ul>
+      <li>Transurban Regeneration</li>
+      <li>Waste-to-Sense Design</li>
+      <li>Multispecies Architecture</li>
+    </ul>
+
+    <h1>Prototypes & Applications</h1>
+
+    <h2>Psychotherapy Support Tools</h2>
+    <ul>
+      <li>Symptom Tracking Systems</li>
+      <li>Semantic Mapping Engines</li>
+      <li>AI-Assisted Early Detection Systems</li>
+    </ul>
+
+    <h2>Experimental Reasoning Systems</h2>
+    <ul>
+      <li>Machine Psychoanalysis (Llull Machine)</li>
+      <li>Sociocultural Modeling Platform</li>
+    </ul>
+
+    <h2>Creative Intelligence Tools</h2>
+    <ul>
+      <li>Generative Literary Engines</li>
+      <li>Modular Humor Machine</li>
+    </ul>
+
+    <h2>Transurban Regeneration Systems</h2>
+    <ul>
+      <li>Multispecies Urban Architecture</li>
+      <li>Waste-to-Energy Infrastructures</li>
+      <li>Ecotechnological Interfaces</li>
+    </ul>
+  </div>
 
 </body>
 </html>

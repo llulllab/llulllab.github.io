@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,33 +6,121 @@
   <title>Llull Lab – About</title>
   <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     body {
+      animation: fadeIn 2s ease-in-out;
       background-color: #000;
       color: #fff;
       margin: 0;
       font-family: 'Spectral', serif;
-      padding: 60px 30px;
-    }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 5%;
     }
 
-    p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.8;
+    img {
+      max-width: 60vw;
+      max-height: 40vh;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      padding: 10px 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #fff;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .content {
+      max-width: 1000px;
+      text-align: left;
+      margin-top: 40px;
+      font-size: 1.1em;
+      line-height: 1.7em;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-top: 1.5em;
+    }
+
+    ul {
+      padding-left: 1.2em;
     }
   </style>
 </head>
 <body>
 
-  <h1>About</h1>
-  <p>This page will introduce the history, vision, and mission of Llull Lab.</p>
+  <img src="../LULL Logo.png" alt="Llull Lab Logo">
+
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="people.html">People</a>
+    <a href="research.html">Research</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="updates.html">Updates</a>
+    <a href="archive.html">Archive</a>
+  </div>
+
+  <div class="content">
+    <h1>Vision & Manifesto</h1>
+    <p>Llull Lab is a Paris-based research initiative engaging with the most fundamental transformation of our time. Large language models, high-performance computing, and robotics are rapidly forming the infrastructural backbone of today's technological paradigm—transforming how knowledge is produced, validated, and applied across disciplines.</p>
+    <p>This transition also invites a conceptual shift: a renewed engagement with mathematics, not only as formal abstraction, but as a generative medium for human creativity and methodological innovation. Inspired by Ramon Llull's combinatorial art—a historical convergence of mathematics, symbolic reasoning, and creativity—we aim to revive and reinterpret this legacy in a contemporary context. Our objective is to develop experimental mathematical tools that contribute to both human well-beings and creative problem-solving.</p>
+    <p>We understand this transformation not as a moment of crisis, but as the formative phase of a new epoch, unfolding along two interrelated axes:</p>
+    <ul>
+      <li><strong>Environmental:</strong> energy systems, material design, urban ecology</li>
+      <li><strong>Transhuman:</strong> cognitive processes, bodily augmentation, labor redefinition</li>
+    </ul>
+    <p>The key challenge is not whether to resist these changes, but how to critically participate in shaping them—orienting creative innovation toward human flourishing and collective intelligence.</p>
+    <p>Llull Lab functions as a platform where epistemic, technical, and artistic approaches converge, through interdisciplinary collaboration and prototyping.</p>
+
+    <h2>Strategic Rationale & Mission</h2>
+    <p>While technological advancement accelerates, arts and social sciences lack adequate methodological tools to critically engage with and shape these developments. Llull Lab exists to change this.</p>
+    <p>Our aim is to reposition these disciplines at the center of contemporary transformation—not through resistance, but through epistemic, technical, and artistic invention. We design new formal tools, experimental material systems, generative frameworks, and collaborative protocols that allow for constructive and creative engagement with emerging systems.</p>
+
+    <h3>Three Strategic Pathways</h3>
+    <ul>
+      <li><strong>Tool-building:</strong> Designing formal tools and material systems that enable critical, speculative, and generative interaction with technological infrastructures.</li>
+      <li><strong>Infrastructure:</strong> Constructing interdisciplinary platforms that support collaborative research, design, and prototyping.</li>
+      <li><strong>Technological Literacy:</strong> Treating technology not as an external threat, but as an epistemic medium—one to be interpreted, shaped, and inhabited with precision and care.</li>
+    </ul>
+
+    <p>Our goal is to ensure that the ethical, creative, and critical capacities of the arts and social sciences are embedded at the core of this new historical configuration. What sets Llull Lab apart is our ability to bridge social theory and artistic imagination with computational reasoning and formal modeling. This convergence enables the development of experimental frameworks for thinking, sensing, and acting in complex and rapidly shifting environments.</p>
+
+    <h2>Organizational Architecture</h2>
+    <p><strong>A Two-Module System + Shared Spaces</strong><br> Llull Lab operates through a dynamic architecture that allows ideas to move fluidly between theoretical development and practical application.</p>
+    <p><strong>1. Epistemic Module (Theory-Based)</strong><br> Here we develop the conceptual foundations—creating new formal tools and epistemic frameworks. Drawing from sciences and arts, this module produces seminars, theoretical texts, and conceptual prototypes.</p>
+    <p><strong>2. Prototype Module (Impact-Based)</strong><br> This is where ideas become tangible. We design concrete systems, experimental tools, installations, and software through collaboration with artists, engineers, and technologists. The focus is on creative design that generates real-world impact.</p>
+    <p><strong>3. Shared Spaces</strong><br> These are the connective tissues of the lab—incubation zones where theoretical insights transition into prototypes, testing grounds for observation and refinement, and platforms for public presentation, knowledge dissemination, and documentation. They house our coordination infrastructure: interdisciplinary partnerships, funding networks, digital archives, and quarterly transparency reports.</p>
+
+    <h2>Growth Strategy</h2>
+    <p>Llull Lab follows an agile, modular approach. We begin with a core research team supported by national and international grants, producing both high-level theory and functional tools. Over time, the lab evolves into a platform for strategic collaboration, product development, and public education—balancing academic inquiry with applied innovation.</p>
+  </div>
 
 </body>
 </html>

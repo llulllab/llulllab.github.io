@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,33 +6,125 @@
   <title>Llull Lab – People</title>
   <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     body {
+      animation: fadeIn 2s ease-in-out;
       background-color: #000;
       color: #fff;
       margin: 0;
       font-family: 'Spectral', serif;
-      padding: 60px 30px;
-    }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 5%;
     }
 
-    p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.8;
+    img {
+      max-width: 60vw;
+      max-height: 40vh;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      padding: 10px 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #fff;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .content {
+      max-width: 1000px;
+      text-align: left;
+      margin-top: 40px;
+      font-size: 1.1em;
+      line-height: 1.7em;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-top: 1.5em;
+    }
+
+    ul {
+      padding-left: 1.2em;
     }
   </style>
 </head>
 <body>
 
-  <h1>People</h1>
-  <p>Meet the lab members, their backgrounds, and areas of expertise.</p>
+  <img src="../LULL Logo.png" alt="Llull Lab Logo">
+
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="people.html">People</a>
+    <a href="research.html">Research</a>
+    <a href="outreach.html">Outreach</a>
+    <a href="updates.html">Updates</a>
+    <a href="archive.html">Archive</a>
+  </div>
+
+  <div class="content">
+    <h1>Team & Research Direction</h1>
+
+    <p><strong>Dr. Firat Ilim</strong><br>
+    Research Director<br>
+    PhD in Carnival Studies, Habilitation in Musical Aesthetics (Université Paris Cité)</p>
+
+    <h2>Core Team</h2>
+
+    <p><strong>Dr. Begüm Balkan Apaydin</strong><br>
+    PhD in Optical and Biophysical Systems (Czech Academy of Sciences)</p>
+
+    <p><strong>Dr. Ece Yücel</strong><br>
+    PhD in Art Sciences (Işık University)</p>
+
+    <p><strong>Kevser Erdoğan</strong><br>
+    MA, Doctoral Researcher in Machine Dreaming (Ankara University)</p>
+
+    <h2>Collaborators & Partnerships</h2>
+    <p>Llull Lab is an open platform for interdisciplinary experimentation, bringing together diverse expertise to address challenges no single field can solve alone.</p>
+    <p>We seek partners ready to challenge assumptions and co-invent new trajectories for transformation.</p>
+
+    <p>We collaborate through:</p>
+    <ul>
+      <li>Joint research projects combining theoretical depth with practical application</li>
+      <li>Prototype development partnerships with artists, engineers, and technologists</li>
+      <li>Workshops and training for organizations navigating digital transformation</li>
+      <li>Strategic consultation for policymakers and technology developers</li>
+    </ul>
+
+    <h3>Current collaboration interests</h3>
+    <ul>
+      <li>Mathematical modeling for social systems</li>
+      <li>AI ethics and human–machine interfaces</li>
+      <li>Cultural analysis of technological change</li>
+      <li>Experimental approaches to organizational design</li>
+    </ul>
+  </div>
 
 </body>
 </html>
