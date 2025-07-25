@@ -1,39 +1,114 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Llull Lab – Outreach</title>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Llull Lab – Rayonnement</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral&amp;family=Space+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     body {
+      animation: fadeIn 2s ease-in-out;
       background-color: #000;
       color: #fff;
       margin: 0;
       font-family: 'Spectral', serif;
-      padding: 60px 30px;
-    }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 5%;
     }
 
-    p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.8;
+    img {
+      max-width: 60vw;
+      max-height: 40vh;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      padding: 10px 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #fff;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .content {
+      max-width: 1000px;
+      text-align: left;
+      margin-top: 40px;
+      font-size: 1.1em;
+      line-height: 1.7em;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-top: 1.5em;
+    }
+
+    ul {
+      padding-left: 1.2em;
     }
   </style>
 </head>
 <body>
+<img alt="Llull Lab Logo" src="../LULL Logo.png"/>
+<div class="nav-links">
+<a href="about.html">À propos</a>
+<a href="people.html">Équipe</a>
+<a href="research.html">Recherche</a>
+<a href="outreach.html">Rayonnement</a>
+<a href="updates.html">Actualités</a>
+<a href="archive.html">Archives</a>
+</div>
 
-  <h1>Outreach</h1>
-  <p>Our outreach activities, events, and external partnerships.</p>
+<div class="content">
+<h1>Éducation &amp; Engagement public</h1>
+<h2>Apprendre comme intervention</h2>
+<p>Llull Lab contribue à l’écosystème élargi de la connaissance par des ateliers, des formations et des événements publics qui traversent disciplines et institutions.</p>
+<p>Nous ne traitons pas la pédagogie comme une fonction à part, mais comme une méthode d’intervention centrale : une manière de reconfigurer la façon dont les problèmes sont posés, abordés et réimaginés. Grâce à des environnements d’apprentissage situés, nous développons un langage partagé pour naviguer à travers les transformations technologiques.</p>
+<h2>Transparence &amp; Rapports</h2>
+<h3>Rapports trimestriels (Q Reports) : Transparence et vision stratégique</h3>
+<p>Chaque trimestre, Llull Lab publie un rapport Q — un instantané concis et précis de notre position actuelle et des trajectoires en cours.</p>
+<p>Ces rapports remplissent deux fonctions principales :</p>
+<ul>
+<li>Assurer une auto-évaluation transparente de nos objectifs, de nos productions et de notre évolution interne</li>
+<li>Fournir une vision stratégique des transformations sociotechniques que nous accompagnons activement</li>
+</ul>
+<h3>Contenu des rapports :</h3>
+<ul>
+<li>Résumé exécutif</li>
+<li>Indicateurs de performance clés</li>
+<li>Analyse sectorielle</li>
+<li>Mises à jour de la recherche</li>
+<li>Objectifs pour le trimestre suivant</li>
+</ul>
+<p>Les rapports Q s’accompagnent de participations à des conférences, dialogues avec les parties prenantes et événements sectoriels — garantissant que notre recherche reste engagée, visible et réactive.</p>
+</div>
 
 </body>
 </html>

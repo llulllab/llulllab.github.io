@@ -1,39 +1,100 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Llull Lab – Updates</title>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Llull Lab – Actualités</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral&amp;family=Space+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     body {
+      animation: fadeIn 2s ease-in-out;
       background-color: #000;
       color: #fff;
       margin: 0;
       font-family: 'Spectral', serif;
-      padding: 60px 30px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 5%;
+    }
+
+    img {
+      max-width: 60vw;
+      max-height: 40vh;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      padding: 10px 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #fff;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .content {
+      max-width: 1000px;
+      text-align: left;
+      margin-top: 40px;
+      font-size: 1.1em;
+      line-height: 1.7em;
     }
 
     h1 {
       font-family: 'Space Grotesk', sans-serif;
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+      margin-top: 1.5em;
     }
 
-    p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.8;
+    ul {
+      padding-left: 1.2em;
     }
   </style>
 </head>
 <body>
+<img alt="Llull Lab Logo" src="../LULL Logo.png"/>
+<div class="nav-links">
+<a href="about.html">À propos</a>
+<a href="people.html">Équipe</a>
+<a href="research.html">Recherche</a>
+<a href="outreach.html">Rayonnement</a>
+<a href="updates.html">Actualités</a>
+<a href="archive.html">Archives</a>
+</div>
 
-  <h1>Updates</h1>
-  <p>The latest news, publications, and announcements from the lab.</p>
+<div class="content">
+<h1>Actualités &amp; Archives</h1>
+<p>Cette section est actuellement réservée à des contenus à venir, tels que :</p>
+<ul>
+<li>Nouvelles et annonces</li>
+<li>Rapports et prototypes antérieurs</li>
+<li>Séminaires et collaborations archivés</li>
+</ul>
+</div>
 
 </body>
 </html>

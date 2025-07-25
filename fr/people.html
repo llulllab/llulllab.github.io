@@ -1,39 +1,120 @@
-
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Llull Lab – People</title>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Llull Lab – Équipe</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral&amp;family=Space+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     body {
+      animation: fadeIn 2s ease-in-out;
       background-color: #000;
       color: #fff;
       margin: 0;
       font-family: 'Spectral', serif;
-      padding: 60px 30px;
-    }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 5%;
     }
 
-    p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.8;
+    img {
+      max-width: 60vw;
+      max-height: 40vh;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      padding: 10px 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #fff;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .content {
+      max-width: 1000px;
+      text-align: left;
+      margin-top: 40px;
+      font-size: 1.1em;
+      line-height: 1.7em;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-top: 1.5em;
+    }
+
+    ul {
+      padding-left: 1.2em;
     }
   </style>
 </head>
 <body>
+<img alt="Llull Lab Logo" src="../LULL Logo.png"/>
+<div class="nav-links">
+<a href="about.html">À propos</a>
+<a href="people.html">Équipe</a>
+<a href="research.html">Recherche</a>
+<a href="outreach.html">Rayonnement</a>
+<a href="updates.html">Actualités</a>
+<a href="archive.html">Archives</a>
+</div>
 
-  <h1>People</h1>
-  <p>Meet the lab members, their backgrounds, and areas of expertise.</p>
+<div class="content">
+<h1>Équipe &amp; Direction de la recherche</h1>
+
+<p><strong>Dr Firat Ilim</strong><br/>Directeur de la recherche<br/>Docteur en études carnavalesques, habilité à diriger des recherches en esthétique musicale (Université Paris Cité)</p>
+
+<h2>Équipe principale</h2>
+
+<p><strong>Dr Begüm Balkan Apaydin</strong><br/>Docteure en systèmes optiques et biophysiques (Académie tchèque des sciences)</p>
+<p><strong>Dr Ece Yücel</strong><br/>Docteure en sciences de l’art (Université Işık)</p>
+<p><strong>Kevser Erdoğan</strong><br/>MA, doctorante en “rêve machinique” (Université d’Ankara)</p>
+
+<h2>Collaborateurs &amp; Partenariats</h2>
+<p>Llull Lab est une plateforme ouverte à l’expérimentation interdisciplinaire, rassemblant des expertises variées pour relever des défis qu’aucun champ disciplinaire ne peut affronter seul.</p>
+<p>Nous recherchons des partenaires prêts à remettre en question les évidences et à co-inventer de nouvelles trajectoires de transformation.</p>
+<p>Nous collaborons à travers :</p>
+<ul>
+<li>des projets de recherche conjoints alliant profondeur théorique et application pratique</li>
+<li>des partenariats de prototypage avec des artistes, ingénieurs et technologues</li>
+<li>des ateliers et formations pour les organisations confrontées à la transition numérique</li>
+<li>des consultations stratégiques auprès des décideurs publics et développeurs de technologies</li>
+</ul>
+<h3>Domaines de collaboration actuels</h3>
+<ul>
+<li>Modélisation mathématique des systèmes sociaux</li>
+<li>Éthique de l’IA et interfaces homme–machine</li>
+<li>Analyse culturelle du changement technologique</li>
+<li>Approches expérimentales du design organisationnel</li>
+</ul>
+</div>
 
 </body>
 </html>

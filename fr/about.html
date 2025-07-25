@@ -1,39 +1,125 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Llull Lab – About</title>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Llull Lab – À propos</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral&amp;family=Space+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     body {
+      animation: fadeIn 2s ease-in-out;
       background-color: #000;
       color: #fff;
       margin: 0;
       font-family: 'Spectral', serif;
-      padding: 60px 30px;
-    }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 5%;
     }
 
-    p {
-      font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.8;
+    img {
+      max-width: 60vw;
+      max-height: 40vh;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      padding: 10px 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #fff;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .content {
+      max-width: 1000px;
+      text-align: left;
+      margin-top: 40px;
+      font-size: 1.1em;
+      line-height: 1.7em;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-top: 1.5em;
+    }
+
+    ul {
+      padding-left: 1.2em;
     }
   </style>
 </head>
 <body>
+<img alt="Llull Lab Logo" src="../LULL Logo.png"/>
+<div class="nav-links">
+<a href="about.html">À propos</a>
+<a href="people.html">Équipe</a>
+<a href="research.html">Recherche</a>
+<a href="outreach.html">Rayonnement</a>
+<a href="updates.html">Actualités</a>
+<a href="archive.html">Archives</a>
+</div>
 
-  <h1>About</h1>
-  <p>This page will introduce the history, vision, and mission of Llull Lab.</p>
+<div class="content">
+<h1>Vision et Manifeste</h1>
+<p>Llull Lab est une initiative de recherche basée à Paris, engagée dans la transformation la plus fondamentale de notre époque. Les modèles de langage de grande taille, le calcul haute performance et la robotique constituent rapidement l’infrastructure du paradigme technologique actuel — transformant la manière dont la connaissance est produite, validée et appliquée à travers les disciplines.</p>
+<p>Cette transition appelle également à un basculement conceptuel : un renouvellement de l'engagement envers les mathématiques, non seulement comme abstraction formelle, mais comme un support génératif pour la créativité humaine et l'innovation méthodologique. Inspiré par l’art combinatoire de Ramon Llull — une convergence historique des mathématiques, du raisonnement symbolique et de la créativité — nous cherchons à raviver et réinterpréter cet héritage dans un contexte contemporain. Notre objectif est de développer des outils mathématiques expérimentaux contribuant à la fois au bien-être humain et à la résolution créative de problèmes.</p>
+<p>Nous ne considérons pas cette transformation comme une crise, mais comme la phase formative d’une nouvelle époque, qui se déploie selon deux axes interreliés :</p>
+<ul>
+<li><strong>Environnemental :</strong> systèmes énergétiques, conception des matériaux, écologie urbaine</li>
+<li><strong>Transhumain :</strong> processus cognitifs, augmentation corporelle, redéfinition du travail</li>
+</ul>
+<p>Le véritable enjeu n’est pas de résister à ces changements, mais de participer de manière critique à leur orientation — en dirigeant l’innovation créative vers l’épanouissement humain et l’intelligence collective.</p>
+<p>Llull Lab fonctionne comme une plateforme où approches épistémiques, techniques et artistiques convergent, à travers la collaboration interdisciplinaire et la création de prototypes.</p>
+<h2>Fondements stratégiques &amp; Mission</h2>
+<p>Alors que les avancées technologiques s’accélèrent, les arts et les sciences humaines manquent d’outils méthodologiques adéquats pour analyser, critiquer et orienter ces évolutions. Llull Lab existe pour changer cela.</p>
+<p>Notre objectif est de replacer ces disciplines au cœur de la transformation contemporaine — non pas par la résistance, mais par l’invention épistémique, technique et artistique. Nous concevons de nouveaux outils formels, des systèmes matériels expérimentaux, des cadres génératifs et des protocoles de collaboration permettant une interaction constructive et créative avec les systèmes émergents.</p>
+<h3>Trois axes stratégiques</h3>
+<ul>
+<li><strong>Conception d’outils :</strong> développement d’outils formels et de systèmes matériels permettant une interaction critique, spéculative et générative avec les infrastructures technologiques.</li>
+<li><strong>Infrastructure :</strong> mise en place de plateformes interdisciplinaires pour soutenir la recherche collaborative, le design et la création de prototypes.</li>
+<li><strong>Littératie technologique :</strong> considérer la technologie non comme une menace externe, mais comme un médium épistémique — à interpréter, façonner et habiter avec précision et soin.</li>
+</ul>
+<p>Notre objectif est de faire en sorte que les capacités éthiques, créatives et critiques des arts et des sciences humaines soient intégrées au cœur de cette nouvelle configuration historique.</p>
+<p>Ce qui distingue Llull Lab, c’est notre capacité à relier la théorie sociale et l’imagination artistique au raisonnement computationnel et à la modélisation formelle. Cette convergence permet de développer des cadres expérimentaux pour penser, percevoir et agir dans des environnements complexes et en transformation rapide.</p>
+<h2>Architecture organisationnelle</h2>
+<p><strong>Un système en deux modules + Espaces partagés</strong><br/>
+  Llull Lab fonctionne selon une architecture dynamique permettant aux idées de circuler librement entre élaboration théorique et application concrète.</p>
+<ul>
+<li><strong>1. Module épistémique (fondé sur la théorie) :</strong> Ce module élabore les fondements conceptuels : création de nouveaux outils formels et de cadres épistémiques. S’appuyant sur les sciences et les arts, il produit des séminaires, des textes théoriques et des prototypes conceptuels.</li>
+<li><strong>2. Module de prototypage (orienté impact) :</strong> C’est ici que les idées prennent forme concrète. Nous concevons des systèmes, des outils expérimentaux, des installations et des logiciels en collaboration avec artistes, ingénieurs et technologues. L’accent est mis sur le design créatif ayant un impact réel.</li>
+<li><strong>3. Espaces partagés :</strong> Ces espaces sont les tissus conjonctifs du laboratoire : zones d’incubation où les idées théoriques deviennent prototypes, terrains de test pour l’observation et l’ajustement, plateformes pour la présentation publique, la diffusion des savoirs et la documentation. Ils intègrent notre infrastructure de coordination : partenariats interdisciplinaires, réseaux de financement, archives numériques et rapports trimestriels de transparence.</li>
+</ul>
+<h2>Stratégie de développement</h2>
+<p>Llull Lab adopte une approche agile et modulaire. Nous commençons avec une équipe de recherche centrale, soutenue par des financements nationaux et internationaux, produisant à la fois des théories avancées et des outils fonctionnels.</p>
+<p>Au fil du temps, le laboratoire évolue vers une plateforme de collaboration stratégique, de développement de produits et d’éducation publique — en conciliant recherche académique et innovation appliquée.</p>
+</div>
 
 </body>
 </html>
