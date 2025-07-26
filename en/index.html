@@ -6,7 +6,7 @@
   <title>Llull Lab – Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <style>
-@keyframes fadeIn {
+    @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
@@ -22,7 +22,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      padding-bottom: 60px; /* Alt boşluk için eklendi */
     }
 
     img {
@@ -56,6 +56,19 @@
       color: #000;
       transform: scale(1.05);
     }
+
+    .contact {
+      margin-top: 60px;
+      margin-bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Spectral', serif;
+    }
+
+    .contact a {
+      color: #fff;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -77,10 +90,8 @@
     <a href="archive.html">Archive</a>
   </div>
 
-  <p style="position: absolute; bottom: 20px; width: 100%; text-align: center; font-family: 'Spectral', serif;">
-    <a href="mailto:contact@llulllab.com" style="color: #fff; text-decoration: none;">
-      contact@llulllab.com
-    </a>
+  <p class="contact">
+    <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>
   </p>
 
 </body>
