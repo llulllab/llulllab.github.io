@@ -1,106 +1,60 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Llull Lab – Archive</title>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
+<title>Llull Lab – Archive</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Spectral&amp;family=Space+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
     body {
       animation: fadeIn 2s ease-in-out;
-      background-color: #000;
-      color: #fff;
-      margin: 0;
-      font-family: 'Spectral', serif;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background-color: #000; color: #fff; margin: 0;
+      font-family: 'Spectral', serif; text-align: center;
+      display: flex; flex-direction: column; align-items: center;
       padding: 40px 5%;
     }
-
-    img {
-      max-width: 60vw;
-      max-height: 40vh;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
+    img { max-width: 60vw; max-height: 40vh; height: auto; margin-bottom: 20px; }
     .nav-links {
-      display: flex;
-      flex-direction: row;
-      gap: 15px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-      font-family: 'Space Grotesk', sans-serif;
+      display: flex; flex-direction: row; gap: 15px; margin-top: 20px;
+      flex-wrap: wrap; justify-content: center; font-family: 'Space Grotesk', sans-serif;
     }
-
     .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      border: 1px solid #fff;
-      padding: 10px 16px;
-      border-radius: 4px;
+      color: #fff; text-decoration: none; border: 1px solid #fff;
+      padding: 10px 16px; border-radius: 4px;
       transition: background-color 0.3s, color 0.3s, transform 0.3s;
     }
-
-    .nav-links a:hover {
-      background-color: #fff;
-      color: #000;
-      transform: scale(1.05);
-    }
-
-    .content {
-      max-width: 1000px;
-      text-align: left;
-      margin-top: 40px;
-      font-size: 1.1em;
-      line-height: 1.7em;
-    }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      margin-top: 1.5em;
-    }
-
+    .nav-links a:hover { background-color: #fff; color: #000; transform: scale(1.05); }
+    .content { max-width: 1000px; text-align: left; margin-top: 40px; font-size: 1.1em; line-height: 1.7em; }
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin-top: 1.5em; }
     ul { padding-left: 1.2em; }
+    footer { margin-top: 60px; font-family: 'Space Grotesk', sans-serif; font-size: 1em; }
   </style>
 </head>
 <body>
+<a href="https://www.llulllab.com">
+<img alt="Llull Lab Logo" src="LULL Logo.png"/>
+</a>
+<div class="nav-links">
+<a href="about.html">About</a>
+<a href="people.html">People</a>
+<a href="research.html">Research</a>
+<a href="outreach.html">Outreach</a>
+<a href="updates.html">Updates</a>
+<a href="archive.html">Archive</a>
+</div>
+<div class="content">
+<h1>Archive</h1>
+<p>This page will contain a full archive of:</p>
+<ul>
+<li>Published Q Reports</li>
+<li>Prototype documentation</li>
 
-  <!-- Not: Dosya adında boşluk varsa sunucuda sorun çıkarabilir. 
-       En güvenlisi: dosyayı LULL-Logo.png yap veya aşağıdaki gibi %20 kullan. -->
-  <a href="https://www.llulllab.com">
-    <img src="../LULL%20Logo.png" alt="Llull Lab Logo"/>
-  </a>
 
-  <div class="nav-links">
-    <a href="about.html">About</a>
-    <a href="people.html">People</a>
-    <a href="research.html">Research</a>
-    <a href="outreach.html">Outreach</a>
-    <a href="updates.html">Updates</a>
-    <a href="archive.html">Archive</a>
-  </div>
+</ul><p>Our first Q report will be published on January 1, 2026.</p>
 
-  <div class="content">
-    <h1>Archive</h1>
-    <p>This page will contain a full archive of:</p>
-    <ul>
-      <li>Published Q Reports</li>
-      <li>Prototype documentation</li>
-    </ul>
-
-    <p style="margin-top: 20px;">
-      <em><strong>Our first Q Report will be published on January 1, 2026.</strong></em>
-    </p>
-  </div>
-
-  <p style="margin-top: 60px; font-family:'Space Grotesk', sans-serif; font-size: 1em;">
-    contact@llulllab.com
-  </p>
+</div>
+<footer>contact@llulllab.com</footer>
 </body>
 </html>
