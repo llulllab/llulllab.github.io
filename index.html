@@ -94,38 +94,45 @@
   <div class="email">
     contact@llulllab.com
   </div>
-<audio
-  id="bg-music"
-  src="https://llulllab.github.io/Files/llull.mp3"
-  loop
-  preload="auto"
-  playsinline
-></audio>
+<style>
+  #bg-toggle{position:fixed;right:12px;bottom:12px;opacity:.25;font:14px/1.2 system-ui,Arial,sans-serif;padding:6px 10px;border:1px solid #666;border-radius:8px;background:#111;color:#eee}
+  #bg-toggle:focus,#bg-toggle:hover{opacity:.8}
+</style>
+
+<audio id="bg-music" src="https://llulllab.github.io/Files/llull.mp3" loop preload="auto" playsinline></audio>
+<button id="bg-toggle" aria-pressed="false">Play</button>
 
 <script>
-(function () {
-  const audio = document.getElementById('bg-music');
-  audio.muted = true;
-  audio.volume = 0.5;
+(function(){
+  const a=document.getElementById('bg-music');
+  const b=document.getElementById('bg-toggle');
 
-  function tryPlay() {
-    audio.play().catch(() => {});
-  }
-  document.addEventListener('DOMContentLoaded', tryPlay);
-  window.addEventListener('load', tryPlay);
 
-  function unlock() {
-    try {
-      audio.muted = false;
-      audio.play();
-    } catch (e) {}
-    document.removeEventListener('click', unlock);
-    document.removeEventListener('touchstart', unlock);
-    document.removeEventListener('keydown', unlock);
+  a.muted=true;
+  a.volume=0.5;
+  a.play().catch(()=>{ /* bekle */ });
+
+
+  function unlock(){
+    a.muted=false;
+    a.play().then(()=>{
+      b.textContent='Pause';
+      b.setAttribute('aria-pressed','true');
+    }).catch(()=>{});
+    document.removeEventListener('click',unlock);
+    document.removeEventListener('keydown',unlock);
+    document.removeEventListener('touchstart',unlock);
   }
-  document.addEventListener('click', unlock, { once: true });
-  document.addEventListener('touchstart', unlock, { once: true });
-  document.addEventListener('keydown', unlock, { once: true });
+  document.addEventListener('click',unlock,{once:true});
+  document.addEventListener('keydown',unlock,{once:true});
+  document.addEventListener('touchstart',unlock,{once:true});
+
+
+  b.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(a.paused){ a.play(); b.textContent='Pause'; b.setAttribute('aria-pressed','true'); }
+    else { a.pause(); b.textContent='Play'; b.setAttribute('aria-pressed','false'); }
+  });
 })();
 </script>
 
