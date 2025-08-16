@@ -94,10 +94,40 @@
   <div class="email">
     contact@llulllab.com
   </div>
-<audio autoplay loop>
-  <source src="https://llulllab.github.io/Files/llull.wav" type="audio/wav">
-  Your browser does not support the audio element.
-</audio>
+<audio
+  id="bg-music"
+  src="https://llulllab.github.io/Files/llull.wav"
+  loop
+  preload="auto"
+  playsinline
+></audio>
+
+<script>
+(function () {
+  const audio = document.getElementById('bg-music');
+  audio.muted = true;
+  audio.volume = 0.5;
+
+  function tryPlay() {
+    audio.play().catch(() => {});
+  }
+  document.addEventListener('DOMContentLoaded', tryPlay);
+  window.addEventListener('load', tryPlay);
+
+  function unlock() {
+    try {
+      audio.muted = false;
+      audio.play();
+    } catch (e) {}
+    document.removeEventListener('click', unlock);
+    document.removeEventListener('touchstart', unlock);
+    document.removeEventListener('keydown', unlock);
+  }
+  document.addEventListener('click', unlock, { once: true });
+  document.addEventListener('touchstart', unlock, { once: true });
+  document.addEventListener('keydown', unlock, { once: true });
+})();
+</script>
 
 </body>
 </html>
