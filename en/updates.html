@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,13 +64,60 @@
       line-height: 1.7em;
     }
 
-    h1 {
+    h1, h2 {
       font-family: 'Space Grotesk', sans-serif;
       margin-top: 1.5em;
     }
 
     ul {
       padding-left: 1.2em;
+    }
+
+    /* Tropus banner */
+    .tropus-banner {
+      width: 100%;
+      max-width: 1000px;
+      border: 1px solid #fff;
+      border-radius: 8px;
+      padding: 26px 24px;
+      margin-top: 30px;
+      text-align: left;
+      background: #000; /* keeps the black standard */
+    }
+
+    .tropus-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.2px;
+    }
+
+    .tropus-text {
+      margin: 8px 0;
+      font-size: 1.05em;
+      line-height: 1.75em;
+    }
+
+    .tropus-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      transition: opacity 0.25s ease;
+    }
+
+    .tropus-link:hover {
+      opacity: 0.8;
+    }
+
+    .divider {
+      height: 1px;
+      background: #fff;
+      opacity: 0.15;
+      margin: 26px 0 10px 0;
+      border: 0;
     }
   </style>
 </head>
@@ -87,6 +133,21 @@
     <a href="updates.html">Updates</a>
     <a href="archive.html">Archive</a>
   </div>
+
+  <!-- Tropus announcement banner -->
+  <section class="tropus-banner" aria-labelledby="tropus-title">
+    <h2 id="tropus-title" class="tropus-title">Tropus — October 1, 2025</h2>
+    <p class="tropus-text">
+      A medium where music theory unfolds into unlimited harmonies, enabling compositions to emerge at the speed of thought, guided by voice.
+    </p>
+    <p class="tropus-text">
+      This is musical intelligence, redefined.
+    </p>
+    <p class="tropus-text" style="font-family:'Space Grotesk', sans-serif;">
+      Launching October 1, 2025 — as an app for creators worldwide.
+    </p>
+    <a class="tropus-link" href="https://tropus.io" target="_blank" rel="noopener">tropus.io</a>
+  </section>
 
   <div class="content">
     <h1>Updates</h1>
