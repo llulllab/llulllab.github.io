@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
- <head>
+<html lang="fr">
+<head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Llull Lab – Recherche
-  </title>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral&amp;family=Space+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <title>Llull Lab – Recherche</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
-   @keyframes fadeIn {
+    @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
@@ -19,14 +17,18 @@
       color: #fff;
       margin: 0;
       font-family: 'Spectral', serif;
-      text-align: center;
+      text-align: left;             /* contenu aligné à gauche */
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;
       padding: 40px 5%;
     }
 
-    img {
+    .header {
+      text-align: center;           /* logo et menu centrés */
+    }
+
+    .header img {
       max-width: 60vw;
       max-height: 40vh;
       height: auto;
@@ -39,7 +41,7 @@
       gap: 15px;
       margin-top: 20px;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: center;      /* menu centré */
       font-family: 'Space Grotesk', sans-serif;
     }
 
@@ -75,144 +77,99 @@
       padding-left: 1.2em;
     }
   </style>
- </head>
- <body>
-  <a href="https://www.llulllab.com">
-   <img alt="Llull Lab Logo" src="../LULL Logo.png"/>
-  </a>
-  <div class="nav-links">
-   <a href="about.html">
-    À propos
-   </a>
-   <a href="people.html">
-    Équipe
-   </a>
-   <a href="research.html">
-    Recherche
-   </a>
-   <a href="outreach.html">
-    Rayonnement
-   </a>
-   <a href="updates.html">
-    Actualités
-   </a>
-   <a href="archive.html">
-    Archives
-   </a>
+</head>
+<body>
+
+  <div class="header">
+    <a href="https://www.llulllab.com"><img alt="Llull Lab Logo" src="../LULL Logo.png"/></a>
+
+    <div class="nav-links">
+      <a href="about.html">À propos</a>
+      <a href="people.html">Équipe</a>
+      <a href="research.html">Recherche</a>
+      <a href="outreach.html">Rayonnement</a>
+      <a href="updates.html">Actualités</a>
+      <a href="archive.html">Archives</a>
+    </div>
   </div>
+
   <div class="content">
-   <h1>
-    Axes de recherche actuels
-   </h1>
-   <h2>
-    Méthodologies fondamentales
-   </h2>
-   <ul>
-    <li>
-     Méthodologie mathématique
-    </li>
-    <li>
-     Ontologie fonctionnelle
-    </li>
-   </ul>
-   <h2>
-    Systèmes sémantiques et culturels
-   </h2>
-   <ul>
-    <li>
-     Géométrie sémantique centrée sur l’ambivalence
-    </li>
-    <li>
-     Modélisation rituelle
-    </li>
-    <li>
-     Psychanalyse machinique
-    </li>
-   </ul>
-   <h2>
-    Imagination computationnelle
-   </h2>
-   <ul>
-    <li>
-     Humour computationnel
-    </li>
-    <li>
-     Méta-éthique computationnelle
-    </li>
-   </ul>
-   <h2>
-    Systèmes métaboliques urbains
-   </h2>
-   <ul>
-    <li>
-     Régénération transurbaine
-    </li>
-    <li>
-     Design “déchet-vers-sens”
-    </li>
-    <li>
-     Architecture multi-espèces
-    </li>
-   </ul>
-   <h1>
-    Prototypes &amp; Applications
-   </h1>
-   <h2>
-    Outils de soutien en psychothérapie
-   </h2>
-   <ul>
-    <li>
-     Systèmes de suivi des symptômes
-    </li>
-    <li>
-     Moteurs de cartographie sémantique
-    </li>
-    <li>
-     Détection précoce assistée par IA
-    </li>
-   </ul>
-   <h2>
-    Systèmes de raisonnement expérimental
-   </h2>
-   <ul>
-    <li>
-     Psychanalyse machinique (Machine Llull)
-    </li>
-    <li>
-     Plateforme de modélisation socioculturelle
-    </li>
-   </ul>
-   <h2>
-    Outils d’intelligence créative
-   </h2>
-   <ul>
-    <li>
-     Moteurs littéraires génératifs
-    </li>
-    <li>
-     Machine d’humour modulaire
-    </li>
-   </ul>
-   <h2>
-    Systèmes de régénération transurbaine
-   </h2>
-   <ul>
-    <li>
-     Architecture urbaine multi-espèces
-    </li>
-    <li>
-     Infrastructures “déchet-vers-énergie”
-    </li>
-    <li>
-     Interfaces écotechnologiques
-    </li>
-   </ul>
+
+    <!-- (5) Nouveau bloc supérieur -->
+    <h1>Unités de recherche</h1>
+    <h2>Unité de recherche sur l’esprit artificiel</h2>
+    <ul>
+      <li>Deniz Koşucu</li>
+      <li>Gulru Yesilkanat Cakir</li>
+      <li>İrem Koçak</li>
+      <li>Kevser Erdogan</li>
+      <li>Kübra Arslan</li>
+    </ul>
+
+    <h1>Axes de recherche actuels</h1>
+
+    <h2>Méthodologies fondamentales</h2>
+    <ul>
+      <li>Méthodologie mathématique</li>
+      <li>Ontologie fonctionnelle</li>
+    </ul>
+
+    <h2>Systèmes sémantiques et culturels</h2>
+    <ul>
+      <li>Géométrie sémantique centrée sur l’ambivalence</li>
+      <li>Modélisation rituelle</li>
+      <li>Psychanalyse machinique</li>
+    </ul>
+
+    <h2>Imagination computationnelle</h2>
+    <ul>
+      <li>Humour computationnel</li>
+      <li>Méta-éthique computationnelle</li>
+      <li>Systèmes théorico-génératifs exécutables</li> <!-- (1) ajout -->
+    </ul>
+
+    <h2>Systèmes métaboliques urbains</h2>
+    <ul>
+      <li>Régénération transurbaine</li>
+      <li>Design “déchet-vers-sens”</li>
+      <li>Architecture multi-espèces</li>
+    </ul>
+
+    <h1>Prototypes & Applications</h1>
+
+    <h2>Outils de soutien en psychothérapie</h2>
+    <ul>
+      <li>Systèmes de suivi des symptômes</li>
+      <li>Moteurs de cartographie sémantique</li>
+      <li>Détection précoce assistée par IA</li>
+    </ul>
+
+    <h2>Systèmes de raisonnement expérimental</h2>
+    <ul>
+      <li>Tropus (plateforme de recherche exécutable pour le raisonnement théorique et la computation générative)</li> <!-- (2) ajout -->
+      <li>Psychanalyse machinique (Machine Llull)</li>
+      <li>Plateforme de modélisation socioculturelle</li>
+    </ul>
+
+    <h2>Outils d’intelligence créative</h2>
+    <ul>
+      <li>Tropus</li> <!-- (3) ajout -->
+      <li>Moteurs littéraires génératifs</li>
+      <li>Machine d’humour modulaire</li>
+    </ul>
+
+    <h2>Systèmes de régénération transurbaine</h2>
+    <ul>
+      <li>Architecture urbaine multi-espèces</li>
+      <li>Infrastructures “déchet-vers-énergie”</li>
+      <li>Interfaces écotechnologiques</li>
+    </ul>
   </div>
+
   <p style="margin-top: 60px;">
-   Contact:
-   <a href="mailto:contact@llulllab.com" style="color: #fff;">
-    contact@llulllab.com
-   </a>
+    Contact :
+    <a href="mailto:contact@llulllab.com" style="color: #fff;">contact@llulllab.com</a>
   </p>
- </body>
+
+</body>
 </html>
