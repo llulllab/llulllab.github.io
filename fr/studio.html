@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Llull Lab – Studio Llull</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    body {
+      animation: fadeIn 2s ease-in-out;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      font-family: 'Spectral', serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 60px;
+    }
+
+    img {
+      max-width: 60vw;
+      max-height: 40vh;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      padding: 10px 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #fff;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .notice {
+      margin-top: 40px;
+      max-width: 720px;
+      padding: 0 16px;
+      line-height: 1.6;
+      font-size: 1.05em;
+    }
+
+    .notice strong {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .contact {
+      margin-top: 60px;
+      margin-bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Spectral', serif;
+    }
+
+    .contact a {
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+ </head>
+ <body>
+  <a href="https://www.llulllab.com">
+    <img src="../LULL Logo.png" alt="Llull Lab Logo"/>
+  </a>
+
+  <h2 style="font-family: 'Spectral', serif; font-weight: normal; font-size: 1.4em; margin: 10px 0 10px 0;">
+    Studio Llull
+  </h2>
+
+  <div class="nav-links">
+   <a href="about.html">À propos</a>
+   <a href="people.html">Équipe</a>
+   <a href="research.html">Recherche</a>
+   <a href="studio.html">Studio Llull</a>
+   <a href="outreach.html">Rayonnement</a>
+   <a href="updates.html">Actualités</a>
+   <a href="archive.html">Archives</a>
+  </div>
+
+  <p class="notice">
+    <strong>Page en construction.</strong><br/>
+    Studio Llull est l’unité de production et d’application de Llull Lab. Cette page présentera prochainement nos systèmes, outils et publications.
+  </p>
+
+  <p class="contact">
+    <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>
+  </p>
+ </body>
+</html>
