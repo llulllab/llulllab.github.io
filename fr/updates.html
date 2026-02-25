@@ -6,11 +6,7 @@
   <title>Llull Lab – Actualités & Archives</title>
   <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     body {
       animation: fadeIn 2s ease-in-out;
       background-color: #000;
@@ -23,14 +19,12 @@
       align-items: center;
       padding: 40px 5%;
     }
-
     img {
       max-width: 60vw;
       max-height: 40vh;
       height: auto;
       margin-bottom: 20px;
     }
-
     .nav-links {
       display: flex;
       flex-direction: row;
@@ -40,7 +34,6 @@
       justify-content: center;
       font-family: 'Space Grotesk', sans-serif;
     }
-
     .nav-links a {
       color: #fff;
       text-decoration: none;
@@ -49,13 +42,11 @@
       border-radius: 4px;
       transition: background-color 0.3s, color 0.3s, transform 0.3s;
     }
-
     .nav-links a:hover {
       background-color: #fff;
       color: #000;
       transform: scale(1.05);
     }
-
     .content {
       max-width: 1000px;
       text-align: left;
@@ -63,16 +54,13 @@
       font-size: 1.1em;
       line-height: 1.7em;
     }
-
     h1, h2 {
       font-family: 'Space Grotesk', sans-serif;
       margin-top: 1.5em;
     }
-
     ul {
       padding-left: 1.2em;
     }
-
     .tropus-banner {
       width: 100%;
       max-width: 1000px;
@@ -83,13 +71,17 @@
       text-align: left;
       background: #000;
     }
-
+    .tropus-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.2px;
+    }
     .tropus-text {
       margin: 8px 0;
       font-size: 1.05em;
       line-height: 1.75em;
     }
-
     .tropus-link {
       display: inline-block;
       margin-top: 14px;
@@ -99,17 +91,40 @@
       font-family: 'Space Grotesk', sans-serif;
       transition: opacity 0.25s ease;
     }
-
     .tropus-link:hover {
       opacity: 0.8;
     }
-
     .divider {
       height: 1px;
       background: #fff;
       opacity: 0.15;
       margin: 26px 0 10px 0;
       border: 0;
+    }
+    .llulllab-announcement {
+      width: 100%;
+      max-width: 1000px;
+      border: 1px solid #fff;
+      border-radius: 8px;
+      padding: 26px 24px;
+      margin-top: 30px;
+      text-align: left;
+      background: #000;
+    }
+    .llulllab-announcement h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.2px;
+    }
+    .llulllab-announcement p,
+    .llulllab-announcement li {
+      font-size: 1.05em;
+      line-height: 1.75em;
+      margin: 8px 0;
+    }
+    .llulllab-announcement ul {
+      padding-left: 1.2em;
     }
   </style>
 </head>
@@ -127,32 +142,83 @@
     <a href="archive.html">Archives</a>
   </div>
 
-<h1>Mises à jour</h1>
+  <h1>Mises à jour</h1>
 
-<!-- YENİ DUYURU -->
-<section class="tropus-banner">
-  <p class="tropus-text">25.02.2026</p>
+  <!-- Annonce du 25 février 2026 -->
+  <section class="llulllab-announcement" aria-label="Mise à jour de la plateforme Llull Lab">
+    <h2>Mise à jour de la plateforme Llull Lab</h2>
+    <p><strong>Date :</strong> 25 février 2026</p>
+    <ul>
+      <li>
+        <strong>Mise à niveau :</strong>
+        Tropus sera temporairement inaccessible à partir du <strong>1er mars 2026</strong> en raison d'une mise à jour majeure du système rendue nécessaire par des dépendances techniques tierces.
+        Cette mise à niveau vise à garantir la stabilité à long terme, la performance et la robustesse architecturale.
+      </li>
+      <li>
+        <strong>Lancement :</strong>
+        Le moteur de géométrie sémantique centré sur l'ambivalence sera lancé début mars 2026 en tant que composant central de l'infrastructure de recherche computationnelle de Llull Lab.
+      </li>
+      <li>
+        <strong>Lancement :</strong>
+        Phi-Yo, notre outil scientifique d'interprétation des rêves fonctionnant dans le cadre de <em>Freud for Machines : A Computational Psychoanalytic Ontology</em>, sera lancé fin mars 2026.
+      </li>
+    </ul>
+    <p>Des informations techniques complémentaires seront communiquées prochainement.</p>
 
-  <p class="tropus-text">
-    <strong>Mise à niveau :</strong> Tropus sera temporairement inaccessible à partir du <strong>1er mars 2026</strong> en raison d’une mise à jour majeure du système rendue nécessaire par des dépendances techniques tierces. Cette mise à niveau vise à garantir la stabilité à long terme, la performance et la robustesse architecturale.
-  </p>
+  </section>
 
-  <p class="tropus-text">
-    <strong>Lancement :</strong> Le moteur de géométrie sémantique centré sur l’ambivalence sera lancé début mars 2026 en tant que composant central de l’infrastructure de recherche computationnelle de Llull Lab.
-  </p>
+  <!-- Annonce du 01.12.2025 -->
+  <section class="tropus-banner" aria-labelledby="tropus-title">
+    <p class="tropus-text">01.12.2025</p>
+    <p class="tropus-text">
+      En tant que Llull Lab, nous sommes fiers de lancer Tropus v2.
+    </p>
+    <p class="tropus-text">
+      Tropus est dédié à notre membre principal Ozgur Cinar, dont le creative coding a façonné une grande partie de ce que ce système est devenu. Il a été initialement conçu comme un médium de génération musicale pour accompagner sa pratique de performance live.
+    </p>
+    <p class="tropus-text">
+      Nouveautés de la v2 :<br>
+      → Génère des pièces uniques de 60 secondes — totalement non répétables, chaque sortie est unique en son genre<br>
+      → Sortie réarrangeable — remodeler la structure interne de chaque pièce<br>
+      → Capacités harmoniques qui s'étendent dynamiquement grâce à vos prompts, inspirées du cadre Tractatus de Musica
+    </p>
+    <p class="tropus-text">
+      À venir : durée prolongée et spectre stylistique élargi.
+    </p>
+    <p class="tropus-text">
+      Tropus reste axé sur la recherche, modulaire et en évolution — la v2 est une étape significative vers le système plus vaste que nous construisons.
+    </p>
+    <a class="tropus-link" href="https://tropus.io" target="_blank" rel="noopener">tropus.io</a>
+  </section>
 
-  <p class="tropus-text">
-    <strong>Lancement :</strong> Phi-Yo, notre outil scientifique d’interprétation des rêves fonctionnant propulsé par <em>Freud for Machines : A Computational Psychoanalytic Ontology</em>, sera lancé fin mars 2026.
-  </p>
-</section>
+  <!-- Annonce du 31.10.2025 -->
+  <section class="tropus-banner" aria-labelledby="tropus-title">
+    <p class="tropus-text">31.10.2025</p>
+    <p class="tropus-text">
+      Nous sommes heureux d'annoncer l'expansion récente du Llull Lab avec de nouveaux membres rejoignant notre collectif de recherche. Parallèlement à cette croissance, nous avons officiellement créé l'Unité de recherche sur l'esprit artificiel (Artificial Mind Research Unit), dédiée à l'exploration des intersections entre la psychanalyse, la théorie du rêve et l'intelligence artificielle.
+    </p>
+    <p class="tropus-text">
+      En parallèle, le module de génération musicale de Tropus — notre plateforme computationnelle dédiée à la musique expérimentale et à la théorie — est actuellement dans sa phase finale de test et sera bientôt activé.
+    </p>
+    <p class="tropus-text">
+      Le Llull Lab continue d'évoluer comme un espace interdisciplinaire où la philosophie, le calcul et l'art se rencontrent.
+    </p>
+    <p class="tropus-text">
+      Pendant ce temps, le module de génération musicale de Tropus entre dans sa phase d'activation.
+    </p>
+    <a class="tropus-link" href="https://tropus.io" target="_blank" rel="noopener">tropus.io</a>
+  </section>
 
-<!-- mevcut içerik aynen devam ediyor -->
+  <div class="content">
+    <h2>[14.09.2025] Atelier au Festival für Selbstgebaute Musik (Berlin)</h2>
+    <p>Au <em>Festival für Selbstgebaute Musik 2025</em> à Berlin, Llull Lab animera un atelier intitulé <strong>Le medium physique comme instrument</strong>. La session explore comment les propriétés résonantes des matériaux physiques peuvent être utilisées pour la performance sonore et l'interaction environnementale.</p>
 
-<section class="tropus-banner" aria-labelledby="tropus-title">
+    <h2>[11.07.2025] Llull Lab co-organise le Forum sur les pratiques artistiques écologiques</h2>
+    <p>Llull Lab est fier de co-organiser le <em>Forum sur les pratiques artistiques écologiques</em>, une rencontre interdisciplinaire consacrée à la pensée écologique dans et à travers les médias artistiques. En tant que contributeur principal, Llull Lab partage ses recherches sur les écologies matérielles, les environnements sonores et la pédagogie expérimentale en dialogue avec d'autres praticiens et institutions.</p>
+    <img src="https://llulllab.github.io/Files/Forum2025.JPG" alt="Affiche du Forum sur les pratiques artistiques écologiques">
+  </div>
 
-  <p class="tropus-text">01.12.2025</p>
-  ...
-</section>
+  <p style="margin-top: 60px; font-family:'Space Grotesk', sans-serif; font-size: 1em;">contact@llulllab.com</p>
 
 </body>
 </html>
