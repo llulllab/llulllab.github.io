@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llull Lab — Archives</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; font-weight: 400; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 640px; line-height: 1.75; }
+    .page-body { padding: 56px 0 80px; }
+    .page-body p { margin-bottom: 1.2em; max-width: 680px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 56px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .page-body h2:first-child { margin-top: 0; }
+
+    .pub-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+      margin-bottom: 16px;
+      transition: border-color 0.25s;
+    }
+    .pub-card:hover { border-color: var(--border-strong); }
+
+    .pub-title {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .pub-meta {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .pub-desc {
+      font-size: 0.95rem;
+      color: var(--accent);
+      line-height: 1.6;
+      margin-bottom: 14px;
+      max-width: 680px;
+    }
+
+    .pub-link {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-strong);
+      transition: color 0.2s, border-color 0.2s;
+      margin-right: 20px;
+    }
+    .pub-link:hover { color: var(--fg); border-color: var(--fg); }
+
+    .editions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .edition-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      transition: border-color 0.25s;
+    }
+    .edition-card:hover { border-color: var(--border-strong); }
+
+    .edition-title {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .edition-isbn {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
+    .footer-left { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+    .footer-links { display: flex; gap: 24px; font-family: var(--sans); font-size: 0.82rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fg); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">Menu</button>
+      <nav>
+        <a href="about.html">À propos</a>
+        <a href="people.html">Équipe</a>
+        <a href="research.html">Recherche</a>
+        <a href="studio.html">Studio</a>
+        <a href="outreach.html">Rayonnement</a>
+        <a href="updates.html">Actualités</a>
+        <a href="archive.html" class="active">Archives</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="page-hero">
+      <h1>Archives</h1>
+      <p class="lead">Rapports publiés, documents de recherche et textes fondateurs.</p>
+    </div>
+    <div class="page-body">
+
+      <h2>Nouvelles publications</h2>
+
+      <div class="pub-card">
+        <div class="pub-title">Rapport Q1 — Vue d'ensemble opérationnelle, oct.–déc. 2025</div>
+        <div class="pub-meta">Premier rapport trimestriel de Llull Lab</div>
+        <a class="pub-link" href="https://raw.githubusercontent.com/llulllab/llulllab.github.io/main/Files/FR-Llull%20Lab%20%E2%80%94%20Q1%20Report%20(Operational_%201%20Oct%20%E2%80%93%2031%20Dec%202025).pdf" download>Télécharger le PDF</a>
+      </div>
+
+      <div class="pub-card">
+        <div class="pub-title">Rapport de recherche scientifique</div>
+        <div class="pub-meta">Rapport institutionnel de recherche scientifique</div>
+        <a class="pub-link" href="https://doi.org/10.5281/zenodo.18109687" target="_blank">Voir sur Zenodo (DOI)</a>
+      </div>
+
+      <h2>Tractatus de Musica — Édition double</h2>
+      <p>La théorie de Tropus, <em>Tractatus de Musica</em>, est désormais disponible en tant que texte fondateur, publiée en deux éditions : anglaise et française.</p>
+
+      <div class="editions-grid">
+        <div class="edition-card">
+          <div class="edition-title">Édition anglaise (PDF)</div>
+          <div class="edition-isbn">ISBN : 978-1-326-08325-0</div>
+          <a class="pub-link" href="https://raw.githubusercontent.com/llulllab/llulllab.github.io/main/Files/EN-%20Tractatus%20de%20Musica%20-%20Firat%20Ilim.pdf" download>Télécharger l'édition anglaise</a>
+        </div>
+        <div class="edition-card">
+          <div class="edition-title">Édition française (PDF)</div>
+          <div class="edition-isbn">ISBN : 978-1-326-08351-9</div>
+          <a class="pub-link" href="https://raw.githubusercontent.com/llulllab/llulllab.github.io/main/Files/FR-%20Tractatus%20de%20Musica%20-%20Firat%20Ilim.pdf" download>Télécharger l'édition française</a>
+        </div>
+      </div>
+
+      <h2>Contenu des archives</h2>
+      <p>Cette page contient un archive croissant des rapports Q publiés et de la documentation des prototypes.</p>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">Llull Lab<br>Paris, France<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="74171b1a001517003418180118181815165a171b19">[email&#160;protected]</a></div>
+      <div class="footer-links">
+        <a href="../mentions-legales.html">Mentions 
