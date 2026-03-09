@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llull Lab — Outreach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; font-weight: 400; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 640px; line-height: 1.75; }
+    .page-body { padding: 56px 0 80px; }
+    .page-body p { margin-bottom: 1.2em; max-width: 680px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 56px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body h3 { font-family: var(--sans); font-size: 1.05rem; font-weight: 500; margin-top: 32px; margin-bottom: 12px; }
+    .page-body ul { padding-left: 1.2em; max-width: 680px; margin-bottom: 1.2em; }
+    .page-body li { margin-bottom: 0.5em; }
+
+    .event-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .event-date {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .event-title {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .event-desc {
+      font-size: 0.95rem;
+      color: var(--accent);
+      line-height: 1.6;
+      max-width: 680px;
+    }
+
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
+    .footer-left { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+    .footer-links { display: flex; gap: 24px; font-family: var(--sans); font-size: 0.82rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fg); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">Menu</button>
+      <nav>
+        <a href="about.html">About</a>
+        <a href="people.html">People</a>
+        <a href="research.html">Research</a>
+        <a href="studio.html">Studio</a>
+        <a href="outreach.html" class="active">Outreach</a>
+        <a href="updates.html">Updates</a>
+        <a href="archive.html">Archive</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="page-hero">
+      <h1>Education &amp; Public Engagement</h1>
+      <p class="lead">Pedagogy as intervention — rewiring how problems are posed, approached, and reimagined through situated learning environments.</p>
+    </div>
+    <div class="page-body">
+
+      <h2>Learning as Intervention</h2>
+      <p>Llull Lab contributes to the wider ecosystem of knowledge through workshops, training programs, and public events that span across disciplines and institutions.</p>
+      <p>We treat pedagogy not as a separate function, but as a core method of intervention: a way to rewire how problems are posed, approached, and reimagined. Through situated learning environments, we cultivate a shared vocabulary for navigating technological change.</p>
+
+      <h2>Transparency &amp; Reports</h2>
+
+      <h3>Q Reports</h3>
+      <p>Each quarter, Llull Lab publishes a Q Report — a structured, high-resolution overview of the laboratory's institutional state, research trajectory, and operational priorities.</p>
+      <p>Q Reports are designed as method-oriented transparency documents, capturing not only what was produced, but how and why specific research directions were pursued. They serve three primary functions: ensuring transparent self-assessment of objectives and outputs, documenting methodological and infrastructural development, and providing strategic insight into the sociotechnical transformations navigated by the laboratory.</p>
+      <p>Typical contents include: Executive Summary, Organizational Focus and Research Structure, Research Instruments and Platform Updates, Key Metrics (when applicable), and Next-Quarter Objectives.</p>
+      <p>Scientific articles, peer-reviewed research, and extended theoretical developments are published separately through dedicated publication channels (e.g. Q-PRE). This separation allows Q Reports to remain concise, readable, and strategically focused.</p>
+      <p>Q Reports may be accompanied by presentations, public discussions, or selective participation in academic and sectoral events, ensuring that Llull Lab's research remains engaged, visible, and responsive.</p>
+
+      <h2>Past Events</h2>
+
+      <div class="event-item">
+        <div class="event-date">14 September 2025</div>
+        <div class="event-title">Workshop: The Physical Medium as Instrument</div>
+        <div class="event-desc">At Das Festival für Selbstgebaute Musik 2025 in Berlin. Investigating how resonant properties of physical materials can be harnessed for sonic performance and environmental interaction.</div>
+      </div>
+
+      <div class="event-item">
+        <div class="event-date">11 July 2025</div>
+        <div class="event-title">Forum on Ecological Art Practices (Co-host)</div>
+        <div class="event-desc">An interdisciplinary gathering dedicated to ecological thinking in and through artistic media. Llull Lab contributed research on material ecologies, sonic environments, and experimental pedagogy.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">Llull Lab<br>Paris, France<br>contact@llulllab.com</div>
+      <div class="footer-links">
+        <a href="mentions-legales.html">Mentions Légales</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
