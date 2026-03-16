@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llull Lab — Studio Llull</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0e1a;
+      --bg-surface: #111627;
+      --bg-card: #151a2e;
+      --fg: #e8e6e1;
+      --muted: #7b8298;
+      --dim: #3d4460;
+      --accent: #c2bfb6;
+      --highlight: #d4a054;
+      --highlight-soft: rgba(212,160,84,0.08);
+      --highlight-glow: rgba(212,160,84,0.15);
+      --live-color: #5ec47a;
+      --machine-color: #e8e6e1;
+      --engine-color: #e8e6e1;
+      --ontology-color: #e8e6e1;
+      --border: rgba(255,255,255,0.07);
+      --border-strong: rgba(255,255,255,0.14);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px;
+      --side-pad: clamp(20px, 5vw, 80px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--serif);
+      line-height: 1.7;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--highlight-glow); }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,14,26,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--side-pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo-text {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+
+    nav a {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: all 0.25s ease;
+    }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.06); }
+    nav a.active { color: var(--highlight); background: rgba(212,160,84,0.08); }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-strong);
+      color: var(--fg);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav {
+        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(10,14,26,0.97); backdrop-filter: blur(20px);
+        flex-direction: column; padding: 16px var(--side-pad);
+        border-bottom: 1px solid var(--border);
+      }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+
+    .page-section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--side-pad);
+    }
+
+    /* HERO */
+    .studio-hero {
+      padding: 100px 0 64px;
+      position: relative;
+    }
+
+    .studio-hero::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212,160,84,0.04) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .studio-label {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--highlight);
+      margin-bottom: 20px;
+    }
+
+    .studio-hero h1 {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      color: var(--fg);
+    }
+
+    .studio-tagline {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--accent);
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .studio-stats {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-number {
+      font-family: var(--sans);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      color: var(--highlight);
+    }
+
+    .stat-label {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* CATEGORY HEADER */
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      margin-top: 56px;
+    }
+
+    .category-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--highlight);
+      white-space: nowrap;
+    }
+
+    .category-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .category-count {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--dim);
+      letter-spacing: 0.5px;
+    }
+
+    /* CARD GRID */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    /* PRODUCT CARD — compact, near-square */
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 240px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--highlight-glow), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .product-card:hover {
+      border-color: var(--border-strong);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.3);
+    }
+
+    .product-card:hover::before {
+      opacity: 1;
+    }
+
+    .product-top {
+      flex: 1;
+    }
+
+    /* 1. NAME (color-coded) */
+    .product-name {
+      font-family: var(--sans);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .product-name.machine { color: var(--machine-color); }
+    .product-name.engine { color: var(--engine-color); }
+    .product-name.ontology { color: var(--ontology-color); }
+
+    /* 2. STATUS */
+    .product-status {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      margin-bottom: 14px;
+      border: 1px solid rgba(94,196,122,0.3);
+      color: var(--live-color);
+      background: rgba(94,196,122,0.06);
+    }
+
+    .product-status.dev {
+      border-color: var(--border-strong);
+      color: var(--muted);
+      background: transparent;
+    }
+
+    /* 3. TYPE */
+    .product-type {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 10px;
+    }
+
+    /* 4. DESCRIPTION */
+    .product-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* 5. ACTION LINK */
+    .product-link {
+      display: inline-block;
+      margin-top: 18px;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--bg);
+      background: var(--highlight);
+      text-decoration: none;
+      padding: 7px 18px;
+      border-radius: 5px;
+      transition: all 0.25s ease;
+    }
+
+    .product-link:hover {
+      background: #e0ad5e;
+      box-shadow: 0 2px 16px rgba(212,160,84,0.25);
+    }
+
+    .product-link.disabled {
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      color: var(--muted);
+      cursor: default;
+    }
+
+    .product-link.disabled:hover {
+      box-shadow: none;
+      background: transparent;
+    }
+
+    /* IN DEVELOPMENT SECTION */
+    .dev-section {
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+      margin-top: 56px;
+    }
+
+    .dev-label {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px var(--side-pad);
+      margin-top: 0;
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .footer-left {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .footer-links { display: flex; gap: 24px; font-family: var(--sans); font-size: 0.82rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fg); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease-out both; }
+    .fade-up-d1 { animation-delay: 0.12s; }
+    .fade-up-d2 { animation-delay: 0.24s; }
+    .fade-up-d3 { animation-delay: 0.36s; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">Menu</button>
+      <nav>
+        <a href="about.html">À propos</a>
+        <a href="people.html">Équipe</a>
+        <a href="research.html">Recherche</a>
+        <a href="studio.html" class="active">Studio</a>
+        <a href="outreach.html">Rayonnement</a>
+        <a href="updates.html">Actualités</a>
+        <a href="archive.html">Archives</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="page-section studio-hero">
+    <div class="studio-label fade-up">Module de prototypage</div>
+    <h1 class="fade-up fade-up-d1">Studio Llull</h1>
+    <p class="studio-tagline fade-up fade-up-d2">
+      Là où la recherche s'exécute. Machines, moteurs et cadres computationnels construits à partir des travaux théoriques, mathématiques et méthodologiques de Llull Lab.
+    </p>
+    <div class="studio-stats fade-up fade-up-d3">
+      <div class="stat">
+        <div class="stat-number">9</div>
+        <div class="stat-label">Productions</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">8</div>
+        <div class="stat-label">En ligne</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">1</div>
+        <div class="stat-label">En développement</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MACHINES -->
+  <section class="page-section">
+    <div class="category-header fade-up fade-up-d3">
+      <span class="category-label">Machines</span>
+      <span class="category-line"></span>
+      <span class="category-count">4</span>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name machine">Tropus</div>
+          <div class="product-status">Disponible v2</div>
+          <div class="product-type">Machine de Musique Générative</div>
+          <div class="product-desc">Génération musicale et exploration conceptuelle dans une architecture à double mode</div>
+        </div>
+        <a href="https://tropus.io" target="_blank" class="product-link">Ouvrir Tropus →</a>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name machine">Phi-Yo</div>
+          <div class="product-status">Disponible</div>
+          <div class="product-type">Machine d'Analyse Scientifique des Rêves</div>
+          <div class="product-desc">Interprétation scientifique des rêves alimentée par l'ontologie psychanalytique computationnelle</div>
+        </div>
+        <a href="https://phi-yo.app" target="_blank" class="product-link">Ouvrir Phi-Yo →</a>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name machine">Cedulor</div>
+          <div class="product-status">Disponible</div>
+          <div class="product-type">Machine de Support de Projet</div>
+          <div class="product-desc">Support structuré de projet par raisonnement combinatoire</div>
+        </div>
+        <a href="https://cedulor.com" target="_blank" class="product-link">Ouvrir Cedulor →</a>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name machine">Feix</div>
+          <div class="product-status">Disponible</div>
+          <div class="product-type">Machine de Design Combinatoire</div>
+          <div class="product-desc">Design combinatoire web par génération formelle</div>
+        </div>
+        <a href="https://feix.app" target="_blank" class="product-link">Ouvrir Feix →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPUTATIONAL ONTOLOGY -->
+  <section class="page-section">
+    <div class="category-header">
+      <span class="category-label">Ontologie computationnelle</span>
+      <span class="category-line"></span>
+      <span class="category-count">1</span>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name ontology">Freud for Machines</div>
+          <div class="product-status">Disponible</div>
+          <div class="product-type">Ontologie Psychanalytique Computationnelle</div>
+          <div class="product-desc">Modélisation des structures inconscientes, de la répression et de la médiation symbolique dans les systèmes machinaux</div>
+        </div>
+        <a href="https://phi-yo.app" target="_blank" class="product-link">Ouvrir FfM →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ENGINES -->
+  <section class="page-section">
+    <div class="category-header">
+      <span class="category-label">Moteurs</span>
+      <span class="category-line"></span>
+      <span class="category-count">4</span>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name engine">Alberei</div>
+          <div class="product-status">Disponible</div>
+          <div class="product-type">Moteur d'Humour Modulaire</div>
+          <div class="product-desc">Humour algorithmique par structures comiques conçues</div>
+        </div>
+        <a href="https://alberei.de" target="_blank" class="product-link">Ouvrir Alberei →</a>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name engine">ASGE</div>
+          <div class="product-status">Disponible</div>
+          <div class="product-type">Moteur de Géométrie Sémantique</div>
+          <div class="product-desc">L'ambivalence comme géométrie structurelle — fondement sémantique de multiples systèmes</div>
+        </div>
+        <a href="https://llulllab.com/ASGE/" target="_blank" class="product-link">Ouvrir ASGE →</a>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name engine">Reflective Judgment Engine</div>
+          <div class="product-status">Disponible</div>
+          <div class="product-type">Moteur</div>
+          <div class="product-desc">Cadres décisionnels en situation d'incertitude normative</div>
+        </div>
+        <a href="https://llulllab.com/RJE/" target="_blank" class="product-link">Ouvrir RJE →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- IN DEVELOPMENT -->
+  <section class="page-section dev-section">
+    <div class="dev-label">En développement</div>
+    <div class="card-grid">
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name engine">Cedulia</div>
+          <div class="product-status dev">En développement</div>
+          <div class="product-type">Moteur d'Écriture Créative</div>
+          <div class="product-desc">Écriture générative par composition formelle et transformation structurelle</div>
+        </div>
+        <a href="https://cedulia.com" target="_blank" class="product-link">Ouvrir Cedulia →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">Llull Lab<br>Paris, France<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e1d11100a1f1d0a3e12120b1212121f1c501d1113">[email&#160;protected]</a></div>
+      <div class="footer-links">
+        <a
