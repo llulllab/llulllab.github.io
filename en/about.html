@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llull Lab — About</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="Llull Lab — Vision & Manifesto. A renewed engagement with mathematics as a generative medium for human creativity and methodological innovation.">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12);
+      --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px;
+      --side-pad: clamp(20px, 5vw, 80px);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; font-weight: 400; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; letter-spacing: 0.2px; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+
+    .page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 640px; line-height: 1.75; }
+
+    .page-body { padding: 56px 0 80px; }
+    .page-body p { margin-bottom: 1.2em; max-width: 680px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 56px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .page-body h3 { font-family: var(--sans); font-size: 1.05rem; font-weight: 500; margin-top: 32px; margin-bottom: 12px; }
+    .page-body ul { padding-left: 1.2em; max-width: 680px; margin-bottom: 1.2em; }
+    .page-body li { margin-bottom: 0.5em; }
+
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
+    .footer-left { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+    .footer-links { display: flex; gap: 24px; font-family: var(--sans); font-size: 0.82rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fg); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.8s ease-out both; }
+    .fade-up-d1 { animation-delay: 0.1s; }
+    .fade-up-d2 { animation-delay: 0.25s; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">Menu</button>
+      <nav>
+        <a href="about.html" class="active">About</a>
+        <a href="people.html">People</a>
+        <a href="research.html">Research</a>
+        <a href="studio.html">Studio</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="updates.html">Updates</a>
+        <a href="archive.html">Archive</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="page-hero fade-up">
+      <h1>Vision &amp; Manifesto</h1>
+      <p class="lead">A renewed engagement with mathematics — not only as formal abstraction, but as a generative medium for human creativity and methodological innovation.</p>
+    </div>
+    <div class="page-body fade-up fade-up-d1">
+      <p>Llull Lab is a Paris-based research initiative engaging with the most fundamental transformation of our time. Large language models, high-performance computing, and robotics are rapidly forming the infrastructural backbone of today's technological paradigm — transforming how knowledge is produced, validated, and applied across disciplines.</p>
+
+      <p>This transition also invites a conceptual shift: a renewed engagement with mathematics, not only as formal abstraction, but as a generative medium for human creativity and methodological innovation. Inspired by Ramon Llull's combinatorial art — a historical convergence of mathematics, symbolic reasoning, and creativity — we aim to revive and reinterpret this legacy in a contemporary context. Our objective is to develop experimental mathematical tools that contribute to both human well-being and creative problem-solving.</p>
+
+      <p>We understand this transformation not as a moment of crisis, but as the formative phase of a new epoch, unfolding along two interrelated axes: the environmental (energy systems, material design, urban ecology) and the transhuman (cognitive processes, bodily augmentation, labor redefinition).</p>
+
+      <p>The key challenge is not whether to resist these changes, but how to critically participate in shaping them — orienting creative innovation toward human flourishing and collective intelligence.</p>
+
+      <p>Llull Lab functions as a platform where epistemic, technical, and artistic approaches converge, through interdisciplinary collaboration and prototyping.</p>
+
+      <h2>Strategic Rationale &amp; Mission</h2>
+
+      <p>While technological advancement accelerates, arts and social sciences lack adequate methodological tools to critically engage with and shape these developments. Llull Lab exists to change this.</p>
+
+      <p>Our aim is to reposition these disciplines at the center of contemporary transformation — not through resistance, but through epistemic, technical, and artistic invention. We design new formal tools, experimental material systems, generative frameworks, and collaborative protocols that allow for constructive and creative engagement with emerging systems.</p>
+
+      <h2>Strategic Pathways</h2>
+
+      <h3>Tool-building</h3>
+      <p>Designing formal tools and material systems that enable critical, speculative, and generative interaction with technological infrastructures.</p>
+
+      <h3>Infrastructure</h3>
+      <p>Constructing interdisciplinary platforms that support collaborative research, design, and prototyping.</p>
+
+      <h3>Technological Literacy</h3>
+      <p>Treating technology not as an external threat, but as an epistemic medium — one to be interpreted, shaped, and inhabited with precision and care.</p>
+
+      <h2>Organizational Architecture</h2>
+
+      <p>Llull Lab operates through a dynamic architecture that allows ideas to move fluidly between theoretical development and practical application.</p>
+
+      <h3>Epistemic Module (Theory-Based)</h3>
+      <p>Here we develop the conceptual foundations — creating new formal tools and epistemic frameworks. Drawing from sciences and arts, this module produces seminars, theoretical texts, and conceptual prototypes. → <a href="research.html" style="color: var(--fg); text-decoration: underline;">Research</a></p>
+
+      <h3>Prototype Module (Impact-Based)</h3>
+      <p>This is where ideas become tangible. We design concrete systems, experimental tools, installations, and software through collaboration with artists, engineers, and technologists. The focus is on creative design that generates real-world impact. → <a href="studio.html" style="color: var(--fg); text-decoration: underline;">Studio Llull</a></p>
+
+      <h3>Shared Spaces</h3>
+      <p>These are the connective tissues of the lab — incubation zones where theoretical insights transition into prototypes, testing grounds for observation and refinement, and platforms for public presentation, knowledge dissemination, and documentation. They house our coordination infrastructure: interdisciplinary partnerships, funding networks, digital archives, and quarterly transparency reports.</p>
+
+      <h2>Growth Strategy</h2>
+
+      <p>Llull Lab follows an agile, modular approach. We begin with a core research team supported by national and international grants, producing both high-level theory and functional tools. Over time, the lab evolves into a platform for strategic collaboration, product development, and public education — balancing academic inquiry with applied innovation.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">Llull Lab<br>Paris, France<br>contact@llulllab.com</div>
+      <div class="footer-links">
+        <a href="../mentions-legales.html">Mentions Légales</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

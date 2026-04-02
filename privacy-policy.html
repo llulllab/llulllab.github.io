@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy – Llull Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12);
+      --border-strong: rgba(255,255,255,0.25);
+      --google-border: rgba(66,133,244,0.35);
+      --google-bg: rgba(66,133,244,0.06);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 760px;
+      --side-pad: clamp(20px, 5vw, 40px);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.75; font-size: 17px; -webkit-font-smoothing: antialiased; padding: 0; }
+    ::selection { background: rgba(255,255,255,0.15); }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 80px var(--side-pad) 40px;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .last-updated {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--dim);
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 28px;
+      margin-bottom: 10px;
+      color: var(--fg);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+      color: var(--accent);
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    a {
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-color: var(--border-strong);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+    a:hover { text-decoration-color: var(--fg); }
+
+    strong { color: var(--fg); }
+
+    .section { margin-bottom: 1.5rem; }
+
+    .google-data-section {
+      background: var(--google-bg);
+      border-left: 3px solid var(--google-border);
+      padding: 28px 28px;
+      margin: 28px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .google-data-section h2 {
+      margin-top: 0;
+      color: var(--fg);
+      border-bottom-color: var(--google-border);
+    }
+
+    .contact-box {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-top: 40px;
+    }
+
+    .contact-box h2 {
+      margin-top: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 12px;
+    }
+
+    /* Language toggle */
+    .lang-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .lang-btn {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 6px 18px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .lang-btn:hover { color: var(--fg); border-color: var(--border-strong); }
+    .lang-btn.active { color: var(--fg); border-color: var(--border-strong); }
+
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+
+    footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 24px var(--side-pad);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--dim);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Language toggle -->
+    <div class="lang-nav">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ENGLISH                                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="lang-content lang-en active">
+
+      <h1>Privacy Policy</h1>
+      <p class="subtitle">Llull Lab – All Applications</p>
+      <p class="last-updated">Last updated: 30 March 2026</p>
+
+      <!-- 1. INTRODUCTION -->
+      <div class="section">
+        <h2>1. Introduction</h2>
+        <p>This Privacy Policy explains how Llull Lab ("we", "us", "our") handles personal data in connection with our applications and services: Alberei, Tropus, ASGE, RJE, Feix, Cedulor, Chez Cero, DataViz, Cedulia, and Phi-Yo. We are committed to protecting your privacy and operating in accordance with the General Data Protection Regulation (GDPR), CNIL regulations, and the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>.</p>
+      </div>
+
+      <!-- 2. ALBEREI -->
+      <div class="section">
+        <h2>2. Alberei</h2>
+        <p>Alberei is an automated humor generation system. It uses Google Sign-In for authentication purposes.</p>
+
+        <div class="google-data-section">
+          <h2>Google User Data Disclosure</h2>
+          <p>Alberei's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+          <h3>2.1 Data Accessed</h3>
+          <p>Alberei uses Google Sign-In via Firebase Authentication. When you sign in with your Google account, we receive the following data:</p>
+          <ul>
+            <li>Your email address</li>
+            <li>Your display name</li>
+            <li>A unique authentication identifier</li>
+          </ul>
+          <p>Alberei does not request access to any other Google user data. We do not access Google Drive, Gmail, Google Calendar, or any other Google service beyond basic authentication.</p>
+
+          <h3>2.2 Data Usage</h3>
+          <p>The Google user data listed above is used <strong>exclusively</strong> for the following purposes:</p>
+          <ul>
+            <li>Authenticating your identity and managing your user session</li>
+            <li>Displaying your name within the application interface</li>
+            <li>Account management (e.g., identifying your account for support or deletion requests)</li>
+          </ul>
+          <p>Google user data is not used for advertising, profiling, behavioral tracking, analytics, or any purpose unrelated to authentication and account management. Google user data is not used for training artificial intelligence or machine learning models.</p>
+
+          <h3>2.3 Data Sharing</h3>
+          <p>We do not sell, rent, trade, or share your Google user data with any third parties, except as follows:</p>
+          <ul>
+            <li><strong>Firebase Authentication (Google):</strong> Authentication data is processed by Google Firebase as part of the sign-in process. Firebase may process this data on servers located outside the European Union, in accordance with Google's data processing terms. For more information, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+          </ul>
+          <p>No other third party receives your Google user data.</p>
+
+          <h3>2.4 Data Storage &amp; Protection</h3>
+          <p>Authentication data is stored securely through Firebase Authentication. We rely on Firebase's built-in security measures, including encryption in transit and at rest, to protect your data. We do not store Google user data in any separate database or system outside of Firebase Authentication. Access to authentication records is restricted to authorized personnel only.</p>
+
+          <h3>2.5 Data Retention &amp; Deletion</h3>
+          <p>Authentication-related data is retained only for as long as your user account remains active. You may request the deletion of all your authentication data at any time by contacting us at <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>. Upon receiving a valid deletion request, we will delete your data within 30 days and confirm the deletion to you by email.</p>
+        </div>
+      </div>
+
+      <!-- 3. USER PROMPTS -->
+      <div class="section">
+        <h2>3. User Prompts and Processing</h2>
+        <p>Alberei does not intentionally store user prompts. User inputs are processed transiently for the sole purpose of generating a response. Prompts are not retained for manual review, profiling, or behavioral tracking.</p>
+        <p>Llull Lab does not perform systematic monitoring of user inputs or generated outputs but reserves the right to implement technical or access restrictions where required by law or in cases of misuse.</p>
+      </div>
+
+      <!-- 4. COOKIES AND ANALYTICS -->
+      <div class="section">
+        <h2>4. Cookies and Analytics</h2>
+        <p>The Alberei application does not use third-party analytics or tracking cookies. Authentication-related cookies may be set by Firebase for session management purposes only.</p>
+        <p>The Alberei service page (hosted on llulllab.com) uses Google Analytics (GA4) to measure aggregate traffic. This data is collected anonymously and is not linked to individual users. It is used solely to understand overall traffic trends.</p>
+      </div>
+
+      <!-- 5. TROPUS -->
+      <div class="section">
+        <h2>5. Tropus</h2>
+        <p>Tropus is designed with a privacy-by-design approach. It does not collect, store, or process any personal data. No identifiable user information is retained. Tropus does not use Google Sign-In or any Google APIs.</p>
+      </div>
+
+      <!-- 6. ASGE -->
+      <div class="section">
+        <h2>6. ASGE</h2>
+        <p>ASGE is an AI-assisted tool for evaluating and deliberating on access applications. Access is restricted to invited users only.</p>
+        <h3>Data processed</h3>
+        <ul>
+          <li><strong>Email address:</strong> used transiently to verify invite codes. Email addresses are not stored in any database and are not used for any purpose other than access verification.</li>
+          <li><strong>User inputs:</strong> processed transiently for the sole purpose of generating a response. Not retained.</li>
+          <li><strong>Backend logs:</strong> deleted on a regular basis and not retained for storage purposes.</li>
+        </ul>
+        <p>ASGE does not use analytics or tracking cookies.</p>
+        <!-- [HUKUKI İNCELEME GEREKLİ: lawful basis for transient email processing in invite verification] -->
+      </div>
+
+      <!-- 7. RJE -->
+      <div class="section">
+        <h2>7. RJE</h2>
+        <p>RJE is an AI council deliberation system. Access is restricted to invited users only.</p>
+        <h3>Data processed</h3>
+        <ul>
+          <li><strong>Email address:</strong> used transiently to verify invite codes. Not stored, not used for any other purpose.</li>
+          <li><strong>User inputs:</strong> processed transiently. Not retained.</li>
+          <li><strong>Backend logs:</strong> deleted on a regular basis and not retained for storage purposes.</li>
+        </ul>
+        <p>RJE does not use analytics or tracking cookies.</p>
+        <!-- [HUKUKI İNCELEME GEREKLİ: lawful basis for transient email processing in invite verification] -->
+      </div>
+
+      <!-- 8. FEIX -->
+      <div class="section">
+        <h2>8. Feix</h2>
+        <p>Feix is an AI studio tool. Access is restricted to invited users only.</p>
+        <h3>Data processed</h3>
+        <ul>
+          <li><strong>Email address:</strong> used transiently to verify invite codes. Not stored, not used for any other purpose.</li>
+          <li><strong>User inputs:</strong> processed transiently. Not retained.</li>
+          <li><strong>Backend logs:</strong> deleted on a regular basis and not retained for storage purposes.</li>
+        </ul>
+        <p>Feix does not use analytics or tracking cookies.</p>
+        <!-- [HUKUKI İNCELEME GEREKLİ: lawful basis for transient email processing in invite verification] -->
+      </div>
+
+      <!-- 9. CEDULOR -->
+      <div class="section">
+        <h2>9. Cedulor</h2>
+        <p>Cedulor is an AI-assisted tool for preparing grant and funding applications. It does not collect or store personal data. User inputs are processed transiently and are not retained after the session ends.</p>
+        <p>All data processing takes place on servers located within the European Union.</p>
+      </div>
+
+      <!-- 10. CHEZ CERO -->
+      <div class="section">
+        <h2>10. Chez Cero</h2>
+        <p>Chez Cero is an AI conversational assistant designed with a privacy-by-design approach. It does not collect, store, or process any personal data. No identifiable user information is retained.</p>
+      </div>
+
+      <!-- 11. DATAVIZ -->
+      <div class="section">
+        <h2>11. DataViz</h2>
+        <p>DataViz is an AI-powered visual map generation tool designed with a privacy-by-design approach. It does not collect, store, or process any personal data. No identifiable user information is retained.</p>
+      </div>
+
+      <!-- 12. Cedulia -->
+      <div class="section">
+        <h2>12. Cedulia</h2>
+        <p>Cedulia is a story-to-screenplay generation tool designed with a privacy-by-design approach. It does not collect, store, or process any personal data. No identifiable user information is retained.</p>
+      </div>
+
+      <!-- 13. PHI-YO -->
+      <div class="section">
+        <h2>13. Phi-Yo</h2>
+        <p>Phi-Yo is a dream interpretation assistant designed with a privacy-by-design approach. It does not collect, store, or process any personal data. No identifiable user information is retained.</p>
+      </div>
+
+      <!-- 14. USER RIGHTS -->
+      <div class="section">
+        <h2>14. Your Rights (GDPR / CNIL)</h2>
+        <p>In accordance with applicable data protection laws, including the GDPR and CNIL regulations, you have the right to:</p>
+        <ul>
+          <li>Access the personal data we hold about you</li>
+          <li>Request correction of inaccurate data</li>
+          <li>Request deletion of your data</li>
+          <li>Request portability of your data</li>
+          <li>Object to or restrict the processing of your data</li>
+          <li>Lodge a complaint with the <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a></li>
+        </ul>
+        <p>To exercise any of these rights, please contact us at <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>. We will respond to your request within 30 days.</p>
+      </div>
+
+      <!-- 15. CHANGES -->
+      <div class="section">
+        <h2>15. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. The date of the last update is indicated at the top of this page. Continued use of our services following any changes constitutes acceptance of the revised policy.</p>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="contact-box">
+        <h2>Contact</h2>
+        <p>
+          <strong>Llull Lab</strong><br>
+          Email: <a href="mailto:contact@llulllab.com">contact@llulllab.com</a><br>
+          Website: <a href="https://llulllab.com" target="_blank" rel="noopener">llulllab.com</a>
+        </p>
+      </div>
+
+    </div><!-- /lang-en -->
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FRANÇAIS                                     -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="lang-content lang-fr">
+
+      <h1>Politique de Confidentialité</h1>
+      <p class="subtitle">Llull Lab – Toutes les applications</p>
+      <p class="last-updated">Dernière mise à jour : 30 mars 2026</p>
+
+      <!-- 1. INTRODUCTION -->
+      <div class="section">
+        <h2>1. Introduction</h2>
+        <p>La présente Politique de Confidentialité explique comment Llull Lab (« nous ») traite les données personnelles dans le cadre de nos applications et services : Alberei, Tropus, ASGE, RJE, Feix, Cedulor, Chez Cero, DataViz, Cedulia et Phi-Yo. Nous nous engageons à protéger votre vie privée, conformément au Règlement Général sur la Protection des Données (RGPD), aux réglementations de la CNIL et à la <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Politique d'utilisation des données des services API Google</a>.</p>
+      </div>
+
+      <!-- 2. ALBEREI -->
+      <div class="section">
+        <h2>2. Alberei</h2>
+        <p>Alberei est un système de génération d'humour automatisé. Il utilise Google Sign-In à des fins d'authentification.</p>
+
+        <div class="google-data-section">
+          <h2>Divulgation des données utilisateur Google</h2>
+          <p>L'utilisation par Alberei des informations reçues des API Google, ainsi que leur transfert éventuel vers d'autres applications, est conforme à la <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Politique d'utilisation des données des services API Google</a>, y compris les exigences d'utilisation limitée.</p>
+
+          <h3>2.1 Données collectées</h3>
+          <p>Alberei utilise Google Sign-In via Firebase Authentication. Lors de la connexion avec votre compte Google, nous recevons les données suivantes :</p>
+          <ul>
+            <li>Votre adresse e-mail</li>
+            <li>Votre nom d'affichage</li>
+            <li>Un identifiant d'authentification unique</li>
+          </ul>
+          <p>Alberei ne demande pas l'accès à d'autres données Google. Nous n'accédons pas à Google Drive, Gmail, Google Calendar ni à aucun autre service Google au-delà de l'authentification de base.</p>
+
+          <h3>2.2 Utilisation des données</h3>
+          <p>Les données utilisateur Google listées ci-dessus sont utilisées <strong>exclusivement</strong> aux fins suivantes :</p>
+          <ul>
+            <li>Authentifier votre identité et gérer votre session utilisateur</li>
+            <li>Afficher votre nom dans l'interface de l'application</li>
+            <li>Gestion du compte (identification pour les demandes d'assistance ou de suppression)</li>
+          </ul>
+          <p>Les données Google ne sont pas utilisées à des fins publicitaires, de profilage, de suivi comportemental, d'analyse, ni à des fins sans lien avec l'authentification et la gestion du compte. Elles ne sont pas utilisées pour l'entraînement de modèles d'intelligence artificielle ou d'apprentissage automatique.</p>
+
+          <h3>2.3 Partage des données</h3>
+          <p>Nous ne vendons, ne louons, n'échangeons ni ne partageons vos données Google avec des tiers, à l'exception suivante :</p>
+          <ul>
+            <li><strong>Firebase Authentication (Google) :</strong> les données d'authentification sont traitées par Google Firebase dans le cadre du processus de connexion. Firebase peut traiter ces données sur des serveurs situés en dehors de l'Union européenne, conformément aux conditions de traitement des données de Google. Pour plus d'informations, consultez la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politique de Confidentialité de Google</a>.</li>
+          </ul>
+          <p>Aucun autre tiers ne reçoit vos données Google.</p>
+
+          <h3>2.4 Stockage et protection</h3>
+          <p>Les données d'authentification sont stockées de manière sécurisée via Firebase Authentication. Nous nous appuyons sur les mesures de sécurité intégrées de Firebase (chiffrement en transit et au repos). Nous ne stockons pas les données Google dans un système externe à Firebase Authentication. L'accès aux données d'authentification est restreint au personnel autorisé.</p>
+
+          <h3>2.5 Conservation et suppression</h3>
+          <p>Les données liées à l'authentification sont conservées uniquement pendant la durée d'activité de votre compte. Vous pouvez demander la suppression de l'intégralité de vos données d'authentification à tout moment en nous contactant à <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>. Votre demande sera traitée dans un délai de 30 jours, avec confirmation par e-mail.</p>
+        </div>
+      </div>
+
+      <!-- 3. SAISIES UTILISATEUR -->
+      <div class="section">
+        <h2>3. Saisies utilisateur et traitement</h2>
+        <p>Alberei ne stocke pas intentionnellement les saisies des utilisateurs. Les entrées sont traitées de manière transitoire dans le seul but de générer une réponse. Elles ne sont pas conservées pour consultation manuelle, profilage ou suivi comportemental.</p>
+        <p>Llull Lab ne procède pas à une surveillance systématique des saisies ou des sorties générées, mais se réserve le droit de mettre en œuvre des restrictions techniques ou d'accès lorsque la loi l'exige ou en cas d'utilisation abusive.</p>
+      </div>
+
+      <!-- 4. COOKIES ET ANALYTIQUE -->
+      <div class="section">
+        <h2>4. Cookies et analytique</h2>
+        <p>L'application Alberei n'utilise pas de cookies de suivi ou d'analyse tiers. Des cookies de session peuvent être déposés par Firebase à des fins d'authentification uniquement.</p>
+        <p>La page d'accès Alberei (hébergée sur llulllab.com) utilise Google Analytics (GA4) pour mesurer l'audience de façon agrégée. Ces données sont collectées anonymement et ne sont pas liées à des utilisateurs identifiés. Elles servent uniquement à analyser les tendances globales du trafic.</p>
+      </div>
+
+      <!-- 5. TROPUS -->
+      <div class="section">
+        <h2>5. Tropus</h2>
+        <p>Tropus est conçu selon une approche privacy-by-design. Il ne collecte, ne stocke ni ne traite aucune donnée personnelle. Aucune information identifiable n'est conservée. Tropus n'utilise pas Google Sign-In ni aucune API Google.</p>
+      </div>
+
+      <!-- 6. ASGE -->
+      <div class="section">
+        <h2>6. ASGE</h2>
+        <p>ASGE est un outil d'évaluation et de délibération assisté par intelligence artificielle. L'accès est réservé aux utilisateurs invités.</p>
+        <h3>Données traitées</h3>
+        <ul>
+          <li><strong>Adresse e-mail :</strong> utilisée de manière transitoire pour la vérification du code d'invitation. Les adresses e-mail ne sont pas stockées dans une base de données et ne sont utilisées à aucune autre fin.</li>
+          <li><strong>Saisies utilisateur :</strong> traitées de manière transitoire dans le seul but de générer une réponse. Non conservées.</li>
+          <li><strong>Journaux d'accès :</strong> supprimés régulièrement, non conservés à des fins de stockage.</li>
+        </ul>
+        <p>ASGE n'utilise pas de cookies d'analyse ou de suivi.</p>
+        <!-- [HUKUKI İNCELEME GEREKLİ: base légale du traitement transitoire des adresses e-mail pour la vérification d'accès] -->
+      </div>
+
+      <!-- 7. RJE -->
+      <div class="section">
+        <h2>7. RJE</h2>
+        <p>RJE est un système de délibération en conseil par intelligence artificielle. L'accès est réservé aux utilisateurs invités.</p>
+        <h3>Données traitées</h3>
+        <ul>
+          <li><strong>Adresse e-mail :</strong> utilisée de manière transitoire pour la vérification du code d'invitation. Non stockée, non utilisée à d'autres fins.</li>
+          <li><strong>Saisies utilisateur :</strong> traitées de manière transitoire. Non conservées.</li>
+          <li><strong>Journaux d'accès :</strong> supprimés régulièrement, non conservés à des fins de stockage.</li>
+        </ul>
+        <p>RJE n'utilise pas de cookies d'analyse ou de suivi.</p>
+        <!-- [HUKUKI İNCELEME GEREKLİ: base légale du traitement transitoire des adresses e-mail pour la vérification d'accès] -->
+      </div>
+
+      <!-- 8. FEIX -->
+      <div class="section">
+        <h2>8. Feix</h2>
+        <p>Feix est un outil de studio IA. L'accès est réservé aux utilisateurs invités.</p>
+        <h3>Données traitées</h3>
+        <ul>
+          <li><strong>Adresse e-mail :</strong> utilisée de manière transitoire pour la vérification du code d'invitation. Non stockée, non utilisée à d'autres fins.</li>
+          <li><strong>Saisies utilisateur :</strong> traitées de manière transitoire. Non conservées.</li>
+          <li><strong>Journaux d'accès :</strong> supprimés régulièrement, non conservés à des fins de stockage.</li>
+        </ul>
+        <p>Feix n'utilise pas de cookies d'analyse ou de suivi.</p>
+        <!-- [HUKUKI İNCELEME GEREKLİ: base légale du traitement transitoire des adresses e-mail pour la vérification d'accès] -->
+      </div>
+
+      <!-- 9. CEDULOR -->
+      <div class="section">
+        <h2>9. Cedulor</h2>
+        <p>Cedulor est un outil d'assistance à la préparation de candidatures pour des financements et des bourses. Il ne collecte ni ne stocke de données personnelles. Les saisies utilisateur sont traitées de manière transitoire et ne sont pas conservées à l'issue de la session.</p>
+        <p>L'ensemble du traitement des données s'effectue sur des serveurs situés dans l'Union européenne.</p>
+      </div>
+
+      <!-- 10. CHEZ CERO -->
+      <div class="section">
+        <h2>10. Chez Cero</h2>
+        <p>Chez Cero est un assistant conversationnel IA conçu selon une approche privacy-by-design. Il ne collecte, ne stocke ni ne traite aucune donnée personnelle. Aucune information identifiable n'est conservée.</p>
+      </div>
+
+      <!-- 11. DATAVIZ -->
+      <div class="section">
+        <h2>11. DataViz</h2>
+        <p>DataViz est un outil de génération de cartes visuelles par intelligence artificielle, conçu selon une approche privacy-by-design. Il ne collecte, ne stocke ni ne traite aucune donnée personnelle. Aucune information identifiable n'est conservée.</p>
+      </div>
+
+      <!-- 12. Cedulia -->
+      <div class="section">
+        <h2>12. Cedulia</h2>
+        <p>Cedulia est un outil de génération de scénarios à partir d'histoires, conçu selon une approche privacy-by-design. Il ne collecte, ne stocke ni ne traite aucune donnée personnelle. Aucune information identifiable n'est conservée.</p>
+      </div>
+
+      <!-- 13. PHI-YO -->
+      <div class="section">
+        <h2>13. Phi-Yo</h2>
+        <p>Phi-Yo est un assistant d'interprétation des rêves conçu selon une approche privacy-by-design. Il ne collecte, ne stocke ni ne traite aucune donnée personnelle. Aucune information identifiable n'est conservée.</p>
+      </div>
+
+      <!-- 14. VOS DROITS -->
+      <div class="section">
+        <h2>14. Vos droits (RGPD / CNIL)</h2>
+        <p>Conformément aux lois applicables en matière de protection des données, y compris le RGPD et les réglementations de la CNIL, vous disposez des droits suivants :</p>
+        <ul>
+          <li>Accéder aux données personnelles vous concernant</li>
+          <li>Demander la rectification de données inexactes</li>
+          <li>Demander la suppression de vos données</li>
+          <li>Demander la portabilité de vos données</li>
+          <li>Vous opposer au traitement ou en demander la limitation</li>
+          <li>Introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a></li>
+        </ul>
+        <p>Pour exercer ces droits, contactez-nous à <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>. Nous répondrons à votre demande dans un délai de 30 jours.</p>
+      </div>
+
+      <!-- 15. MODIFICATIONS -->
+      <div class="section">
+        <h2>15. Modifications de la présente politique</h2>
+        <p>Nous pouvons mettre à jour cette Politique de Confidentialité à tout moment. La date de la dernière mise à jour est indiquée en haut de cette page. L'utilisation continue de nos services après toute modification vaut acceptation de la politique révisée.</p>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="contact-box">
+        <h2>Contact</h2>
+        <p>
+          <strong>Llull Lab</strong><br>
+          E-mail : <a href="mailto:contact@llulllab.com">contact@llulllab.com</a><br>
+          Site web : <a href="https://llulllab.com" target="_blank" rel="noopener">llulllab.com</a>
+        </p>
+      </div>
+
+    </div><!-- /lang-fr -->
+
+  </div><!-- /container -->
+
+  <footer>
+    <p>© 2026 Llull Lab. <span class="lang-en active">All rights reserved.</span><span class="lang-fr">Tous droits réservés.</span></p>
+  </footer>
+
+  <script>
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const langContents = document.querySelectorAll('.lang-content');
+
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      langContents.forEach(el => {
+        el.classList.toggle('active', el.classList.contains('lang-' + lang));
+      });
+      history.replaceState(null, '', '#' + lang);
+    }
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+
+    // Handle hash on load
+    const initLang = location.hash === '#fr' ? 'fr' : 'en';
+    if (initLang === 'fr') setLang('fr');
+  </script>
+
+</body>
+</html>

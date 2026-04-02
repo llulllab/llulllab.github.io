@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llull Lab — Arts et sciences pour l'action</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="Llull Lab — Arts et sciences pour l'action. Laboratoire de recherche basé à Paris développant des outils mathématiques expérimentaux à l'intersection de l'art, de la science et de la technologie.">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8; --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25); --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif; --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px); }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; font-weight: 400; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; letter-spacing: 0.2px; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) { .menu-toggle { display: block; } nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); } nav.open { display: flex; } nav a { padding: 12px 0; } }
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .hero { min-height: calc(100vh - 64px); display: flex; flex-direction: column; justify-content: center; padding-top: 80px; padding-bottom: 80px; }
+    .hero-tagline { font-family: var(--serif); font-size: clamp(1rem, 1.1vw, 1.15rem); font-weight: 400; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 28px; }
+    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.2; max-width: 800px; margin-bottom: 32px; }
+    .hero-description { font-size: 1.1rem; line-height: 1.8; color: var(--accent); max-width: 640px; margin-bottom: 48px; }
+    .hero-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+    .hero-meta-item { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); letter-spacing: 0.3px; }
+    .hero-meta-item span { display: block; color: var(--fg); font-size: 0.95rem; font-weight: 500; margin-top: 4px; }
+    .modules-strip { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 0; }
+    .modules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+    @media (max-width: 640px) { .modules-grid { grid-template-columns: 1fr; } }
+    .module-card { background: var(--bg); padding: 40px 36px; transition: background 0.3s ease; cursor: pointer; text-decoration: none; color: var(--fg); display: block; }
+    .module-card:hover { background: rgba(255,255,255,0.03); }
+    .module-label { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .module-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; margin-bottom: 14px; }
+    .module-desc { font-size: 0.95rem; color: var(--accent); line-height: 1.65; }
+    .module-arrow { display: inline-block; margin-top: 20px; font-family: var(--sans); font-size: 0.85rem; color: var(--muted); transition: color 0.25s, transform 0.25s; }
+    .module-card:hover .module-arrow { color: var(--fg); transform: translateX(4px); }
+    .signals { padding: 72px 0; }
+    .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 36px; flex-wrap: wrap; gap: 12px; }
+    .section-title { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .section-link { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.25s; }
+    .section-link:hover { color: var(--fg); }
+    .signal-item { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 20px 0; border-top: 1px solid var(--border); align-items: baseline; text-decoration: none; color: var(--fg); }
+    .signal-item:last-child { border-bottom: 1px solid var(--border); }
+    @media (max-width: 640px) { .signal-item { grid-template-columns: 1fr; gap: 4px; } }
+    .signal-date { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    .signal-text { font-size: 1rem; line-height: 1.6; }
+    .signal-tag { display: inline-block; font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.8px; text-transform: uppercase; padding: 2px 8px; border: 1px solid var(--border-strong); border-radius: 3px; margin-right: 10px; vertical-align: middle; color: var(--muted); }
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
+    .footer-left { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+    .footer-links { display: flex; gap: 24px; font-family: var(--sans); font-size: 0.82rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fg); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.8s ease-out both; }
+    .fade-up-d1 { animation-delay: 0.1s; }
+    .fade-up-d2 { animation-delay: 0.25s; }
+    .fade-up-d3 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">Menu</button>
+      <nav>
+        <a href="about.html">À propos</a>
+        <a href="people.html">Équipe</a>
+        <a href="research.html">Recherche</a>
+        <a href="studio.html">Studio</a>
+        <a href="outreach.html">Rayonnement</a>
+        <a href="updates.html">Actualités</a>
+        <a href="archive.html">Archives</a>
+      </nav>
+    </div>
+  </header>
+  <section class="page-section hero">
+    <div class="hero-tagline fade-up">Laboratoire de recherche basé à Paris</div>
+    <h1 class="fade-up fade-up-d1">Arts et sciences<br>pour l'action</h1>
+    <p class="hero-description fade-up fade-up-d2">Llull Lab développe des outils mathématiques expérimentaux, des systèmes computationnels et des cadres interdisciplinaires à l'intersection de l'art, de la science et de la technologie — orientés vers l'épanouissement humain et la résolution créative de problèmes.</p>
+    <div class="hero-meta fade-up fade-up-d3">
+      <div class="hero-meta-item">Fondé<span>2025, Paris</span></div>
+      <div class="hero-meta-item">Axes<span>Mathématiques · Computation · Art</span></div>
+      <div class="hero-meta-item">Inspiré par<span>L'Ars Combinatoria de Ramon Llull</span></div>
+    </div>
+  </section>
+  <section class="modules-strip">
+    <div class="page-section">
+      <div class="modules-grid">
+        <a href="research.html" class="module-card">
+          <div class="module-label">Module épistémique</div>
+          <div class="module-title">Recherche</div>
+          <div class="module-desc">Fondements conceptuels, outils formels, cadres épistémiques. Séminaires, textes théoriques et prototypes conceptuels issus des sciences et des arts.</div>
+          <div class="module-arrow">Explorer la recherche →</div>
+        </a>
+        <a href="studio.html" class="module-card">
+          <div class="module-label">Module de prototypage</div>
+          <div class="module-title">Studio</div>
+          <div class="module-desc">Machines, moteurs et cadres computationnels opérationnels. Là où les idées deviennent fonctionnelles — musique générative, moteurs sémantiques, psychanalyse computationnelle.</div>
+          <div class="module-arrow">Voir les productions →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="page-section signals">
+    <div class="section-header">
+      <div class="section-title">Dernières actualités</div>
+      <a href="updates.html" class="section-link">Toutes les actualités →</a>
+    </div>
+    <div class="signal-list">
+      <div class="signal-item">
+        <div class="signal-date">25 fév 2026</div>
+        <div class="signal-text"><span class="signal-tag">Lancement</span>Alberei, Moteur d'Humour Modulaire, entre en phase de test</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-date">25 fév 2026</div>
+        <div class="signal-text"><span class="signal-tag">Lancement</span>Moteur de Géométrie Sémantique — début mars 2026</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-date">25 fév 2026</div>
+        <div class="signal-text"><span class="signal-tag">À venir</span>Phi-Yo, outil d'interprétation des rêves — fin mars 2026</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-date">01 déc 2025</div>
+        <div class="signal-text"><span class="signal-tag">Lancement</span>Tropus v2 — pièces génératives uniques de 60 secondes</div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">Llull Lab<br>Paris, France<br>contact@llulllab.com</div>
+      <div class="footer-links">
+        <a href="../mentions-legales.html">Mentions Légales</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions Légales – Llull Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12);
+      --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 760px;
+      --side-pad: clamp(20px, 5vw, 40px);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.75; font-size: 17px; -webkit-font-smoothing: antialiased; padding: 0; }
+    ::selection { background: rgba(255,255,255,0.15); }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 80px var(--side-pad) 40px;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .last-updated {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--dim);
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    a {
+      color: var(--fg);
+      text-decoration: underline;
+      text-decoration-color: var(--border-strong);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+    a:hover { text-decoration-color: var(--fg); }
+
+    strong { color: var(--fg); }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--fg); }
+
+    /* Language toggle */
+    .lang-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .lang-btn {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 6px 18px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .lang-btn:hover { color: var(--fg); border-color: var(--border-strong); }
+    .lang-btn.active { color: var(--fg); border-color: var(--border-strong); }
+
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+
+    footer {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 24px var(--side-pad);
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--dim);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Language toggle -->
+    <div class="lang-nav">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FRANÇAIS                                     -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="lang-content lang-fr active">
+
+      <h1>Mentions Légales</h1>
+      <p class="subtitle">Llull Lab – Informations légales</p>
+      <p class="last-updated">Dernière mise à jour : 30 mars 2026</p>
+
+      <h2>1. Éditeur du site</h2>
+      <p>
+        Le site <strong>llulllab.com</strong> est édité par Firat ILIM, exerçant sous le nom d'exploitation <strong>Llull Lab</strong>.
+      </p>
+      <p>
+        Statut : Entrepreneur individuel (micro-entreprise)<br>
+        SIREN : 988 721 320<br>
+        SIRET : 988 721 320 00014<br>
+        Code APE : 7220Z – Recherche-développement en sciences humaines et sociales<br>
+        TVA : TVA non applicable, article 293 B du Code général des impôts
+      </p>
+      <p>
+        Courriel : <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>
+      </p>
+
+      <h2>2. Directeur de la publication</h2>
+      <p>Firat ILIM</p>
+
+      <h2>3. Hébergement</h2>
+      <p>
+        Ce site est hébergé par :<br>
+        <strong>GitHub Inc.</strong><br>
+        88 Colin P. Kelly Jr. Street<br>
+        San Francisco, CA 94107<br>
+        États-Unis<br>
+        Téléphone : +1 (877) 448-4820<br>
+        Site web : <a href="https://github.com" target="_blank" rel="noopener">github.com</a>
+      </p>
+
+      <h2>4. Propriété intellectuelle</h2>
+      <p>
+        L'ensemble du contenu de ce site (textes, images, logos, logiciels) est la propriété exclusive de Llull Lab ou de ses partenaires et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle. Toute reproduction, représentation ou diffusion, en tout ou partie, du contenu de ce site sans autorisation préalable est interdite.
+      </p>
+
+      <h2>5. Protection des données personnelles</h2>
+      <p>
+        Pour toute information relative à la collecte et au traitement des données personnelles, veuillez consulter notre <a href="privacy-policy.html">Politique de confidentialité</a>.
+      </p>
+      <p>
+        Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données, ainsi que d'un droit d'opposition et de limitation du traitement. Pour exercer ces droits, contactez-nous à l'adresse : <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>.
+      </p>
+      <p>
+        Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a>.
+      </p>
+
+      <h2>6. Cookies</h2>
+      <p>
+        Le site llulllab.com n'utilise pas de cookies de suivi ou de publicité. Des cookies techniques peuvent être déposés par l'hébergeur pour le bon fonctionnement du site.
+      </p>
+
+      <a class="back-link" href="/">← Retour à l'accueil</a>
+
+    </div><!-- /lang-fr -->
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ENGLISH                                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="lang-content lang-en">
+
+      <h1>Legal Notice</h1>
+      <p class="subtitle">Llull Lab – Legal Information</p>
+      <p class="last-updated">Last updated: 30 March 2026</p>
+
+      <h2>1. Site Publisher</h2>
+      <p>
+        The website <strong>llulllab.com</strong> is published by Firat ILIM, operating under the trade name <strong>Llull Lab</strong>.
+      </p>
+      <p>
+        Status: Sole trader (micro-enterprise, France)<br>
+        SIREN: 988 721 320<br>
+        SIRET: 988 721 320 00014<br>
+        APE code: 7220Z – Research and development in the humanities and social sciences<br>
+        VAT: VAT not applicable, Article 293 B of the French General Tax Code
+      </p>
+      <p>
+        Email: <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>
+      </p>
+
+      <h2>2. Publication Director</h2>
+      <p>Firat ILIM</p>
+
+      <h2>3. Hosting</h2>
+      <p>
+        This website is hosted by:<br>
+        <strong>GitHub Inc.</strong><br>
+        88 Colin P. Kelly Jr. Street<br>
+        San Francisco, CA 94107<br>
+        United States<br>
+        Phone: +1 (877) 448-4820<br>
+        Website: <a href="https://github.com" target="_blank" rel="noopener">github.com</a>
+      </p>
+
+      <h2>4. Intellectual Property</h2>
+      <p>
+        All content on this website (text, images, logos, software) is the exclusive property of Llull Lab or its partners and is protected by French and international intellectual property laws. Any reproduction, representation, or distribution of the site's content, in whole or in part, without prior authorisation is prohibited.
+      </p>
+
+      <h2>5. Personal Data Protection</h2>
+      <p>
+        For information on the collection and processing of personal data, please refer to our <a href="privacy-policy.html">Privacy Policy</a>.
+      </p>
+      <p>
+        In accordance with the General Data Protection Regulation (GDPR) and the French Data Protection Act (loi Informatique et Libertés), you have the right to access, rectify, delete, and obtain portability of your data, as well as the right to object to and restrict its processing. To exercise these rights, contact us at: <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>.
+      </p>
+      <p>
+        You may also lodge a complaint with the <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a> (French Data Protection Authority).
+      </p>
+
+      <h2>6. Cookies</h2>
+      <p>
+        The llulllab.com website does not use tracking or advertising cookies. Technical cookies may be set by the hosting provider for the proper functioning of the website.
+      </p>
+
+      <a class="back-link" href="/">← Back to home</a>
+
+    </div><!-- /lang-en -->
+
+  </div><!-- /container -->
+
+  <footer>
+    <p>© 2026 Llull Lab. <span class="lang-fr active">Tous droits réservés.</span><span class="lang-en">All rights reserved.</span></p>
+  </footer>
+
+  <script>
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const langContents = document.querySelectorAll('.lang-content');
+
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      langContents.forEach(el => {
+        el.classList.toggle('active', el.classList.contains('lang-' + lang));
+      });
+      history.replaceState(null, '', '#' + lang);
+    }
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+
+    // Handle hash on load
+    const initLang = location.hash === '#en' ? 'en' : 'fr';
+    if (initLang === 'en') setLang('en');
+  </script>
+
+</body>
+</html>
