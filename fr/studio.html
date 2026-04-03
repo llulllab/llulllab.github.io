@@ -113,6 +113,7 @@
       }
       nav.open { display: flex; }
       nav a { padding: 12px 0; }
+      .card-grid { grid-template-columns: 1fr; }
     }
 
     .page-section {
@@ -240,7 +241,7 @@
     /* CARD GRID */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
@@ -454,12 +455,8 @@
         <div class="stat-label">Productions</div>
       </div>
       <div class="stat">
-        <div class="stat-number">8</div>
+        <div class="stat-number">9</div>
         <div class="stat-label">En ligne</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">1</div>
-        <div class="stat-label">En développement</div>
       </div>
       <div class="stat">
         <div class="stat-number">0</div>
@@ -484,12 +481,22 @@
 
       <div class="product-card fade-up">
         <div class="product-top">
-          <div class="product-name machine">Tropus</div>
-          <div class="product-status">Disponible v2</div>
-          <div class="product-type">Machine de Musique Générative</div>
-          <div class="product-desc">Génération musicale et exploration conceptuelle dans une architecture à double mode</div>
+          <div class="product-name machine">Cedulor</div>
+          <div class="product-status">Disponible</div>
+          <div class="product-type">Machine de Support de Projet</div>
+          <div class="product-desc">Support structuré de projet par raisonnement combinatoire</div>
         </div>
-        <a href="https://tropus.io" target="_blank" class="product-link">Ouvrir Tropus →</a>
+        <a href="https://cedulor.com" target="_blank" class="product-link">Ouvrir Cedulor →</a>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name machine">Feix</div>
+          <div class="product-status">Disponible</div>
+          <div class="product-type">Machine de Design Combinatoire</div>
+          <div class="product-desc">Studio produit full-stack propulsé par l'IA</div>
+        </div>
+        <a href="https://feix.app" target="_blank" class="product-link">Ouvrir Feix →</a>
       </div>
 
       <div class="product-card fade-up">
@@ -504,22 +511,12 @@
 
       <div class="product-card fade-up">
         <div class="product-top">
-          <div class="product-name machine">Cedulor</div>
-          <div class="product-status">Disponible</div>
-          <div class="product-type">Machine de Support de Projet</div>
-          <div class="product-desc">Support structuré de projet par raisonnement combinatoire</div>
+          <div class="product-name machine">Tropus</div>
+          <div class="product-status">Disponible v2</div>
+          <div class="product-type">Machine de Musique Générative</div>
+          <div class="product-desc">Génération musicale et exploration conceptuelle dans une architecture à double mode</div>
         </div>
-        <a href="https://cedulor.com" target="_blank" class="product-link">Ouvrir Cedulor →</a>
-      </div>
-
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name machine">Feix</div>
-          <div class="product-status">Disponible</div>
-          <div class="product-type">Machine de Design Combinatoire</div>
-          <div class="product-desc">Design combinatoire web par génération formelle</div>
-        </div>
-        <a href="https://feix.app" target="_blank" class="product-link">Ouvrir Feix →</a>
+        <a href="https://tropus.io" target="_blank" class="product-link">Ouvrir Tropus →</a>
       </div>
 
     </div>
@@ -560,12 +557,12 @@
 
       <div class="product-card fade-up">
         <div class="product-top">
-          <div class="product-name engine">Alberei</div>
+          <div class="product-name engine">Reflective Judgment Engine</div>
           <div class="product-status">Disponible</div>
-          <div class="product-type">Moteur d'Humour Modulaire</div>
-          <div class="product-desc">Humour algorithmique par structures comiques conçues</div>
+          <div class="product-type">Moteur de Décision Éthique</div>
+          <div class="product-desc">Cadres décisionnels en situation d'incertitude normative</div>
         </div>
-        <a href="https://alberei.de" target="_blank" class="product-link">Ouvrir Alberei →</a>
+        <a href="https://llulllab.com/RJE/" target="_blank" class="product-link">Ouvrir RJE →</a>
       </div>
 
       <div class="product-card fade-up">
@@ -580,30 +577,22 @@
 
       <div class="product-card fade-up">
         <div class="product-top">
-          <div class="product-name engine">Reflective Judgment Engine</div>
-          <div class="product-status">Disponible</div>
-          <div class="product-type">Moteur de Décision Éthique</div>
-          <div class="product-desc">Cadres décisionnels en situation d'incertitude normative</div>
-        </div>
-        <a href="https://llulllab.com/RJE/" target="_blank" class="product-link">Ouvrir RJE →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- IN DEVELOPMENT -->
-  <section class="page-section dev-section">
-    <div class="dev-label">En développement</div>
-    <div class="card-grid">
-
-      <div class="product-card fade-up">
-        <div class="product-top">
           <div class="product-name engine">Cedulia</div>
-          <div class="product-status dev">En développement</div>
+          <div class="product-status">Disponible</div>
           <div class="product-type">Moteur d'Écriture Créative</div>
           <div class="product-desc">Écriture générative par composition formelle et transformation structurelle</div>
         </div>
         <a href="https://cedulia.com" target="_blank" class="product-link">Ouvrir Cedulia →</a>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-top">
+          <div class="product-name engine">Alberei</div>
+          <div class="product-status">Disponible</div>
+          <div class="product-type">Moteur d'Humour Modulaire</div>
+          <div class="product-desc">Humour algorithmique par structures comiques conçues</div>
+        </div>
+        <a href="https://alberei.de" target="_blank" class="product-link">Ouvrir Alberei →</a>
       </div>
 
     </div>
