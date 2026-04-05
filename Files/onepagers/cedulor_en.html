@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cedulor — Project Support Machine | Llull Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --bg-surface: #0a0a0a;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --highlight: #d4a054;
+      --highlight-soft: rgba(212,160,84,0.08);
+      --highlight-dim: rgba(212,160,84,0.25);
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.20);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 800px;
+      --side-pad: clamp(24px, 6vw, 80px);
+    }
+
+    @media print {
+      :root { --bg: #fff; --bg-surface: #f8f8f8; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #8b6a2e; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
+      body { font-size: 11pt; }
+      .page { box-shadow: none; max-width: 100%; padding: 0; }
+      @page { margin: 1.5cm; }
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #111;
+      color: var(--fg);
+      font-family: var(--serif);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .page {
+      background: var(--bg);
+      max-width: var(--max-w);
+      width: 100%;
+      padding: 60px var(--side-pad) 48px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    /* HEADER */
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .doc-brand {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .doc-date {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--dim);
+      letter-spacing: 0.5px;
+    }
+
+    /* HERO */
+    .hero {
+      margin-bottom: 48px;
+    }
+
+    .hero-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--highlight);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--accent);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* ANCHOR STAT */
+    .anchor-bar {
+      display: flex;
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 48px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .anchor-item {
+      flex: 1;
+      background: var(--bg);
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    .anchor-value {
+      font-family: var(--sans);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--highlight);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .anchor-label {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 6px;
+      letter-spacing: 0.3px;
+      line-height: 1.4;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section p {
+      color: var(--accent);
+      max-width: 640px;
+      margin-bottom: 1em;
+      font-size: 0.95rem;
+    }
+
+    /* PROGRAMME GRID */
+    .programme-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 32px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .programme-card {
+      background: var(--bg);
+      padding: 20px 24px;
+    }
+
+    .programme-name {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 6px;
+    }
+
+    .programme-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* DIFFERENTIATORS */
+    .diff-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .diff-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+    }
+
+    .diff-list li:last-child { border-bottom: none; }
+
+    .diff-num {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--highlight);
+      min-width: 18px;
+    }
+
+    .diff-text {
+      font-size: 0.9rem;
+      color: var(--accent);
+      line-height: 1.6;
+    }
+
+    .diff-text strong {
+      color: var(--fg);
+      font-weight: 600;
+    }
+
+    /* PRICING TABLE */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+    }
+
+    .pricing-table th {
+      text-align: left;
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border-strong);
+    }
+
+    .pricing-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--accent);
+    }
+
+    .pricing-table tr:last-child td { border-bottom: none; }
+
+    .pricing-table .price {
+      color: var(--fg);
+      font-weight: 600;
+    }
+
+    .pricing-table .unit {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .pricing-note {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--dim);
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    /* CONTACT */
+    .contact {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .contact-info {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--accent);
+      line-height: 1.8;
+    }
+
+    .contact-info .name {
+      color: var(--fg);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .contact-info .title {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .contact-email {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--highlight);
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    .contact-email:hover { text-decoration: underline; }
+
+    .contact-brand {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--dim);
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      .programme-grid { grid-template-columns: 1fr; }
+      .anchor-bar { flex-direction: column; }
+      .contact { flex-direction: column; align-items: flex-start; }
+      .contact-brand { text-align: left; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-brand">Llull Lab</div>
+    <div class="doc-date">April 2026</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-label">Project Support Machine</div>
+    <h1>Cedulor</h1>
+    <p class="hero-sub">From conversation to Part B document. Four EU funding programmes, one platform. Computational proposal preparation reviewed by computational specialists before delivery, with optional expert human review and professional DOCX output. All data stays within the EU.</p>
+  </div>
+
+  <div class="anchor-bar">
+    <div class="anchor-item">
+      <div class="anchor-value">4</div>
+      <div class="anchor-label">EU Programmes</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">2-Stage</div>
+      <div class="anchor-label">Computational Quality Control</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">DOCX</div>
+      <div class="anchor-label">Ready for Submission</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">&lt;1%</div>
+      <div class="anchor-label">of Consultant Cost</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Supported Programmes</div>
+    <div class="programme-grid">
+      <div class="programme-card">
+        <div class="programme-name">Horizon Europe</div>
+        <div class="programme-desc">RIA, IA, CSA. Consortium structure, work packages, budget distribution, deliverable plan.</div>
+      </div>
+      <div class="programme-card">
+        <div class="programme-name">MSCA</div>
+        <div class="programme-desc">Doctoral Networks & Postdoctoral Fellowships. Training plan, career development, mobility.</div>
+      </div>
+      <div class="programme-card">
+        <div class="programme-name">ERC</div>
+        <div class="programme-desc">Starting, Consolidator, Advanced Grants. Part B1 + B2, CV, track record, Funding ID.</div>
+      </div>
+      <div class="programme-card">
+        <div class="programme-name">EIC Accelerator</div>
+        <div class="programme-desc">Step 1 Short Proposal. Technology, market, team, implementation, video pitch outline.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What Sets It Apart</div>
+    <ul class="diff-list">
+      <li><span class="diff-num">01</span><span class="diff-text"><strong>Four programmes, one platform.</strong> No existing tool covers Horizon Europe, MSCA, ERC, and EIC with dedicated computational pipelines.</span></li>
+      <li><span class="diff-num">02</span><span class="diff-text"><strong>Conversation to Part B, end to end.</strong> The user talks, the system writes. Complete document — not a blank page, not a prompt guide.</span></li>
+      <li><span class="diff-num">03</span><span class="diff-text"><strong>Two-stage quality control.</strong> Your draft is reviewed by computational specialists trained on EU evaluation methodology before delivery. Eligibility checks, internal consistency, structural completeness.</span></li>
+      <li><span class="diff-num">04</span><span class="diff-text"><strong>Optional expert human review.</strong> Available on request as a final quality layer — domain specialists review your draft before you submit.</span></li>
+      <li><span class="diff-num">05</span><span class="diff-text"><strong>Professional DOCX output.</strong> Cover page, section hierarchy, tables, page breaks. Ready for direct editing.</span></li>
+      <li><span class="diff-num">06</span><span class="diff-text"><strong>Instant proposal dashboard.</strong> Completeness ring, section depth, consortium map, WP timeline, budget breakdown.</span></li>
+      <li><span class="diff-num">07</span><span class="diff-text"><strong>Grounded in current programme guidelines.</strong> Responses draw on up-to-date programme requirements — not generic training data.</span></li>
+      <li><span class="diff-num">08</span><span class="diff-text"><strong>Data stays in the EU.</strong> European infrastructure — all data processed and stored within the EU.</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Pricing</div>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Programme</th>
+          <th>Per Proposal</th>
+          <th>Consultant Equivalent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Horizon Europe</td>
+          <td><span class="price">&euro;349</span></td>
+          <td><span class="unit">&euro;15,000 &ndash; 50,000</span></td>
+        </tr>
+        <tr>
+          <td>ERC</td>
+          <td><span class="price">&euro;299</span></td>
+          <td><span class="unit">&euro;10,000 &ndash; 25,000</span></td>
+        </tr>
+        <tr>
+          <td>MSCA</td>
+          <td><span class="price">&euro;249</span></td>
+          <td><span class="unit">&euro;5,000 &ndash; 15,000</span></td>
+        </tr>
+        <tr>
+          <td>EIC Accelerator</td>
+          <td><span class="price">&euro;199</span></td>
+          <td><span class="unit">&euro;5,000 &ndash; 15,000</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="pricing-table" style="margin-top: 24px;">
+      <thead>
+        <tr>
+          <th>Volume Package</th>
+          <th>Price</th>
+          <th>Per Proposal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>3 credits <span class="unit">&mdash; Researcher</span></td>
+          <td><span class="price">&euro;549</span></td>
+          <td><span class="unit">~&euro;183</span></td>
+        </tr>
+        <tr>
+          <td>10 credits <span class="unit">&mdash; Research Office</span></td>
+          <td><span class="price">&euro;1,999</span></td>
+          <td><span class="unit">~&euro;200</span></td>
+        </tr>
+        <tr>
+          <td>25 credits <span class="unit">&mdash; Institution</span></td>
+          <td><span class="price">&euro;3,999</span></td>
+          <td><span class="unit">~&euro;160</span></td>
+        </tr>
+        <tr>
+          <td>50 credits <span class="unit">&mdash; Agency</span></td>
+          <td><span class="price">&euro;6,999</span></td>
+          <td><span class="unit">~&euro;140</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pricing-note">Credits are programme-agnostic. 12-month validity. Unlimited revisions per credit. All prices incl. VAT.</div>
+  </div>
+
+  <div class="contact">
+    <div class="contact-info">
+      <div class="name">Dr F&#305;rat Ilim</div>
+      <div class="title">Founder &amp; Director</div>
+      <div>Llull Lab</div>
+      <a href="mailto:growth.business@llulllab.com" class="contact-email">growth.business@llulllab.com</a>
+    </div>
+    <div class="contact-brand">
+      llulllab.com<br>
+      cedulor.com
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feix — AI Studio | Llull Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --highlight: #38bdf8;
+      --highlight-soft: rgba(56,189,248,0.08);
+      --highlight-dim: rgba(56,189,248,0.25);
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.20);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 800px;
+      --side-pad: clamp(24px, 6vw, 80px);
+    }
+
+    @media print {
+      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #0369a1; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
+      body { font-size: 11pt; }
+      .page { box-shadow: none; max-width: 100%; padding: 0; }
+      @page { margin: 1.5cm; }
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #111;
+      color: var(--fg);
+      font-family: var(--serif);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .page {
+      background: var(--bg);
+      max-width: var(--max-w);
+      width: 100%;
+      padding: 60px var(--side-pad) 48px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .doc-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+    .doc-brand { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .doc-date { font-family: var(--sans); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.5px; }
+
+    .hero { margin-bottom: 48px; }
+    .hero-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--highlight); margin-bottom: 16px; }
+    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero-sub { font-size: 1.05rem; color: var(--accent); max-width: 600px; line-height: 1.75; }
+
+    .anchor-bar { display: flex; gap: 1px; background: var(--border); margin-bottom: 48px; border-radius: 2px; overflow: hidden; }
+    .anchor-item { flex: 1; background: var(--bg); padding: 20px 24px; text-align: center; }
+    .anchor-value { font-family: var(--sans); font-size: 1.5rem; font-weight: 700; color: var(--highlight); letter-spacing: -0.5px; line-height: 1; }
+    .anchor-label { font-family: var(--sans); font-size: 0.68rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.3px; line-height: 1.4; }
+
+    .section { margin-bottom: 40px; }
+    .section-title { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .section p { color: var(--accent); max-width: 640px; margin-bottom: 1em; font-size: 0.95rem; }
+
+    .flow-steps { display: flex; gap: 1px; background: var(--border); margin-bottom: 32px; border-radius: 2px; overflow: hidden; }
+    .flow-step { flex: 1; background: var(--bg); padding: 24px 20px; }
+    .flow-step-num { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; color: var(--highlight); letter-spacing: 1px; margin-bottom: 8px; }
+    .flow-step-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .flow-step-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    .diff-list { list-style: none; padding: 0; }
+    .diff-list li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: baseline; }
+    .diff-list li:last-child { border-bottom: none; }
+    .diff-num { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; color: var(--highlight); min-width: 18px; }
+    .diff-text { font-size: 0.9rem; color: var(--accent); line-height: 1.6; }
+    .diff-text strong { color: var(--fg); font-weight: 600; }
+
+    .pricing-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.82rem; margin-bottom: 12px; }
+    .pricing-table th { text-align: left; font-weight: 500; color: var(--muted); font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 16px; border-bottom: 1px solid var(--border-strong); }
+    .pricing-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--accent); }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .price { color: var(--fg); font-weight: 600; }
+    .pricing-table .unit { color: var(--muted); font-size: 0.75rem; }
+    .pricing-note { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); line-height: 1.6; margin-top: 8px; }
+
+    .contact { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+    .contact-info { font-family: var(--sans); font-size: 0.85rem; color: var(--accent); line-height: 1.8; }
+    .contact-info .name { color: var(--fg); font-weight: 600; font-size: 0.9rem; }
+    .contact-info .title { color: var(--muted); font-size: 0.8rem; }
+    .contact-email { font-family: var(--sans); font-size: 0.85rem; color: var(--highlight); text-decoration: none; letter-spacing: 0.3px; }
+    .contact-email:hover { text-decoration: underline; }
+    .contact-brand { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); text-align: right; }
+
+    @media (max-width: 600px) {
+      .flow-steps { flex-direction: column; }
+      .anchor-bar { flex-direction: column; }
+      .contact { flex-direction: column; align-items: flex-start; }
+      .contact-brand { text-align: left; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-brand">Llull Lab</div>
+    <div class="doc-date">April 2026</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-label">AI Studio</div>
+    <h1>Feix</h1>
+    <p class="hero-sub">Describe your project in plain language. Receive a complete, working web application &mdash; interface, automation, hosting &mdash; deployed and delivered within hours. No technical skills required.</p>
+  </div>
+
+  <div class="anchor-bar">
+    <div class="anchor-item">
+      <div class="anchor-value">Hours</div>
+      <div class="anchor-label">Not Weeks</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Complete</div>
+      <div class="anchor-label">Interface + Automation</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Turnkey</div>
+      <div class="anchor-label">Working URL Delivered</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Human QC</div>
+      <div class="anchor-label">Reviewed Before Delivery</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">How It Works</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">01</div>
+        <div class="flow-step-title">Describe</div>
+        <div class="flow-step-desc">Tell us what you need. A website, ordering system, booking platform &mdash; in plain language.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">02</div>
+        <div class="flow-step-title">We Build</div>
+        <div class="flow-step-desc">Computational pipeline generates your complete application — interface and automation together. Human team reviews and configures.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">03</div>
+        <div class="flow-step-title">Delivered</div>
+        <div class="flow-step-desc">Working URL with live hosting, configured database, and active automation. Ready to use.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What Sets It Apart</div>
+    <ul class="diff-list">
+      <li><span class="diff-num">01</span><span class="diff-text"><strong>Built-in automation.</strong> Feix delivers working automation alongside your interface &mdash; form processing, email delivery, database writes, conditional logic. Not just a website; a complete working product.</span></li>
+      <li><span class="diff-num">02</span><span class="diff-text"><strong>Turnkey delivery.</strong> You receive a working URL, not code files. Domain, hosting, database, SSL &mdash; everything configured and live.</span></li>
+      <li><span class="diff-num">03</span><span class="diff-text"><strong>Human quality control.</strong> Every delivery is reviewed, polished, and tested by a human before shipping. Not raw output.</span></li>
+      <li><span class="diff-num">04</span><span class="diff-text"><strong>Two infrastructure paths.</strong> Feix-managed (we handle everything) or customer-managed (you provide hosting and credentials). Same build quality.</span></li>
+      <li><span class="diff-num">05</span><span class="diff-text"><strong>Multi-stage production pipeline.</strong> Your project passes through multiple computational stages before delivery. Each stage independently reviewed for quality, consistency, and completeness.</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Pricing</div>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Package</th>
+          <th>Price</th>
+          <th>Includes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Starter</td>
+          <td><span class="price">$400</span></td>
+          <td><span class="unit">Static site (up to 5 pages), 1 workflow, hosting</span></td>
+        </tr>
+        <tr>
+          <td>Business</td>
+          <td><span class="price">$1,000</span></td>
+          <td><span class="unit">Multi-page app, up to 3 automation workflows, database, 1 revision</span></td>
+        </tr>
+        <tr>
+          <td>Advanced</td>
+          <td><span class="price">$2,500</span></td>
+          <td><span class="unit">Complex app, unlimited workflows, API integrations, 2 revisions</span></td>
+        </tr>
+        <tr>
+          <td>Custom</td>
+          <td><span class="price">On request</span></td>
+          <td><span class="unit">Non-standard scope, scoping conversation</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pricing-note">All deliveries include 90 days of complimentary hosting. Maintenance plans from $30/month. Agencies: volume discount at 5+ projects (10%) and 10+ (15%).</div>
+
+    <table class="pricing-table" style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th colspan="3" style="color: var(--accent); text-transform: none; letter-spacing: 0; font-size: 0.78rem;">Freelancer &amp; Agency Comparison</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Freelancer</td>
+          <td><span class="unit">$1,500 &ndash; $8,000</span></td>
+          <td><span class="unit">Weeks to deliver</span></td>
+        </tr>
+        <tr>
+          <td>Agency</td>
+          <td><span class="unit">$6,000 &ndash; $35,000+</span></td>
+          <td><span class="unit">Weeks to months</span></td>
+        </tr>
+        <tr>
+          <td style="color: var(--fg); font-weight: 600;">Feix</td>
+          <td><span class="price">$400 &ndash; $2,500</span></td>
+          <td><span class="unit">Hours</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="contact">
+    <div class="contact-info">
+      <div class="name">Dr F&#305;rat Ilim</div>
+      <div class="title">Founder &amp; Director</div>
+      <div>Llull Lab</div>
+      <a href="mailto:growth.business@llulllab.com" class="contact-email">growth.business@llulllab.com</a>
+    </div>
+    <div class="contact-brand">
+      llulllab.com<br>
+      feix.app
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

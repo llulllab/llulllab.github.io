@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASGE — Semantic Geometry Engine | Llull Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --highlight: #d4943a;
+      --highlight-soft: rgba(212,148,58,0.08);
+      --highlight-dim: rgba(212,148,58,0.25);
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.20);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 800px;
+      --side-pad: clamp(24px, 6vw, 80px);
+    }
+
+    @media print {
+      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #a06820; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
+      body { font-size: 11pt; }
+      .page { box-shadow: none; max-width: 100%; padding: 0; }
+      @page { margin: 1.5cm; }
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #111;
+      color: var(--fg);
+      font-family: var(--serif);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .page {
+      background: var(--bg);
+      max-width: var(--max-w);
+      width: 100%;
+      padding: 60px var(--side-pad) 48px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .doc-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+    .doc-brand { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .doc-date { font-family: var(--sans); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.5px; }
+
+    .hero { margin-bottom: 48px; }
+    .hero-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--highlight); margin-bottom: 16px; }
+    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero-sub { font-size: 1.05rem; color: var(--accent); max-width: 600px; line-height: 1.75; }
+
+    .anchor-bar { display: flex; gap: 1px; background: var(--border); margin-bottom: 48px; border-radius: 2px; overflow: hidden; }
+    .anchor-item { flex: 1; background: var(--bg); padding: 20px 24px; text-align: center; }
+    .anchor-value { font-family: var(--sans); font-size: 1.5rem; font-weight: 700; color: var(--highlight); letter-spacing: -0.5px; line-height: 1; }
+    .anchor-label { font-family: var(--sans); font-size: 0.68rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.3px; line-height: 1.4; }
+
+    .section { margin-bottom: 40px; }
+    .section-title { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .section p { color: var(--accent); max-width: 640px; margin-bottom: 1em; font-size: 0.95rem; }
+
+    .flow-steps { display: flex; gap: 1px; background: var(--border); margin-bottom: 32px; border-radius: 2px; overflow: hidden; }
+    .flow-step { flex: 1; background: var(--bg); padding: 24px 20px; }
+    .flow-step-num { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; color: var(--highlight); letter-spacing: 1px; margin-bottom: 8px; }
+    .flow-step-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .flow-step-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    .diff-list { list-style: none; padding: 0; }
+    .diff-list li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: baseline; }
+    .diff-list li:last-child { border-bottom: none; }
+    .diff-num { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; color: var(--highlight); min-width: 18px; }
+    .diff-text { font-size: 0.9rem; color: var(--accent); line-height: 1.6; }
+    .diff-text strong { color: var(--fg); font-weight: 600; }
+
+    .pricing-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.82rem; margin-bottom: 12px; }
+    .pricing-table th { text-align: left; font-weight: 500; color: var(--muted); font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 16px; border-bottom: 1px solid var(--border-strong); }
+    .pricing-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--accent); }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .price { color: var(--fg); font-weight: 600; }
+    .pricing-table .unit { color: var(--muted); font-size: 0.75rem; }
+    .pricing-note { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); line-height: 1.6; margin-top: 8px; }
+
+    .contact { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+    .contact-info { font-family: var(--sans); font-size: 0.85rem; color: var(--accent); line-height: 1.8; }
+    .contact-info .name { color: var(--fg); font-weight: 600; font-size: 0.9rem; }
+    .contact-info .title { color: var(--muted); font-size: 0.8rem; }
+    .contact-email { font-family: var(--sans); font-size: 0.85rem; color: var(--highlight); text-decoration: none; letter-spacing: 0.3px; }
+    .contact-email:hover { text-decoration: underline; }
+    .contact-brand { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); text-align: right; }
+
+    @media (max-width: 600px) {
+      .flow-steps { flex-direction: column; }
+      .anchor-bar { flex-direction: column; }
+      .contact { flex-direction: column; align-items: flex-start; }
+      .contact-brand { text-align: left; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-brand">Llull Lab</div>
+    <div class="doc-date">April 2026</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-label">Semantic Geometry Engine</div>
+    <h1>ASGE</h1>
+    <p class="hero-sub">Ambivalence-centred semantic analysis. Detect, map, and interpret opposing meaning structures in speech and text &mdash; in real time, across three languages, with graduated auditory alerts and deep contextual interpretation.</p>
+  </div>
+
+  <div class="anchor-bar">
+    <div class="anchor-item">
+      <div class="anchor-value">3-Stage</div>
+      <div class="anchor-label">Detection &rarr; Mapping &rarr; Interpretation</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">3</div>
+      <div class="anchor-label">Languages (TR / EN / FR)</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Real-Time</div>
+      <div class="anchor-label">Live Auditory Alerts</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Interim</div>
+      <div class="anchor-label">Ongoing Live Feedback</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">How It Works</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">01</div>
+        <div class="flow-step-title">Detect</div>
+        <div class="flow-step-desc">Real-time lexical pair detection during live speech or text input. Graduated auditory alerts escalate as ambivalence density increases &mdash; a semantic Geiger counter.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">02</div>
+        <div class="flow-step-title">Map</div>
+        <div class="flow-step-desc">Minute-by-minute temporal density mapping. Three visualization modes: wave, bar, and delta (&Delta;). See where ambivalence concentrates across time.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">03</div>
+        <div class="flow-step-title">Interpret</div>
+        <div class="flow-step-desc">Deep contextual analysis identifies semantic conflict beyond dictionary pairs. Structured output: peak minute, dominant theme, and semantic conflict summary.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What Sets It Apart</div>
+    <ul class="diff-list">
+      <li><span class="diff-num">01</span><span class="diff-text"><strong>Ambivalence, not sentiment.</strong> Where sentiment tools classify text as positive/negative/neutral, ASGE detects the simultaneous presence of opposing semantic structures. A categorically different analytical layer.</span></li>
+      <li><span class="diff-num">02</span><span class="diff-text"><strong>Psychoanalytic theoretical foundation.</strong> Grounded in the Freudian concept of ambivalence &mdash; the simultaneous operation of opposing principles within a system. Over a century of clinical validation, now made computable.</span></li>
+      <li><span class="diff-num">03</span><span class="diff-text"><strong>Hybrid architecture.</strong> Rule-based lexical detection for speed and determinism, combined with deep contextual analysis for nuance. Most tools are one or the other. ASGE uses both in a single pipeline.</span></li>
+      <li><span class="diff-num">04</span><span class="diff-text"><strong>Temporal geometry.</strong> Ambivalence as a dynamic curve over time, not a static score. When opposing meanings intensify matters as much as what was said.</span></li>
+      <li><span class="diff-num">05</span><span class="diff-text"><strong>Semantic Geiger counter.</strong> Four-level graduated auditory alerts with escalating frequencies and shifting waveforms. Ambivalence density is perceptible without watching the screen &mdash; designed for clinical and field settings.</span></li>
+      <li><span class="diff-num">06</span><span class="diff-text"><strong>Live interim analysis.</strong> Deep contextual analysis provides ongoing analytical feedback during live recording &mdash; not only after the session ends. Continuous interpretation while the conversation is still in progress.</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Pricing</div>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Price</th>
+          <th>Includes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sandbox</td>
+          <td><span class="price">Free</span></td>
+          <td><span class="unit">3 analyses / 30 days, single language, invite-only</span></td>
+        </tr>
+        <tr>
+          <td>Explorer</td>
+          <td><span class="price">&euro;29/month</span></td>
+          <td><span class="unit">30 analyses, single language, web interface</span></td>
+        </tr>
+        <tr>
+          <td>Professional</td>
+          <td><span class="price">&euro;149/month</span></td>
+          <td><span class="unit">100 analyses, all 3 languages, interim analysis, basic API</span></td>
+        </tr>
+        <tr>
+          <td>API / Integration</td>
+          <td><span class="price">&euro;399/month</span></td>
+          <td><span class="unit">500 analyses, full API, SLA 99.5%</span></td>
+        </tr>
+        <tr>
+          <td>Enterprise</td>
+          <td><span class="price">Custom</span></td>
+          <td><span class="unit">Volume pricing, white-label, custom deployment</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pricing-note">Annual billing available (~2 months free). Early adopter programme: 30&ndash;40% discount for the first 10 customers per tier, with direct founder access and feature input.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Applications</div>
+    <ul class="diff-list">
+      <li><span class="diff-num">&bull;</span><span class="diff-text"><strong>Clinical &amp; wellbeing.</strong> Identify the most productive moments in therapy sessions &mdash; where resistance breaks, where conflict surfaces. An attention map for the therapist.</span></li>
+      <li><span class="diff-num">&bull;</span><span class="diff-text"><strong>OSINT &amp; security.</strong> Complementary analytical layer for intelligence pipelines. Detect early semantic signatures of polarization and radicalization that sentiment scoring alone cannot capture.</span></li>
+      <li><span class="diff-num">&bull;</span><span class="diff-text"><strong>NLP &amp; content analysis.</strong> Infrastructure component for content moderation, translation, and creative tools &mdash; modelling multi-layered meaning beyond single-axis sentiment.</span></li>
+    </ul>
+  </div>
+
+  <div class="contact">
+    <div class="contact-info">
+      <div class="name">Dr F&#305;rat Ilim</div>
+      <div class="title">Founder &amp; Director</div>
+      <div>Llull Lab</div>
+      <a href="mailto:growth.business@llulllab.com" class="contact-email">growth.business@llulllab.com</a>
+    </div>
+    <div class="contact-brand">
+      llulllab.com<br>
+      asge.llulllab.com
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

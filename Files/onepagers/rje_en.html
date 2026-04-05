@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RJE — Reflective Judgment Engine | Llull Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --highlight: #4ade80;
+      --highlight-soft: rgba(74,222,128,0.08);
+      --highlight-dim: rgba(74,222,128,0.25);
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.20);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 800px;
+      --side-pad: clamp(24px, 6vw, 80px);
+    }
+
+    @media print {
+      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #16a34a; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
+      body { font-size: 11pt; }
+      .page { box-shadow: none; max-width: 100%; padding: 0; }
+      @page { margin: 1.5cm; }
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #111;
+      color: var(--fg);
+      font-family: var(--serif);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .page {
+      background: var(--bg);
+      max-width: var(--max-w);
+      width: 100%;
+      padding: 60px var(--side-pad) 48px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .doc-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+    .doc-brand { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .doc-date { font-family: var(--sans); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.5px; }
+
+    .hero { margin-bottom: 48px; }
+    .hero-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--highlight); margin-bottom: 16px; }
+    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero-sub { font-size: 1.05rem; color: var(--accent); max-width: 600px; line-height: 1.75; }
+
+    .anchor-bar { display: flex; gap: 1px; background: var(--border); margin-bottom: 48px; border-radius: 2px; overflow: hidden; }
+    .anchor-item { flex: 1; background: var(--bg); padding: 20px 24px; text-align: center; }
+    .anchor-value { font-family: var(--sans); font-size: 1.5rem; font-weight: 700; color: var(--highlight); letter-spacing: -0.5px; line-height: 1; }
+    .anchor-label { font-family: var(--sans); font-size: 0.68rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.3px; line-height: 1.4; }
+
+    .section { margin-bottom: 40px; }
+    .section-title { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .section p { color: var(--accent); max-width: 640px; margin-bottom: 1em; font-size: 0.95rem; }
+
+    .flow-steps { display: flex; gap: 1px; background: var(--border); margin-bottom: 32px; border-radius: 2px; overflow: hidden; }
+    .flow-step { flex: 1; background: var(--bg); padding: 24px 20px; }
+    .flow-step-num { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; color: var(--highlight); letter-spacing: 1px; margin-bottom: 8px; }
+    .flow-step-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .flow-step-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    .diff-list { list-style: none; padding: 0; }
+    .diff-list li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: baseline; }
+    .diff-list li:last-child { border-bottom: none; }
+    .diff-num { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; color: var(--highlight); min-width: 18px; }
+    .diff-text { font-size: 0.9rem; color: var(--accent); line-height: 1.6; }
+    .diff-text strong { color: var(--fg); font-weight: 600; }
+
+    .pricing-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.82rem; margin-bottom: 12px; }
+    .pricing-table th { text-align: left; font-weight: 500; color: var(--muted); font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 16px; border-bottom: 1px solid var(--border-strong); }
+    .pricing-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--accent); }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .price { color: var(--fg); font-weight: 600; }
+    .pricing-table .unit { color: var(--muted); font-size: 0.75rem; }
+    .pricing-note { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); line-height: 1.6; margin-top: 8px; }
+
+    .contact { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+    .contact-info { font-family: var(--sans); font-size: 0.85rem; color: var(--accent); line-height: 1.8; }
+    .contact-info .name { color: var(--fg); font-weight: 600; font-size: 0.9rem; }
+    .contact-info .title { color: var(--muted); font-size: 0.8rem; }
+    .contact-email { font-family: var(--sans); font-size: 0.85rem; color: var(--highlight); text-decoration: none; letter-spacing: 0.3px; }
+    .contact-email:hover { text-decoration: underline; }
+    .contact-brand { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); text-align: right; }
+
+    @media (max-width: 600px) {
+      .flow-steps { flex-direction: column; }
+      .anchor-bar { flex-direction: column; }
+      .contact { flex-direction: column; align-items: flex-start; }
+      .contact-brand { text-align: left; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-brand">Llull Lab</div>
+    <div class="doc-date">April 2026</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-label">Reflective Judgment Engine</div>
+    <h1>RJE</h1>
+    <p class="hero-sub">Structured ethical deliberation for decisions under normative uncertainty &mdash; from <span style="color: var(--highlight);">autonomous vehicles</span> to healthcare and finance. Five independent expert perspectives, a built-in safety mechanism, and a fully auditable report, delivered in under 90 seconds and ready to integrate into real-time decision systems.</p>
+  </div>
+
+  <div class="anchor-bar">
+    <div class="anchor-item">
+      <div class="anchor-value">5</div>
+      <div class="anchor-label">Independent Expert Perspectives</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">&lt;90s</div>
+      <div class="anchor-label">Per Deliberation</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">API-First</div>
+      <div class="anchor-label">Integration-Ready Output</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Safety-First</div>
+      <div class="anchor-label">Designed to Err on Caution</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">How It Works</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">01</div>
+        <div class="flow-step-title">Submit</div>
+        <div class="flow-step-desc">Describe the ethical dilemma, stakeholders, constraints, and domain. The system retrieves relevant precedent cases.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">02</div>
+        <div class="flow-step-title">Deliberate</div>
+        <div class="flow-step-desc">A preliminary analysis frames the decision. Five independent evaluators assess from distinct analytical lenses and vote: approve, reject, or modify.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">03</div>
+        <div class="flow-step-title">Deliver</div>
+        <div class="flow-step-desc">Safety check, majority vote, reasoned decision with dissenting opinions. Full report in DOCX and JSON.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What Sets It Apart</div>
+    <ul class="diff-list">
+      <li><span class="diff-num">01</span><span class="diff-text"><strong>Multi-perspective deliberation.</strong> Five independent expert perspectives &mdash; governance, legal, normative ethics, feasibility, and fundamental rights &mdash; evaluate each case separately and vote. Structurally reduces single-viewpoint bias.</span></li>
+      <li><span class="diff-num">02</span><span class="diff-text"><strong>Anti-totalitarianism safety module.</strong> Every deliberation is screened for totalitarian risk patterns before a decision is finalized. The system automatically halts if extreme risk patterns are detected &mdash; designed to err on the side of caution.</span></li>
+      <li><span class="diff-num">03</span><span class="diff-text"><strong>Concrete decision framework.</strong> A preliminary analysis defines what approval, rejection, and modification specifically mean for each case. Evaluators vote on defined actions, not abstract opinions.</span></li>
+      <li><span class="diff-num">04</span><span class="diff-text"><strong>Precedent-grounded reasoning.</strong> Each case is evaluated in light of prior ethical cases and precedent decisions. Deliberation quality improves as the precedent library grows.</span></li>
+      <li><span class="diff-num">05</span><span class="diff-text"><strong>Built for autonomous systems.</strong> Deliberation output integrates directly into real-time decision pipelines &mdash; <span style="color: var(--highlight);">autonomous vehicles</span>, robotic systems, and automated decision infrastructure. Designed to operate at machine speed, not committee speed.</span></li>
+      <li><span class="diff-num">06</span><span class="diff-text"><strong>Full audit trail.</strong> Case description, expert analyses, vote breakdown, safety check, and reasoned decision &mdash; all persisted and exportable. Built for regulatory review and compliance documentation.</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Pricing</div>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Price</th>
+          <th>Includes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Free</td>
+          <td><span class="price">Free</span></td>
+          <td><span class="unit">1 deliberation/month, web UI, JSON output</span></td>
+        </tr>
+        <tr>
+          <td>Pro</td>
+          <td><span class="price">&euro;79/month</span></td>
+          <td><span class="unit">20 deliberations, DOCX reports, full audit trail</span></td>
+        </tr>
+        <tr>
+          <td>Team</td>
+          <td><span class="price">&euro;349/month</span></td>
+          <td><span class="unit">75 deliberations, API access, 10 seats, private precedent base</span></td>
+        </tr>
+        <tr>
+          <td>Enterprise</td>
+          <td><span class="price">From &euro;12,000/year</span></td>
+          <td><span class="unit">Custom volume, dedicated API, SSO, SLA, deployment options</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="pricing-table" style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th colspan="3" style="color: var(--accent); text-transform: none; letter-spacing: 0; font-size: 0.78rem;">API Access (Developer Track)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>API Starter</td>
+          <td><span class="price">&euro;99/month</span></td>
+          <td><span class="unit">&euro;5.00/deliberation, 10/day</span></td>
+        </tr>
+        <tr>
+          <td>API Growth</td>
+          <td><span class="price">&euro;399/month</span></td>
+          <td><span class="unit">&euro;3.50/deliberation, 50/day</span></td>
+        </tr>
+        <tr>
+          <td>API Enterprise</td>
+          <td><span class="price">Custom</span></td>
+          <td><span class="unit">Negotiated volume and rate limits</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="pricing-table" style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th colspan="3" style="color: var(--accent); text-transform: none; letter-spacing: 0; font-size: 0.78rem;">Human Advisory Comparison</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ethics committee consultation</td>
+          <td><span class="unit">&euro;4,600 &ndash; 13,900/case</span></td>
+          <td><span class="unit">1&ndash;4 weeks</span></td>
+        </tr>
+        <tr>
+          <td>AI Accountability assessment</td>
+          <td><span class="unit">&euro;41,700 &ndash; 69,400</span></td>
+          <td><span class="unit">Weeks to months</span></td>
+        </tr>
+        <tr>
+          <td style="color: var(--fg); font-weight: 600;">RJE (Pro tier)</td>
+          <td><span class="price">~&euro;4/deliberation</span></td>
+          <td><span class="unit">30&ndash;90 seconds</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pricing-note">Halted deliberations (safety module trigger) are not billed. Annual billing available with 12&ndash;14% discount. EU AI Act Readiness Package available through Q3 2026.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Regulatory Context</div>
+    <p>EU AI Act high-risk provisions take effect August 2026 &mdash; with <span style="color: var(--highlight);">autonomous vehicles</span>, medical devices, and critical infrastructure explicitly classified as high-risk. Colorado AI Act effective June 2026. Organizations deploying autonomous systems will need auditable ethical decision processes embedded in their operational loop. RJE provides exactly this: structured, documented deliberation at machine speed that serves as compliance infrastructure.</p>
+  </div>
+
+  <div class="contact">
+    <div class="contact-info">
+      <div class="name">Dr F&#305;rat Ilim</div>
+      <div class="title">Founder &amp; Director</div>
+      <div>Llull Lab</div>
+      <a href="mailto:growth.business@llulllab.com" class="contact-email">growth.business@llulllab.com</a>
+    </div>
+    <div class="contact-brand">
+      llulllab.com<br>
+      rje.llulllab.com
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

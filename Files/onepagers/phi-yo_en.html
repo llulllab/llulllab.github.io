@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phi-Yo — Scientific Dream Analysis | Llull Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --highlight: #a78bfa;
+      --highlight-soft: rgba(167,139,250,0.08);
+      --highlight-dim: rgba(167,139,250,0.25);
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.20);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 800px;
+      --side-pad: clamp(24px, 6vw, 80px);
+    }
+
+    @media print {
+      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #6d28d9; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
+      body { font-size: 11pt; }
+      .page { box-shadow: none; max-width: 100%; padding: 0; }
+      @page { margin: 1.5cm; }
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #111;
+      color: var(--fg);
+      font-family: var(--serif);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .page {
+      background: var(--bg);
+      max-width: var(--max-w);
+      width: 100%;
+      padding: 60px var(--side-pad) 48px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .doc-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+    .doc-brand { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .doc-date { font-family: var(--sans); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.5px; }
+
+    .hero { margin-bottom: 48px; }
+    .hero-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--highlight); margin-bottom: 16px; }
+    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero-sub { font-size: 1.05rem; color: var(--accent); max-width: 600px; line-height: 1.75; }
+
+    .anchor-bar { display: flex; gap: 1px; background: var(--border); margin-bottom: 48px; border-radius: 2px; overflow: hidden; }
+    .anchor-item { flex: 1; background: var(--bg); padding: 20px 24px; text-align: center; }
+    .anchor-value { font-family: var(--sans); font-size: 1.5rem; font-weight: 700; color: var(--highlight); letter-spacing: -0.5px; line-height: 1; }
+    .anchor-label { font-family: var(--sans); font-size: 0.68rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.3px; line-height: 1.4; }
+
+    .section { margin-bottom: 40px; }
+    .section-title { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .section p { color: var(--accent); max-width: 640px; margin-bottom: 1em; font-size: 0.95rem; }
+
+    .flow-steps { display: flex; gap: 1px; background: var(--border); margin-bottom: 32px; border-radius: 2px; overflow: hidden; }
+    .flow-step { flex: 1; background: var(--bg); padding: 24px 20px; }
+    .flow-step-num { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; color: var(--highlight); letter-spacing: 1px; margin-bottom: 8px; }
+    .flow-step-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .flow-step-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    .diff-list { list-style: none; padding: 0; }
+    .diff-list li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: baseline; }
+    .diff-list li:last-child { border-bottom: none; }
+    .diff-num { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; color: var(--highlight); min-width: 18px; }
+    .diff-text { font-size: 0.9rem; color: var(--accent); line-height: 1.6; }
+    .diff-text strong { color: var(--fg); font-weight: 600; }
+
+    .pricing-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.82rem; margin-bottom: 12px; }
+    .pricing-table th { text-align: left; font-weight: 500; color: var(--muted); font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 16px; border-bottom: 1px solid var(--border-strong); }
+    .pricing-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--accent); }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .price { color: var(--fg); font-weight: 600; }
+    .pricing-table .unit { color: var(--muted); font-size: 0.75rem; }
+    .pricing-note { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); line-height: 1.6; margin-top: 8px; }
+
+    .contact { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+    .contact-info { font-family: var(--sans); font-size: 0.85rem; color: var(--accent); line-height: 1.8; }
+    .contact-info .name { color: var(--fg); font-weight: 600; font-size: 0.9rem; }
+    .contact-info .title { color: var(--muted); font-size: 0.8rem; }
+    .contact-email { font-family: var(--sans); font-size: 0.85rem; color: var(--highlight); text-decoration: none; letter-spacing: 0.3px; }
+    .contact-email:hover { text-decoration: underline; }
+    .contact-brand { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); text-align: right; }
+
+    @media (max-width: 600px) {
+      .flow-steps { flex-direction: column; }
+      .anchor-bar { flex-direction: column; }
+      .contact { flex-direction: column; align-items: flex-start; }
+      .contact-brand { text-align: left; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-brand">Llull Lab</div>
+    <div class="doc-date">April 2026</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-label">Scientific Dream Analysis</div>
+    <h1>Phi-Yo</h1>
+    <p class="hero-sub">Theory-grounded dream interpretation with persistent personal memory. Describe your dream by text or voice. Receive a deep, personalized interpretation that evolves with you &mdash; the 50th dream is understood in the context of the 49 before it.</p>
+  </div>
+
+  <div class="anchor-bar">
+    <div class="anchor-item">
+      <div class="anchor-value">8</div>
+      <div class="anchor-label">Languages (Native)</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Memory</div>
+      <div class="anchor-label">Cumulative Personal Intelligence</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Theory</div>
+      <div class="anchor-label">Freud for Machines Ontology</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">API</div>
+      <div class="anchor-label">Integration-Ready Service</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">How It Works</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">01</div>
+        <div class="flow-step-title">Describe</div>
+        <div class="flow-step-desc">Type or speak your dream. Voice input captures details before they fade. Language is auto-detected from your narrative.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">02</div>
+        <div class="flow-step-title">Contextualise</div>
+        <div class="flow-step-desc">The system loads your personal memory &mdash; past dreams, symbol map, recurring themes &mdash; and draws on its interpretive framework.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">03</div>
+        <div class="flow-step-title">Interpret</div>
+        <div class="flow-step-desc">A structured, personalized interpretation grounded in psychoanalytic theory. Symbols, emotions, and themes are extracted and stored for pattern tracking.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What Sets It Apart</div>
+    <ul class="diff-list">
+      <li><span class="diff-num">01</span><span class="diff-text"><strong>Original theoretical foundation.</strong> Built on <em>Freud for Machines: A Computational Psychoanalytic Ontology</em> &mdash; an original academic framework. Interpretations draw on up-to-date theoretical content, not generic training data.</span></li>
+      <li><span class="diff-num">02</span><span class="diff-text"><strong>Cumulative personal intelligence.</strong> A personal symbol map tracks each symbol&rsquo;s frequency, contexts, and evolving meaning. A dream journal stores full interpretations and metadata. Your profile accumulates observations across your entire history.</span></li>
+      <li><span class="diff-num">03</span><span class="diff-text"><strong>Expandable knowledge base.</strong> New theoretical frameworks can be incorporated over time. Interpretive depth is not frozen at launch &mdash; it grows.</span></li>
+      <li><span class="diff-num">04</span><span class="diff-text"><strong>Eight languages, natively generated.</strong> English, Turkish, French, German, Spanish, Japanese, Russian, Arabic. The system generates in the detected language &mdash; not translated from English.</span></li>
+      <li><span class="diff-num">05</span><span class="diff-text"><strong>Ethical guardrails.</strong> Probabilistic language, no diagnosis, professional referral when concerning patterns emerge. Positioned as wellbeing support and self-reflection, not therapy.</span></li>
+      <li><span class="diff-num">06</span><span class="diff-text"><strong>Integration-ready architecture.</strong> REST API enables third-party platforms to embed Phi-Yo as a conversational wellbeing engine &mdash; from self-reflection and dream analysis to daily check-ins and emotional pattern tracking. Built for wellness apps, elder care companions, employee wellbeing programmes, and therapy support tools.</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Pricing</div>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Price</th>
+          <th>Includes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Free</td>
+          <td><span class="price">Free</span></td>
+          <td><span class="unit">3 interpretations/week, last 3 dreams in context, 1 language</span></td>
+        </tr>
+        <tr>
+          <td>Pro</td>
+          <td><span class="price">&euro;8.99/month</span></td>
+          <td><span class="unit">Unlimited, full memory, all 8 languages, symbol analytics, pattern reports</span></td>
+        </tr>
+        <tr>
+          <td>Pro Annual</td>
+          <td><span class="price">&euro;54.99/year</span></td>
+          <td><span class="unit">Same as Pro &mdash; ~49% discount</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="pricing-table" style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th colspan="3" style="color: var(--accent); text-transform: none; letter-spacing: 0; font-size: 0.78rem;">B2B API (Volume Pricing)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>&lt; 1,000 / month</td>
+          <td><span class="price">&euro;0.35 &ndash; 0.50</span></td>
+          <td><span class="unit">per interpretation</span></td>
+        </tr>
+        <tr>
+          <td>1,000 &ndash; 10,000 / month</td>
+          <td><span class="price">&euro;0.20 &ndash; 0.30</span></td>
+          <td><span class="unit">per interpretation</span></td>
+        </tr>
+        <tr>
+          <td>10,000+ / month</td>
+          <td><span class="price">&euro;0.12 &ndash; 0.18</span></td>
+          <td><span class="unit">per interpretation</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="pricing-table" style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th colspan="3" style="color: var(--accent); text-transform: none; letter-spacing: 0; font-size: 0.78rem;">Competitor Comparison</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dreamly</td>
+          <td><span class="unit">$9.99/month</span></td>
+          <td><span class="unit">No memory, no theoretical grounding</span></td>
+        </tr>
+        <tr>
+          <td>Oniri</td>
+          <td><span class="unit">$4.99&ndash;7.99/month</span></td>
+          <td><span class="unit">Lucid dreaming focus, basic journaling</span></td>
+        </tr>
+        <tr>
+          <td style="color: var(--fg); font-weight: 600;">Phi-Yo</td>
+          <td><span class="price">&euro;8.99/month</span></td>
+          <td><span class="unit">Persistent memory, theory-grounded, 8 languages</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pricing-note">First month &euro;4.49 (50% off). No trial needed &mdash; the free tier demonstrates the memory advantage over 2&ndash;3 weeks. B2B API pricing via direct conversation.</div>
+  </div>
+
+  <div class="contact">
+    <div class="contact-info">
+      <div class="name">Dr F&#305;rat Ilim</div>
+      <div class="title">Founder &amp; Director</div>
+      <div>Llull Lab</div>
+      <a href="mailto:growth.business@llulllab.com" class="contact-email">growth.business@llulllab.com</a>
+    </div>
+    <div class="contact-brand">
+      llulllab.com<br>
+      phi-yo.com
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
