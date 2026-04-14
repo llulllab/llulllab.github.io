@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feix, Studio IA | Llull Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --highlight: #38bdf8;
+      --highlight-soft: rgba(56,189,248,0.08);
+      --highlight-dim: rgba(56,189,248,0.25);
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.20);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 800px;
+      --side-pad: clamp(24px, 6vw, 80px);
+    }
+
+    @media print {
+      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #0369a1; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
+      body { font-size: 11pt; }
+      .page { box-shadow: none; max-width: 100%; padding: 0; }
+      @page { margin: 1.5cm; }
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #111;
+      color: var(--fg);
+      font-family: var(--serif);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .page {
+      background: var(--bg);
+      max-width: var(--max-w);
+      width: 100%;
+      padding: 60px var(--side-pad) 48px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .doc-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+    .doc-brand { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .doc-date { font-family: var(--sans); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.5px; }
+
+    .hero { margin-bottom: 48px; }
+    .hero-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--highlight); margin-bottom: 16px; }
+    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero-sub { font-size: 1.05rem; color: var(--accent); max-width: 600px; line-height: 1.75; }
+
+    .anchor-bar { display: flex; gap: 1px; background: var(--border); margin-bottom: 48px; border-radius: 2px; overflow: hidden; }
+    .anchor-item { flex: 1; background: var(--bg); padding: 20px 24px; text-align: center; }
+    .anchor-value { font-family: var(--sans); font-size: 1.5rem; font-weight: 700; color: var(--highlight); letter-spacing: -0.5px; line-height: 1; }
+    .anchor-label { font-family: var(--sans); font-size: 0.68rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.3px; line-height: 1.4; }
+
+    .section { margin-bottom: 40px; }
+    .section-title { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .section p { color: var(--accent); max-width: 640px; margin-bottom: 1em; font-size: 0.95rem; }
+
+    .flow-steps { display: flex; gap: 1px; background: var(--border); margin-bottom: 32px; border-radius: 2px; overflow: hidden; }
+    .flow-step { flex: 1; background: var(--bg); padding: 24px 20px; }
+    .flow-step-num { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; color: var(--highlight); letter-spacing: 1px; margin-bottom: 8px; }
+    .flow-step-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .flow-step-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    .diff-list { list-style: none; padding: 0; }
+    .diff-list li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: baseline; }
+    .diff-list li:last-child { border-bottom: none; }
+    .diff-num { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; color: var(--highlight); min-width: 18px; }
+    .diff-text { font-size: 0.9rem; color: var(--accent); line-height: 1.6; }
+    .diff-text strong { color: var(--fg); font-weight: 600; }
+
+    .pricing-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.82rem; margin-bottom: 12px; }
+    .pricing-table th { text-align: left; font-weight: 500; color: var(--muted); font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 16px; border-bottom: 1px solid var(--border-strong); }
+    .pricing-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--accent); }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .price { color: var(--fg); font-weight: 600; }
+    .pricing-table .unit { color: var(--muted); font-size: 0.75rem; }
+    .pricing-note { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); line-height: 1.6; margin-top: 8px; }
+
+    .contact { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+    .contact-info { font-family: var(--sans); font-size: 0.85rem; color: var(--accent); line-height: 1.8; }
+    .contact-info .name { color: var(--fg); font-weight: 600; font-size: 0.9rem; }
+    .contact-info .title { color: var(--muted); font-size: 0.8rem; }
+    .contact-email { font-family: var(--sans); font-size: 0.85rem; color: var(--highlight); text-decoration: none; letter-spacing: 0.3px; }
+    .contact-email:hover { text-decoration: underline; }
+    .contact-brand { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); text-align: right; }
+
+    @media (max-width: 600px) {
+      .flow-steps { flex-direction: column; }
+      .anchor-bar { flex-direction: column; }
+      .contact { flex-direction: column; align-items: flex-start; }
+      .contact-brand { text-align: left; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-brand">Llull Lab</div>
+    <div class="doc-date">Avril 2026</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-label">Studio IA</div>
+    <h1>Feix</h1>
+    <p class="hero-sub">Décrivez votre projet en langage naturel. Recevez une application web complète et fonctionnelle (interface, automatisation, hébergement) livrée en quelques heures. Aucune compétence technique requise.</p>
+  </div>
+
+  <div class="anchor-bar">
+    <div class="anchor-item">
+      <div class="anchor-value">Heures</div>
+      <div class="anchor-label">Pas des semaines</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Complet</div>
+      <div class="anchor-label">Interface et automatisation</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Clé en main</div>
+      <div class="anchor-label">URL livrée en production</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Revu</div>
+      <div class="anchor-label">Contrôle humain avant livraison</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Comment ça marche</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">01</div>
+        <div class="flow-step-title">Décrivez</div>
+        <div class="flow-step-desc">Dites-nous ce dont vous avez besoin. Un site, un système de commande, une plateforme de réservation. En langage clair.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">02</div>
+        <div class="flow-step-title">Nous construisons</div>
+        <div class="flow-step-desc">Un pipeline computationnel génère votre application complète : interface et automatisation ensemble. Une équipe humaine revoit et configure.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">03</div>
+        <div class="flow-step-title">Livré</div>
+        <div class="flow-step-desc">URL fonctionnelle avec hébergement actif, base de données configurée, automatisations en marche. Prêt à l'emploi.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Ce qui distingue Feix</div>
+    <ul class="diff-list">
+      <li><span class="diff-num">01</span><span class="diff-text"><strong>Automatisation intégrée.</strong> Feix livre des automatisations fonctionnelles avec votre interface : traitement de formulaires, envoi d'emails, écritures en base de données, logique conditionnelle. Pas seulement un site, un produit complet.</span></li>
+      <li><span class="diff-num">02</span><span class="diff-text"><strong>Livraison clé en main.</strong> Vous recevez une URL fonctionnelle, pas des fichiers de code. Domaine, hébergement, base de données, SSL : tout est configuré et en ligne.</span></li>
+      <li><span class="diff-num">03</span><span class="diff-text"><strong>Contrôle qualité humain.</strong> Chaque livraison est revue, finalisée et testée par un humain avant expédition. Pas de sortie brute.</span></li>
+      <li><span class="diff-num">04</span><span class="diff-text"><strong>Deux options d'infrastructure.</strong> Géré par Feix (nous prenons tout en charge) ou géré par le client (vous fournissez l'hébergement et les identifiants). Même qualité de production.</span></li>
+      <li><span class="diff-num">05</span><span class="diff-text"><strong>Pipeline de production multi-étapes.</strong> Votre projet passe par plusieurs étapes computationnelles avant la livraison. Chaque étape est revue indépendamment pour la qualité, la cohérence et l'exhaustivité.</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Tarifs</div>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Offre</th>
+          <th>Prix</th>
+          <th>Inclus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Starter</td>
+          <td><span class="price">400&nbsp;&euro;</span></td>
+          <td><span class="unit">Site statique (jusqu'à 5 pages), 1 automatisation, hébergement</span></td>
+        </tr>
+        <tr>
+          <td>Business</td>
+          <td><span class="price">1&nbsp;000&nbsp;&euro;</span></td>
+          <td><span class="unit">Application multi-pages, jusqu'à 3 automatisations, base de données, 1 révision</span></td>
+        </tr>
+        <tr>
+          <td>Advanced</td>
+          <td><span class="price">2&nbsp;500&nbsp;&euro;</span></td>
+          <td><span class="unit">Application complexe, automatisations illimitées, intégrations API, 2 révisions</span></td>
+        </tr>
+        <tr>
+          <td>Sur mesure</td>
+          <td><span class="price">Sur demande</span></td>
+          <td><span class="unit">Besoins hors cadre standard, cadrage préalable</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pricing-note">Chaque livraison inclut 90 jours d'hébergement offert. Forfaits de maintenance à partir de 30&nbsp;&euro;/mois. Agences : remise de volume à partir de 5 projets (10&nbsp;%) et 10 projets (15&nbsp;%).</div>
+
+    <table class="pricing-table" style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th colspan="3" style="color: var(--accent); text-transform: none; letter-spacing: 0; font-size: 0.78rem;">Comparatif freelances et agences</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Freelance</td>
+          <td><span class="unit">1&nbsp;500 &agrave; 8&nbsp;000&nbsp;&euro;</span></td>
+          <td><span class="unit">Plusieurs semaines</span></td>
+        </tr>
+        <tr>
+          <td>Agence</td>
+          <td><span class="unit">6&nbsp;000 &agrave; 35&nbsp;000&nbsp;&euro;+</span></td>
+          <td><span class="unit">Semaines ou mois</span></td>
+        </tr>
+        <tr>
+          <td style="color: var(--fg); font-weight: 600;">Feix</td>
+          <td><span class="price">400 &agrave; 2&nbsp;500&nbsp;&euro;</span></td>
+          <td><span class="unit">Quelques heures</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="contact">
+    <div class="contact-info">
+      <div class="name">Dr F&#305;rat Ilim</div>
+      <div class="title">Fondateur et Directeur</div>
+      <div>Llull Lab</div>
+      <a href="mailto:growth.business@llulllab.com" class="contact-email">growth.business@llulllab.com</a>
+    </div>
+    <div class="contact-brand">
+      llulllab.com<br>
+      feix.app
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
