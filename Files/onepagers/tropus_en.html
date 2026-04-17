@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feix, AI Studio | Llull Lab</title>
+  <title>Tropus, Generative Music Machine | Llull Lab</title>
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,9 +14,9 @@
       --muted: #888;
       --dim: #444;
       --accent: #c8c8c8;
-      --highlight: #38bdf8;
-      --highlight-soft: rgba(56,189,248,0.08);
-      --highlight-dim: rgba(56,189,248,0.25);
+      --highlight: #c084fc;
+      --highlight-soft: rgba(192,132,252,0.08);
+      --highlight-dim: rgba(192,132,252,0.25);
       --border: rgba(255,255,255,0.10);
       --border-strong: rgba(255,255,255,0.20);
       --serif: 'Spectral', Georgia, serif;
@@ -26,7 +26,7 @@
     }
 
     @media print {
-      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #0369a1; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
+      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #7c3aed; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
       body { font-size: 11pt; }
       .page { box-shadow: none; max-width: 100%; padding: 0; }
       @page { margin: 1.5cm; }
@@ -86,6 +86,11 @@
     .diff-text { font-size: 0.9rem; color: var(--accent); line-height: 1.6; }
     .diff-text strong { color: var(--fg); font-weight: 600; }
 
+    .use-cases { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-bottom: 12px; border-radius: 2px; overflow: hidden; }
+    .use-case { background: var(--bg); padding: 24px 20px; }
+    .use-case-title { font-family: var(--sans); font-size: 0.82rem; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .use-case-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
     .pricing-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.82rem; margin-bottom: 12px; }
     .pricing-table th { text-align: left; font-weight: 500; color: var(--muted); font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 16px; border-bottom: 1px solid var(--border-strong); }
     .pricing-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--accent); }
@@ -105,6 +110,7 @@
     @media (max-width: 600px) {
       .flow-steps { flex-direction: column; }
       .anchor-bar { flex-direction: column; }
+      .use-cases { grid-template-columns: 1fr; }
       .contact { flex-direction: column; align-items: flex-start; }
       .contact-brand { text-align: left; }
       .hero h1 { font-size: 1.8rem; }
@@ -121,29 +127,34 @@
   </div>
 
   <div class="hero">
-    <img src="../logos/feix.jpg" alt="Feix" class="hero-logo">
-    <div class="hero-label">AI Studio</div>
-    <h1>Feix</h1>
-    <p class="hero-sub">Describe your project in plain language. Receive a complete, working web application (interface, automation, hosting) deployed and delivered within hours. No technical skills required.</p>
+    <img src="../logos/tropus.png" alt="Tropus" class="hero-logo">
+    <div class="hero-label">Generative Music Machine</div>
+    <h1>Tropus</h1>
+    <p class="hero-sub">Knowledge-grounded musical composition through conversation. Describe what you want, receive a fully rendered original piece in approximately 30 seconds. A structured musical knowledge system and a computational composition engine, integrated in a single interface.</p>
   </div>
 
   <div class="anchor-bar">
     <div class="anchor-item">
-      <div class="anchor-value">Hours</div>
-      <div class="anchor-label">Not Weeks</div>
+      <div class="anchor-value">~30s</div>
+      <div class="anchor-label">Generation Time</div>
     </div>
     <div class="anchor-item">
-      <div class="anchor-value">Complete</div>
-      <div class="anchor-label">Interface + Automation</div>
+      <div class="anchor-value">WAV</div>
+      <div class="anchor-label">Rendered Audio Output</div>
     </div>
     <div class="anchor-item">
-      <div class="anchor-value">Turnkey</div>
-      <div class="anchor-label">Working URL Delivered</div>
+      <div class="anchor-value">Dual</div>
+      <div class="anchor-label">Knowledge + Generation</div>
     </div>
     <div class="anchor-item">
-      <div class="anchor-value">Human QC</div>
-      <div class="anchor-label">Reviewed Before Delivery</div>
+      <div class="anchor-value">Headless</div>
+      <div class="anchor-label">Server-Side Rendering</div>
     </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The Problem</div>
+    <p>Creative professionals need original music for games, media, content, and prototypes. Stock music is generic and over-licensed. Commissioning a composer costs hundreds to thousands per track and takes days. Generative tools that produce MIDI sequences or text descriptions of chords leave the user to do the actual production work. There is no service that takes a plain-language description and delivers a finished, rendered piece of music.</p>
   </div>
 
   <div class="section">
@@ -152,17 +163,17 @@
       <div class="flow-step">
         <div class="flow-step-num">01</div>
         <div class="flow-step-title">Describe</div>
-        <div class="flow-step-desc">Tell us what you need. A website, ordering system, booking platform. In plain language.</div>
+        <div class="flow-step-desc">Tell Tropus what you want in plain language: mood, genre, tempo, instrumentation. Or ask a question about music theory.</div>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">02</div>
-        <div class="flow-step-title">We Build</div>
-        <div class="flow-step-desc">Computational pipeline generates your complete application: interface and automation together. A human team reviews and configures.</div>
+        <div class="flow-step-title">Compose</div>
+        <div class="flow-step-desc">The system generates a structured composition: drums, bass, melody, chords, effects, and musical form. Rendered entirely on the server.</div>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">03</div>
-        <div class="flow-step-title">Delivered</div>
-        <div class="flow-step-desc">Working URL with live hosting, configured database, and active automation. Ready to use.</div>
+        <div class="flow-step-title">Deliver</div>
+        <div class="flow-step-desc">A 60-second original piece, fully rendered as a playable WAV file in ~30 seconds. No post-production, no plugins, no client-side dependencies.</div>
       </div>
     </div>
   </div>
@@ -170,12 +181,33 @@
   <div class="section">
     <div class="section-title">What Sets It Apart</div>
     <ul class="diff-list">
-      <li><span class="diff-num">01</span><span class="diff-text"><strong>Built-in automation.</strong> Feix delivers working automation alongside your interface: form processing, email delivery, database writes, conditional logic. Not just a website; a complete working product.</span></li>
-      <li><span class="diff-num">02</span><span class="diff-text"><strong>Turnkey delivery.</strong> You receive a working URL, not code files. Domain, hosting, database, SSL, everything configured and live.</span></li>
-      <li><span class="diff-num">03</span><span class="diff-text"><strong>Human quality control.</strong> Every delivery is reviewed, polished, and tested by a human before shipping. Not raw output.</span></li>
-      <li><span class="diff-num">04</span><span class="diff-text"><strong>Two infrastructure paths.</strong> Feix-managed (we handle everything) or customer-managed (you provide hosting and credentials). Same build quality.</span></li>
-      <li><span class="diff-num">05</span><span class="diff-text"><strong>Multi-stage production pipeline.</strong> Your project passes through multiple computational stages before delivery. Each stage independently reviewed for quality, consistency, and completeness.</span></li>
+      <li><span class="diff-num">01</span><span class="diff-text"><strong>Rendered audio, not instructions.</strong> The output is a finished WAV file containing a structured, multi-layer composition. Not MIDI, not chord charts, not a text description of what the music could sound like.</span></li>
+      <li><span class="diff-num">02</span><span class="diff-text"><strong>Knowledge-grounded composition.</strong> Generation is informed by the <em>Tractatus de Musica</em>, a formally structured corpus of musical knowledge: definitions, axioms, propositions, demonstrations. This is not generic pattern matching from training data.</span></li>
+      <li><span class="diff-num">03</span><span class="diff-text"><strong>Integrated knowledge system.</strong> Users can query the same corpus directly for music theory, harmony, and composition. "What is a Phrygian mode?" and "Compose something in Phrygian mode" work in the same conversation.</span></li>
+      <li><span class="diff-num">04</span><span class="diff-text"><strong>Server-side headless rendering.</strong> The entire composition and rendering pipeline runs on the server. No desktop application, no plugins, no sound card required on the client. The user sends a message and receives an audio file.</span></li>
     </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Use Cases</div>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="use-case-title">Game &amp; Media Production</div>
+        <div class="use-case-desc">Original, license-free compositions for scenes, trailers, prototypes, or interactive environments.</div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-title">Content Creation</div>
+        <div class="use-case-desc">Background music for video, podcasts, or social media. Generated on demand, no licensing concerns.</div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-title">Music Education</div>
+        <div class="use-case-desc">Query a structured musical corpus, then hear theoretical concepts rendered as audio in the same session.</div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-title">Rapid Prototyping</div>
+        <div class="use-case-desc">Composers and producers generate starter pieces to explore directions before committing to full production.</div>
+      </div>
+    </div>
   </div>
 
   <div class="section">
@@ -183,60 +215,35 @@
     <table class="pricing-table">
       <thead>
         <tr>
-          <th>Package</th>
+          <th>Tier</th>
           <th>Price</th>
           <th>Includes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Starter</td>
-          <td><span class="price">$400</span></td>
-          <td><span class="unit">Static site (up to 5 pages), 1 workflow, hosting</span></td>
+          <td>Free</td>
+          <td><span class="price">Free</span></td>
+          <td><span class="unit">5 compositions/month, non-commercial use</span></td>
         </tr>
         <tr>
-          <td>Business</td>
-          <td><span class="price">$1,000</span></td>
-          <td><span class="unit">Multi-page app, up to 3 automation workflows, database, 1 revision</span></td>
+          <td>Creator</td>
+          <td><span class="price">&euro;19/month</span></td>
+          <td><span class="unit">30 compositions, commercial license, conversation history</span></td>
         </tr>
         <tr>
-          <td>Advanced</td>
-          <td><span class="price">$2,500</span></td>
-          <td><span class="unit">Complex app, unlimited workflows, API integrations, 2 revisions</span></td>
+          <td>Professional</td>
+          <td><span class="price">&euro;59/month</span></td>
+          <td><span class="unit">100 compositions, 48 kHz audio, priority rendering</span></td>
         </tr>
         <tr>
-          <td>Custom</td>
-          <td><span class="price">On request</span></td>
-          <td><span class="unit">Non-standard scope, scoping conversation</span></td>
+          <td>Studio</td>
+          <td><span class="price">&euro;149/month</span></td>
+          <td><span class="unit">300 compositions, batch requests, project workspaces</span></td>
         </tr>
       </tbody>
     </table>
-    <div class="pricing-note">All deliveries include 90 days of complimentary hosting. Maintenance plans from $30/month. Agencies: volume discount at 5+ projects (10%) and 10+ (15%).</div>
-
-    <table class="pricing-table" style="margin-top: 20px;">
-      <thead>
-        <tr>
-          <th colspan="3" style="color: var(--accent); text-transform: none; letter-spacing: 0; font-size: 0.78rem;">Freelancer &amp; Agency Comparison</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Freelancer</td>
-          <td><span class="unit">$1,500 &ndash; $8,000</span></td>
-          <td><span class="unit">Weeks to deliver</span></td>
-        </tr>
-        <tr>
-          <td>Agency</td>
-          <td><span class="unit">$6,000 &ndash; $35,000+</span></td>
-          <td><span class="unit">Weeks to months</span></td>
-        </tr>
-        <tr>
-          <td style="color: var(--fg); font-weight: 600;">Feix</td>
-          <td><span class="price">$400 &ndash; $2,500</span></td>
-          <td><span class="unit">Hours</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="pricing-note">All paid tiers include a commercial use license. No attribution required. Annual billing available.</div>
   </div>
 
   <div class="contact">
@@ -248,7 +255,7 @@
     </div>
     <div class="contact-brand">
       llulllab.com<br>
-      feix.app
+      tropus.io
     </div>
   </div>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feix, AI Studio | Llull Lab</title>
+  <title>Cedulia, Computational Short Film Production | Llull Lab</title>
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,9 +14,9 @@
       --muted: #888;
       --dim: #444;
       --accent: #c8c8c8;
-      --highlight: #38bdf8;
-      --highlight-soft: rgba(56,189,248,0.08);
-      --highlight-dim: rgba(56,189,248,0.25);
+      --highlight: #f59e0b;
+      --highlight-soft: rgba(245,158,11,0.08);
+      --highlight-dim: rgba(245,158,11,0.25);
       --border: rgba(255,255,255,0.10);
       --border-strong: rgba(255,255,255,0.20);
       --serif: 'Spectral', Georgia, serif;
@@ -26,7 +26,7 @@
     }
 
     @media print {
-      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #0369a1; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
+      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #b45309; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
       body { font-size: 11pt; }
       .page { box-shadow: none; max-width: 100%; padding: 0; }
       @page { margin: 1.5cm; }
@@ -59,7 +59,6 @@
     .doc-date { font-family: var(--sans); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.5px; }
 
     .hero { margin-bottom: 48px; }
-    .hero-logo { width: 80px; height: 80px; object-fit: contain; border-radius: 12px; margin-bottom: 20px; }
     .hero-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--highlight); margin-bottom: 16px; }
     .hero h1 { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
     .hero-sub { font-size: 1.05rem; color: var(--accent); max-width: 600px; line-height: 1.75; }
@@ -94,6 +93,9 @@
     .pricing-table .unit { color: var(--muted); font-size: 0.75rem; }
     .pricing-note { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); line-height: 1.6; margin-top: 8px; }
 
+    .roadmap { font-family: var(--sans); font-size: 0.85rem; color: var(--accent); line-height: 1.7; padding: 20px 24px; background: var(--highlight-soft); border: 1px solid var(--highlight-dim); border-radius: 2px; }
+    .roadmap strong { color: var(--highlight); }
+
     .contact { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
     .contact-info { font-family: var(--sans); font-size: 0.85rem; color: var(--accent); line-height: 1.8; }
     .contact-info .name { color: var(--fg); font-weight: 600; font-size: 0.9rem; }
@@ -121,29 +123,33 @@
   </div>
 
   <div class="hero">
-    <img src="../logos/feix.jpg" alt="Feix" class="hero-logo">
-    <div class="hero-label">AI Studio</div>
-    <h1>Feix</h1>
-    <p class="hero-sub">Describe your project in plain language. Receive a complete, working web application (interface, automation, hosting) deployed and delivered within hours. No technical skills required.</p>
+    <div class="hero-label">Computational Short Film Production</div>
+    <h1>Cedulia</h1>
+    <p class="hero-sub">Story to short film screenplay in approximately one minute. Submit your narrative in plain language, receive a professional, quality-controlled screenplay with structured scene metadata. Grounded in thousands of professional screenplays. Production-ready.</p>
   </div>
 
   <div class="anchor-bar">
     <div class="anchor-item">
-      <div class="anchor-value">Hours</div>
-      <div class="anchor-label">Not Weeks</div>
+      <div class="anchor-value">2-Stage</div>
+      <div class="anchor-label">Generation + Quality Control</div>
     </div>
     <div class="anchor-item">
-      <div class="anchor-value">Complete</div>
-      <div class="anchor-label">Interface + Automation</div>
+      <div class="anchor-value">~1 min</div>
+      <div class="anchor-label">Delivery Time</div>
     </div>
     <div class="anchor-item">
-      <div class="anchor-value">Turnkey</div>
-      <div class="anchor-label">Working URL Delivered</div>
+      <div class="anchor-value">Per-Scene</div>
+      <div class="anchor-label">Structured Metadata</div>
     </div>
     <div class="anchor-item">
-      <div class="anchor-value">Human QC</div>
-      <div class="anchor-label">Reviewed Before Delivery</div>
+      <div class="anchor-value">4</div>
+      <div class="anchor-label">Languages</div>
     </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The Problem</div>
+    <p>A professional short film screenplay costs hundreds to thousands and takes days to weeks. Independent filmmakers, students, and small production teams cannot afford this for every idea they want to explore. Existing writing tools produce prose, not production-ready screenplays. There is no service that takes a story idea and delivers a professional, structured short film screenplay in under a minute.</p>
   </div>
 
   <div class="section">
@@ -151,18 +157,18 @@
     <div class="flow-steps">
       <div class="flow-step">
         <div class="flow-step-num">01</div>
-        <div class="flow-step-title">Describe</div>
-        <div class="flow-step-desc">Tell us what you need. A website, ordering system, booking platform. In plain language.</div>
+        <div class="flow-step-title">Submit</div>
+        <div class="flow-step-desc">Describe your story in plain language: plot, characters, setting, tone. Any genre, four languages.</div>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">02</div>
-        <div class="flow-step-title">We Build</div>
-        <div class="flow-step-desc">Computational pipeline generates your complete application: interface and automation together. A human team reviews and configures.</div>
+        <div class="flow-step-title">Generate</div>
+        <div class="flow-step-desc">The system produces a professionally formatted short film screenplay, grounded in a library of thousands of professional screenplays. Each scene includes structured production metadata.</div>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">03</div>
-        <div class="flow-step-title">Delivered</div>
-        <div class="flow-step-desc">Working URL with live hosting, configured database, and active automation. Ready to use.</div>
+        <div class="flow-step-title">Verify</div>
+        <div class="flow-step-desc">A second computational stage independently reviews the screenplay for structural integrity, pacing, and production readiness before delivery.</div>
       </div>
     </div>
   </div>
@@ -170,11 +176,10 @@
   <div class="section">
     <div class="section-title">What Sets It Apart</div>
     <ul class="diff-list">
-      <li><span class="diff-num">01</span><span class="diff-text"><strong>Built-in automation.</strong> Feix delivers working automation alongside your interface: form processing, email delivery, database writes, conditional logic. Not just a website; a complete working product.</span></li>
-      <li><span class="diff-num">02</span><span class="diff-text"><strong>Turnkey delivery.</strong> You receive a working URL, not code files. Domain, hosting, database, SSL, everything configured and live.</span></li>
-      <li><span class="diff-num">03</span><span class="diff-text"><strong>Human quality control.</strong> Every delivery is reviewed, polished, and tested by a human before shipping. Not raw output.</span></li>
-      <li><span class="diff-num">04</span><span class="diff-text"><strong>Two infrastructure paths.</strong> Feix-managed (we handle everything) or customer-managed (you provide hosting and credentials). Same build quality.</span></li>
-      <li><span class="diff-num">05</span><span class="diff-text"><strong>Multi-stage production pipeline.</strong> Your project passes through multiple computational stages before delivery. Each stage independently reviewed for quality, consistency, and completeness.</span></li>
+      <li><span class="diff-num">01</span><span class="diff-text"><strong>Production-ready output.</strong> Not a story draft. A professionally structured screenplay with per-scene metadata: location, time, characters, mood, visual notes. Ready for storyboarding, shot planning, and casting.</span></li>
+      <li><span class="diff-num">02</span><span class="diff-text"><strong>Grounded in professional practice.</strong> Generation is informed by a library of thousands of professional screenplays, not generic text training data.</span></li>
+      <li><span class="diff-num">03</span><span class="diff-text"><strong>Two-stage quality control.</strong> Every screenplay passes through a second computational stage that independently verifies structure, pacing, and production readiness.</span></li>
+      <li><span class="diff-num">04</span><span class="diff-text"><strong>~1 minute delivery.</strong> From story idea to complete short film screenplay in approximately one minute.</span></li>
     </ul>
   </div>
 
@@ -183,60 +188,42 @@
     <table class="pricing-table">
       <thead>
         <tr>
-          <th>Package</th>
+          <th>Tier</th>
           <th>Price</th>
           <th>Includes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Starter</td>
-          <td><span class="price">$400</span></td>
-          <td><span class="unit">Static site (up to 5 pages), 1 workflow, hosting</span></td>
+          <td>Free Trial</td>
+          <td><span class="price">Free</span></td>
+          <td><span class="unit">1 screenplay, non-commercial</span></td>
         </tr>
         <tr>
-          <td>Business</td>
-          <td><span class="price">$1,000</span></td>
-          <td><span class="unit">Multi-page app, up to 3 automation workflows, database, 1 revision</span></td>
+          <td>Short Film</td>
+          <td><span class="price">&euro;19</span></td>
+          <td><span class="unit">Commercial license, scene metadata</span></td>
         </tr>
         <tr>
-          <td>Advanced</td>
-          <td><span class="price">$2,500</span></td>
-          <td><span class="unit">Complex app, unlimited workflows, API integrations, 2 revisions</span></td>
+          <td>Bundle 5</td>
+          <td><span class="price">&euro;79</span></td>
+          <td><span class="unit">5 screenplays, all features</span></td>
         </tr>
         <tr>
-          <td>Custom</td>
-          <td><span class="price">On request</span></td>
-          <td><span class="unit">Non-standard scope, scoping conversation</span></td>
+          <td>Bundle 15</td>
+          <td><span class="price">&euro;199</span></td>
+          <td><span class="unit">15 screenplays, priority processing</span></td>
         </tr>
       </tbody>
     </table>
-    <div class="pricing-note">All deliveries include 90 days of complimentary hosting. Maintenance plans from $30/month. Agencies: volume discount at 5+ projects (10%) and 10+ (15%).</div>
+    <div class="pricing-note">Professional screenwriter comparison: hundreds to thousands per screenplay, days to weeks.</div>
+  </div>
 
-    <table class="pricing-table" style="margin-top: 20px;">
-      <thead>
-        <tr>
-          <th colspan="3" style="color: var(--accent); text-transform: none; letter-spacing: 0; font-size: 0.78rem;">Freelancer &amp; Agency Comparison</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Freelancer</td>
-          <td><span class="unit">$1,500 &ndash; $8,000</span></td>
-          <td><span class="unit">Weeks to deliver</span></td>
-        </tr>
-        <tr>
-          <td>Agency</td>
-          <td><span class="unit">$6,000 &ndash; $35,000+</span></td>
-          <td><span class="unit">Weeks to months</span></td>
-        </tr>
-        <tr>
-          <td style="color: var(--fg); font-weight: 600;">Feix</td>
-          <td><span class="price">$400 &ndash; $2,500</span></td>
-          <td><span class="unit">Hours</span></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="section">
+    <div class="section-title">Roadmap</div>
+    <div class="roadmap">
+      <strong>Feature-length screenplays and direct video production are in development.</strong> Cedulia's current short film screenplay layer is the first stage of a full computational film production pipeline.
+    </div>
   </div>
 
   <div class="contact">
@@ -247,8 +234,7 @@
       <a href="mailto:growth.business@llulllab.com" class="contact-email">growth.business@llulllab.com</a>
     </div>
     <div class="contact-brand">
-      llulllab.com<br>
-      feix.app
+      llulllab.com
     </div>
   </div>
 
