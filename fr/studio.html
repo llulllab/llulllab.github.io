@@ -370,6 +370,23 @@
       background: transparent;
     }
 
+    .product-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .product-links .product-link { margin-top: 0; }
+    .product-link.secondary {
+      background: transparent;
+      color: var(--highlight);
+      border: 1px solid var(--highlight);
+    }
+    .product-link.secondary:hover {
+      background: var(--highlight);
+      color: var(--bg);
+    }
+
     /* IN DEVELOPMENT SECTION */
     .dev-section {
       border-top: 1px solid var(--border);
@@ -503,10 +520,13 @@
         <div class="product-top">
           <div class="product-name machine">Phi-Yo</div>
           <div class="product-status">Disponible</div>
-          <div class="product-type">Machine d'Analyse Scientifique des Rêves</div>
-          <div class="product-desc">Interprétation scientifique des rêves alimentée par l'ontologie psychanalytique computationnelle</div>
+          <div class="product-type">Compagnon Psychanalytique Computationnel de Bien-être</div>
+          <div class="product-desc">Un compagnon psychanalytique multi-mode construit sur Freud for Machines. Produit grand public en service et infrastructure d'intégration pour partenaires.</div>
         </div>
-        <a href="https://phi-yo.app" target="_blank" class="product-link">Ouvrir Phi-Yo →</a>
+        <div class="product-links">
+          <a href="https://phi-yo.app" target="_blank" class="product-link">Ouvrir l'application →</a>
+          <a href="https://phi-yo.app/b2b/" target="_blank" class="product-link secondary">Pour partenaires →</a>
+        </div>
       </div>
 
       <div class="product-card fade-up">
@@ -604,7 +624,6 @@
       <div class="footer-links">
         <a href="../mentions-legales.html">Mentions Légales</a>
         <a href="../privacy-policy.html">Privacy Policy</a>
-        <a href="https://feix.app" target="_blank" rel="noopener">Created by Feix</a>
       </div>
     </div>
   </footer>

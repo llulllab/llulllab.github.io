@@ -370,6 +370,23 @@
       background: transparent;
     }
 
+    .product-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .product-links .product-link { margin-top: 0; }
+    .product-link.secondary {
+      background: transparent;
+      color: var(--highlight);
+      border: 1px solid var(--highlight);
+    }
+    .product-link.secondary:hover {
+      background: var(--highlight);
+      color: var(--bg);
+    }
+
     /* IN DEVELOPMENT SECTION */
     .dev-section {
       border-top: 1px solid var(--border);
@@ -503,10 +520,13 @@
         <div class="product-top">
           <div class="product-name machine">Phi-Yo</div>
           <div class="product-status">Released</div>
-          <div class="product-type">Scientific Dream Analysis Machine</div>
-          <div class="product-desc">Scientific dream interpretation powered by computational psychoanalytic ontology</div>
+          <div class="product-type">Computational Psychoanalytic Wellbeing Companion</div>
+          <div class="product-desc">A multi-mode psychoanalytic companion built on Freud for Machines. Live consumer product and integration-ready backend for partners.</div>
         </div>
-        <a href="https://phi-yo.app" target="_blank" class="product-link">Open Phi-Yo →</a>
+        <div class="product-links">
+          <a href="https://phi-yo.app" target="_blank" class="product-link">Open the app →</a>
+          <a href="https://phi-yo.app/b2b/" target="_blank" class="product-link secondary">For partners →</a>
+        </div>
       </div>
 
       <div class="product-card fade-up">
@@ -604,7 +624,6 @@
       <div class="footer-links">
         <a href="../mentions-legales.html">Mentions Légales</a>
         <a href="../privacy-policy.html">Privacy Policy</a>
-        <a href="https://feix.app" target="_blank" rel="noopener">Created by Feix</a>
       </div>
     </div>
   </footer>
