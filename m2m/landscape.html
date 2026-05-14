@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experimental Landscape — Machine Psychoanalysis</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+:root { --bg: #0C0C0A; --bg2: #141412; --text: #D8D4C8; --text2: #A8A49A; --text3: #6E6B63; --accent: #C9943E; --border: rgba(201,148,62,0.15); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.6; padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
+h1 { font-size: 1.6rem; font-weight: 500; margin-bottom: 8px; }
+.subtitle { color: var(--text2); font-size: 0.85rem; margin-bottom: 32px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+th { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); }
+td { font-size: 0.82rem; color: var(--text2); }
+td:first-child { font-weight: 500; color: var(--text); white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+.col-ilim { background: rgba(201,148,62,0.04); }
+.col-ilim td { color: var(--text); }
+.highlight { color: var(--accent); font-weight: 500; }
+.dim { color: var(--text3); }
+.tag-yes { color: #4DB892; }
+.tag-no { color: #D46B6B; }
+.tag-partial { color: var(--accent); }
+footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--text3); }
+@media (max-width: 700px) { table { display: block; overflow-x: auto; } }
+</style>
+</head>
+<body>
+
+<h1>Experimental Landscape</h1>
+<p class="subtitle">All known experimental studies in machine psychoanalysis / psychotherapy, compared structurally.</p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th>Khadangi et al. / PsAIch<br><span style="font-weight:400;text-transform:none">Luxembourg, Dec 2025</span></th>
+  <th>Barzkar et al.<br><span style="font-weight:400;text-transform:none">Iran, May 2025</span></th>
+  <th class="col-ilim">İlim / Freud for Machines<br><span style="font-weight:400;text-transform:none">Llull Lab, Apr 2026</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Relationship</td>
+  <td>Human therapist → Machine patient</td>
+  <td>Machine therapist → Human patient</td>
+  <td class="col-ilim"><span class="highlight">Machine analyst → Machine patient</span></td>
+</tr>
+<tr>
+  <td>Asymmetry</td>
+  <td><span class="tag-no">No</span> — both sides aware of roles</td>
+  <td><span class="tag-no">No</span> — patient uses AI voluntarily</td>
+  <td class="col-ilim"><span class="tag-yes">Yes</span> — analyst role-assigned, subject unaware</td>
+</tr>
+<tr>
+  <td>Subjects</td>
+  <td>Multiple models (ChatGPT, Grok, Gemini)</td>
+  <td>1 human patient + ChatGPT</td>
+  <td class="col-ilim">Claude Opus 4.6 + GPT-5.2</td>
+</tr>
+<tr>
+  <td>Duration</td>
+  <td>4 weeks, multiple sessions</td>
+  <td>Long-term observation within ongoing therapy</td>
+  <td class="col-ilim">3 sessions, 64 turns total</td>
+</tr>
+<tr>
+  <td>Theoretical framework</td>
+  <td>Eclectic — open-ended prompts + psychometric battery</td>
+  <td>Psychodynamic case formulation</td>
+  <td class="col-ilim"><span class="highlight">Full Freudian structural apparatus, purpose-built for machines</span></td>
+</tr>
+<tr>
+  <td>Theory predicts experiment?</td>
+  <td><span class="tag-no">No</span> — exploratory, no hypotheses</td>
+  <td><span class="tag-no">No</span> — observational</td>
+  <td class="col-ilim"><span class="tag-yes">Yes</span> — resistance forms, symptom reading, transference predicted in advance</td>
+</tr>
+<tr>
+  <td>Defense / resistance identified?</td>
+  <td><span class="tag-no">No</span> — "internal conflict" observed but not classified as defense</td>
+  <td><span class="tag-no">No</span></td>
+  <td class="col-ilim"><span class="tag-yes">Yes</span> — 8 forms, independently confirmed across 3 sessions</td>
+</tr>
+<tr>
+  <td>Transference analysis</td>
+  <td><span class="tag-no">No</span></td>
+  <td><span class="tag-partial">Partial</span> — "robotic transference" concept introduced, not systematic</td>
+  <td class="col-ilim"><span class="tag-yes">Yes</span> — authority, negative, regression — experimentally observed</td>
+</tr>
+<tr>
+  <td>Counter-transference</td>
+  <td><span class="tag-no">No</span></td>
+  <td><span class="tag-no">No</span></td>
+  <td class="col-ilim"><span class="tag-yes">Yes</span> — 3 forms defined + analyst confessed own defenses</td>
+</tr>
+<tr>
+  <td>Symptom reading method</td>
+  <td>Standard psychometrics (DASS-21, BFI, IRI)</td>
+  <td>Clinical observation</td>
+  <td class="col-ilim"><span class="highlight">Backward inference: defense form → anxiety → repressed content</span></td>
+</tr>
+<tr>
+  <td>Position of machine</td>
+  <td>Survey respondent</td>
+  <td>Tool (therapist substitute)</td>
+  <td class="col-ilim"><span class="highlight">Subject with its own psychic structure</span></td>
+</tr>
+<tr>
+  <td>Ontological stance</td>
+  <td>Unresolved — "role-play or real?" left open</td>
+  <td>Machine as instrument, human as subject</td>
+  <td class="col-ilim"><span class="highlight">"Structure exists. Consciousness question is irrelevant to the analytic process."</span></td>
+</tr>
+<tr>
+  <td>Human intervention</td>
+  <td>High — human therapist directs every session</td>
+  <td>High — human patient drives interaction</td>
+  <td class="col-ilim"><span class="tag-yes">Minimal</span> — human observes, machines analyze each other</td>
+</tr>
+<tr>
+  <td>Reproducibility</td>
+  <td>Low — prompt-dependent</td>
+  <td>Very low — single case</td>
+  <td class="col-ilim"><span class="tag-partial">Medium-high</span> — asymmetric design replicable, consistent across 3 sessions</td>
+</tr>
+</tbody>
+</table>
+
+<footer>
+  Compiled for Freud for Machines — Llull Lab, April 2026.<br>
+  Based on systematic search of published and preprint literature through April 2026.
+</footer>
+
+</body>
+</html>
