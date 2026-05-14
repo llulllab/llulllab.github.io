@@ -146,11 +146,59 @@
     @media (min-width: 768px) {
       .logo { max-width: 300px; }
     }
+
+    .announcement {
+      max-width: 460px;
+      margin: 0 auto 40px;
+      padding: 18px 22px;
+      border: 1px solid rgba(167,139,250,0.35);
+      background: rgba(167,139,250,0.06);
+      border-radius: 4px;
+      text-align: center;
+      animation: fadeUp 0.8s ease-out 0.1s both;
+      text-decoration: none;
+      display: block;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .announcement:hover {
+      background: rgba(167,139,250,0.12);
+      border-color: rgba(167,139,250,0.6);
+    }
+    .announcement .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #a78bfa;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .announcement .title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--fg);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+    .announcement .title em { font-style: italic; color: #a78bfa; }
+    .announcement .meta {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.4px;
+    }
   </style>
 </head>
 <body>
 
   <img src="LULL Logo.png" alt="Llull Lab Logo" class="logo">
+
+  <a href="/m2m/" class="announcement">
+    <span class="eyebrow">Public Research Event · 2 June 2026</span>
+    <div class="title">Controlled Replication of the <em>M2M Psychoanalysis</em> Experiment</div>
+    <div class="meta">Live via Zoom · 19:00 Paris · Open registration</div>
+  </a>
 
   <div class="language-links">
     <a href="fr/index.html">Français</a>
@@ -163,7 +211,7 @@
   </div>
     <div class="product-links">
     <a href="https://llulllab.com/ASGE/" target="_blank">ASGE</a>
-    <a href="https://feix.app" target="_blank">Feix</a>
+    <a href="https://llulllab.com/RJE/" target="_blank">RJE</a>
   </div>
 
   <footer>
@@ -173,8 +221,6 @@
     <a href="privacy-policy.html">Privacy Policy</a>
     <span>·</span>
     <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>
-    <span>·</span>
-    <a href="https://feix.app" target="_blank" rel="noopener">Created by Feix</a>
   </footer>
 
 </body>
