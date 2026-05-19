@@ -62,12 +62,12 @@
     .person-email { display: inline-block; margin-top: 12px; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .person-email:hover { color: var(--fg); }
 
-    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; }
-    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
-    .footer-left { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
-    .footer-links { display: flex; gap: 24px; font-family: var(--sans); font-size: 0.82rem; }
-    .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--fg); }
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+    @media (max-width: 600px) { footer { padding: 32px 20px; margin-top: 56px; font-size: 0.78rem; } }
   </style>
 </head>
 <body>
@@ -141,11 +141,6 @@
       <h2>Collaborateurs (basés sur des projets)</h2>
       <div class="people-grid">
         <div class="person-card">
-          <div class="person-role">Son, image &amp; expérience vécue</div>
-          <div class="person-name">Kon Bourdos</div>
-          <div class="person-bio">Basé à Athènes. Neurodivergent (TDAH &amp; spectre autistique). Une décennie de travail dans la production vidéo et la scène Reggae Sound System, toujours au sein de collectifs à vocation communautaire. Écrit actuellement de la poésie et participe à des ateliers de théâtre et de peinture. Attiré par ce qui se situe entre le visible et l'indicible, et par la façon dont l'IA pourrait aider à franchir cette distance.</div>
-        </div>
-        <div class="person-card">
           <div class="person-role">Astrophysique &amp; raisonnement incertain</div>
           <div class="person-name">Aashish Kapoor</div>
           <div class="person-bio">Étudiant en licence de physique et d'informatique. Travaille sur la compréhension de notre environnement à travers les échelles. Utilise l'IA pour simplifier les systèmes complexes.</div>
@@ -180,14 +175,10 @@
   </section>
 
   <footer>
-    <div class="footer-inner">
-      <div class="footer-left">Llull Lab<br>Paris, France<br>contact@llulllab.com</div>
-      <div class="footer-links">
-        <a href="../mentions-legales.html">Mentions Légales</a>
-        <a href="../privacy-policy.html">Privacy Policy</a>
-        <a href="https://feix.app" target="_blank" rel="noopener">Created by Feix</a>
-      </div>
-    </div>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="../privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="../mentions-legales.html">Mentions Légales</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
   </footer>
 
 </body>

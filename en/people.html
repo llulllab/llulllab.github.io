@@ -62,12 +62,12 @@
     .person-email { display: inline-block; margin-top: 12px; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .person-email:hover { color: var(--fg); }
 
-    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; }
-    .footer-inner { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
-    .footer-left { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
-    .footer-links { display: flex; gap: 24px; font-family: var(--sans); font-size: 0.82rem; }
-    .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--fg); }
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+    @media (max-width: 600px) { footer { padding: 32px 20px; margin-top: 56px; font-size: 0.78rem; } }
   </style>
 </head>
 <body>
@@ -141,11 +141,6 @@
       <h2>Collaborators (Project-Based)</h2>
       <div class="people-grid">
         <div class="person-card">
-          <div class="person-role">Sound, Image &amp; Lived Experience</div>
-          <div class="person-name">Kon Bourdos</div>
-          <div class="person-bio">Based in Athens. Neurodivergent (ADHD &amp; Autism Spectrum). A decade working in video production and the Reggae Sound System scene, always as part of collective, community-driven work. Currently writing poetry and attending theatre and painting workshops. Drawn to what lies between the visible and the unspeakable, and to how AI might help cross that distance.</div>
-        </div>
-        <div class="person-card">
           <div class="person-role">Astrophysics &amp; Uncertain Reasoning</div>
           <div class="person-name">Aashish Kapoor</div>
           <div class="person-bio">Undergraduate student in Physics and Computer Science. Working on understanding our environment across scales. Using AI to simplify complex systems.</div>
@@ -180,14 +175,10 @@
   </section>
 
   <footer>
-    <div class="footer-inner">
-      <div class="footer-left">Llull Lab<br>Paris, France<br>contact@llulllab.com</div>
-      <div class="footer-links">
-        <a href="../mentions-legales.html">Mentions Légales</a>
-        <a href="../privacy-policy.html">Privacy Policy</a>
-        <a href="https://feix.app" target="_blank" rel="noopener">Created by Feix</a>
-      </div>
-    </div>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="../privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="../mentions-legales.html">Mentions Légales</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
   </footer>
 
 </body>
