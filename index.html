@@ -116,7 +116,7 @@
     footer {
       width: 100%;
       margin-top: auto;
-      padding: 24px 20px 8px;
+      padding: 28px 20px 16px;
       text-align: center;
       font-family: var(--sans);
       font-size: 0.78rem;
@@ -124,34 +124,12 @@
       border-top: 1px solid var(--border);
       animation: fadeUp 0.8s ease-out 0.45s both;
     }
-
-    footer span { margin: 0 8px; }
-
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
     @media (max-width: 600px) {
-      footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-        padding: 20px 16px 4px;
-        font-size: 0.74rem;
-      }
-      footer span { display: none; }
-      .designed-in { margin-bottom: 2px; }
-    }
-
-    footer a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    footer a:hover { color: var(--fg); }
-
-    .designed-in {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 0.75rem;
-      color: var(--muted);
+      footer { padding: 24px 16px 12px; font-size: 0.74rem; }
     }
 
     @media (min-width: 768px) {
@@ -226,12 +204,10 @@
   </div>
 
   <footer>
-    <span class="designed-in">Conçu et développé en France</span>
-    <a href="mentions-legales.html">Mentions Légales</a>
-    <span>·</span>
-    <a href="privacy-policy.html">Privacy Policy</a>
-    <span>·</span>
-    <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="mentions-legales.html">Mentions Légales</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
   </footer>
 
 </body>
