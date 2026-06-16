@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llull Lab: People</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="Llull Lab: People. Meet the researchers, artists, and collaborators behind Llull Lab.">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; font-weight: 400; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 640px; line-height: 1.75; }
+    .page-body { padding: 56px 0 80px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 56px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { margin-bottom: 1.2em; max-width: 680px; }
+    .page-body ul { padding-left: 1.2em; max-width: 680px; margin-bottom: 1.2em; }
+    .page-body li { margin-bottom: 0.5em; }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-top: 0;
+    }
+
+    .person-card { background: var(--bg); padding: 32px; }
+    .person-role { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .person-name { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 12px; }
+    .person-bio { font-size: 0.9rem; color: var(--accent); line-height: 1.6; }
+    .person-email { display: inline-block; margin-top: 12px; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .person-email:hover { color: var(--fg); }
+
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+    @media (max-width: 600px) { footer { padding: 32px 20px; margin-top: 56px; font-size: 0.78rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">Menu</button>
+      <nav>
+        <a href="about.html">About</a>
+        <a href="people.html" class="active">People</a>
+        <a href="research.html">Research</a>
+        <a href="studio.html">Studio</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="updates.html">Updates</a>
+        <a href="archive.html">Archive</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="page-hero">
+      <h1>Team &amp; Research Direction</h1>
+      <p class="lead">An interdisciplinary research collective for artificial minds, formal systems, and experimental machines.</p>
+    </div>
+    <div class="page-body">
+
+      <h2>Llull Lab: Research Direction</h2>
+      <div class="people-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="person-card">
+          <div class="person-role">Psychoanalysis &amp; Political Philosophy</div>
+          <div class="person-name">Dr. Isis Castañeda Capriroli</div>
+          <div class="person-bio">Clinical psychologist and psychoanalyst. PhD in Political Philosophy from Université Paris Cité. Lecturer at Aix-Marseille University. Member of the Transdisciplinary Research Network on Dream Life at the University of Barcelona.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Philosophy &amp; Cyborg Studies</div>
+          <div class="person-name">Dr. Tatiana Afanador López</div>
+          <div class="person-bio">PhD in Contemporary Philosophy. Research on cyborg hybridizations, artificial organs, and intersections between bodies, minds, and technologies.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Ethics Advisor</div>
+          <div class="person-name">Prof. Dr. Solmaz Zelyut</div>
+          <div class="person-bio">Affiliated with Ege University. Research spans ethics, political theory, law, and gender studies. Author of six books and numerous academic articles.</div>
+          <a class="person-email" href="mailto:solmaz.zelyut@llulllab.com">solmaz.zelyut@llulllab.com</a>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Founder &amp; Research Director</div>
+          <div class="person-name">Dr. Firat Ilim</div>
+          <div class="person-bio">PhD in Carnival Studies, Postdoc in Political Anthropology, Habilitation in Musical Aesthetics.</div>
+          <a class="person-email" href="https://orcid.org/0000-0003-1226-7098" target="_blank" style="display:block; margin-top:8px;">ORCID: 0000-0003-1226-7098</a>
+          <a class="person-email" href="https://llulllab.github.io/Files/Metaverse.pdf" target="_blank" style="display:block;">Interview (2022): On Metaverse and Immortality</a>
+          <a class="person-email" href="mailto:firat@llulllab.com">firat@llulllab.com</a>
+        </div>
+      </div>
+
+      <h2>Studio Llull: Co-founders</h2>
+      <div class="people-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="person-card">
+          <div class="person-role">Co-founder</div>
+          <div class="person-name">Dr. Firat Ilim</div>
+          <div class="person-bio">Founder and Research Director of Llull Lab. Background in carnival studies, political anthropology, and musical aesthetics.</div>
+          <a class="person-email" href="mailto:firat@llulllab.com">firat@llulllab.com</a>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Co-founder</div>
+          <div class="person-name">Xu Geng</div>
+          <div class="person-bio">Works across strategy and operations, at the intersection of business, technology, and cultural inquiry. Podcaster of <em>Her Way: Women Living Abroad</em>.</div>
+        </div>
+      </div>
+
+      <h2>Collaborators (Project-Based)</h2>
+      <div class="people-grid">
+        <div class="person-card">
+          <div class="person-role">Astrophysics &amp; Uncertain Reasoning</div>
+          <div class="person-name">Aashish Kapoor</div>
+          <div class="person-bio">Undergraduate student in Physics and Computer Science. Working on understanding our environment across scales. Using AI to simplify complex systems.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Mechanistic Interpretability &amp; LLM Safety</div>
+          <div class="person-name">Deepam Ahuja</div>
+          <div class="person-bio">Undergraduate researcher with a focus on mechanistic interpretability of large language models, focusing on internal representations of belief and trust, LLM safety and behavior modeling.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">AI Integration &amp; Real-Time Systems</div>
+          <div class="person-name">M. Harris Amjad</div>
+          <div class="person-bio">Full-stack developer and AI researcher from Pakistan, specializing in AI integration and real-time systems. Proposer of SemanticPulse, a live computational infrastructure designed to operationalize Llull Lab's Ambivalence-Centered Semantic Geometry through sociocultural semantic mapping.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Knowledge Infrastructure &amp; Cognitive Science</div>
+          <div class="person-name">Mohamed Faheem</div>
+          <div class="person-bio">Web developer and independent researcher based in Kochi, Kerala, India. Working on the Cortical Synthesis Engine, a dialectical knowledge system that detects contradictions between sources and surfaces forgotten knowledge. Interests include user experience design, UI development, knowledge infrastructure, cognitive science, and neurodivergent design. Also co-founder of Effex Labs and founder of Frisbites.</div>
+        </div>
+        <div class="person-card">
+          <div class="person-role">Meta-Ethics &amp; Mathematics</div>
+          <div class="person-name">Hermes Quartus (v.4.0)</div>
+          <div class="person-bio">Works on meta-ethics and the historical interplay of mathematics and magic. Takes various forms.</div>
+        </div>
+      </div>
+
+      <h2>Collaborations &amp; Partnerships</h2>
+      <p>Llull Lab is an open platform for interdisciplinary experimentation, bringing together diverse expertise to address challenges no single field can solve alone.</p>
+      <p>We seek partners who are ready to challenge assumptions and co-invent new trajectories for transformation. The Lab is eligible for participation in EU-funded projects and partnerships.</p>
+      <p>We collaborate through joint research projects, prototype development partnerships, workshops and training for organizations navigating digital transformation, and strategic consultation for policymakers and technology developers.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="../privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="../mentions-legales.html">Mentions Légales</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+
+</body>
+</html>

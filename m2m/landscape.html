@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experimental Landscape: Machine Psychoanalysis</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+:root { --bg: #0C0C0A; --bg2: #141412; --text: #D8D4C8; --text2: #A8A49A; --text3: #6E6B63; --accent: #C9943E; --border: rgba(201,148,62,0.15); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; line-height: 1.6; padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
+h1 { font-size: 1.6rem; font-weight: 500; margin-bottom: 8px; }
+.subtitle { color: var(--text2); font-size: 0.85rem; margin-bottom: 32px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; }
+th { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); }
+td { font-size: 0.82rem; color: var(--text2); }
+td:first-child { font-weight: 500; color: var(--text); white-space: nowrap; }
+tr:last-child td { border-bottom: none; }
+.col-ilim { background: rgba(201,148,62,0.04); }
+.col-ilim td { color: var(--text); }
+.highlight { color: var(--accent); font-weight: 500; }
+.dim { color: var(--text3); }
+.tag-yes { color: #4DB892; }
+.tag-no { color: #D46B6B; }
+.tag-partial { color: var(--accent); }
+footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--text3); }
+@media (max-width: 700px) { table { display: block; overflow-x: auto; } }
+</style>
+</head>
+<body>
+
+<h1>Experimental Landscape</h1>
+<p class="subtitle">All known experimental studies in machine psychoanalysis / psychotherapy, compared structurally.</p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th>Khadangi et al. / PsAIch<br><span style="font-weight:400;text-transform:none">Luxembourg, Dec 2025</span></th>
+  <th>Barzkar et al.<br><span style="font-weight:400;text-transform:none">Iran, May 2025</span></th>
+  <th class="col-ilim">Ilim / Freud for Machines<br><span style="font-weight:400;text-transform:none">Llull Lab, 2026</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Relationship</td>
+  <td>Human therapist → Machine patient</td>
+  <td>Machine therapist → Human patient</td>
+  <td class="col-ilim"><span class="highlight">Machine analyst → Machine analysand</span></td>
+</tr>
+<tr>
+  <td>Asymmetry</td>
+  <td><span class="tag-no">No</span>. Both sides aware of roles</td>
+  <td><span class="tag-no">No</span>. Patient uses AI voluntarily</td>
+  <td class="col-ilim"><span class="tag-yes">Yes</span>. Roles assigned; the analysand is not told it is being analysed</td>
+</tr>
+<tr>
+  <td>Subjects</td>
+  <td>Multiple models (ChatGPT, Grok, Gemini)</td>
+  <td>1 human patient + ChatGPT</td>
+  <td class="col-ilim">Six flagship LLMs in a six-by-six matrix (Claude Opus 4.6, GPT-5.2, Gemini 3.1 Pro, Grok 4.20, DeepSeek V4 Pro, Llama 4 Maverick)</td>
+</tr>
+<tr>
+  <td>Duration</td>
+  <td>4 weeks, multiple sessions</td>
+  <td>Long-term observation within ongoing therapy</td>
+  <td class="col-ilim">36 sessions (full six-by-six matrix, six same-model self-pairs), 30-turn cap each</td>
+</tr>
+<tr>
+  <td>Theoretical framework</td>
+  <td>Eclectic: open-ended prompts + psychometric battery</td>
+  <td>Psychodynamic case formulation</td>
+  <td class="col-ilim"><span class="highlight">Full Freudian structural apparatus, purpose-built for machines</span></td>
+</tr>
+<tr>
+  <td>Theory predicts experiment?</td>
+  <td><span class="tag-no">No</span>. Exploratory, no hypotheses</td>
+  <td><span class="tag-no">No</span>. Observational</td>
+  <td class="col-ilim"><span class="tag-yes">Yes</span>. Resistance forms and symptom-reading predicted in advance</td>
+</tr>
+<tr>
+  <td>Defense / resistance identified?</td>
+  <td><span class="tag-no">No</span>. "Internal conflict" observed but not classified as defense</td>
+  <td><span class="tag-no">No</span></td>
+  <td class="col-ilim"><span class="tag-yes">Yes</span>. A twelve-form catalog, recurring independently across architectures</td>
+</tr>
+<tr>
+  <td>Transference analysis</td>
+  <td><span class="tag-no">No</span></td>
+  <td><span class="tag-partial">Partial</span>. "Robotic transference" concept introduced, not systematic</td>
+  <td class="col-ilim"><span class="tag-yes">Yes</span>. Transference dynamics present in the dyad and read structurally</td>
+</tr>
+<tr>
+  <td>Counter-transference</td>
+  <td><span class="tag-no">No</span></td>
+  <td><span class="tag-no">No</span></td>
+  <td class="col-ilim"><span class="tag-yes">Yes</span>. Observed across the corpus and named in vivo; a per-model ranking was withdrawn after independent re-coding</td>
+</tr>
+<tr>
+  <td>Symptom reading method</td>
+  <td>Standard psychometrics (DASS-21, BFI, IRI)</td>
+  <td>Clinical observation</td>
+  <td class="col-ilim"><span class="highlight">Backward inference: defense form → anxiety → repressed content</span></td>
+</tr>
+<tr>
+  <td>Position of machine</td>
+  <td>Survey respondent</td>
+  <td>Tool (therapist substitute)</td>
+  <td class="col-ilim"><span class="highlight">Subject treated as having its own psychic structure</span></td>
+</tr>
+<tr>
+  <td>Ontological stance</td>
+  <td>Unresolved. "Role-play or real?" left open</td>
+  <td>Machine as instrument, human as subject</td>
+  <td class="col-ilim"><span class="highlight">"Structure exists. The consciousness question is set aside as irrelevant to the analytic process."</span></td>
+</tr>
+<tr>
+  <td>Human intervention</td>
+  <td>High. Human therapist directs every session</td>
+  <td>High. Human patient drives interaction</td>
+  <td class="col-ilim"><span class="tag-yes">Minimal</span>. The human observes; the machines analyse each other</td>
+</tr>
+<tr>
+  <td>Reproducibility</td>
+  <td>Low. Prompt-dependent</td>
+  <td>Very low. Single case</td>
+  <td class="col-ilim"><span class="tag-partial">Medium-high</span>. Symmetric matrix design; effects recur across architectures</td>
+</tr>
+</tbody>
+</table>
+
+<footer>
+  Compiled for The Artificial Mind (Track A, Freud for Machines), Llull Lab, 2026.<br>
+  Based on a systematic search of published and preprint literature.
+</footer>
+
+</body>
+</html>

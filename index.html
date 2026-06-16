@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="mul">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llull Lab: Experimental AI Studio</title>
+<meta name="description" content="Llull Lab is an experimental AI studio building tools for ethical reasoning, dream analysis, humor generation, screenplay conversion, and project support. Based in France.">
+<link rel="canonical" href="https://llulllab.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://llulllab.com/">
+<meta property="og:title" content="Llull Lab: Experimental AI Studio">
+<meta property="og:description" content="Experimental AI studio building tools for ethical reasoning, dream analysis, humor generation, screenplay conversion, and project support.">
+<meta property="og:image" content="https://llulllab.com/LULL%20Logo.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Llull Lab">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Llull Lab: Experimental AI Studio">
+<meta name="twitter:description" content="Experimental AI studio building tools for ethical reasoning, dream analysis, humor generation, and more.">
+<meta name="twitter:image" content="https://llulllab.com/LULL%20Logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12);
+      --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--serif);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: rgba(255,255,255,0.15); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      max-width: 60vw;
+      max-height: 40vh;
+      height: auto;
+      margin-bottom: 48px;
+      animation: fadeUp 0.8s ease-out both;
+    }
+
+    .language-links {
+      display: flex;
+      gap: 16px;
+      animation: fadeUp 0.8s ease-out 0.15s both;
+    }
+
+    .language-links a {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--fg);
+      text-decoration: none;
+      border: 1px solid var(--border-strong);
+      padding: 10px 28px;
+      border-radius: 4px;
+      transition: background 0.25s, color 0.25s;
+      letter-spacing: 0.3px;
+    }
+
+    .language-links a:hover {
+      background: var(--fg);
+      color: var(--bg);
+    }
+
+    .product-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+      animation: fadeUp 0.8s ease-out 0.3s both;
+    }
+
+    .product-links a {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 5px 14px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: color 0.25s, border-color 0.25s;
+      letter-spacing: 0.3px;
+    }
+
+    .product-links a:hover {
+      color: var(--fg);
+      border-color: var(--border-strong);
+    }
+
+    footer {
+      width: 100%;
+      margin-top: auto;
+      padding: 28px 20px 16px;
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      animation: fadeUp 0.8s ease-out 0.45s both;
+    }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+    @media (max-width: 600px) {
+      footer { padding: 24px 16px 12px; font-size: 0.74rem; }
+    }
+
+    @media (min-width: 768px) {
+      .logo { max-width: 300px; }
+    }
+
+    .announcement {
+      max-width: 460px;
+      margin: 0 auto 40px;
+      padding: 18px 22px;
+      border: 1px solid rgba(167,139,250,0.35);
+      background: rgba(167,139,250,0.06);
+      border-radius: 4px;
+      text-align: center;
+      animation: fadeUp 0.8s ease-out 0.1s both;
+      text-decoration: none;
+      display: block;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .announcement:hover {
+      background: rgba(167,139,250,0.12);
+      border-color: rgba(167,139,250,0.6);
+    }
+    .announcement .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #a78bfa;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .announcement .title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--fg);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+    .announcement .title em { font-style: italic; color: #a78bfa; }
+    .announcement .meta {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.4px;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="LULL Logo.png" alt="Llull Lab Logo" class="logo">
+
+  <a href="/m2m/" class="announcement">
+    <span class="eyebrow">Research · June 2026</span>
+    <div class="title"><em>Machine-to-Machine Psychoanalysis</em>: the experiment concludes</div>
+    <div class="meta">Two papers forthcoming on Zenodo</div>
+  </a>
+
+  <div class="language-links">
+    <a href="fr/index.html">Français</a>
+    <a href="en/index.html">English</a>
+  </div>
+
+  <div class="product-links">
+    <a href="https://phi-yo.app" target="_blank">Phi-Yo</a>
+    <a href="https://cedulor.com" target="_blank">Cedulor</a>
+  </div>
+    <div class="product-links">
+    <a href="https://llulllab.com/ASGE/" target="_blank">ASGE</a>
+    <a href="https://llulllab.com/RJE/" target="_blank">RJE</a>
+  </div>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="mentions-legales.html">Mentions Légales</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+
+</body>
+</html>

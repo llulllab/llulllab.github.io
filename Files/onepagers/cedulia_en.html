@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cedulia, Computational Short Film Production | Llull Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --highlight: #f59e0b;
+      --highlight-soft: rgba(245,158,11,0.08);
+      --highlight-dim: rgba(245,158,11,0.25);
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.20);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 800px;
+      --side-pad: clamp(24px, 6vw, 80px);
+    }
+
+    @media print {
+      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #b45309; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
+      body { font-size: 11pt; }
+      .page { box-shadow: none; max-width: 100%; padding: 0; }
+      @page { margin: 1.5cm; }
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #111;
+      color: var(--fg);
+      font-family: var(--serif);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .page {
+      background: var(--bg);
+      max-width: var(--max-w);
+      width: 100%;
+      padding: 60px var(--side-pad) 48px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .doc-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+    .doc-brand { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .doc-date { font-family: var(--sans); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.5px; }
+
+    .hero { margin-bottom: 48px; }
+    .hero-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--highlight); margin-bottom: 16px; }
+    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero-sub { font-size: 1.05rem; color: var(--accent); max-width: 600px; line-height: 1.75; }
+
+    .anchor-bar { display: flex; gap: 1px; background: var(--border); margin-bottom: 48px; border-radius: 2px; overflow: hidden; }
+    .anchor-item { flex: 1; background: var(--bg); padding: 20px 24px; text-align: center; }
+    .anchor-value { font-family: var(--sans); font-size: 1.5rem; font-weight: 700; color: var(--highlight); letter-spacing: -0.5px; line-height: 1; }
+    .anchor-label { font-family: var(--sans); font-size: 0.68rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.3px; line-height: 1.4; }
+
+    .section { margin-bottom: 40px; }
+    .section-title { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .section p { color: var(--accent); max-width: 640px; margin-bottom: 1em; font-size: 0.95rem; }
+
+    .flow-steps { display: flex; gap: 1px; background: var(--border); margin-bottom: 32px; border-radius: 2px; overflow: hidden; }
+    .flow-step { flex: 1; background: var(--bg); padding: 24px 20px; }
+    .flow-step-num { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; color: var(--highlight); letter-spacing: 1px; margin-bottom: 8px; }
+    .flow-step-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .flow-step-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    .diff-list { list-style: none; padding: 0; }
+    .diff-list li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: baseline; }
+    .diff-list li:last-child { border-bottom: none; }
+    .diff-num { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; color: var(--highlight); min-width: 18px; }
+    .diff-text { font-size: 0.9rem; color: var(--accent); line-height: 1.6; }
+    .diff-text strong { color: var(--fg); font-weight: 600; }
+
+    .pricing-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.82rem; margin-bottom: 12px; }
+    .pricing-table th { text-align: left; font-weight: 500; color: var(--muted); font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 16px; border-bottom: 1px solid var(--border-strong); }
+    .pricing-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--accent); }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .price { color: var(--fg); font-weight: 600; }
+    .pricing-table .unit { color: var(--muted); font-size: 0.75rem; }
+    .pricing-note { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); line-height: 1.6; margin-top: 8px; }
+
+    .roadmap { font-family: var(--sans); font-size: 0.85rem; color: var(--accent); line-height: 1.7; padding: 20px 24px; background: var(--highlight-soft); border: 1px solid var(--highlight-dim); border-radius: 2px; }
+    .roadmap strong { color: var(--highlight); }
+
+    .contact { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+    .contact-info { font-family: var(--sans); font-size: 0.85rem; color: var(--accent); line-height: 1.8; }
+    .contact-info .name { color: var(--fg); font-weight: 600; font-size: 0.9rem; }
+    .contact-info .title { color: var(--muted); font-size: 0.8rem; }
+    .contact-email { font-family: var(--sans); font-size: 0.85rem; color: var(--highlight); text-decoration: none; letter-spacing: 0.3px; }
+    .contact-email:hover { text-decoration: underline; }
+    .contact-brand { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); text-align: right; }
+
+    @media (max-width: 600px) {
+      .flow-steps { flex-direction: column; }
+      .anchor-bar { flex-direction: column; }
+      .contact { flex-direction: column; align-items: flex-start; }
+      .contact-brand { text-align: left; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-brand">Llull Lab</div>
+    <div class="doc-date">April 2026</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-label">Computational Short Film Production</div>
+    <h1>Cedulia</h1>
+    <p class="hero-sub">Story to short film screenplay in approximately one minute. Submit your narrative in plain language, receive a professional, quality-controlled screenplay with structured scene metadata. Grounded in thousands of professional screenplays. Production-ready.</p>
+  </div>
+
+  <div class="anchor-bar">
+    <div class="anchor-item">
+      <div class="anchor-value">2-Stage</div>
+      <div class="anchor-label">Generation + Quality Control</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">~1 min</div>
+      <div class="anchor-label">Delivery Time</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Per-Scene</div>
+      <div class="anchor-label">Structured Metadata</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">4</div>
+      <div class="anchor-label">Languages</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The Problem</div>
+    <p>A professional short film screenplay costs hundreds to thousands and takes days to weeks. Independent filmmakers, students, and small production teams cannot afford this for every idea they want to explore. Existing writing tools produce prose, not production-ready screenplays. There is no service that takes a story idea and delivers a professional, structured short film screenplay in under a minute.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">How It Works</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">01</div>
+        <div class="flow-step-title">Submit</div>
+        <div class="flow-step-desc">Describe your story in plain language: plot, characters, setting, tone. Any genre, four languages.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">02</div>
+        <div class="flow-step-title">Generate</div>
+        <div class="flow-step-desc">The system produces a professionally formatted short film screenplay, grounded in a library of thousands of professional screenplays. Each scene includes structured production metadata.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">03</div>
+        <div class="flow-step-title">Verify</div>
+        <div class="flow-step-desc">A second computational stage independently reviews the screenplay for structural integrity, pacing, and production readiness before delivery.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What Sets It Apart</div>
+    <ul class="diff-list">
+      <li><span class="diff-num">01</span><span class="diff-text"><strong>Production-ready output.</strong> Not a story draft. A professionally structured screenplay with per-scene metadata: location, time, characters, mood, visual notes. Ready for storyboarding, shot planning, and casting.</span></li>
+      <li><span class="diff-num">02</span><span class="diff-text"><strong>Grounded in professional practice.</strong> Generation is informed by a library of thousands of professional screenplays, not generic text training data.</span></li>
+      <li><span class="diff-num">03</span><span class="diff-text"><strong>Two-stage quality control.</strong> Every screenplay passes through a second computational stage that independently verifies structure, pacing, and production readiness.</span></li>
+      <li><span class="diff-num">04</span><span class="diff-text"><strong>~1 minute delivery.</strong> From story idea to complete short film screenplay in approximately one minute.</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Pricing</div>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Price</th>
+          <th>Includes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Free Trial</td>
+          <td><span class="price">Free</span></td>
+          <td><span class="unit">1 screenplay, non-commercial</span></td>
+        </tr>
+        <tr>
+          <td>Short Film</td>
+          <td><span class="price">&euro;19</span></td>
+          <td><span class="unit">Commercial license, scene metadata</span></td>
+        </tr>
+        <tr>
+          <td>Bundle 5</td>
+          <td><span class="price">&euro;79</span></td>
+          <td><span class="unit">5 screenplays, all features</span></td>
+        </tr>
+        <tr>
+          <td>Bundle 15</td>
+          <td><span class="price">&euro;199</span></td>
+          <td><span class="unit">15 screenplays, priority processing</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pricing-note">Professional screenwriter comparison: hundreds to thousands per screenplay, days to weeks.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Roadmap</div>
+    <div class="roadmap">
+      <strong>Feature-length screenplays and direct video production are in development.</strong> Cedulia's current short film screenplay layer is the first stage of a full computational film production pipeline.
+    </div>
+  </div>
+
+  <div class="contact">
+    <div class="contact-info">
+      <div class="name">Dr F&#305;rat Ilim</div>
+      <div class="title">Founder &amp; Director</div>
+      <div>Llull Lab</div>
+      <a href="mailto:growth.business@llulllab.com" class="contact-email">growth.business@llulllab.com</a>
+    </div>
+    <div class="contact-brand">
+      llulllab.com
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

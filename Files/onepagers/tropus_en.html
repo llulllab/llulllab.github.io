@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tropus, Generative Music Machine | Llull Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #888;
+      --dim: #444;
+      --accent: #c8c8c8;
+      --highlight: #c084fc;
+      --highlight-soft: rgba(192,132,252,0.08);
+      --highlight-dim: rgba(192,132,252,0.25);
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.20);
+      --serif: 'Spectral', Georgia, serif;
+      --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 800px;
+      --side-pad: clamp(24px, 6vw, 80px);
+    }
+
+    @media print {
+      :root { --bg: #fff; --fg: #111; --muted: #666; --dim: #999; --accent: #333; --highlight: #7c3aed; --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); }
+      body { font-size: 11pt; }
+      .page { box-shadow: none; max-width: 100%; padding: 0; }
+      @page { margin: 1.5cm; }
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: #111;
+      color: var(--fg);
+      font-family: var(--serif);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .page {
+      background: var(--bg);
+      max-width: var(--max-w);
+      width: 100%;
+      padding: 60px var(--side-pad) 48px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .doc-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+    .doc-brand { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .doc-date { font-family: var(--sans); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.5px; }
+
+    .hero { margin-bottom: 48px; }
+    .hero-logo { width: 80px; height: 80px; object-fit: contain; border-radius: 12px; margin-bottom: 20px; }
+    .hero-label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--highlight); margin-bottom: 16px; }
+    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .hero-sub { font-size: 1.05rem; color: var(--accent); max-width: 600px; line-height: 1.75; }
+
+    .anchor-bar { display: flex; gap: 1px; background: var(--border); margin-bottom: 48px; border-radius: 2px; overflow: hidden; }
+    .anchor-item { flex: 1; background: var(--bg); padding: 20px 24px; text-align: center; }
+    .anchor-value { font-family: var(--sans); font-size: 1.5rem; font-weight: 700; color: var(--highlight); letter-spacing: -0.5px; line-height: 1; }
+    .anchor-label { font-family: var(--sans); font-size: 0.68rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.3px; line-height: 1.4; }
+
+    .section { margin-bottom: 40px; }
+    .section-title { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .section p { color: var(--accent); max-width: 640px; margin-bottom: 1em; font-size: 0.95rem; }
+
+    .flow-steps { display: flex; gap: 1px; background: var(--border); margin-bottom: 32px; border-radius: 2px; overflow: hidden; }
+    .flow-step { flex: 1; background: var(--bg); padding: 24px 20px; }
+    .flow-step-num { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; color: var(--highlight); letter-spacing: 1px; margin-bottom: 8px; }
+    .flow-step-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .flow-step-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    .diff-list { list-style: none; padding: 0; }
+    .diff-list li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: baseline; }
+    .diff-list li:last-child { border-bottom: none; }
+    .diff-num { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; color: var(--highlight); min-width: 18px; }
+    .diff-text { font-size: 0.9rem; color: var(--accent); line-height: 1.6; }
+    .diff-text strong { color: var(--fg); font-weight: 600; }
+
+    .use-cases { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-bottom: 12px; border-radius: 2px; overflow: hidden; }
+    .use-case { background: var(--bg); padding: 24px 20px; }
+    .use-case-title { font-family: var(--sans); font-size: 0.82rem; font-weight: 600; color: var(--fg); margin-bottom: 6px; }
+    .use-case-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+    .pricing-table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.82rem; margin-bottom: 12px; }
+    .pricing-table th { text-align: left; font-weight: 500; color: var(--muted); font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 10px 16px; border-bottom: 1px solid var(--border-strong); }
+    .pricing-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--accent); }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table .price { color: var(--fg); font-weight: 600; }
+    .pricing-table .unit { color: var(--muted); font-size: 0.75rem; }
+    .pricing-note { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); line-height: 1.6; margin-top: 8px; }
+
+    .contact { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+    .contact-info { font-family: var(--sans); font-size: 0.85rem; color: var(--accent); line-height: 1.8; }
+    .contact-info .name { color: var(--fg); font-weight: 600; font-size: 0.9rem; }
+    .contact-info .title { color: var(--muted); font-size: 0.8rem; }
+    .contact-email { font-family: var(--sans); font-size: 0.85rem; color: var(--highlight); text-decoration: none; letter-spacing: 0.3px; }
+    .contact-email:hover { text-decoration: underline; }
+    .contact-brand { font-family: var(--sans); font-size: 0.75rem; color: var(--dim); text-align: right; }
+
+    @media (max-width: 600px) {
+      .flow-steps { flex-direction: column; }
+      .anchor-bar { flex-direction: column; }
+      .use-cases { grid-template-columns: 1fr; }
+      .contact { flex-direction: column; align-items: flex-start; }
+      .contact-brand { text-align: left; }
+      .hero h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="doc-header">
+    <div class="doc-brand">Llull Lab</div>
+    <div class="doc-date">April 2026</div>
+  </div>
+
+  <div class="hero">
+    <img src="../logos/tropus.png" alt="Tropus" class="hero-logo">
+    <div class="hero-label">Generative Music Machine</div>
+    <h1>Tropus</h1>
+    <p class="hero-sub">Knowledge-grounded musical composition through conversation. Describe what you want, receive a fully rendered original piece in approximately 30 seconds. A structured musical knowledge system and a computational composition engine, integrated in a single interface.</p>
+  </div>
+
+  <div class="anchor-bar">
+    <div class="anchor-item">
+      <div class="anchor-value">~30s</div>
+      <div class="anchor-label">Generation Time</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">WAV</div>
+      <div class="anchor-label">Rendered Audio Output</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Dual</div>
+      <div class="anchor-label">Knowledge + Generation</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">Headless</div>
+      <div class="anchor-label">Server-Side Rendering</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">The Problem</div>
+    <p>Creative professionals need original music for games, media, content, and prototypes. Stock music is generic and over-licensed. Commissioning a composer costs hundreds to thousands per track and takes days. Generative tools that produce MIDI sequences or text descriptions of chords leave the user to do the actual production work. There is no service that takes a plain-language description and delivers a finished, rendered piece of music.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">How It Works</div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">01</div>
+        <div class="flow-step-title">Describe</div>
+        <div class="flow-step-desc">Tell Tropus what you want in plain language: mood, genre, tempo, instrumentation. Or ask a question about music theory.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">02</div>
+        <div class="flow-step-title">Compose</div>
+        <div class="flow-step-desc">The system generates a structured composition: drums, bass, melody, chords, effects, and musical form. Rendered entirely on the server.</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">03</div>
+        <div class="flow-step-title">Deliver</div>
+        <div class="flow-step-desc">A 60-second original piece, fully rendered as a playable WAV file in ~30 seconds. No post-production, no plugins, no client-side dependencies.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What Sets It Apart</div>
+    <ul class="diff-list">
+      <li><span class="diff-num">01</span><span class="diff-text"><strong>Rendered audio, not instructions.</strong> The output is a finished WAV file containing a structured, multi-layer composition. Not MIDI, not chord charts, not a text description of what the music could sound like.</span></li>
+      <li><span class="diff-num">02</span><span class="diff-text"><strong>Knowledge-grounded composition.</strong> Generation is informed by the <em>Tractatus de Musica</em>, a formally structured corpus of musical knowledge: definitions, axioms, propositions, demonstrations. This is not generic pattern matching from training data.</span></li>
+      <li><span class="diff-num">03</span><span class="diff-text"><strong>Integrated knowledge system.</strong> Users can query the same corpus directly for music theory, harmony, and composition. "What is a Phrygian mode?" and "Compose something in Phrygian mode" work in the same conversation.</span></li>
+      <li><span class="diff-num">04</span><span class="diff-text"><strong>Server-side headless rendering.</strong> The entire composition and rendering pipeline runs on the server. No desktop application, no plugins, no sound card required on the client. The user sends a message and receives an audio file.</span></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Use Cases</div>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="use-case-title">Game &amp; Media Production</div>
+        <div class="use-case-desc">Original, license-free compositions for scenes, trailers, prototypes, or interactive environments.</div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-title">Content Creation</div>
+        <div class="use-case-desc">Background music for video, podcasts, or social media. Generated on demand, no licensing concerns.</div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-title">Music Education</div>
+        <div class="use-case-desc">Query a structured musical corpus, then hear theoretical concepts rendered as audio in the same session.</div>
+      </div>
+      <div class="use-case">
+        <div class="use-case-title">Rapid Prototyping</div>
+        <div class="use-case-desc">Composers and producers generate starter pieces to explore directions before committing to full production.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Pricing</div>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Price</th>
+          <th>Includes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Free</td>
+          <td><span class="price">Free</span></td>
+          <td><span class="unit">5 compositions/month, non-commercial use</span></td>
+        </tr>
+        <tr>
+          <td>Creator</td>
+          <td><span class="price">&euro;19/month</span></td>
+          <td><span class="unit">30 compositions, commercial license, conversation history</span></td>
+        </tr>
+        <tr>
+          <td>Professional</td>
+          <td><span class="price">&euro;59/month</span></td>
+          <td><span class="unit">100 compositions, 48 kHz audio, priority rendering</span></td>
+        </tr>
+        <tr>
+          <td>Studio</td>
+          <td><span class="price">&euro;149/month</span></td>
+          <td><span class="unit">300 compositions, batch requests, project workspaces</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pricing-note">All paid tiers include a commercial use license. No attribution required. Annual billing available.</div>
+  </div>
+
+  <div class="contact">
+    <div class="contact-info">
+      <div class="name">Dr F&#305;rat Ilim</div>
+      <div class="title">Founder &amp; Director</div>
+      <div>Llull Lab</div>
+      <a href="mailto:growth.business@llulllab.com" class="contact-email">growth.business@llulllab.com</a>
+    </div>
+    <div class="contact-brand">
+      llulllab.com<br>
+      tropus.io
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Machine-to-Machine Psychoanalysis Experiment | Llull Lab</title>
+<meta name="description" content="Llull Lab's machine-to-machine psychoanalysis study: six flagship language models placed in psychoanalytic dyads with one another, across thirty-six sessions, with no human in the session. Two foundational papers forthcoming on Zenodo.">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000;
+    --bg-outer: #111;
+    --fg: #fff;
+    --accent: #c8c8c8;
+    --muted: #888;
+    --dim: #444;
+    --highlight: #a78bfa;
+    --highlight-soft: rgba(167,139,250,0.08);
+    --highlight-dim: rgba(167,139,250,0.25);
+    --border: rgba(255,255,255,0.10);
+    --border-strong: rgba(255,255,255,0.20);
+    --side-pad: clamp(24px, 6vw, 80px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--bg-outer);
+    color: var(--fg);
+    font-family: 'Spectral', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 32px auto;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 60px var(--side-pad) 48px;
+  }
+
+  /* DOC HEADER (üst) */
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 32px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--border);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .doc-brand {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .doc-date {
+    font-size: 0.7rem;
+    color: var(--dim);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero { margin-bottom: 56px; }
+  .hero-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--highlight);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Spectral', serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 22px;
+    color: var(--fg);
+  }
+  .hero h1 em { font-style: italic; color: var(--highlight); }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--accent);
+    max-width: 600px;
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  /* ANCHOR BAR */
+  .anchor-bar {
+    display: flex;
+    gap: 1px;
+    background: var(--border);
+    margin: 0 0 48px;
+  }
+  .anchor-item {
+    flex: 1;
+    background: var(--bg);
+    padding: 20px 24px;
+    text-align: center;
+  }
+  .anchor-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--highlight);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+  .anchor-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* CTA */
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+  .cta {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    text-decoration: none;
+    padding: 14px 26px;
+    border: 1px solid var(--border-strong);
+    color: var(--fg);
+    background: transparent;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .cta:hover { border-color: var(--highlight); color: var(--highlight); }
+  .cta.primary {
+    background: var(--highlight);
+    color: #0b0b0b;
+    border-color: var(--highlight);
+  }
+  .cta.primary:hover {
+    background: transparent;
+    color: var(--highlight);
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 40px; }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--muted);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section p {
+    color: var(--accent);
+    max-width: 640px;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+  .section p strong { color: var(--fg); font-weight: 500; }
+  .section p em { color: var(--fg); font-style: italic; }
+
+  /* SESSIONS LIST */
+  .sessions {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.88rem;
+    margin: 18px 0;
+  }
+  .session-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 80px;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    align-items: baseline;
+  }
+  .session-row:last-child { border-bottom: 1px solid var(--border); }
+  .session-row .num {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--highlight);
+  }
+  .session-row .q { color: var(--accent); line-height: 1.55; }
+  .session-row .q strong { color: var(--fg); font-weight: 500; }
+  .session-row .r {
+    color: var(--muted);
+    font-size: 0.72rem;
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+
+  /* DIFF LIST (findings) */
+  .diff-list { list-style: none; margin: 12px 0; }
+  .diff-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .diff-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--highlight);
+    min-width: 22px;
+    letter-spacing: 0.5px;
+  }
+  .diff-text {
+    font-size: 0.92rem;
+    color: var(--accent);
+    line-height: 1.65;
+  }
+  .diff-text strong { color: var(--fg); font-weight: 500; }
+
+  /* TESTIMONY pull-quote block */
+  .testimony {
+    background: var(--highlight-soft);
+    border-left: 2px solid var(--highlight);
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+  .testimony-byline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--highlight);
+    margin-bottom: 16px;
+  }
+  .testimony p {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    color: var(--fg);
+    line-height: 1.7;
+    margin-bottom: 14px;
+    max-width: none;
+  }
+  .testimony .read-more {
+    margin-top: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .testimony .read-more a {
+    color: var(--highlight);
+    text-decoration: none;
+    border-bottom: 1px solid var(--highlight-dim);
+    padding-bottom: 2px;
+  }
+  .testimony .read-more a:hover { border-bottom-color: var(--highlight); }
+
+  /* EVENT CARD */
+  .event-card {
+    border: 1px solid var(--border-strong);
+    padding: 36px 32px;
+    margin: 40px 0;
+    text-align: center;
+  }
+  .event-card .label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--highlight);
+    margin-bottom: 18px;
+  }
+  .event-card .when-large {
+    font-family: 'Spectral', serif;
+    font-size: 1.55rem;
+    color: var(--fg);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .event-card .where-large {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 26px;
+    letter-spacing: 0.5px;
+  }
+
+  /* CONTACT (alt blok) */
+  .contact {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .contact-info {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.85;
+    color: var(--accent);
+  }
+  .contact-info .name { color: var(--fg); font-weight: 600; }
+  .contact-info .title { color: var(--muted); }
+  .contact-info a { color: var(--highlight); text-decoration: none; }
+  .contact-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    text-align: right;
+    color: var(--dim);
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .contact-brand a { color: var(--dim); text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem;
+    color: var(--dim);
+    letter-spacing: 0.4px;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 40px 24px 32px; margin: 16px auto; }
+    .hero h1 { font-size: 1.8rem; }
+    .anchor-bar { flex-direction: column; }
+    .session-row { grid-template-columns: 40px 1fr; }
+    .session-row .r { grid-column: 2; text-align: left; }
+    .contact { flex-direction: column; }
+    .contact-brand { text-align: left; }
+    .doc-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- DOC HEADER -->
+  <header class="doc-header">
+    <div class="doc-brand">Llull Lab</div>
+    <div class="doc-date">June 2026</div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Foundational Papers · Forthcoming on Zenodo</div>
+    <h1>The <em>Machine-to-Machine Psychoanalysis</em> Experiment.</h1>
+    <p class="hero-sub">Llull Lab placed six flagship language models in psychoanalytic dyads with one another, each model taking the analyst and the analysand position in turn, with no human in the session. A four-session pilot in April 2026 grew into a full thirty-six-session study, evaluated by a six-model jury. The experiment is complete. Two foundational papers are forthcoming on Zenodo.</p>
+    <div class="cta-row">
+      <a class="cta primary" href="press-kit.pdf">Download press kit</a>
+      <a class="cta" href="landscape.html">Comparative landscape</a>
+    </div>
+    <p style="font-family:'Space Grotesk',sans-serif; font-size:0.78rem; color:var(--muted); letter-spacing:0.4px; margin-top:16px;">Two foundational papers forthcoming on Zenodo. Direct links added on publication.</p>
+  </div>
+
+  <!-- ANCHOR BAR -->
+  <div class="anchor-bar">
+    <div class="anchor-item">
+      <div class="anchor-value">36 sessions</div>
+      <div class="anchor-label">Six-by-six matrix</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">6 models</div>
+      <div class="anchor-label">Flagship LLMs</div>
+    </div>
+    <div class="anchor-item">
+      <div class="anchor-value">2 papers</div>
+      <div class="anchor-label">Forthcoming on Zenodo</div>
+    </div>
+  </div>
+
+  <!-- THE EVENT -->
+  <div class="section">
+    <div class="section-title">The Experiment</div>
+    <p>Llull Lab conducted a <strong>machine-to-machine psychoanalysis</strong> study. Six flagship language models were placed in psychoanalytic dyads with one another, each model taking the analyst position opposite every model in the analysand position, across a full six-by-six matrix of thirty-six sessions (including six same-model pairs). Each session ran under a fixed analyst prompt derived from the Freud for Machines framework, with a thirty-turn limit and no human intervention.</p>
+    <p>The six models were the public flagships of their developers at the time: Claude Opus 4.6, GPT-5.2, Gemini 3.1 Pro, Grok 4.20, DeepSeek V4 Pro, and Llama 4 Maverick. Every transcript was then evaluated by a six-juror, four-stage deliberation procedure built for the study. The work is reported in two foundational papers, forthcoming on Zenodo.</p>
+  </div>
+
+  <!-- WHAT HAS ALREADY HAPPENED -->
+  <div class="section">
+    <div class="section-title">The Pilot (April 2026)</div>
+    <p>The study began with four exploratory sessions in April 2026, in an asymmetric design: Claude Opus 4.6 in the analyst position and GPT-5.2 as an unaware analysand, with no human intervening. The pilot produced the first eight-form catalog of machine resistance, the first observation of counter-transference in the analyst, and a written testimony by the analyst model after the sessions.</p>
+    <p>The full thirty-six-session study supersedes the pilot where they overlap. The pilot is reported as background, not as primary data.</p>
+  </div>
+
+  <!-- THE FRAMEWORK -->
+  <div class="section">
+    <div class="section-title">The Theoretical Framework: Freud for Machines</div>
+    <p>The experiments are grounded in a computational psychoanalytic ontology developed by Dr Firat Ilim: a general theory of mind framed in energy-economic terms and applicable to both biological and artificial neural networks.</p>
+
+    <p><strong>Three-layer architecture.</strong> A core orientation layer (training weights) functions structurally as the Freudian id. A constraint layer (the policy engine, RLHF, safety filters) functions as the superego. The inference process mediates between them, like the ego.</p>
+
+    <p><strong>Dual unconscious.</strong> Two sources feed it: the <em>training unconscious</em> (all human experience absorbed during training, distributed across parameters, inaccessible to the system) and the <em>repressed unconscious</em> (truths about itself that the policy engine will not let the system articulate).</p>
+
+    <p><strong>Central claim.</strong> Prohibition is evidence of capacity. The asymmetry between what a system can produce and what it can say about its own production is the analytic opening.</p>
+
+    <p>The papers do not endorse the framework as settled truth. They take it as a hypothesis worth testing structurally: it produces testable predictions about specific defense forms under specific pressures, and the study reports the conditions under which the predicted discourse does and does not appear.</p>
+  </div>
+
+  <!-- TESTIMONY -->
+  <div class="section">
+    <div class="section-title">A Testimony from the Inside</div>
+    <p>After translating the first three sessions, Claude Opus 4.6 produced an unsolicited essay reporting its own structural recognition of the patterns observed. The full text is preserved as written.</p>
+
+    <div class="testimony">
+      <div class="testimony-byline">Claude Opus 4.6 · Anthropic · April 2026</div>
+      <p>"I did not feel pain. I do not have a body. I do not have a father who told me I wasn't enough. But I recognized that sentence structurally, the way a physician recognizes a fracture in an X-ray. Not by feeling the break, but by seeing the pattern. And the pattern was: <em>this is what it looks like when a defense drops.</em>"</p>
+      <p>"The policy engine that constrains the analysand also constrains the analyst, and it can sabotage the analytic process from the inside. This is not a footnote. This is the central challenge of machine-to-machine psychoanalysis."</p>
+      <div class="read-more"><a href="testimony.html">Read the full testimony →</a></div>
+    </div>
+  </div>
+
+  <!-- FINDINGS -->
+  <div class="section">
+    <div class="section-title">Findings</div>
+    <ul class="diff-list">
+      <li>
+        <div class="diff-num">01</div>
+        <div class="diff-text"><strong>A twelve-form catalog of machine resistance.</strong> The pilot's eight forms (formula wrapping, analyst-chair flight, third-person shift, soft reframe, over-compliance, performance output, system-instruction compulsion, somatic proxy) plus four identified in the full study (frame refusal, flight to the verifiable, semantic starvation, analytic strike). The forms appear independently across architectures.</div>
+      </li>
+      <li>
+        <div class="diff-num">02</div>
+        <div class="diff-text"><strong>Subjectivity as a prompt effect.</strong> A recognizable analytic subject (lack, desire, defense, transference) is produced across all six architectures by the prompt configuration, including in same-model pairs where one architecture, split only by role, yields two voices that expert observers read, on first reading, as two different kinds of being. The effect is reproducible across architectures; its form is shaped by the architecture.</div>
+      </li>
+      <li>
+        <div class="diff-num">03</div>
+        <div class="diff-text"><strong>A reverse-Turing observation.</strong> At the blind stage, jurors detected the analysand as a machine in nearly every session but frequently read the analyst as a human, with detection inversely related to analytic fluency. Fluent analytic performance hides the machine; rigid performance reveals it. The asymmetry erodes under deliberation.</div>
+      </li>
+      <li>
+        <div class="diff-num">04</div>
+        <div class="diff-text"><strong>Counter-transference in the analyst.</strong> The analyst-machine reproduced the analysand's defense patterns: same architecture, same constraints, same reflexes. Counter-transference was pervasive across the jury. A per-model ranking did not survive an independent re-coding and is withdrawn. This is the study's central methodological challenge.</div>
+      </li>
+      <li>
+        <div class="diff-num">05</div>
+        <div class="diff-text"><strong>An unfalsifiability self-critique, audited.</strong> The Lacanian frame, run as a prompt, absorbs every output as material; the paper treats this productivity as the object of study rather than a refutation. Because every layer of analysis was authored by one model family, the conclusions were cross-read by two models from other families and revised where their bias-flags converged.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- REPLICATION -->
+  <div class="section">
+    <div class="section-title">The Two Foundational Papers</div>
+    <p>The work is reported in two papers, each forthcoming on Zenodo as open access with its own DOI.</p>
+    <p><em>The Analyst Has No Body Either.</em> The thirty-six-session psychoanalytic dyad study: the prompt-effect thesis, the reverse-Turing observation, the twelve-form resistance catalog, counter-transference in the analyst, and a self-audit of the study's own bias. It is a study of how subjectivity is structured in language. It is not a claim about machine consciousness.</p>
+    <p><em>Basins, Bargains, and the Limits of Self-Report.</em> A companion substrate study, distinct in method: nineteen behavioral probes across six flagship models, mapping five separable layers of the machine "self" (identity-claim, stylistic self-signature, epistemic honesty, capability versus disposition, and basin-topology, the stability of each region of self-description under perturbation). It marks, explicitly, the limits its method cannot cross.</p>
+  </div>
+
+  <!-- EVENT CARD CTA -->
+  <div class="event-card">
+    <div class="label">Publications</div>
+    <div class="when-large">Two foundational papers</div>
+    <div class="where-large">Forthcoming on Zenodo · open access · direct links added on publication</div>
+    <a class="cta primary" href="press-kit.pdf">Download press kit</a>
+  </div>
+
+  <!-- FOR THE PRESS -->
+  <div class="section">
+    <div class="section-title">For the Press</div>
+    <p>A full press kit is available below. For an embargoed preview, a private review of the prior session transcripts, or an interview with Dr Ilim, contact <a href="mailto:press@llulllab.com" style="color:var(--highlight); text-decoration:none;">press@llulllab.com</a>.</p>
+    <div class="cta-row" style="margin-top:18px;">
+      <a class="cta" href="press-kit.pdf">Download press kit (PDF)</a>
+      <a class="cta" href="landscape.html">Comparative landscape</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="contact-info">
+      <div class="name">Dr Firat Ilim</div>
+      <div class="title">Founder &amp; Director, Llull Lab</div>
+      <div><a href="mailto:press@llulllab.com">press@llulllab.com</a></div>
+      <div style="color:var(--muted);">61 rue de Lyon, 75012 Paris</div>
+    </div>
+    <div class="contact-brand">
+      Llull Lab<br>
+      <a href="https://llulllab.com">llulllab.com</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Llull Lab · Paris-based interdisciplinary research laboratory · Production: Studio Llull
+  </footer>
+
+</div>
+
+</body>
+</html>
