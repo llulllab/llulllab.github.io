@@ -192,63 +192,35 @@
       <!-- 1. INTRODUCTION -->
       <div class="section">
         <h2>1. Introduction</h2>
-        <p>This Privacy Policy explains how Llull Lab ("we", "us", "our") handles personal data in connection with our applications and services: Alberei, Tropus, ASGE, HQ (with its tools RJE, Tetrad, Gresol, and The Chamber), Feix, Cedulor, Chez Cero, Cedulia, and Phi-Yo. We are committed to protecting your privacy and operating in accordance with the General Data Protection Regulation (GDPR), CNIL regulations, and the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>.</p>
+        <p>This Privacy Policy explains how Llull Lab ("we", "us", "our") handles personal data in connection with our applications and services: Alberei, Tropus, ASGE, HQ (with its tools RJE, Tetrad, Gresol, and The Chamber), Feix, Cedulor, Chez Cero, Cedulia, and Phi-Yo. We are committed to protecting your privacy and operating in accordance with the General Data Protection Regulation (GDPR), and CNIL regulations.</p>
       </div>
 
       <!-- 2. ALBEREI -->
       <div class="section">
         <h2>2. Alberei</h2>
-        <p>Alberei is an automated humor generation system. It uses Google Sign-In for authentication purposes.</p>
-
-        <div class="google-data-section">
-          <h2>Google User Data Disclosure</h2>
-          <p>Alberei's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
-
-          <h3>2.1 Data Accessed</h3>
-          <p>Alberei uses Google Sign-In via Firebase Authentication. When you sign in with your Google account, we receive the following data:</p>
-          <ul>
-            <li>Your email address</li>
-            <li>Your display name</li>
-            <li>A unique authentication identifier</li>
-          </ul>
-          <p>Alberei does not request access to any other Google user data. We do not access Google Drive, Gmail, Google Calendar, or any other Google service beyond basic authentication.</p>
-
-          <h3>2.2 Data Usage</h3>
-          <p>The Google user data listed above is used <strong>exclusively</strong> for the following purposes:</p>
-          <ul>
-            <li>Authenticating your identity and managing your user session</li>
-            <li>Displaying your name within the application interface</li>
-            <li>Account management (e.g., identifying your account for support or deletion requests)</li>
-          </ul>
-          <p>Google user data is not used for advertising, profiling, behavioral tracking, analytics, or any purpose unrelated to authentication and account management. Google user data is not used for training artificial intelligence or machine learning models.</p>
-
-          <h3>2.3 Data Sharing</h3>
-          <p>We do not sell, rent, trade, or share your Google user data with any third parties, except as follows:</p>
-          <ul>
-            <li><strong>Firebase Authentication (Google):</strong> Authentication data is processed by Google Firebase as part of the sign-in process. Firebase may process this data on servers located outside the European Union, in accordance with Google's data processing terms. For more information, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
-          </ul>
-          <p>No other third party receives your Google user data.</p>
-
-          <h3>2.4 Data Storage &amp; Protection</h3>
-          <p>Authentication data is stored securely through Firebase Authentication. We rely on Firebase's built-in security measures, including encryption in transit and at rest, to protect your data. We do not store Google user data in any separate database or system outside of Firebase Authentication. Access to authentication records is restricted to authorized personnel only.</p>
-
-          <h3>2.5 Data Retention &amp; Deletion</h3>
-          <p>Authentication-related data is retained only for as long as your user account remains active. You may request the deletion of all your authentication data at any time by contacting us at <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>. Upon receiving a valid deletion request, we will delete your data within 30 days and confirm the deletion to you by email.</p>
-        </div>
+        <p>Alberei is a computational humor engine. It signs you in with a link sent to your email address. It does not use Google Sign-In, Firebase, or any third-party identity provider.</p>
+        <p><strong>Sign-in data.</strong> We store your email address, an internal user identifier, a language preference, whether your email address has been verified, the status of your account, the dates your record was created and last updated, and the sign-in link itself (a single-use token bound to your email address, with the times it was created, expires, and was used). The link expires 15 minutes after it is issued. To limit abuse we count the sign-in link records already held for your email address in the previous five minutes; that count is calculated from those same records and is not stored separately.</p>
+        <p><strong>API access data.</strong> If you request access to the Alberei API, we store a reference for the request, your email address, organisation name, intended use, expected volume, the access tier you are interested in, the status of the request, the dates it was made and reviewed, and <strong>any notes we write about it while reviewing</strong>. We may also issue an invitation to a named person, in which case we store the email address the invitation was sent to, the invitation code, the tier it grants, when it was issued, when it expires, whether and when it was used, which API token used it, and <strong>any notes we attach to it</strong>. If you received such an invitation without asking for it, your address was given to us by whoever asked us to invite you, or it was an address you had already given us; you can ask us which, ask to see any notes, and ask us to delete the record. If access is granted, we store an API token with its tier, the contact email address and organisation name attached to it, its status, when it was created and when it expires, and <strong>any notes we attach to it</strong>. For each call we keep a usage record: token, <strong>the date and time of the call</strong>, language, register, requested length, a non-reversible hash of the request context, request and item counts, response status code, any error code, and response time. Usage records contain no prompt or output text.</p>
+        <p><strong>Who else processes this data.</strong> These pages and the Alberei site are served by <strong>GitHub Pages</strong> (United States), which receives your IP address. Sign-in emails are delivered by <strong>Resend</strong> (United States), which processes your email address. Prompts are processed by Anthropic PBC (section 3). Our application database and automation servers are located in the European Union. For the providers outside the European Union we rely on the data processing terms each of them publishes, which incorporate the European Commission's Standard Contractual Clauses (Decision 2021/914), under Article 46(2)(c) GDPR.</p>
+        <p><strong>Retention.</strong> A scheduled job runs every hour and deletes sign-in records older than one hour, so such a record exists for at most two hours. The same job deletes API usage records once they are more than 12 months old. Account records, API tokens, invitations, and access requests are <strong>not</strong> deleted automatically: <strong>we keep them until you ask us to delete them, whether or not they are still live, so a declined access request, an expired invitation, and a revoked token are kept on the same terms as active ones.</strong></p>
+        <p><strong>Legal bases.</strong> Signing you in, keeping your account, generating a response, and providing API access once granted: Article 6(1)(b) GDPR, performance of the service you asked for. Reviewing an access request or an invitation before any access exists (including the notes we write while reviewing), rate limiting, usage records, and serving these pages (which involves your IP address reaching our hosting provider): Article 6(1)(f), our legitimate interest in assessing access and in keeping the service available, secure, and free of abuse, with a right to object at any time.</p>
+        <p>The full Alberei privacy policy is published at <a href="https://alberei.de/legal.html" target="_blank" rel="noopener">alberei.de/legal.html</a>.</p>
       </div>
 
       <!-- 3. USER PROMPTS -->
       <div class="section">
         <h2>3. User Prompts and Processing</h2>
-        <p>Alberei does not intentionally store user prompts. User inputs are processed transiently for the sole purpose of generating a response. Prompts are not retained for manual review, profiling, or behavioral tracking.</p>
+        <p>Llull Lab does not store the prompts you submit or the content Alberei generates. We process your input only to produce a response, and we do not keep it afterwards. It is not retained by us for manual review, profiling, or behavioral tracking.</p>
+        <p>To produce that response, your input is sent to Anthropic PBC, which operates the language model Alberei calls. <strong>This processing takes place on servers outside the European Union.</strong> The transfer is covered by the European Commission's Standard Contractual Clauses (Decision 2021/914), under Article 46(2)(c) GDPR.</p>
+        <p><strong>Anthropic processes your input under its own terms, which allow it to retain that input for a period it defines, for purposes such as safety and abuse monitoring.</strong> That retention is outside our control: when you ask us to delete your data we delete what we hold, but we cannot shorten a retention period applied by that provider.</p>
         <p>Llull Lab does not perform systematic monitoring of user inputs or generated outputs but reserves the right to implement technical or access restrictions where required by law or in cases of misuse.</p>
       </div>
 
       <!-- 4. COOKIES AND ANALYTICS -->
       <div class="section">
         <h2>4. Cookies and Analytics</h2>
-        <p>The Alberei application does not use third-party analytics or tracking cookies. Authentication-related cookies may be set by Firebase for session management purposes only.</p>
-        <p>The Alberei service page (hosted on llulllab.com) uses Google Analytics (GA4) to measure aggregate traffic. This data is collected anonymously and is not linked to individual users. It is used solely to understand overall traffic trends.</p>
+        <p>Alberei sets no cookies and uses no third-party analytics or tracking.</p>
+        <p>When you sign in, a session token is stored in your browser's local storage so that you stay signed in. <strong>That token is a signed JSON Web Token containing your email address, your internal user identifier, and its issue and expiry times, and it is valid for 30 days.</strong> This storage is necessary for the service you requested, which is why it does not require consent. You can clear it from your browser at any time, which signs you out.</p>
       </div>
 
       <!-- 5. TROPUS -->
@@ -384,63 +356,35 @@
       <!-- 1. INTRODUCTION -->
       <div class="section">
         <h2>1. Introduction</h2>
-        <p>La présente Politique de Confidentialité explique comment Llull Lab (« nous ») traite les données personnelles dans le cadre de nos applications et services : Alberei, Tropus, ASGE, HQ (avec ses outils RJE, Tetrad, Gresol et The Chamber), Feix, Cedulor, Chez Cero, Cedulia et Phi-Yo. Nous nous engageons à protéger votre vie privée, conformément au Règlement Général sur la Protection des Données (RGPD), aux réglementations de la CNIL et à la <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Politique d'utilisation des données des services API Google</a>.</p>
+        <p>La présente Politique de Confidentialité explique comment Llull Lab (« nous ») traite les données personnelles dans le cadre de nos applications et services : Alberei, Tropus, ASGE, HQ (avec ses outils RJE, Tetrad, Gresol et The Chamber), Feix, Cedulor, Chez Cero, Cedulia et Phi-Yo. Nous nous engageons à protéger votre vie privée, conformément au Règlement Général sur la Protection des Données (RGPD), et aux réglementations de la CNIL.</p>
       </div>
 
       <!-- 2. ALBEREI -->
       <div class="section">
         <h2>2. Alberei</h2>
-        <p>Alberei est un système de génération d'humour automatisé. Il utilise Google Sign-In à des fins d'authentification.</p>
-
-        <div class="google-data-section">
-          <h2>Divulgation des données utilisateur Google</h2>
-          <p>L'utilisation par Alberei des informations reçues des API Google, ainsi que leur transfert éventuel vers d'autres applications, est conforme à la <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Politique d'utilisation des données des services API Google</a>, y compris les exigences d'utilisation limitée.</p>
-
-          <h3>2.1 Données collectées</h3>
-          <p>Alberei utilise Google Sign-In via Firebase Authentication. Lors de la connexion avec votre compte Google, nous recevons les données suivantes :</p>
-          <ul>
-            <li>Votre adresse e-mail</li>
-            <li>Votre nom d'affichage</li>
-            <li>Un identifiant d'authentification unique</li>
-          </ul>
-          <p>Alberei ne demande pas l'accès à d'autres données Google. Nous n'accédons pas à Google Drive, Gmail, Google Calendar ni à aucun autre service Google au-delà de l'authentification de base.</p>
-
-          <h3>2.2 Utilisation des données</h3>
-          <p>Les données utilisateur Google listées ci-dessus sont utilisées <strong>exclusivement</strong> aux fins suivantes :</p>
-          <ul>
-            <li>Authentifier votre identité et gérer votre session utilisateur</li>
-            <li>Afficher votre nom dans l'interface de l'application</li>
-            <li>Gestion du compte (identification pour les demandes d'assistance ou de suppression)</li>
-          </ul>
-          <p>Les données Google ne sont pas utilisées à des fins publicitaires, de profilage, de suivi comportemental, d'analyse, ni à des fins sans lien avec l'authentification et la gestion du compte. Elles ne sont pas utilisées pour l'entraînement de modèles d'intelligence artificielle ou d'apprentissage automatique.</p>
-
-          <h3>2.3 Partage des données</h3>
-          <p>Nous ne vendons, ne louons, n'échangeons ni ne partageons vos données Google avec des tiers, à l'exception suivante :</p>
-          <ul>
-            <li><strong>Firebase Authentication (Google) :</strong> les données d'authentification sont traitées par Google Firebase dans le cadre du processus de connexion. Firebase peut traiter ces données sur des serveurs situés en dehors de l'Union européenne, conformément aux conditions de traitement des données de Google. Pour plus d'informations, consultez la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politique de Confidentialité de Google</a>.</li>
-          </ul>
-          <p>Aucun autre tiers ne reçoit vos données Google.</p>
-
-          <h3>2.4 Stockage et protection</h3>
-          <p>Les données d'authentification sont stockées de manière sécurisée via Firebase Authentication. Nous nous appuyons sur les mesures de sécurité intégrées de Firebase (chiffrement en transit et au repos). Nous ne stockons pas les données Google dans un système externe à Firebase Authentication. L'accès aux données d'authentification est restreint au personnel autorisé.</p>
-
-          <h3>2.5 Conservation et suppression</h3>
-          <p>Les données liées à l'authentification sont conservées uniquement pendant la durée d'activité de votre compte. Vous pouvez demander la suppression de l'intégralité de vos données d'authentification à tout moment en nous contactant à <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>. Votre demande sera traitée dans un délai de 30 jours, avec confirmation par e-mail.</p>
-        </div>
+        <p>Alberei est un moteur d'humour computationnel. La connexion se fait par un lien envoyé à votre adresse e-mail. Alberei n'utilise ni Google Sign-In, ni Firebase, ni aucun fournisseur d'identité tiers.</p>
+        <p><strong>Données de connexion.</strong> Nous conservons votre adresse e-mail, un identifiant utilisateur interne, une préférence de langue, l'information indiquant si votre adresse a été vérifiée, le statut de votre compte, les dates de création et de dernière mise à jour de votre enregistrement, ainsi que le lien de connexion lui-même (un jeton à usage unique lié à votre adresse, avec ses dates de création, d'expiration et d'utilisation). Le lien est valable 15 minutes. Afin de limiter les abus, nous comptons les enregistrements de lien déjà conservés pour votre adresse au cours des cinq dernières minutes ; ce comptage est calculé à partir de ces mêmes enregistrements et n'est pas stocké séparément.</p>
+        <p><strong>Données d'accès à l'API.</strong> Si vous demandez un accès à l'API Alberei, nous conservons une référence de la demande, votre adresse e-mail, le nom de votre organisation, l'usage envisagé, le volume prévu, le niveau d'accès souhaité, le statut de la demande, ses dates de dépôt et d'examen, ainsi que <strong>les notes que nous rédigeons à son sujet lors de l'examen</strong>. Nous pouvons également adresser une invitation à une personne désignée : dans ce cas nous conservons l'adresse e-mail destinataire, le code d'invitation, le niveau qu'il accorde, ses dates d'émission et d'expiration, son état et sa date d'utilisation, le jeton d'API qui l'a utilisée, ainsi que <strong>les notes que nous y attachons</strong>. Si vous avez reçu une telle invitation sans l'avoir demandée, votre adresse nous a été transmise par la personne ou l'organisation qui a demandé votre invitation, ou bien il s'agit d'une adresse que vous nous aviez déjà communiquée ; vous pouvez nous demander laquelle, demander à consulter ces notes et demander la suppression de l'enregistrement. Si l'accès est accordé, nous conservons un jeton d'API avec son niveau, l'adresse de contact et le nom de l'organisation associés, son statut, ses dates de création et d'expiration, ainsi que <strong>les notes que nous y attachons</strong>. Pour chaque appel nous conservons un enregistrement d'usage : jeton, <strong>date et heure de l'appel</strong>, langue, registre, longueur demandée, empreinte non réversible du contexte de la requête, nombre de requêtes et d'éléments, code de réponse, code d'erreur éventuel et temps de réponse. Ces enregistrements ne contiennent aucun texte saisi ni généré.</p>
+        <p><strong>Autres intervenants.</strong> Ces pages et le site Alberei sont servis par <strong>GitHub Pages</strong> (États-Unis), qui reçoit votre adresse IP. Les e-mails de connexion sont acheminés par <strong>Resend</strong> (États-Unis), qui traite votre adresse e-mail. Les saisies sont traitées par Anthropic PBC (section 3). Notre base de données applicative et nos serveurs d'automatisation sont situés dans l'Union européenne. Pour les prestataires établis hors de l'Union européenne, nous nous appuyons sur les conditions de traitement des données publiées par chacun d'eux, qui intègrent les Clauses Contractuelles Types de la Commission européenne (décision 2021/914), au titre de l'article 46(2)(c) du RGPD.</p>
+        <p><strong>Conservation.</strong> Une tâche planifiée s'exécute toutes les heures et supprime les enregistrements de connexion de plus d'une heure ; un tel enregistrement existe donc au maximum deux heures. La même tâche supprime les enregistrements d'usage de l'API dès qu'ils ont plus de 12 mois. Les comptes, les jetons d'API, les invitations et les demandes d'accès ne sont <strong>pas</strong> supprimés automatiquement : <strong>nous les conservons jusqu'à ce que vous en demandiez la suppression, qu'ils soient encore actifs ou non, de sorte qu'une demande d'accès refusée, une invitation expirée et un jeton révoqué sont conservés dans les mêmes conditions que les enregistrements actifs.</strong></p>
+        <p><strong>Bases légales.</strong> Connexion, tenue du compte, production d'une réponse et fourniture de l'accès à l'API une fois accordé : article 6(1)(b) du RGPD, exécution du service demandé. Examen d'une demande d'accès ou d'une invitation avant tout accès (y compris les notes rédigées lors de cet examen), limitation de débit, enregistrements d'usage et diffusion de ces pages (votre adresse IP parvenant à notre hébergeur) : article 6(1)(f), notre intérêt légitime à évaluer les accès et à maintenir le service disponible, sûr et exempt d'abus, avec un droit d'opposition à tout moment.</p>
+        <p>La politique de confidentialité complète d'Alberei est publiée sur <a href="https://alberei.de/legal.html" target="_blank" rel="noopener">alberei.de/legal.html</a>.</p>
       </div>
 
       <!-- 3. SAISIES UTILISATEUR -->
       <div class="section">
         <h2>3. Saisies utilisateur et traitement</h2>
-        <p>Alberei ne stocke pas intentionnellement les saisies des utilisateurs. Les entrées sont traitées de manière transitoire dans le seul but de générer une réponse. Elles ne sont pas conservées pour consultation manuelle, profilage ou suivi comportemental.</p>
+        <p>Llull Lab ne conserve ni les saisies que vous soumettez, ni les contenus qu'Alberei génère. Nous traitons votre saisie uniquement pour produire une réponse et ne la conservons pas ensuite. Elle n'est pas conservée par nous pour consultation manuelle, profilage ou suivi comportemental.</p>
+        <p>Pour produire cette réponse, votre saisie est transmise à Anthropic PBC, qui exploite le modèle de langage appelé par Alberei. <strong>Ce traitement a lieu sur des serveurs situés hors de l'Union européenne.</strong> Le transfert est encadré par les Clauses Contractuelles Types de la Commission européenne (décision 2021/914), au titre de l'article 46(2)(c) du RGPD.</p>
+        <p><strong>Anthropic traite votre saisie selon ses propres conditions, qui lui permettent de la conserver pendant une durée qu'elle définit, à des fins telles que la sécurité et la détection des abus.</strong> Cette conservation échappe à notre contrôle : lorsque vous nous demandez la suppression de vos données, nous supprimons ce que nous détenons, mais nous ne pouvons pas raccourcir une durée de conservation appliquée par ce prestataire.</p>
         <p>Llull Lab ne procède pas à une surveillance systématique des saisies ou des sorties générées, mais se réserve le droit de mettre en œuvre des restrictions techniques ou d'accès lorsque la loi l'exige ou en cas d'utilisation abusive.</p>
       </div>
 
       <!-- 4. COOKIES ET ANALYTIQUE -->
       <div class="section">
         <h2>4. Cookies et analytique</h2>
-        <p>L'application Alberei n'utilise pas de cookies de suivi ou d'analyse tiers. Des cookies de session peuvent être déposés par Firebase à des fins d'authentification uniquement.</p>
-        <p>La page d'accès Alberei (hébergée sur llulllab.com) utilise Google Analytics (GA4) pour mesurer l'audience de façon agrégée. Ces données sont collectées anonymement et ne sont pas liées à des utilisateurs identifiés. Elles servent uniquement à analyser les tendances globales du trafic.</p>
+        <p>Alberei ne dépose aucun cookie et n'utilise ni analytique tierce ni traceur.</p>
+        <p>Lors de la connexion, un jeton de session est enregistré dans le stockage local de votre navigateur afin de vous maintenir connecté. <strong>Ce jeton est un JSON Web Token signé contenant votre adresse e-mail, votre identifiant utilisateur interne ainsi que ses dates d'émission et d'expiration ; il est valable 30 jours.</strong> Ce stockage est nécessaire au service que vous avez demandé, raison pour laquelle il ne requiert pas de consentement. Vous pouvez l'effacer à tout moment depuis votre navigateur, ce qui vous déconnecte.</p>
       </div>
 
       <!-- 5. TROPUS -->
