@@ -1,38 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Clau. The key to your doctoral journey | Llull Lab</title>
-<meta name="description" content="Clau is a free, EU-hosted suite of four instruments for doctoral candidates and early-career researchers: CV, project outline, career positioning, and defense preparation. No account, nothing stored.">
+<meta name="description" content="Clau is a free, EU-hosted suite in development for doctoral candidates and early-career researchers: CV, project outline, career positioning, and defense preparation. Coming soon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Spectral:wght@500;600&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='13' cy='20' r='8' fill='none' stroke='%23A14842' stroke-width='2.25'/%3E%3Cpath d='M18.7 25.7L35.5 42.5M28.5 35.5L32.5 31.5M33 40L37 36' stroke='%23A14842' stroke-width='2.25' fill='none'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='13' cy='20' r='8' fill='none' stroke='%233d6b8e' stroke-width='2.25'/%3E%3Cpath d='M18.7 25.7L35.5 42.5M28.5 35.5L32.5 31.5M33 40L37 36' stroke='%233d6b8e' stroke-width='2.25' fill='none'/%3E%3C/svg%3E">
 <style>
+  /* Palette + type taken from Cedulor light theme */
   :root{
-    --color-background:#F5F3ED;
-    --color-surface:#FFFDF8;
-    --color-text:#202421;
-    --color-text-muted:#626963;
-    --color-border:#D5D8D1;
-    --color-accent:#A14842;
-    --color-accent-dark:#74322E;
+    --bg-ivory:#ffffff;
+    --bg-warm:#f5f7fa;
+    --bg-linen:#edf0f5;
+    --bg-parchment:#e2e8f0;
+
+    --ink:#1a1f2e;
+    --ink-muted:#4a5568;
+
+    --gold:#3d6b8e;
+    --gold-bright:#4a7fa8;
+    --gold-dim:#2c5470;
+    --gold-ghost:rgba(61,107,142,0.05);
+
+    --text-1:#1a1f2e;
+    --text-2:#4a5568;
+    --text-3:#718096;
+    --text-heading:#0f1624;
+
+    --border:rgba(26,31,46,0.08);
+    --border-mid:rgba(26,31,46,0.12);
+    --border-gold:rgba(61,107,142,0.20);
+
+    --font-display:'Cormorant Garamond',Georgia,serif;
+    --font-body:'Libre Franklin','Segoe UI',sans-serif;
+
+    --r:6px;--r-lg:12px;
   }
   *{box-sizing:border-box;}
-  html{-webkit-text-size-adjust:100%;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
   body{
     margin:0;
-    background:var(--color-background);
-    color:var(--color-text);
-    font-family:"Space Grotesk",sans-serif;
+    background:var(--bg-ivory);
+    color:var(--text-1);
+    font-family:var(--font-body);
     font-size:17px;
     font-weight:400;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
+    line-height:1.65;
   }
-  a{color:var(--color-accent-dark);text-decoration:none;}
+  a{color:var(--gold-dim);text-decoration:none;}
   a:hover{text-decoration:underline;}
 
   /* language toggle */
@@ -42,109 +60,90 @@
   .site-shell{width:min(1120px,calc(100% - 40px));margin-inline:auto;}
   .main-column{width:min(820px,100%);margin-inline:auto;}
 
-  h1,h2{font-family:"Spectral",serif;margin:0;}
-  h1{font-size:clamp(44px,7vw,72px);font-weight:600;line-height:1.02;letter-spacing:-0.025em;}
-  h2{font-size:clamp(30px,4vw,42px);font-weight:600;line-height:1.15;letter-spacing:-0.015em;}
+  h1,h2{font-family:var(--font-display);margin:0;color:var(--text-heading);}
+  h1{font-size:clamp(46px,7.4vw,78px);font-weight:600;line-height:1.03;letter-spacing:-0.01em;}
+  h2{font-size:clamp(28px,4vw,40px);font-weight:600;line-height:1.12;}
 
-  .small,footer{font-size:13px;font-weight:500;line-height:1.45;letter-spacing:0.02em;}
+  .label{
+    font-family:var(--font-body);font-size:10px;font-weight:600;
+    letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);
+  }
 
-  /* key mark */
-  .clau-key{display:block;color:var(--color-accent);flex:0 0 auto;}
+  .clau-key{display:block;color:var(--gold);flex:0 0 auto;}
 
   /* header */
   .site-header{
-    height:52px;display:flex;align-items:center;justify-content:space-between;
-    padding:0; border-bottom:1px solid var(--color-border);
+    height:56px;display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid var(--border);
   }
-  .brand{display:flex;align-items:center;gap:10px;}
-  .wordmark{font-family:"Spectral",serif;font-weight:600;font-size:26px;line-height:1;color:var(--color-text);}
-  .brand-lab{font-family:"Space Grotesk",sans-serif;font-size:13px;font-weight:500;color:var(--color-text-muted);margin-left:6px;padding-left:12px;border-left:1px solid var(--color-border);}
-  .lang-switch{font-family:"Space Grotesk",sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;display:flex;gap:6px;align-items:center;}
-  .lang-switch button{
-    background:none;border:none;padding:2px 0;margin:0;cursor:pointer;
-    font:inherit;color:var(--color-text-muted);
-  }
-  .lang-switch button.active{color:var(--color-text);border-bottom:2px solid var(--color-accent);}
-  .lang-switch .sep{color:var(--color-border);}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .wordmark{font-family:var(--font-display);font-weight:600;font-size:27px;line-height:1;color:var(--text-heading);letter-spacing:0.01em;}
+  .brand-lab{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--text-3);margin-left:4px;padding-left:12px;border-left:1px solid var(--border-mid);letter-spacing:0.02em;}
+  .lang-switch{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.08em;display:flex;gap:7px;align-items:center;}
+  .lang-switch button{background:none;border:none;padding:2px 0;margin:0;cursor:pointer;font:inherit;color:var(--text-3);}
+  .lang-switch button.active{color:var(--text-heading);border-bottom:2px solid var(--gold);}
+  .lang-switch .sep{color:var(--border-mid);}
 
   /* hero */
-  .hero{text-align:center;padding:96px 0 0;}
-  .hero-label{
-    font-family:"Space Grotesk",sans-serif;font-size:12px;font-weight:600;
-    letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent);
-    margin:0 0 22px;
+  .hero{text-align:center;padding:92px 0 0;}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--gold-dim);background:var(--gold-ghost);
+    border:1px solid var(--border-gold);border-radius:100px;padding:6px 14px;margin:0 0 26px;
   }
-  .hero h1{margin:0 auto;max-width:11ch;}
-  .hero .hero-fr{
-    font-family:"Spectral",serif;font-weight:500;font-style:italic;
-    font-size:clamp(20px,3vw,26px);color:var(--color-text-muted);
-    margin:14px 0 0;
-  }
-  .hero-desc{font-size:19px;font-weight:400;line-height:1.55;max-width:650px;margin:28px auto 0;color:var(--color-text);}
+  .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;}
+  .hero h1{margin:0 auto;max-width:12ch;}
+  .hero .hero-fr{font-family:var(--font-display);font-weight:400;font-style:italic;font-size:clamp(21px,3vw,28px);color:var(--text-2);margin:16px 0 0;}
+  .hero-desc{font-size:19px;font-weight:400;line-height:1.6;max-width:660px;margin:30px auto 0;color:var(--text-2);}
   .trust-line{
-    display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;
-    margin:26px 0 0;font-family:"Space Grotesk",sans-serif;font-size:13px;font-weight:500;
-    letter-spacing:0.06em;color:var(--color-text-muted);
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px 24px;margin:28px 0 0;
+    font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);
   }
   .trust-line span{white-space:nowrap;}
-  .hero-cta{margin:34px 0 0;display:flex;flex-direction:column;align-items:center;gap:16px;}
-  .btn{
-    font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:600;line-height:1;
-    padding:14px 20px;border-radius:6px;cursor:pointer;display:inline-block;
-    border:1px solid transparent;transition:background-color .15s ease,color .15s ease;
-  }
-  .btn-primary{background:var(--color-accent);color:var(--color-surface);border-color:var(--color-accent);}
-  .btn-primary:hover{background:var(--color-accent-dark);border-color:var(--color-accent-dark);text-decoration:none;}
-  .btn-outline{background:var(--color-surface);color:var(--color-text);border:1px solid var(--color-border);}
-  .btn-outline:hover{border-color:var(--color-accent);color:var(--color-accent-dark);text-decoration:none;}
-  .link-quiet{font-family:"Space Grotesk",sans-serif;font-size:14px;font-weight:500;color:var(--color-text-muted);}
-  .link-quiet:hover{color:var(--color-accent-dark);}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px;}
+  .hero-note{margin:30px 0 0;font-family:var(--font-body);font-size:14px;font-weight:400;color:var(--text-3);}
+  .hero-note a{font-weight:600;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 
   /* tools */
-  .tools{margin-top:72px;padding-top:24px;}
-  .tools-head h2{margin-bottom:12px;}
-  .tools-head p{margin:0 0 24px;color:var(--color-text-muted);font-size:16px;max-width:640px;}
-  .tool-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:8px;overflow:hidden;}
+  .tools{margin-top:80px;}
+  .tools-head{text-align:center;margin-bottom:28px;}
+  .tools-head .label{display:block;margin-bottom:14px;color:var(--gold-dim);}
+  .tools-head p{margin:14px auto 0;color:var(--text-2);font-size:16px;max-width:600px;}
+  .tool-panel{background:var(--bg-warm);border:1px solid var(--border-mid);border-radius:var(--r-lg);overflow:hidden;}
   .tool-row{
-    display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:20px;align-items:start;
-    padding:28px;border-bottom:1px solid var(--color-border);
+    display:grid;grid-template-columns:54px minmax(0,1fr);gap:22px;align-items:start;
+    padding:28px 30px;border-bottom:1px solid var(--border);
   }
   .tool-row:last-child{border-bottom:none;}
-  .tool-num{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:15px;color:var(--color-accent);letter-spacing:0.04em;padding-top:2px;}
-  .tool-name{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:20px;line-height:1.3;margin:0 0 4px;}
-  .tool-desc{margin:0;color:var(--color-text-muted);font-size:15px;line-height:1.5;}
-  .tool-action{align-self:center;font-family:"Space Grotesk",sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;color:var(--color-text-muted);white-space:nowrap;text-transform:uppercase;}
-  .tool-action .dot{color:var(--color-accent);}
+  .tool-num{font-family:var(--font-display);font-weight:600;font-size:26px;color:var(--gold);line-height:1;padding-top:2px;}
+  .tool-name{font-family:var(--font-display);font-weight:600;font-size:24px;line-height:1.2;margin:0 0 5px;color:var(--text-heading);}
+  .tool-desc{margin:0;color:var(--text-2);font-size:15.5px;line-height:1.55;}
 
   /* free + privacy */
-  .stance{margin-top:88px;}
-  .stance-grid{
-    display:grid;grid-template-columns:1fr 1fr;
-    background:var(--color-surface);border:1px solid var(--color-border);border-radius:8px;overflow:hidden;
-  }
-  .stance-col{padding:32px;}
-  .stance-col:first-child{border-right:1px solid var(--color-border);}
+  .stance{margin-top:80px;}
+  .stance-grid{display:grid;grid-template-columns:1fr 1fr;background:var(--bg-warm);border:1px solid var(--border-mid);border-radius:var(--r-lg);overflow:hidden;}
+  .stance-col{padding:34px;}
+  .stance-col:first-child{border-right:1px solid var(--border);}
   .stance-col h2{font-size:clamp(24px,3vw,30px);margin-bottom:14px;}
-  .stance-col p{margin:0 0 18px;color:var(--color-text-muted);font-size:15.5px;line-height:1.6;}
-  .stance-note{margin:18px auto 0;text-align:center;max-width:640px;color:var(--color-text-muted);font-size:13px;letter-spacing:0.02em;}
+  .stance-col p{margin:0;color:var(--text-2);font-size:15.5px;line-height:1.65;}
+  .stance-note{margin:20px auto 0;text-align:center;max-width:640px;color:var(--text-3);font-size:13px;letter-spacing:0.01em;}
 
   /* footer */
-  footer{margin-top:56px;border-top:1px solid var(--color-border);padding:24px 0 8px;}
-  .footer-grid{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--color-text-muted);}
-  .footer-brand{display:flex;align-items:center;gap:8px;font-family:"Spectral",serif;font-weight:600;font-size:18px;color:var(--color-text);}
-  .footer-center{font-family:"Space Grotesk",sans-serif;font-size:13px;}
-  .footer-links{display:flex;gap:18px;font-family:"Space Grotesk",sans-serif;font-size:13px;}
-  .footer-tag{margin:16px 0 0;font-family:"Space Grotesk",sans-serif;font-size:12px;color:var(--color-text-muted);letter-spacing:0.04em;}
+  footer{margin-top:60px;border-top:1px solid var(--border);padding:26px 0 10px;}
+  .footer-grid{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--text-3);}
+  .footer-brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--text-heading);}
+  .footer-center{font-family:var(--font-body);font-size:12px;letter-spacing:0.02em;}
+  .footer-links{display:flex;gap:20px;font-family:var(--font-body);font-size:12px;}
+  .footer-tag{margin:18px 0 0;font-family:var(--font-display);font-style:italic;font-size:15px;color:var(--text-3);}
 
   @media (max-width:720px){
     .stance-grid{grid-template-columns:1fr;}
-    .stance-col:first-child{border-right:none;border-bottom:1px solid var(--color-border);}
+    .stance-col:first-child{border-right:none;border-bottom:1px solid var(--border);}
   }
   @media (max-width:680px){
-    .hero{padding-top:64px;}
-    .tool-row{grid-template-columns:38px minmax(0,1fr);gap:12px 14px;padding:22px 20px;}
-    .tool-action{grid-column:2;align-self:start;}
+    .hero{padding-top:60px;}
+    .tool-row{grid-template-columns:40px minmax(0,1fr);gap:14px;padding:24px 22px;}
     .footer-grid{flex-direction:column;align-items:flex-start;}
   }
 </style>
@@ -173,15 +172,15 @@
     <main class="main-column">
 
       <section class="hero">
-        <p class="hero-label">
-          <span class="l-en">A free research tool from Llull Lab</span>
-          <span class="l-fr">Un outil de recherche gratuit de Llull Lab</span>
-        </p>
+        <span class="pill">
+          <span class="dot"></span>
+          <span class="l-en">Coming soon</span><span class="l-fr">Bientôt disponible</span>
+        </span>
         <h1>The key to your doctoral journey</h1>
         <p class="hero-fr">La clé de votre parcours doctoral.</p>
         <p class="hero-desc">
-          <span class="l-en">Clau is a free suite of four instruments for doctoral candidates and early-career researchers. Prepare your CV, your project outline, your career positioning, and your defense, in one place.</span>
-          <span class="l-fr">Clau est une suite gratuite de quatre outils pour les doctorants et les jeunes chercheurs. Préparez votre CV, votre exposé, votre positionnement professionnel et votre soutenance, au même endroit.</span>
+          <span class="l-en">Clau is a free suite of four instruments, in development at Llull Lab, for doctoral candidates and early-career researchers: your CV, your project outline, your career positioning, and your defense, in one place.</span>
+          <span class="l-fr">Clau est une suite gratuite de quatre outils, en développement au Llull Lab, pour les doctorants et les jeunes chercheurs : votre CV, votre exposé, votre positionnement professionnel et votre soutenance, au même endroit.</span>
         </p>
         <div class="trust-line">
           <span class="l-en">Free</span><span class="l-fr">Gratuit</span>
@@ -189,22 +188,19 @@
           <span class="l-en">EU-hosted</span><span class="l-fr">Hébergé dans l'UE</span>
           <span class="l-en">Nothing stored</span><span class="l-fr">Rien n'est conservé</span>
         </div>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#tools">
-            <span class="l-en">Choose a tool</span><span class="l-fr">Choisir un outil</span>
-          </a>
-          <a class="link-quiet" href="#privacy">
-            <span class="l-en">How your data is handled</span><span class="l-fr">Comment vos données sont traitées</span>
-          </a>
-        </div>
+        <p class="hero-note">
+          <span class="l-en">Want to hear when it opens? Write to <a href="mailto:contact@llulllab.com?subject=Clau">contact@llulllab.com</a>.</span>
+          <span class="l-fr">Être prévenu de l'ouverture ? Écrivez à <a href="mailto:contact@llulllab.com?subject=Clau">contact@llulllab.com</a>.</span>
+        </p>
       </section>
 
       <section class="tools" id="tools">
         <div class="tools-head">
-          <h2><span class="l-en">Choose your instrument</span><span class="l-fr">Choisissez votre outil</span></h2>
+          <span class="label"><span class="l-en">What Clau will offer</span><span class="l-fr">Ce que Clau proposera</span></span>
+          <h2><span class="l-en">Four instruments, one place</span><span class="l-fr">Quatre outils, un seul endroit</span></h2>
           <p>
-            <span class="l-en">Each tool processes what you enter only to produce a document you download. Nothing is kept afterwards.</span>
-            <span class="l-fr">Chaque outil traite ce que vous saisissez uniquement pour produire un document que vous téléchargez. Rien n'est conservé ensuite.</span>
+            <span class="l-en">Each tool will process what you enter only to produce a document you download. Nothing kept afterwards.</span>
+            <span class="l-fr">Chaque outil traitera ce que vous saisissez uniquement pour produire un document que vous téléchargez. Rien n'est conservé ensuite.</span>
           </p>
         </div>
         <div class="tool-panel">
@@ -214,11 +210,10 @@
             <div>
               <p class="tool-name">CV</p>
               <p class="tool-desc">
-                <span class="l-en">Enter your details in plain language. Choose a template. Download a clean PDF.</span>
-                <span class="l-fr">Saisissez vos informations en langage courant. Choisissez un modèle. Téléchargez un PDF soigné.</span>
+                <span class="l-en">Enter your details in plain language, choose a template, and download a clean PDF.</span>
+                <span class="l-fr">Saisissez vos informations en langage courant, choisissez un modèle et téléchargez un PDF soigné.</span>
               </p>
             </div>
-            <div class="tool-action"><span class="dot">·</span> <span class="l-en">In development</span><span class="l-fr">En développement</span></div>
           </div>
 
           <div class="tool-row">
@@ -226,11 +221,10 @@
             <div>
               <p class="tool-name">Exposé</p>
               <p class="tool-desc">
-                <span class="l-en">Develop and stress-test a doctoral project. Logical-consistency and structural-gap analysis before you submit.</span>
-                <span class="l-fr">Développez et éprouvez un projet doctoral. Analyse de cohérence logique et des lacunes structurelles avant de soumettre.</span>
+                <span class="l-en">Develop and stress-test a doctoral project: logical-consistency and structural-gap analysis before you submit.</span>
+                <span class="l-fr">Développez et éprouvez un projet doctoral : analyse de cohérence logique et des lacunes structurelles avant de soumettre.</span>
               </p>
             </div>
-            <div class="tool-action"><span class="dot">·</span> <span class="l-en">In development</span><span class="l-fr">En développement</span></div>
           </div>
 
           <div class="tool-row">
@@ -242,7 +236,6 @@
                 <span class="l-fr">Cartographiez vos compétences transférables et produisez un CV et une lettre de motivation ciblés pour un poste précis.</span>
               </p>
             </div>
-            <div class="tool-action"><span class="dot">·</span> <span class="l-en">In development</span><span class="l-fr">En développement</span></div>
           </div>
 
           <div class="tool-row">
@@ -254,7 +247,6 @@
                 <span class="l-fr">Générez des questions de soutenance et d'entretien à partir de votre profil et entraînez-vous.</span>
               </p>
             </div>
-            <div class="tool-action"><span class="dot">·</span> <span class="l-en">In development</span><span class="l-fr">En développement</span></div>
           </div>
 
         </div>
@@ -265,24 +257,21 @@
           <div class="stance-col">
             <h2><span class="l-en">Free to use</span><span class="l-fr">Gratuit</span></h2>
             <p>
-              <span class="l-en">There is no account and no subscription. Clau is free to use. If you choose to support it, that support is voluntary and does not unlock features or priority access.</span>
-              <span class="l-fr">Il n'y a ni compte ni abonnement. Clau est gratuit. Si vous choisissez de le soutenir, ce soutien est volontaire et ne débloque aucune fonctionnalité ni accès prioritaire.</span>
+              <span class="l-en">Clau will be free, with no account and no subscription. If you choose to support it later, that support will be voluntary and will not unlock features or priority access.</span>
+              <span class="l-fr">Clau sera gratuit, sans compte ni abonnement. Si vous choisissez de le soutenir plus tard, ce soutien sera volontaire et ne débloquera aucune fonctionnalité ni accès prioritaire.</span>
             </p>
-            <a class="btn btn-outline" href="mailto:contact@llulllab.com?subject=Clau">
-              <span class="l-en">Support Clau voluntarily</span><span class="l-fr">Soutenir Clau</span>
-            </a>
           </div>
           <div class="stance-col">
             <h2><span class="l-en">Private by design</span><span class="l-fr">Confidentiel par conception</span></h2>
             <p>
-              <span class="l-en">What you enter is processed only to generate the document you asked for. Nothing is retained on our servers after processing. You keep the file you download. Hosting and processing stay in the EU.</span>
-              <span class="l-fr">Ce que vous saisissez est traité uniquement pour générer le document demandé. Rien n'est conservé sur nos serveurs après traitement. Vous gardez le fichier téléchargé. L'hébergement et le traitement restent dans l'UE.</span>
+              <span class="l-en">What you enter will be processed only to generate the document you asked for. Nothing retained on our servers after processing. You keep the file you download. Hosting and processing stay in the EU.</span>
+              <span class="l-fr">Ce que vous saisissez sera traité uniquement pour générer le document demandé. Rien n'est conservé sur nos serveurs après traitement. Vous gardez le fichier téléchargé. L'hébergement et le traitement restent dans l'UE.</span>
             </p>
           </div>
         </div>
         <p class="stance-note">
-          <span class="l-en">Do not enter information you are not authorised to process or share.</span>
-          <span class="l-fr">N'entrez pas d'informations que vous n'êtes pas autorisé à traiter ou à partager.</span>
+          <span class="l-en">A free, responsible tool from a Paris-based research laboratory.</span>
+          <span class="l-fr">Un outil gratuit et responsable, issu d'un laboratoire de recherche parisien.</span>
         </p>
       </section>
 
@@ -304,8 +293,8 @@
             <span class="l-en">A project of Llull Lab, Paris</span><span class="l-fr">Un projet de Llull Lab, Paris</span>
           </div>
           <div class="footer-links">
-            <a href="#privacy"><span class="l-en">Privacy</span><span class="l-fr">Confidentialité</span></a>
             <a href="mailto:contact@llulllab.com">Contact</a>
+            <a href="https://llulllab.com/">Llull Lab</a>
           </div>
         </div>
         <p class="footer-tag">
