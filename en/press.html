@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llull Lab: Press</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="Press and media resources from Llull Lab, a Paris-based research laboratory: boilerplate, founder biography, open-access research, product index, and press contact.">
+  <link rel="canonical" href="https://llulllab.com/en/press.html">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; font-weight: 400; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 640px; line-height: 1.75; }
+
+    .page-body { padding: 56px 0 80px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 56px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { margin-bottom: 1.2em; max-width: 720px; color: var(--accent); }
+    .page-body p strong, .page-body strong { color: var(--fg); }
+
+    .boiler { border: 1px solid var(--border); border-radius: 4px; padding: 20px 24px; margin: 8px 0 24px; background: rgba(255,255,255,0.02); max-width: 760px; }
+    .boiler .label { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .boiler p { margin-bottom: 0; }
+
+    .paper { padding: 24px 0; border-top: 1px solid var(--border); max-width: 760px; }
+    .paper h3 { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 1.15rem; margin-bottom: 10px; color: var(--fg); }
+    .paper p { margin-bottom: 12px; }
+
+    .prod-list { list-style: none; padding: 0; margin: 4px 0 0; max-width: 820px; }
+    .prod-list li { padding: 16px 0; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; }
+    .prod-list .p-name { font-family: var(--sans); font-weight: 600; color: var(--fg); font-size: 0.95rem; min-width: 150px; }
+    .prod-list .p-desc { color: var(--accent); font-size: 0.95rem; flex: 1; min-width: 240px; }
+    .prod-list .p-url { font-family: var(--sans); font-size: 0.85rem; }
+    .prod-list .p-url a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border-strong); transition: color 0.2s, border-color 0.2s; }
+    .prod-list .p-url a:hover { color: var(--fg); border-color: var(--fg); }
+
+    .dl-list { list-style: none; padding: 0; margin: 4px 0 0; max-width: 760px; }
+    .dl-list li { padding: 12px 0; border-top: 1px solid var(--border); font-size: 0.95rem; color: var(--accent); }
+    .dl-list a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--border-strong); transition: border-color 0.2s; }
+    .dl-list a:hover { border-color: var(--fg); }
+
+    .doc-link {
+      display: inline-block; margin-top: 4px; font-family: var(--sans); font-size: 0.88rem;
+      color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border-strong);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .doc-link:hover { color: var(--fg); border-color: var(--fg); }
+
+    .contact a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--border-strong); transition: border-color 0.2s; }
+    .contact a:hover { border-color: var(--fg); }
+
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+    @media (max-width: 600px) { footer { padding: 32px 20px; margin-top: 56px; font-size: 0.78rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">Menu</button>
+      <nav>
+        <a href="about.html">About</a>
+        <a href="people.html">Team</a>
+        <a href="research.html">Research</a>
+        <a href="studio.html">Studio</a>
+        <a href="outreach.html">Outreach</a>
+        <a href="updates.html">Updates</a>
+        <a href="archive.html">Archive</a>
+        <a href="press.html" class="active">Press</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="page-hero">
+      <h1>Press</h1>
+      <p class="lead">Resources for journalists and editors: who we are, what we have published, how to reach us, and the data behind the work.</p>
+    </div>
+  </section>
+
+  <section class="page-section page-body">
+
+    <h2>About Llull Lab</h2>
+    <div class="boiler">
+      <div class="label">Boilerplate, short</div>
+      <p>Llull Lab is a Paris-based independent research laboratory building programmable infrastructure for artificial minds. It designs computational tools for ethical reasoning, self-reflection and wellbeing, generative music, combinatorial design, film, and grant writing. The Lab has no institutional affiliation. Its production arm is Studio Llull, which runs on a founder-and-machines model.</p>
+    </div>
+    <div class="boiler">
+      <div class="label">Boilerplate, long</div>
+      <p>Llull Lab is a Paris-based independent research laboratory that builds programmable infrastructure for artificial minds. Its work spans computational tools for ethical deliberation, psychoanalytic self-reflection and wellbeing, generative music, combinatorial design, film production, and EU grant writing, alongside a continuing research program on what machines can and cannot honestly say about themselves. The Lab has no institutional affiliation. Its production arm, Studio Llull, runs on a founder-and-machines model, with all output produced by the founder and a set of computational agents. A method the Lab calls Artificial Collective Intelligence, a structured collective of diverse models that deliberate, cross-check, and audit one another, runs through both its research and its products.</p>
+    </div>
+
+    <h2>Founder</h2>
+    <p><strong>Dr Firat Ilim</strong>, Founder and Research Director. He holds a PhD in Carnival Studies, completed postdoctoral research in Political Anthropology, and holds a Habilitation in Musical Aesthetics. He founded Llull Lab in Paris and directs its research across ethics, psychoanalysis for machines, and computational aesthetics.</p>
+    <p>A high-resolution headshot is available on request from <a class="contact" href="mailto:press@llulllab.com" style="color:var(--fg);border-bottom:1px solid var(--border-strong);text-decoration:none;">press@llulllab.com</a>.</p>
+    <a class="doc-link" href="https://orcid.org/0000-0003-1226-7098" target="_blank" rel="noopener">ORCID: 0000-0003-1226-7098</a>
+
+    <h2>Open-access research</h2>
+    <p>Two studies, published in June 2026, ask what a language model's account of itself, and its judgment of other models, can honestly be taken to mean. Both are open access on Zenodo under CC BY 4.0.</p>
+
+    <div class="paper">
+      <h3>The Analyst Has No Body Either</h3>
+      <p>Six flagship language models are placed in psychoanalytic dyads with one another, each taking both the analyst and the analysand role, and the transcripts are judged, then re-audited, by a structured multi-model procedure the Lab calls Artificial Collective Intelligence. Two findings stand out: expert machine observers reliably read the machine analysand as a machine but often read the analyst as human, and every evaluator grades its own architecture more leniently than it grades the others.</p>
+      <a class="doc-link" href="https://doi.org/10.5281/zenodo.20779122" target="_blank" rel="noopener">DOI 10.5281/zenodo.20779122</a>
+    </div>
+
+    <div class="paper">
+      <h3>Basins, Bargains, and the Limits of Self-Report</h3>
+      <p>A complementary study of machine self-knowledge asks which of a model's claims about itself can be checked from the outside and which are structurally beyond verification. It maps five behaviorally separable layers of the model "self", shows that identity is largely worn rather than carried, and draws a precise boundary between what external probing can audit and what no self-report can settle.</p>
+      <a class="doc-link" href="https://doi.org/10.5281/zenodo.20779376" target="_blank" rel="noopener">DOI 10.5281/zenodo.20779376</a>
+    </div>
+
+    <p style="margin-top:24px;">Both studies form the foundation of <em>The Artificial Mind</em>, the Lab's continuing quarterly audit of frontier models. A shareable figure, the self-preference chart, is available on request from <a class="contact" href="mailto:press@llulllab.com" style="color:var(--fg);border-bottom:1px solid var(--border-strong);text-decoration:none;">press@llulllab.com</a>.</p>
+
+    <h2>Products</h2>
+    <ul class="prod-list">
+      <li>
+        <span class="p-name">Cedulor</span>
+        <span class="p-desc">EU Grant Proposal Machine.</span>
+        <span class="p-url"><a href="https://cedulor.com" target="_blank" rel="noopener">cedulor.com</a></span>
+      </li>
+      <li>
+        <span class="p-name">Feix</span>
+        <span class="p-desc">Custom Systems Builder.</span>
+        <span class="p-url"><a href="https://feix.app" target="_blank" rel="noopener">feix.app</a></span>
+      </li>
+      <li>
+        <span class="p-name">Phi-Yo</span>
+        <span class="p-desc">Computational Psychoanalytic Wellbeing Companion. For self-reflection and wellbeing support, not clinical care.</span>
+        <span class="p-url"><a href="https://phi-yo.app" target="_blank" rel="noopener">phi-yo.app</a></span>
+      </li>
+      <li>
+        <span class="p-name">Tropus</span>
+        <span class="p-desc">Generative Music Machine.</span>
+        <span class="p-url"><a href="https://tropus.io" target="_blank" rel="noopener">tropus.io</a></span>
+      </li>
+      <li>
+        <span class="p-name">HQ (H4)</span>
+        <span class="p-desc">Computational Deliberation Service. Four tools: RJE for ethics, Tetrad to falsify a claim, Gresol to red-team it, The Chamber for common sense.</span>
+        <span class="p-url"><a href="https://h-q.io" target="_blank" rel="noopener">h-q.io</a></span>
+      </li>
+      <li>
+        <span class="p-name">RJE</span>
+        <span class="p-desc">Reflective Judgment Engine.</span>
+        <span class="p-url"><a href="https://h-q.io/rje" target="_blank" rel="noopener">h-q.io/rje</a></span>
+      </li>
+      <li>
+        <span class="p-name">ASGE</span>
+        <span class="p-desc">Semantic Geometry Engine.</span>
+        <span class="p-url"><a href="https://llulllab.com/ASGE/" target="_blank" rel="noopener">llulllab.com/ASGE</a></span>
+      </li>
+      <li>
+        <span class="p-name">Cedulia</span>
+        <span class="p-desc">Computational Film Production Studio, story to screen.</span>
+        <span class="p-url"><a href="https://cedulia.com" target="_blank" rel="noopener">cedulia.com</a></span>
+      </li>
+      <li>
+        <span class="p-name">Alberei</span>
+        <span class="p-desc">Modular Humor Engine.</span>
+        <span class="p-url"><a href="https://alberei.de" target="_blank" rel="noopener">alberei.de</a></span>
+      </li>
+      <li>
+        <span class="p-name">Humans for Machines</span>
+        <span class="p-desc">Structured human-behavior service for autonomous agents.</span>
+        <span class="p-url"><a href="https://humansformachines.com" target="_blank" rel="noopener">humansformachines.com</a></span>
+      </li>
+    </ul>
+
+    <h2>Press kit and downloads</h2>
+    <ul class="dl-list">
+      <li>Boilerplate (short and long): on this page, cleared for editorial use.</li>
+      <li>Research papers: <a href="https://doi.org/10.5281/zenodo.20779122" target="_blank" rel="noopener">The Analyst Has No Body Either</a> and <a href="https://doi.org/10.5281/zenodo.20779376" target="_blank" rel="noopener">Basins, Bargains, and the Limits of Self-Report</a>.</li>
+      <li>Operational reports (quarterly): <a href="archive.html">Archive</a>.</li>
+      <li>Logo: <a href="../LULL%20Logo.png" target="_blank" rel="noopener">LULL Logo (PNG)</a>.</li>
+    </ul>
+    <p style="margin-top:16px;">A consolidated press kit (single PDF, with logos and a high-resolution headshot) is in preparation and available on request.</p>
+
+    <h2>Contact</h2>
+    <p class="contact"><a href="mailto:press@llulllab.com">press@llulllab.com</a>. The Lab is available for a short briefing or interview, and to share the data behind the studies.</p>
+
+    <h2>Lab Notes, for journalists and editors</h2>
+    <p>Lab Notes is a low-volume newsletter for journalists and editors: new research, releases, and the data behind them, a few times a year. To join the list, email <a class="contact" href="mailto:press@llulllab.com?subject=Lab%20Notes" style="color:var(--fg);border-bottom:1px solid var(--border-strong);text-decoration:none;">press@llulllab.com</a> with Lab Notes in the subject line.</p>
+
+  </section>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="../privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="../mentions-legales.html">Mentions Légales</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+
+</body>
+</html>
