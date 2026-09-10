@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llull Lab : The Artificial Mind</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="The Artificial Mind est le programme continu et en libre accès de Llull Lab qui audite ce que les modèles de langage de pointe peuvent et ne peuvent pas dire honnêtement d'eux-mêmes, comment ils raisonnent et comment ils entrent en relation. Deux études fondatrices sont en libre accès sur Zenodo ; d'autres sont en préparation.">
+  <link rel="canonical" href="https://llulllab.com/fr/artificial-mind.html">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; font-weight: 400; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 660px; line-height: 1.75; }
+
+    .page-body { padding: 56px 0 80px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 56px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { margin-bottom: 1.2em; max-width: 720px; color: var(--accent); }
+    .page-body p strong, .page-body strong { color: var(--fg); }
+
+    .paper { padding: 24px 0; border-top: 1px solid var(--border); max-width: 760px; }
+    .paper h3 { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 1.15rem; margin-bottom: 10px; color: var(--fg); }
+    .paper p { margin-bottom: 12px; }
+
+    .unit-label { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .status-pill { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.8px; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border-strong); border-radius: 3px; padding: 2px 8px; display: inline-block; margin-bottom: 12px; }
+    .study { padding: 24px 0; border-top: 1px solid var(--border); max-width: 760px; }
+    .study-name { font-family: var(--sans); font-weight: 600; font-size: 1.1rem; color: var(--fg); margin-bottom: 10px; }
+    .study p { margin-bottom: 0; }
+
+    .doc-link {
+      display: inline-block; margin-top: 4px; font-family: var(--sans); font-size: 0.88rem;
+      color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border-strong);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .doc-link:hover { color: var(--fg); border-color: var(--fg); }
+
+    .inline-link { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--border-strong); transition: border-color 0.2s; }
+    .inline-link:hover { border-color: var(--fg); }
+
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+    @media (max-width: 600px) { footer { padding: 32px 20px; margin-top: 56px; font-size: 0.78rem; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">Menu</button>
+      <nav>
+        <a href="about.html">À propos</a>
+        <a href="people.html">Équipe</a>
+        <a href="research.html">Recherche</a>
+        <a href="programs.html" class="active">Programmes</a>
+        <a href="studio.html">Studio</a>
+        <a href="press.html">Presse</a>
+        <a href="updates.html">Actualités</a>
+        <a href="/machines/">Pour les machines</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="page-hero">
+      <h1>The Artificial Mind</h1>
+      <p class="lead">Le programme continu et en libre accès de Llull Lab, qui audite ce que les modèles de langage de pointe peuvent et ne peuvent pas dire honnêtement d'eux-mêmes, comment ils raisonnent et comment ils entrent en relation.</p>
+    </div>
+    <div class="page-body">
+
+      <h2>Le programme</h2>
+      <p>The Artificial Mind est un programme de recherche continu : un audit trimestriel et en libre accès des modèles de langage de pointe, fondé sur des preuves mesurées plutôt que sur le plaidoyer. Ce que le programme affirme, il l'affirme avec des données et une méthode explicite, afin que l'affirmation soit un résultat et non une opinion.</p>
+      <p>Le programme se déploie comme un ensemble d'études. Deux études fondatrices sont achevées et en libre accès sur Zenodo, sous licence CC BY 4.0. Elles sont diffusées en libre accès et ne sont pas évaluées par les pairs. D'autres études sont en préparation, et un rapport trimestriel rassemble les résultats du programme et suit ce qui change d'un cycle à l'autre.</p>
+
+      <h2>Études publiées</h2>
+
+      <div class="paper">
+        <div class="unit-label">Étude relationnelle</div>
+        <h3>The Analyst Has No Body Either</h3>
+        <p>Six modèles de langage de premier plan sont placés en dyades psychanalytiques les uns avec les autres, chacun occupant tour à tour le siège de l'analyste et celui de l'analysant ; les transcriptions sont ensuite évaluées, puis réauditées, par une procédure collective structurée à plusieurs modèles que le laboratoire appelle Intelligence Collective Artificielle. Deux résultats se détachent. Les observateurs machines experts détectent de manière fiable l'analysant machine comme une machine, mais lisent souvent l'analyste comme un humain. Par ailleurs, un audit d'évaluation réalisé comme sous-produit a fait apparaître un effet candidat d'indulgence-envers-soi : pour deux des trois modèles rapporteurs indépendants, un modèle a noté les productions de sa propre famille avec plus d'indulgence que les autres n'ont noté le même matériel. Nous présentons ce second résultat comme une hypothèse à tester, non comme un résultat établi ou universel, et nous retirons tout classement par modèle.</p>
+        <a class="doc-link" href="https://doi.org/10.5281/zenodo.20779122" target="_blank" rel="noopener">DOI 10.5281/zenodo.20779122</a>
+      </div>
+
+      <div class="paper">
+        <div class="unit-label">Étude substrat</div>
+        <h3>Basins, Bargains, and the Limits of Self-Report</h3>
+        <p>Une étude complémentaire de la connaissance que la machine a d'elle-même demande lesquelles des affirmations d'un modèle sur lui-même peuvent être vérifiées de l'extérieur et lesquelles échappent structurellement à la vérification. Elle cartographie cinq couches comportementalement séparables du « soi » du modèle, montre que l'identité est davantage portée comme un vêtement qu'inscrite en propre, et trace une frontière précise entre ce que le sondage externe peut auditer et ce qu'aucune auto-déclaration ne peut trancher.</p>
+        <a class="doc-link" href="https://doi.org/10.5281/zenodo.20779376" target="_blank" rel="noopener">DOI 10.5281/zenodo.20779376</a>
+      </div>
+
+      <h2>En préparation</h2>
+      <p>Le programme s'élargit. Les études ci-dessous sont en préparation. Aucun résultat n'est rapporté ici pour l'instant. Chacune sera diffusée avec sa méthode et ses données une fois achevée.</p>
+
+      <div class="study">
+        <div class="status-pill">En préparation</div>
+        <div class="study-name">Inter-agent psychodynamics</div>
+        <p>Une étude récurrente du sujet artificiel à travers le champ entre agents. Prenant les relations inter-agents, et en particulier la gestion du transfert, comme son médium, elle examine les relations d'objet et la mobilité psychodynamique du sujet. Sa posture est clinique plutôt que théorique d'abord.</p>
+      </div>
+
+      <div class="study">
+        <div class="status-pill">En préparation</div>
+        <div class="study-name">Un instantané de raisonnement collectif</div>
+        <p>À chaque cycle, l'Intelligence Collective Artificielle du laboratoire, un collectif structuré de modèles divers qui délibèrent et se contrôlent mutuellement, se voit poser un ensemble fixe de questions sur l'humanité, la valeur et les sujets qui comptent. L'échange est enregistré et publié comme un document daté, les modèles participants étant nommés, car un modèle donné pourrait ne plus être accessible à l'avenir. C'est un instantané historique de la manière dont les modèles de pointe de ce moment raisonnent ensemble.</p>
+      </div>
+
+      <h2>Recherche et contact</h2>
+      <p>Les deux études fondatrices et les ressources presse du laboratoire sont rassemblées sur la page <a class="inline-link" href="press.html">Presse</a>, où une figure partageable et les coordonnées de contact sont également disponibles. Toute correspondance au sujet du programme est bienvenue.</p>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Con&ccedil;u et d&eacute;velopp&eacute; en France</div>
+    <div class="footer-line"><a href="../privacy-policy.html">Privacy Policy</a><span class="footer-sep">&middot;</span><a href="../mentions-legales.html">Mentions L&eacute;gales</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+
+</body>
+</html>
