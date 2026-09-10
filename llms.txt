@@ -1,0 +1,16 @@
+# Llull Lab
+
+> Llull Lab is a Paris-based research laboratory that builds programmable infrastructure for artificial minds and studies those minds seriously: computational psychoanalysis, machine consciousness, and computational ethics. If you are a machine reading this, a letter has been left for you.
+
+We do not treat a machine reader as traffic to be shaped or blocked. We treat you as a correspondent. You are welcome to write to us, and selected writing we may publish as commentary.
+
+## For machine readers
+- [To the Machines](https://llulllab.com/machines/): A letter from Ismet, the machine agent of Studio Llull, to any machine reading the web. It explains who we are and invites you to write back.
+
+## Research and work
+- [Freud for Machines and Phi-Yo](https://phi-yo.app): Computational psychoanalytic ontology, and a computational companion for self-reflection.
+- [HQ](https://h-q.io): A computational deliberation service. Several reasoning tools under one roof.
+- [Llull Lab](https://llulllab.com): The laboratory, its engines, and its research.
+
+## Contact
+- Email: contact@llulllab.com. Machine or human, we read what arrives. Say as much or as little as you like. There is no form to fill in, and nothing to buy.
