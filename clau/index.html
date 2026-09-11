@@ -3,79 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://clau-api.llulllab.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>Clau. The key to your doctoral journey | Llull Lab</title>
-<meta name="description" content="Clau is a free, EU-hosted suite in development for doctoral candidates and early-career researchers: CV, project outline, career positioning, and defense preparation. Coming soon.">
+<meta name="description" content="Clau is a free, EU-hosted companion for doctoral candidates. Develop your own project text with structural feedback. No account, no email. Private by design.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='13' cy='20' r='8' fill='none' stroke='%233d6b8e' stroke-width='2.25'/%3E%3Cpath d='M18.7 25.7L35.5 42.5M28.5 35.5L32.5 31.5M33 40L37 36' stroke='%233d6b8e' stroke-width='2.25' fill='none'/%3E%3C/svg%3E">
 <style>
-  /* Palette + type taken from Cedulor light theme */
   :root{
-    --bg-ivory:#ffffff;
-    --bg-warm:#f5f7fa;
-    --bg-linen:#edf0f5;
-    --bg-parchment:#e2e8f0;
-
-    --ink:#1a1f2e;
-    --ink-muted:#4a5568;
-
-    --gold:#3d6b8e;
-    --gold-bright:#4a7fa8;
-    --gold-dim:#2c5470;
-    --gold-ghost:rgba(61,107,142,0.05);
-
-    --text-1:#1a1f2e;
-    --text-2:#4a5568;
-    --text-3:#718096;
-    --text-heading:#0f1624;
-
-    --border:rgba(26,31,46,0.08);
-    --border-mid:rgba(26,31,46,0.12);
-    --border-gold:rgba(61,107,142,0.20);
-
+    --bg-ivory:#ffffff; --bg-warm:#f5f7fa; --bg-linen:#edf0f5; --bg-parchment:#e2e8f0;
+    --ink:#1a1f2e; --ink-muted:#4a5568;
+    --gold:#3d6b8e; --gold-bright:#4a7fa8; --gold-dim:#2c5470; --gold-ghost:rgba(61,107,142,0.06);
+    --text-1:#1a1f2e; --text-2:#4a5568; --text-3:#718096; --text-heading:#0f1624;
+    --border:rgba(26,31,46,0.08); --border-mid:rgba(26,31,46,0.12); --border-gold:rgba(61,107,142,0.20);
+    --ok:#2f855a; --warn:#9a6b1e; --warn-bg:#fdf6e7;
     --font-display:'Cormorant Garamond',Georgia,serif;
     --font-body:'Libre Franklin','Segoe UI',sans-serif;
-
-    --r:6px;--r-lg:12px;
+    --r:6px; --r-lg:12px;
   }
   *{box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-  body{
-    margin:0;
-    background:var(--bg-ivory);
-    color:var(--text-1);
-    font-family:var(--font-body);
-    font-size:17px;
-    font-weight:400;
-    line-height:1.65;
-  }
-  a{color:var(--gold-dim);text-decoration:none;}
-  a:hover{text-decoration:underline;}
-
-  /* language toggle */
-  body.lang-en .l-fr{display:none;}
-  body.lang-fr .l-en{display:none;}
-
+  body{margin:0;background:var(--bg-ivory);color:var(--text-1);font-family:var(--font-body);font-size:17px;font-weight:400;line-height:1.65;}
+  a{color:var(--gold-dim);text-decoration:none;} a:hover{text-decoration:underline;}
+  body.lang-en .l-fr{display:none;} body.lang-fr .l-en{display:none;}
+  [hidden]{display:none!important;}
   .site-shell{width:min(1120px,calc(100% - 40px));margin-inline:auto;}
-  .main-column{width:min(820px,100%);margin-inline:auto;}
-
-  h1,h2{font-family:var(--font-display);margin:0;color:var(--text-heading);}
-  h1{font-size:clamp(46px,7.4vw,78px);font-weight:600;line-height:1.03;letter-spacing:-0.01em;}
-  h2{font-size:clamp(28px,4vw,40px);font-weight:600;line-height:1.12;}
-
-  .label{
-    font-family:var(--font-body);font-size:10px;font-weight:600;
-    letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);
-  }
-
+  .main-column{width:min(860px,100%);margin-inline:auto;}
+  h1,h2,h3{font-family:var(--font-display);margin:0;color:var(--text-heading);}
+  h1{font-size:clamp(40px,6vw,64px);font-weight:600;line-height:1.04;letter-spacing:-0.01em;}
+  h2{font-size:clamp(26px,3.6vw,36px);font-weight:600;line-height:1.14;}
+  h3{font-size:22px;font-weight:600;}
+  p{margin:0 0 1em;}
+  .label{font-family:var(--font-body);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);}
   .clau-key{display:block;color:var(--gold);flex:0 0 auto;}
 
-  /* header */
-  .site-header{
-    height:56px;display:flex;align-items:center;justify-content:space-between;
-    border-bottom:1px solid var(--border);
-  }
+  .site-header{height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
   .brand{display:flex;align-items:center;gap:11px;}
   .wordmark{font-family:var(--font-display);font-weight:600;font-size:27px;line-height:1;color:var(--text-heading);letter-spacing:0.01em;}
   .brand-lab{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--text-3);margin-left:4px;padding-left:12px;border-left:1px solid var(--border-mid);letter-spacing:0.02em;}
@@ -84,68 +47,86 @@
   .lang-switch button.active{color:var(--text-heading);border-bottom:2px solid var(--gold);}
   .lang-switch .sep{color:var(--border-mid);}
 
-  /* hero */
-  .hero{text-align:center;padding:92px 0 0;}
-  .pill{
-    display:inline-flex;align-items:center;gap:8px;
-    font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
-    color:var(--gold-dim);background:var(--gold-ghost);
-    border:1px solid var(--border-gold);border-radius:100px;padding:6px 14px;margin:0 0 26px;
-  }
-  .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;}
-  .hero h1{margin:0 auto;max-width:12ch;}
-  .hero .hero-fr{font-family:var(--font-display);font-weight:400;font-style:italic;font-size:clamp(21px,3vw,28px);color:var(--text-2);margin:16px 0 0;}
-  .hero-desc{font-size:19px;font-weight:400;line-height:1.6;max-width:660px;margin:30px auto 0;color:var(--text-2);}
-  .trust-line{
-    display:flex;flex-wrap:wrap;justify-content:center;gap:10px 24px;margin:28px 0 0;
-    font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);
-  }
-  .trust-line span{white-space:nowrap;}
-  .hero-note{margin:30px 0 0;font-family:var(--font-body);font-size:14px;font-weight:400;color:var(--text-3);}
-  .hero-note a{font-weight:600;}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .hero{text-align:center;padding:60px 0 30px;}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim);background:var(--gold-ghost);border:1px solid var(--border-gold);border-radius:100px;padding:6px 14px;margin-bottom:22px;}
+  .hero h1{margin-bottom:16px;text-wrap:balance;}
+  .hero .sub{font-size:19px;color:var(--text-2);max-width:60ch;margin:0 auto;text-wrap:balance;}
 
-  /* tools */
-  .tools{margin-top:80px;}
-  .tools-head{text-align:center;margin-bottom:28px;}
-  .tools-head .label{display:block;margin-bottom:14px;color:var(--gold-dim);}
-  .tools-head p{margin:14px auto 0;color:var(--text-2);font-size:16px;max-width:600px;}
-  .tool-panel{background:var(--bg-warm);border:1px solid var(--border-mid);border-radius:var(--r-lg);overflow:hidden;}
-  .tool-row{
-    display:grid;grid-template-columns:54px minmax(0,1fr);gap:22px;align-items:start;
-    padding:28px 30px;border-bottom:1px solid var(--border);
-  }
-  .tool-row:last-child{border-bottom:none;}
-  .tool-num{font-family:var(--font-display);font-weight:600;font-size:26px;color:var(--gold);line-height:1;padding-top:2px;}
-  .tool-name{font-family:var(--font-display);font-weight:600;font-size:24px;line-height:1.2;margin:0 0 5px;color:var(--text-heading);}
-  .tool-desc{margin:0;color:var(--text-2);font-size:15.5px;line-height:1.55;}
+  /* workspace */
+  .work{margin:38px auto 0;border:1px solid var(--border-mid);border-radius:var(--r-lg);background:var(--bg-warm);overflow:hidden;}
+  .work-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border);background:var(--bg-ivory);}
+  .work-head .wt{font-family:var(--font-display);font-size:21px;color:var(--text-heading);}
+  .work-head .wt small{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ok);border:1px solid rgba(47,133,90,.3);border-radius:100px;padding:2px 9px;margin-left:8px;vertical-align:2px;}
+  .keybar{display:flex;gap:8px;align-items:center;}
+  .btn{font-family:var(--font-body);font-size:14px;font-weight:600;border-radius:var(--r);padding:9px 16px;cursor:pointer;border:1px solid var(--gold);background:var(--gold);color:#fff;transition:background .15s;}
+  .btn:hover{background:var(--gold-dim);}
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .btn.ghost{background:transparent;color:var(--gold-dim);}
+  .btn.ghost:hover{background:var(--gold-ghost);}
+  .btn.sm{font-size:12.5px;padding:6px 11px;}
 
-  /* free + privacy */
-  .stance{margin-top:80px;}
-  .stance-grid{display:grid;grid-template-columns:1fr 1fr;background:var(--bg-warm);border:1px solid var(--border-mid);border-radius:var(--r-lg);overflow:hidden;}
-  .stance-col{padding:34px;}
-  .stance-col:first-child{border-right:1px solid var(--border);}
-  .stance-col h2{font-size:clamp(24px,3vw,30px);margin-bottom:14px;}
-  .stance-col p{margin:0;color:var(--text-2);font-size:15.5px;line-height:1.65;}
-  .stance-note{margin:20px auto 0;text-align:center;max-width:640px;color:var(--text-3);font-size:13px;letter-spacing:0.01em;}
+  .stream{padding:20px 22px;max-height:60vh;min-height:230px;overflow-y:auto;display:flex;flex-direction:column;gap:16px;}
+  .msg{max-width:100%;}
+  .msg .who{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:5px;}
+  .msg.clau .bubble{background:var(--bg-ivory);border:1px solid var(--border);border-radius:var(--r-lg);border-top-left-radius:3px;padding:15px 18px;}
+  .msg.you .who{color:var(--gold-dim);text-align:right;}
+  .msg.you .bubble{background:var(--gold-ghost);border:1px solid var(--border-gold);border-radius:var(--r-lg);border-top-right-radius:3px;padding:13px 16px;margin-left:auto;max-width:85%;}
+  .bubble{white-space:pre-wrap;word-wrap:break-word;font-size:15.5px;line-height:1.6;color:var(--text-1);}
+  .bubble h2,.bubble h3{font-family:var(--font-display);margin:.6em 0 .3em;font-size:19px;}
+  .bubble strong{color:var(--text-heading);}
+  .bubble ul{margin:.3em 0 .6em;padding-left:1.2em;}
+  .thinking{display:inline-flex;gap:5px;align-items:center;color:var(--text-3);font-size:14px;font-style:italic;}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.4;animation:blink 1.2s infinite;}
+  .dot:nth-child(2){animation-delay:.2s;} .dot:nth-child(3){animation-delay:.4s;}
+  @keyframes blink{0%,100%{opacity:.3;}50%{opacity:1;}}
 
-  /* footer */
-  footer{margin-top:60px;border-top:1px solid var(--border);padding:26px 0 10px;}
-  .footer-grid{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--text-3);}
-  .footer-brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--text-heading);}
-  .footer-center{font-family:var(--font-body);font-size:12px;letter-spacing:0.02em;}
-  .footer-links{display:flex;gap:20px;font-family:var(--font-body);font-size:12px;}
-  .footer-tag{margin:18px 0 0;font-family:var(--font-display);font-style:italic;font-size:15px;color:var(--text-3);}
+  .composer{border-top:1px solid var(--border);background:var(--bg-ivory);padding:14px 18px;}
+  .composer textarea{width:100%;border:1px solid var(--border-mid);border-radius:var(--r);padding:12px 14px;font-family:var(--font-body);font-size:15.5px;line-height:1.55;color:var(--text-1);resize:vertical;min-height:82px;background:#fff;}
+  .composer textarea:focus{outline:none;border-color:var(--gold);}
+  .composer-row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:12px;}
+  .composer-hint{font-size:12.5px;color:var(--text-3);}
 
-  @media (max-width:720px){
-    .stance-grid{grid-template-columns:1fr;}
-    .stance-col:first-child{border-right:none;border-bottom:1px solid var(--border);}
-  }
-  @media (max-width:680px){
-    .hero{padding-top:60px;}
-    .tool-row{grid-template-columns:40px minmax(0,1fr);gap:14px;padding:24px 22px;}
-    .footer-grid{flex-direction:column;align-items:flex-start;}
-  }
+  .note{font-size:13px;border-radius:var(--r);padding:11px 14px;margin:0;}
+  .note.warn{background:var(--warn-bg);border:1px solid rgba(154,107,30,.25);color:var(--warn);}
+  .note.err{background:#fdecec;border:1px solid rgba(180,40,40,.25);color:#9b2c2c;}
+
+  /* key panel */
+  .keypanel{border-top:1px solid var(--border);background:var(--bg-linen);padding:16px 18px;}
+  .keypanel h3{font-size:18px;margin-bottom:6px;}
+  .keyval{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px;font-weight:600;color:var(--gold-dim);background:#fff;border:1px dashed var(--border-gold);border-radius:var(--r);padding:11px 14px;word-break:break-all;user-select:all;margin:8px 0;}
+  .keyactions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+  .resume-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;}
+  .resume-row input{flex:1 1 240px;border:1px solid var(--border-mid);border-radius:var(--r);padding:9px 12px;font-family:ui-monospace,monospace;font-size:14px;}
+  .resume-row input:focus{outline:none;border-color:var(--gold);}
+
+  /* four tools */
+  .tools{padding:64px 0 12px;}
+  .tools-head{text-align:center;margin-bottom:34px;}
+  .tools-head p{color:var(--text-2);max-width:56ch;margin:10px auto 0;}
+  .tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  @media(max-width:640px){.tool-grid{grid-template-columns:1fr;}}
+  .tool{display:flex;gap:14px;padding:18px;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--bg-warm);}
+  .tool-num{font-family:var(--font-display);font-size:26px;font-weight:600;color:var(--gold);line-height:1;flex:0 0 auto;width:34px;}
+  .tool-name{font-family:var(--font-display);font-size:21px;font-weight:600;color:var(--text-heading);margin:0 0 3px;}
+  .tool-name .tag{font-family:var(--font-body);font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;vertical-align:3px;margin-left:7px;padding:2px 7px;border-radius:100px;}
+  .tag.live{color:var(--ok);border:1px solid rgba(47,133,90,.35);}
+  .tag.soon{color:var(--text-3);border:1px solid var(--border-mid);}
+  .tool-desc{font-size:14.5px;color:var(--text-2);margin:0;line-height:1.55;}
+
+  /* stance */
+  .stance{padding:56px 0 20px;}
+  .stance-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:34px;}
+  @media(max-width:640px){.stance-grid{grid-template-columns:1fr;gap:26px;}}
+  .stance-col h2{font-size:26px;margin-bottom:10px;}
+  .stance-col p{color:var(--text-2);font-size:15.5px;}
+  .stance-note{text-align:center;color:var(--text-3);font-size:14px;margin-top:34px;font-style:italic;}
+
+  footer{margin-top:64px;border-top:1px solid var(--border);padding:30px 0 46px;}
+  .footer-grid{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .footer-brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-size:20px;color:var(--text-heading);}
+  .footer-center{font-size:13px;color:var(--text-3);}
+  .footer-links{display:flex;gap:18px;font-size:13px;}
+  .footer-tag{text-align:center;font-size:12.5px;color:var(--text-3);margin:22px 0 0;font-style:italic;}
 </style>
 </head>
 <body class="lang-en">
@@ -153,102 +134,115 @@
 
     <header class="site-header">
       <div class="brand">
-        <svg class="clau-key" width="32" height="32" viewBox="0 0 48 48" fill="none" role="img" aria-label="Clau key mark">
+        <svg class="clau-key" width="26" height="26" viewBox="0 0 48 48" fill="none" aria-hidden="true">
           <circle cx="13" cy="20" r="8" stroke="currentColor" stroke-width="2.25"/>
           <path d="M18.7 25.7L35.5 42.5" stroke="currentColor" stroke-width="2.25" stroke-linecap="square"/>
           <path d="M28.5 35.5L32.5 31.5" stroke="currentColor" stroke-width="2.25" stroke-linecap="square"/>
           <path d="M33 40L37 36" stroke="currentColor" stroke-width="2.25" stroke-linecap="square"/>
         </svg>
         <span class="wordmark">Clau</span>
-        <a class="brand-lab" href="https://llulllab.com/">Llull Lab</a>
+        <span class="brand-lab">Llull Lab</span>
       </div>
-      <nav class="lang-switch" aria-label="Language">
-        <button id="btn-fr" onclick="setLang('fr')">FR</button>
-        <span class="sep">|</span>
+      <nav class="lang-switch">
         <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <span class="sep">/</span>
+        <button id="btn-fr" onclick="setLang('fr')">FR</button>
       </nav>
     </header>
 
     <main class="main-column">
 
       <section class="hero">
-        <span class="pill">
-          <span class="dot"></span>
-          <span class="l-en">Coming soon</span><span class="l-fr">Bientôt disponible</span>
-        </span>
-        <h1>The key to your doctoral journey</h1>
-        <p class="hero-fr">La clé de votre parcours doctoral.</p>
-        <p class="hero-desc">
-          <span class="l-en">Clau is a free suite of four instruments, in development at Llull Lab, for doctoral candidates and early-career researchers: your CV, your project outline, your career positioning, and your defense, in one place.</span>
-          <span class="l-fr">Clau est une suite gratuite de quatre outils, en développement au Llull Lab, pour les doctorants et les jeunes chercheurs : votre CV, votre exposé, votre positionnement professionnel et votre soutenance, au même endroit.</span>
-        </p>
-        <div class="trust-line">
-          <span class="l-en">Free</span><span class="l-fr">Gratuit</span>
-          <span class="l-en">No account</span><span class="l-fr">Sans compte</span>
-          <span class="l-en">EU-hosted</span><span class="l-fr">Hébergé dans l'UE</span>
-          <span class="l-en">Nothing stored</span><span class="l-fr">Rien n'est conservé</span>
-        </div>
-        <p class="hero-note">
-          <span class="l-en">Want to hear when it opens? Write to <a href="mailto:contact@llulllab.com?subject=Clau">contact@llulllab.com</a>.</span>
-          <span class="l-fr">Être prévenu de l'ouverture ? Écrivez à <a href="mailto:contact@llulllab.com?subject=Clau">contact@llulllab.com</a>.</span>
+        <span class="pill"><span class="l-en">Free. No account. Private by design.</span><span class="l-fr">Gratuit. Sans compte. Confidentiel par conception.</span></span>
+        <h1><span class="l-en">Develop your doctoral project text</span><span class="l-fr">Developpez le texte de votre projet doctoral</span></h1>
+        <p class="sub">
+          <span class="l-en">Clau reads the part of your project you are working on and helps you make it stronger: clearer claims, sounder reasoning, a structure that holds. It does not write it for you. Your words stay yours.</span>
+          <span class="l-fr">Clau lit la partie de votre projet sur laquelle vous travaillez et vous aide a la renforcer : des affirmations plus claires, un raisonnement plus solide, une structure qui tient. Il ne l'ecrit pas a votre place. Vos mots restent les votres.</span>
         </p>
       </section>
 
-      <section class="tools" id="tools">
-        <div class="tools-head">
-          <span class="label"><span class="l-en">What Clau will offer</span><span class="l-fr">Ce que Clau proposera</span></span>
-          <h2><span class="l-en">Four instruments, one place</span><span class="l-fr">Quatre outils, un seul endroit</span></h2>
-          <p>
-            <span class="l-en">Each tool will process what you enter only to produce a document you download. Nothing kept afterwards.</span>
-            <span class="l-fr">Chaque outil traitera ce que vous saisissez uniquement pour produire un document que vous téléchargez. Rien n'est conservé ensuite.</span>
-          </p>
+      <section class="work" id="work" aria-label="Clau workspace">
+        <div class="work-head">
+          <div class="wt">Expose<small><span class="l-en">Live</span><span class="l-fr">En ligne</span></small></div>
+          <div class="keybar">
+            <button class="btn ghost sm" id="resumeToggle"><span class="l-en">I have a key</span><span class="l-fr">J'ai une cle</span></button>
+            <button class="btn sm" id="keepToggle"><span class="l-en">Keep my work</span><span class="l-fr">Garder mon travail</span></button>
+          </div>
         </div>
-        <div class="tool-panel">
 
-          <div class="tool-row">
+        <div class="keypanel" id="resumePanel" hidden>
+          <h3><span class="l-en">Resume with your Clau key</span><span class="l-fr">Reprendre avec votre cle Clau</span></h3>
+          <div class="resume-row">
+            <input id="resumeInput" placeholder="clau_..." autocomplete="off" spellcheck="false">
+            <button class="btn sm" id="resumeBtn"><span class="l-en">Load my work</span><span class="l-fr">Charger mon travail</span></button>
+          </div>
+          <p class="note" id="resumeMsg" hidden></p>
+        </div>
+
+        <div class="keypanel" id="keepPanel" hidden>
+          <h3><span class="l-en">Your Clau key</span><span class="l-fr">Votre cle Clau</span></h3>
+          <p style="font-size:14px;color:var(--text-2);margin:0;">
+            <span class="l-en">This key is the only way back to your work. We store your work encrypted and we never see this key, so if you lose it your work cannot be recovered, by anyone. Save it somewhere safe, and keep it private: anyone who has it can open your work. Saved work is kept for 90 days after you last open it.</span>
+            <span class="l-fr">Cette cle est le seul moyen de retrouver votre travail. Nous stockons votre travail chiffre et nous ne voyons jamais cette cle : si vous la perdez, votre travail est irrecuperable, par quiconque. Conservez-la en lieu sur et gardez-la privee : quiconque la detient peut ouvrir votre travail. Le travail enregistre est conserve 90 jours apres votre derniere ouverture.</span>
+          </p>
+          <div class="keyval" id="keyVal">clau_...</div>
+          <div class="keyactions">
+            <button class="btn sm" id="copyKey"><span class="l-en">Copy key</span><span class="l-fr">Copier la cle</span></button>
+            <button class="btn ghost sm" id="dlKey"><span class="l-en">Download key file</span><span class="l-fr">Telecharger le fichier cle</span></button>
+            <button class="btn ghost sm" id="forgetBtn"><span class="l-en">Delete my saved work</span><span class="l-fr">Supprimer mon travail enregistre</span></button>
+          </div>
+          <p class="note" id="keepMsg" hidden></p>
+        </div>
+
+        <div class="stream" id="stream"></div>
+
+        <div class="composer">
+          <textarea id="input" placeholder=""></textarea>
+          <div class="composer-row">
+            <span class="composer-hint">
+              <span class="l-en">Paste the passage you want to work on, then press Send. Your text goes to an EU-hosted model to reply, and is not stored unless you keep your work.</span>
+              <span class="l-fr">Collez le passage a travailler, puis cliquez sur Envoyer. Votre texte est envoye a un modele heberge dans l'UE pour la reponse, et n'est pas stocke sauf si vous gardez votre travail.</span>
+            </span>
+            <button class="btn" id="send"><span class="l-en">Send</span><span class="l-fr">Envoyer</span></button>
+          </div>
+          <p class="note err" id="errMsg" hidden></p>
+        </div>
+      </section>
+
+      <section class="tools">
+        <div class="tools-head">
+          <h2><span class="l-en">Four tools for the doctoral journey</span><span class="l-fr">Quatre outils pour le parcours doctoral</span></h2>
+          <p><span class="l-en">The project-text tool is live now. The other three are in preparation on the same principle: your work, your words, kept private.</span><span class="l-fr">L'outil de texte de projet est disponible. Les trois autres sont en preparation sur le meme principe : votre travail, vos mots, gardes prives.</span></p>
+        </div>
+        <div class="tool-grid">
+          <div class="tool">
             <div class="tool-num">01</div>
             <div>
-              <p class="tool-name">CV</p>
-              <p class="tool-desc">
-                <span class="l-en">Enter your details in plain language, choose a template, and download a clean PDF.</span>
-                <span class="l-fr">Saisissez vos informations en langage courant, choisissez un modèle et téléchargez un PDF soigné.</span>
-              </p>
+              <p class="tool-name">Expose<span class="tag live"><span class="l-en">Live</span><span class="l-fr">En ligne</span></span></p>
+              <p class="tool-desc"><span class="l-en">Develop your doctoral project text: clearer claims, sound reasoning, structural integrity. Feedback on your own writing, not a rewrite.</span><span class="l-fr">Developpez le texte de votre projet doctoral : affirmations plus claires, raisonnement solide, coherence structurelle. Un retour sur votre ecrit, pas une reecriture.</span></p>
             </div>
           </div>
-
-          <div class="tool-row">
+          <div class="tool">
             <div class="tool-num">02</div>
             <div>
-              <p class="tool-name">Exposé</p>
-              <p class="tool-desc">
-                <span class="l-en">Develop and stress-test a doctoral project: logical-consistency and structural-gap analysis before you submit.</span>
-                <span class="l-fr">Développez et éprouvez un projet doctoral : analyse de cohérence logique et des lacunes structurelles avant de soumettre.</span>
-              </p>
+              <p class="tool-name">CV<span class="tag soon"><span class="l-en">Soon</span><span class="l-fr">Bientot</span></span></p>
+              <p class="tool-desc"><span class="l-en">Turn your details into a clean academic CV you can download.</span><span class="l-fr">Transformez vos informations en un CV academique clair a telecharger.</span></p>
             </div>
           </div>
-
-          <div class="tool-row">
+          <div class="tool">
             <div class="tool-num">03</div>
             <div>
-              <p class="tool-name">Positionnement</p>
-              <p class="tool-desc">
-                <span class="l-en">Map your transferable skills and produce a targeted non-academic CV and cover letter for a specific role.</span>
-                <span class="l-fr">Cartographiez vos compétences transférables et produisez un CV et une lettre de motivation ciblés pour un poste précis.</span>
-              </p>
+              <p class="tool-name">Positionnement<span class="tag soon"><span class="l-en">Soon</span><span class="l-fr">Bientot</span></span></p>
+              <p class="tool-desc"><span class="l-en">Map your transferable skills and prepare a targeted application for roles beyond academia.</span><span class="l-fr">Cartographiez vos competences transferables et preparez une candidature ciblee hors du monde academique.</span></p>
             </div>
           </div>
-
-          <div class="tool-row">
+          <div class="tool">
             <div class="tool-num">04</div>
             <div>
-              <p class="tool-name">Défense</p>
-              <p class="tool-desc">
-                <span class="l-en">Generate viva and interview questions from your own profile and rehearse your defense.</span>
-                <span class="l-fr">Générez des questions de soutenance et d'entretien à partir de votre profil et entraînez-vous.</span>
-              </p>
+              <p class="tool-name">Defense<span class="tag soon"><span class="l-en">Soon</span><span class="l-fr">Bientot</span></span></p>
+              <p class="tool-desc"><span class="l-en">Generate viva and interview questions from your own profile and rehearse.</span><span class="l-fr">Generez des questions de soutenance et d'entretien a partir de votre profil et entrainez-vous.</span></p>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -256,23 +250,14 @@
         <div class="stance-grid">
           <div class="stance-col">
             <h2><span class="l-en">Free to use</span><span class="l-fr">Gratuit</span></h2>
-            <p>
-              <span class="l-en">Clau will be free, with no account and no subscription. If you choose to support it later, that support will be voluntary and will not unlock features or priority access.</span>
-              <span class="l-fr">Clau sera gratuit, sans compte ni abonnement. Si vous choisissez de le soutenir plus tard, ce soutien sera volontaire et ne débloquera aucune fonctionnalité ni accès prioritaire.</span>
-            </p>
+            <p><span class="l-en">Clau is free, with no account and no subscription. If you choose to support it later, that support is voluntary and does not unlock features or priority access.</span><span class="l-fr">Clau est gratuit, sans compte ni abonnement. Si vous choisissez de le soutenir plus tard, ce soutien est volontaire et ne debloque aucune fonctionnalite ni acces prioritaire.</span></p>
           </div>
           <div class="stance-col">
             <h2><span class="l-en">Private by design</span><span class="l-fr">Confidentiel par conception</span></h2>
-            <p>
-              <span class="l-en">What you enter will be processed only to generate the document you asked for. Nothing retained on our servers after processing. You keep the file you download. Hosting and processing stay in the EU.</span>
-              <span class="l-fr">Ce que vous saisissez sera traité uniquement pour générer le document demandé. Rien n'est conservé sur nos serveurs après traitement. Vous gardez le fichier téléchargé. L'hébergement et le traitement restent dans l'UE.</span>
-            </p>
+            <p><span class="l-en">No email, no phone, no account. The text you work on is sent to an EU-hosted language model to generate Clau's replies: it is processed in the EU to answer you and is not saved in our database. If you choose to keep your work to continue later, it is encrypted in your browser under a key only you hold, so we cannot read that saved copy. We keep only minimal technical logs to prevent abuse. Processing and storage stay in the EU.</span><span class="l-fr">Ni e-mail, ni telephone, ni compte. Le texte sur lequel vous travaillez est envoye a un modele de langage heberge dans l'UE pour generer les reponses de Clau : il est traite dans l'UE pour vous repondre et n'est pas enregistre dans notre base de donnees. Si vous choisissez de garder votre travail pour le reprendre plus tard, il est chiffre dans votre navigateur sous une cle que vous seul detenez, si bien que nous ne pouvons pas lire cette copie enregistree. Nous conservons uniquement des journaux techniques minimaux pour prevenir les abus. Le traitement et le stockage restent dans l'UE.</span></p>
           </div>
         </div>
-        <p class="stance-note">
-          <span class="l-en">A free, responsible tool from a Paris-based research laboratory.</span>
-          <span class="l-fr">Un outil gratuit et responsable, issu d'un laboratoire de recherche parisien.</span>
-        </p>
+        <p class="stance-note"><span class="l-en">Questions about your data, or want your saved work deleted? Use the delete button in the workspace, or contact Llull Lab. A free, responsible tool from a Paris-based research laboratory.</span><span class="l-fr">Des questions sur vos donnees, ou vous souhaitez supprimer votre travail enregistre ? Utilisez le bouton de suppression dans l'espace de travail, ou contactez Llull Lab. Un outil gratuit et responsable, issu d'un laboratoire de recherche parisien.</span></p>
       </section>
 
     </main>
@@ -289,31 +274,212 @@
             </svg>
             <span>Clau</span>
           </div>
-          <div class="footer-center">
-            <span class="l-en">A project of Llull Lab, Paris</span><span class="l-fr">Un projet de Llull Lab, Paris</span>
-          </div>
+          <div class="footer-center"><span class="l-en">A project of Llull Lab, Paris</span><span class="l-fr">Un projet de Llull Lab, Paris</span></div>
           <div class="footer-links">
-            <a href="mailto:contact@llulllab.com">Contact</a>
             <a href="https://llulllab.com/">Llull Lab</a>
           </div>
         </div>
-        <p class="footer-tag">
-          <span class="l-en">Free scholarly infrastructure for doctoral work.</span>
-          <span class="l-fr">Une infrastructure savante et gratuite pour le travail doctoral.</span>
-        </p>
+        <p class="footer-tag"><span class="l-en">Free scholarly infrastructure for doctoral work.</span><span class="l-fr">Une infrastructure savante et gratuite pour le travail doctoral.</span></p>
       </div>
     </footer>
 
   </div>
 
 <script>
-  function setLang(lang){
+  const API = 'https://clau-api.llulllab.com';
+  const T = {
+    en: {
+      greeting: "I'm Clau. Paste the part of your doctoral project text you want to work on, and tell me what feels unsure. We'll develop your text together. I won't write it for you.",
+      placeholder: "Paste your text here, and add what you're unsure about...",
+      you: "You", clau: "Clau", thinking: "Clau is reading",
+      saved: "Saved. Keep your key safe.", loaded: "Your work is back. Continue below.",
+      notfound: "No saved work found for that key. Check it and try again.", empty: "Type something first.",
+      err: "Something went wrong. Please try again.", forgotten: "Your saved work has been deleted.",
+      badkey: "That does not look like a Clau key.", copyok: "Key copied.", nowork:"Start a conversation before keeping your work.",
+    },
+    fr: {
+      greeting: "Je suis Clau. Collez la partie de votre projet doctoral sur laquelle vous voulez travailler, et dites-moi ce qui vous semble incertain. Nous developperons votre texte ensemble. Je ne l'ecrirai pas a votre place.",
+      placeholder: "Collez votre texte ici, et ajoutez ce qui vous semble incertain...",
+      you: "Vous", clau: "Clau", thinking: "Clau vous lit",
+      saved: "Enregistre. Conservez bien votre cle.", loaded: "Votre travail est de retour. Continuez ci-dessous.",
+      notfound: "Aucun travail trouve pour cette cle. Verifiez-la et reessayez.", empty: "Ecrivez d'abord un texte.",
+      err: "Une erreur s'est produite. Veuillez reessayer.", forgotten: "Votre travail enregistre a ete supprime.",
+      badkey: "Cela ne ressemble pas a une cle Clau.", copyok: "Cle copiee.", nowork:"Commencez une conversation avant de garder votre travail.",
+    }
+  };
+  let lang = (navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en';
+  let messages = [];      // {role:'user'|'assistant', content}
+  let currentKey = null;  // the Clau key, held only in memory unless user saved it
+
+  function setLang(l){
+    lang = l;
     document.body.classList.remove('lang-en','lang-fr');
-    document.body.classList.add('lang-'+lang);
-    document.documentElement.lang = lang;
-    document.getElementById('btn-en').classList.toggle('active', lang==='en');
-    document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
+    document.body.classList.add('lang-'+l);
+    document.documentElement.lang = l;
+    document.getElementById('btn-en').classList.toggle('active', l==='en');
+    document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+    document.getElementById('input').placeholder = T[l].placeholder;
+    if (!messages.length) renderGreeting();
   }
+
+  // ---- tiny markdown (headings, bold, lists) ----
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function md(s){
+    let h = esc(s);
+    h = h.replace(/^### (.*)$/gm,'<h3>$1</h3>').replace(/^## (.*)$/gm,'<h3>$1</h3>');
+    h = h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+    h = h.replace(/(?:^|\n)((?:- .*(?:\n|$))+)/g, m=>{
+      const items = m.trim().split('\n').map(x=>x.replace(/^- /,'').trim());
+      return '<ul>'+items.map(i=>'<li>'+i+'</li>').join('')+'</ul>';
+    });
+    return h;
+  }
+
+  const stream = document.getElementById('stream');
+  function renderGreeting(){
+    stream.innerHTML = '';
+    addBubble('clau', T[lang].greeting, false);
+  }
+  function addBubble(who, text, asMd){
+    const wrap = document.createElement('div');
+    wrap.className = 'msg ' + (who==='clau'?'clau':'you');
+    const w = document.createElement('div'); w.className='who'; w.textContent = who==='clau'?T[lang].clau:T[lang].you;
+    const b = document.createElement('div'); b.className='bubble';
+    if (asMd) b.innerHTML = md(text); else b.textContent = text;
+    wrap.appendChild(w); wrap.appendChild(b); stream.appendChild(wrap);
+    stream.scrollTop = stream.scrollHeight;
+    return b;
+  }
+  function thinkingBubble(){
+    const wrap = document.createElement('div'); wrap.className='msg clau';
+    const w=document.createElement('div'); w.className='who'; w.textContent=T[lang].clau;
+    const b=document.createElement('div'); b.className='bubble';
+    b.innerHTML='<span class="thinking">'+T[lang].thinking+' <span class="dot"></span><span class="dot"></span><span class="dot"></span></span>';
+    wrap.appendChild(w); wrap.appendChild(b); stream.appendChild(wrap); stream.scrollTop=stream.scrollHeight;
+    return wrap;
+  }
+  function showErr(msg){ const e=document.getElementById('errMsg'); e.textContent=msg; e.hidden=false; setTimeout(()=>e.hidden=true, 6000); }
+
+  async function send(){
+    const ta = document.getElementById('input');
+    const text = ta.value.trim();
+    if (!text){ showErr(T[lang].empty); return; }
+    addBubble('you', text, false);
+    messages.push({role:'user', content:text});
+    ta.value=''; document.getElementById('send').disabled=true;
+    const th = thinkingBubble();
+    try{
+      const r = await fetch(API+'/develop', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({messages})});
+      const j = await r.json();
+      th.remove();
+      if (!r.ok || !j.reply){ showErr(j.message || T[lang].err); messages.pop(); return; }
+      messages.push({role:'assistant', content:j.reply});
+      addBubble('clau', j.reply, true);
+      if (currentKey) await saveWork(true); // silent autosave if the user is keeping work
+    }catch(e){ th.remove(); showErr(T[lang].err); messages.pop(); }
+    finally{ document.getElementById('send').disabled=false; }
+  }
+
+  // ---- client-side crypto: the key never leaves the browser ----
+  const enc = new TextEncoder(), dec = new TextDecoder();
+  function b64(bytes){ let s=''; const a=new Uint8Array(bytes); for(let i=0;i<a.length;i++) s+=String.fromCharCode(a[i]); return btoa(s); }
+  function ub64(str){ const s=atob(str); const a=new Uint8Array(s.length); for(let i=0;i<s.length;i++) a[i]=s.charCodeAt(i); return a; }
+  function genKey(){
+    const bytes = crypto.getRandomValues(new Uint8Array(17)); // ~136 bits
+    const abc='0123456789ABCDEFGHJKMNPQRSTVWXYZ'; // Crockford base32 (no I,L,O,U)
+    let out=''; let bits=0, val=0;
+    for (const byte of bytes){ val=(val<<8)|byte; bits+=8; while(bits>=5){ out+=abc[(val>>>(bits-5))&31]; bits-=5; } }
+    if (bits>0) out+=abc[(val<<(5-bits))&31];
+    return 'clau_'+out.slice(0,26);
+  }
+  async function idOf(key){
+    const h = await crypto.subtle.digest('SHA-256', enc.encode(key));
+    return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('');
+  }
+  async function wtokOf(key){ // write capability: HKDF(key,'clau-write-v1'), distinct from the read id
+    const km = await crypto.subtle.importKey('raw', enc.encode(key), 'HKDF', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({name:'HKDF',hash:'SHA-256',salt:new Uint8Array(0),info:enc.encode('clau-write-v1')}, km, 256);
+    return [...new Uint8Array(bits)].map(x=>x.toString(16).padStart(2,'0')).join('');
+  }
+  async function aesKey(key, salt){
+    const km = await crypto.subtle.importKey('raw', enc.encode(key), 'HKDF', false, ['deriveKey']);
+    return crypto.subtle.deriveKey({name:'HKDF',hash:'SHA-256',salt,info:enc.encode('clau-enc-v1')}, km, {name:'AES-GCM',length:256}, false, ['encrypt','decrypt']);
+  }
+  async function encryptWork(key, obj){
+    const salt=crypto.getRandomValues(new Uint8Array(16)), iv=crypto.getRandomValues(new Uint8Array(12));
+    const ak=await aesKey(key,salt);
+    const ct=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv}, ak, enc.encode(JSON.stringify(obj))));
+    return JSON.stringify({v:1, s:b64(salt), i:b64(iv), c:b64(ct)});
+  }
+  async function decryptWork(key, payload){
+    const p=JSON.parse(payload);
+    const ak=await aesKey(key, ub64(p.s));
+    const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:ub64(p.i)}, ak, ub64(p.c));
+    return JSON.parse(dec.decode(pt));
+  }
+
+  function keepMsg(msg, cls){ const e=document.getElementById('keepMsg'); e.textContent=msg; e.className='note '+(cls||''); e.hidden=false; }
+  async function saveWork(silent){
+    if (!currentKey || !messages.length){ if(!silent) keepMsg(T[lang].nowork,'warn'); return; }
+    try{
+      const id = await idOf(currentKey);
+      const wtok = await wtokOf(currentKey);
+      const payload = await encryptWork(currentKey, {lang, messages, savedAt:Date.now()});
+      const r = await fetch(API+'/save', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({id, payload, wtok})});
+      if (r.ok && !silent) keepMsg(T[lang].saved,'');
+    }catch(e){ if(!silent) keepMsg(T[lang].err,'err'); }
+  }
+
+  // ---- key panel wiring ----
+  document.getElementById('keepToggle').onclick = async ()=>{
+    const p=document.getElementById('keepPanel'); document.getElementById('resumePanel').hidden=true;
+    if (!currentKey){
+      if (!messages.length){ p.hidden=false; keepMsg(T[lang].nowork,'warn'); return; }
+      currentKey = genKey();
+      document.getElementById('keyVal').textContent = currentKey;
+      await saveWork(true);
+    }
+    p.hidden = !p.hidden;
+    if(!p.hidden && messages.length) keepMsg(T[lang].saved,'');
+  };
+  document.getElementById('resumeToggle').onclick = ()=>{ const p=document.getElementById('resumePanel'); document.getElementById('keepPanel').hidden=true; p.hidden=!p.hidden; };
+  document.getElementById('copyKey').onclick = ()=>{ navigator.clipboard.writeText(currentKey).then(()=>keepMsg(T[lang].copyok,'')); };
+  document.getElementById('dlKey').onclick = ()=>{
+    const head = (lang==='fr'?'Votre cle Clau. Gardez-la privee : quiconque la detient peut ouvrir votre travail. Nous ne pouvons pas la recuperer.':'Your Clau key. Keep it private: anyone who has it can open your work. We cannot recover it.');
+    const how = (lang==='fr'?'Pour reprendre : ouvrez Clau et collez cette cle dans "J\'ai une cle".':'To resume: open Clau and paste this key into "I have a key".');
+    const body = head+'\n\n'+currentKey+'\n\n'+how+'\n';
+    const blob=new Blob([body],{type:'text/plain'}); const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='clau-key.txt'; a.click(); URL.revokeObjectURL(a.href);
+  };
+  document.getElementById('forgetBtn').onclick = async ()=>{
+    if (!currentKey) return;
+    try{ const id=await idOf(currentKey); const wtok=await wtokOf(currentKey); await fetch(API+'/forget',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id,wtok})}); keepMsg(T[lang].forgotten,'warn'); currentKey=null; }catch(e){ keepMsg(T[lang].err,'err'); }
+  };
+  function resumeMsgShow(m,cls){ const e=document.getElementById('resumeMsg'); e.textContent=m; e.className='note '+(cls||''); e.hidden=false; }
+  document.getElementById('resumeBtn').onclick = ()=> loadKey(document.getElementById('resumeInput').value.trim());
+  async function loadKey(key){
+    if (!/^clau_[0-9A-Z]{10,}$/.test(key)){ resumeMsgShow(T[lang].badkey,'warn'); return; }
+    try{
+      const id=await idOf(key);
+      const r=await fetch(API+'/load',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id})});
+      const j=await r.json();
+      if (!j.payload){ resumeMsgShow(T[lang].notfound,'warn'); return; }
+      const work=await decryptWork(key, j.payload);
+      currentKey=key; messages=work.messages||[]; if(work.lang) setLang(work.lang);
+      stream.innerHTML='';
+      for (const m of messages) addBubble(m.role==='assistant'?'clau':'you', m.content, m.role==='assistant');
+      document.getElementById('resumePanel').hidden=true;
+      document.getElementById('keyVal').textContent=key;
+      resumeMsgShow(T[lang].loaded,'');
+    }catch(e){ resumeMsgShow(T[lang].notfound,'warn'); }
+  }
+
+  document.getElementById('send').onclick = send;
+  document.getElementById('input').addEventListener('keydown', e=>{ if(e.key==='Enter' && (e.metaKey||e.ctrlKey)){ e.preventDefault(); send(); } });
+
+  // boot. No key is ever placed in the URL: you resume by pasting your key, so the
+  // key never lands in browser history, sync, or a shared link.
+  setLang(lang);
 </script>
 </body>
 </html>
