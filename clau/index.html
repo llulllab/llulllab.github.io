@@ -110,7 +110,9 @@
   .tools-head p{color:var(--text-2);max-width:56ch;margin:10px auto 0;}
   .tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
   @media(max-width:640px){.tool-grid{grid-template-columns:1fr;}}
-  .tool{display:flex;gap:14px;padding:18px;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--bg-warm);}
+  .tool{display:flex;gap:14px;padding:18px;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--bg-warm);text-align:left;width:100%;font-family:inherit;color:inherit;cursor:pointer;appearance:none;-webkit-appearance:none;transition:border-color .15s,background .15s;}
+  .tool:hover{border-color:var(--border-gold);background:var(--bg-ivory);}
+  .tool:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
   .tool-num{font-family:var(--font-display);font-size:26px;font-weight:600;color:var(--gold);line-height:1;flex:0 0 auto;width:34px;}
   .tool-name{font-family:var(--font-display);font-size:21px;font-weight:600;color:var(--text-heading);margin:0 0 3px;}
   .tool-name .tag{font-family:var(--font-body);font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;vertical-align:3px;margin-left:7px;padding:2px 7px;border-radius:100px;}
@@ -125,6 +127,34 @@
   .stance-col h2{font-size:26px;margin-bottom:10px;}
   .stance-col p{color:var(--text-2);font-size:15.5px;}
   .stance-note{text-align:center;color:var(--text-3);font-size:14px;margin-top:34px;font-style:italic;}
+
+  /* tool tabs (workspace switcher) */
+  .tool-tabs{display:flex;gap:4px;flex-wrap:wrap;}
+  .tool-tab{font-family:var(--font-body);font-size:13.5px;font-weight:600;color:var(--text-3);background:transparent;border:1px solid transparent;border-radius:100px;padding:6px 14px;cursor:pointer;transition:background .15s,color .15s;}
+  .tool-tab:hover{color:var(--gold-dim);background:var(--gold-ghost);}
+  .tool-tab.active{color:#fff;background:var(--gold);border-color:var(--gold);}
+  .work-head{flex-wrap:wrap;}
+
+  /* generated document (CV / cover letter): a printable, downloadable card */
+  .doc-card{border:1px solid var(--border-mid);border-radius:var(--r-lg);background:var(--bg-ivory);margin-top:4px;overflow:hidden;}
+  .doc-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--bg-linen);}
+  .doc-bar .doc-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+  .doc-bar .doc-actions{display:flex;gap:8px;}
+  .doc-body{padding:22px 26px;font-family:var(--font-body);font-size:14.5px;line-height:1.6;color:var(--text-1);}
+  .doc-body h1{font-family:var(--font-display);font-size:26px;font-weight:600;margin:0 0 2px;}
+  .doc-body h2,.doc-body h3{font-family:var(--font-display);font-weight:600;color:var(--text-heading);margin:1.1em 0 .35em;font-size:18px;border-bottom:1px solid var(--border);padding-bottom:3px;}
+  .doc-body strong{color:var(--text-heading);}
+  .doc-body ul{margin:.3em 0 .7em;padding-left:1.2em;}
+  .doc-body p{margin:0 0 .7em;}
+
+  /* print: only the target document prints, cleanly */
+  #printMount{display:none;}
+  @media print{
+    .site-shell{display:none!important;}
+    #printMount{display:block!important;padding:0;}
+    #printMount .doc-body{padding:0;font-size:12pt;color:#000;}
+    #printMount h1,#printMount h2,#printMount h3{color:#000;}
+  }
 
   footer{margin-top:64px;border-top:1px solid var(--border);padding:30px 0 46px;}
   .footer-grid{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
@@ -159,16 +189,21 @@
 
       <section class="hero">
         <span class="pill"><span class="l-en">Free. No account. Private by design.</span><span class="l-fr">Gratuit. Sans compte. Confidentiel par conception.</span></span>
-        <h1><span class="l-en">Develop your doctoral project text</span><span class="l-fr">Developpez le texte de votre projet doctoral</span></h1>
+        <h1><span class="l-en">The key to your doctoral journey</span><span class="l-fr">La cle de votre parcours doctoral</span></h1>
         <p class="sub">
-          <span class="l-en">Clau reads the part of your project you are working on and helps you make it stronger: clearer claims, sounder reasoning, a structure that holds. It does not write it for you. Your words stay yours.</span>
-          <span class="l-fr">Clau lit la partie de votre projet sur laquelle vous travaillez et vous aide a la renforcer : des affirmations plus claires, un raisonnement plus solide, une structure qui tient. Il ne l'ecrit pas a votre place. Vos mots restent les votres.</span>
+          <span class="l-en">Four free tools for doctoral candidates: develop your project text, build your CV, position yourself for roles beyond academia, and rehearse your defense. Clau works from your own material and never writes it for you. Your words stay yours.</span>
+          <span class="l-fr">Quatre outils gratuits pour les doctorants : developpez le texte de votre projet, construisez votre CV, positionnez-vous pour des postes hors du monde academique, et preparez votre soutenance. Clau part de votre propre matiere et ne l'ecrit jamais a votre place. Vos mots restent les votres.</span>
         </p>
       </section>
 
       <section class="work" id="work" aria-label="Clau workspace">
         <div class="work-head">
-          <div class="wt">Expose<small><span class="l-en">Live</span><span class="l-fr">En ligne</span></small></div>
+          <div class="tool-tabs" role="tablist" aria-label="Clau tools">
+            <button class="tool-tab active" data-tool="expose" role="tab">Expose</button>
+            <button class="tool-tab" data-tool="cv" role="tab">CV</button>
+            <button class="tool-tab" data-tool="positionnement" role="tab">Positionnement</button>
+            <button class="tool-tab" data-tool="defense" role="tab">Defense</button>
+          </div>
           <div class="keybar">
             <button class="btn ghost sm" id="resumeToggle"><span class="l-en">I have a key</span><span class="l-fr">J'ai une cle</span></button>
             <button class="btn sm" id="keepToggle"><span class="l-en">Keep my work</span><span class="l-fr">Garder mon travail</span></button>
@@ -222,37 +257,37 @@
       <section class="tools">
         <div class="tools-head">
           <h2><span class="l-en">Four tools for the doctoral journey</span><span class="l-fr">Quatre outils pour le parcours doctoral</span></h2>
-          <p><span class="l-en">The project-text tool is live now. The other three are in preparation on the same principle: your work, your words, kept private.</span><span class="l-fr">L'outil de texte de projet est disponible. Les trois autres sont en preparation sur le meme principe : votre travail, vos mots, gardes prives.</span></p>
+          <p><span class="l-en">All four tools are live, on the same principle: your work, your words, kept private. Choose one above to begin.</span><span class="l-fr">Les quatre outils sont disponibles, sur le meme principe : votre travail, vos mots, gardes prives. Choisissez-en un ci-dessus pour commencer.</span></p>
         </div>
         <div class="tool-grid">
-          <div class="tool">
+          <button class="tool" data-tool="expose" type="button">
             <div class="tool-num">01</div>
             <div>
               <p class="tool-name">Expose<span class="tag live"><span class="l-en">Live</span><span class="l-fr">En ligne</span></span></p>
               <p class="tool-desc"><span class="l-en">Develop your doctoral project text: clearer claims, sound reasoning, structural integrity. Feedback on your own writing, not a rewrite.</span><span class="l-fr">Developpez le texte de votre projet doctoral : affirmations plus claires, raisonnement solide, coherence structurelle. Un retour sur votre ecrit, pas une reecriture.</span></p>
             </div>
-          </div>
-          <div class="tool">
+          </button>
+          <button class="tool" data-tool="cv" type="button">
             <div class="tool-num">02</div>
             <div>
-              <p class="tool-name">CV<span class="tag soon"><span class="l-en">Soon</span><span class="l-fr">Bientot</span></span></p>
-              <p class="tool-desc"><span class="l-en">Turn your details into a clean academic CV you can download.</span><span class="l-fr">Transformez vos informations en un CV academique clair a telecharger.</span></p>
+              <p class="tool-name">CV<span class="tag live"><span class="l-en">Live</span><span class="l-fr">En ligne</span></span></p>
+              <p class="tool-desc"><span class="l-en">Turn your real details into a clean academic CV you can download. Structured from what you did, never invented.</span><span class="l-fr">Transformez vos informations reelles en un CV academique clair a telecharger. Structure a partir de ce que vous avez fait, jamais invente.</span></p>
             </div>
-          </div>
-          <div class="tool">
+          </button>
+          <button class="tool" data-tool="positionnement" type="button">
             <div class="tool-num">03</div>
             <div>
-              <p class="tool-name">Positionnement<span class="tag soon"><span class="l-en">Soon</span><span class="l-fr">Bientot</span></span></p>
-              <p class="tool-desc"><span class="l-en">Map your transferable skills and prepare a targeted application for roles beyond academia.</span><span class="l-fr">Cartographiez vos competences transferables et preparez une candidature ciblee hors du monde academique.</span></p>
+              <p class="tool-name">Positionnement<span class="tag live"><span class="l-en">Live</span><span class="l-fr">En ligne</span></span></p>
+              <p class="tool-desc"><span class="l-en">Map your transferable skills to a target role and prepare a targeted application for work beyond academia.</span><span class="l-fr">Cartographiez vos competences transferables vers un poste vise et preparez une candidature ciblee hors du monde academique.</span></p>
             </div>
-          </div>
-          <div class="tool">
+          </button>
+          <button class="tool" data-tool="defense" type="button">
             <div class="tool-num">04</div>
             <div>
-              <p class="tool-name">Defense<span class="tag soon"><span class="l-en">Soon</span><span class="l-fr">Bientot</span></span></p>
-              <p class="tool-desc"><span class="l-en">Generate viva and interview questions from your own profile and rehearse.</span><span class="l-fr">Generez des questions de soutenance et d'entretien a partir de votre profil et entrainez-vous.</span></p>
+              <p class="tool-name">Defense<span class="tag live"><span class="l-en">Live</span><span class="l-fr">En ligne</span></span></p>
+              <p class="tool-desc"><span class="l-en">Generate viva and interview questions from your own profile and project, and rehearse.</span><span class="l-fr">Generez des questions de soutenance et d'entretien a partir de votre profil et de votre projet, et entrainez-vous.</span></p>
             </div>
-          </div>
+          </button>
         </div>
       </section>
 
@@ -296,6 +331,8 @@
 
   </div>
 
+  <div id="printMount" aria-hidden="true"></div>
+
 <script src="vendor/mammoth.browser.min.js"></script>
 <script src="vendor/pdf.min.js"></script>
 <script>
@@ -305,26 +342,50 @@
   try { if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'vendor/pdf.worker.min.js'; } catch(e){}
   const T = {
     en: {
-      greeting: "I'm Clau. Paste the part of your doctoral project text you want to work on, and tell me what feels unsure. We'll develop your text together. I won't write it for you.",
-      placeholder: "Paste your text here, and add what you're unsure about...",
+      greet: {
+        expose: "I'm Clau. Paste the part of your doctoral project text you want to work on, and tell me what feels unsure. We'll develop your text together. I won't write it for you.",
+        cv: "I'm Clau. Tell me about yourself in plain language, or paste or upload an existing CV, and I'll help you build a clean academic CV to download. I only use what you actually did.",
+        positionnement: "I'm Clau. Tell me your profile (or bring it from your CV) and the kind of role or sector you're aiming for. We'll map your transferable skills and prepare a targeted application. Your words stay yours.",
+        defense: "I'm Clau. Share your project text or profile, and I'll ask you the kind of questions a committee or an interviewer would. We'll rehearse until your answers are tight.",
+      },
+      ph: {
+        expose: "Paste your text here, and add what you're unsure about...",
+        cv: "Tell me your details, or paste/upload an old CV...",
+        positionnement: "Your profile and the role or sector you're targeting...",
+        defense: "Paste your project text or profile to start the practice...",
+      },
       you: "You", clau: "Clau", thinking: "Clau is reading",
       saved: "Saved. Keep your key safe.", loaded: "Your work is back. Continue below.",
       notfound: "No saved work found for that key. Check it and try again.", empty: "Type something first.",
       err: "Something went wrong. Please try again.", forgotten: "Your saved work has been deleted.",
       badkey: "That does not look like a Clau key.", copyok: "Key copied.", nowork:"Start a conversation before keeping your work.",
+      docCV: "CV", docLetter: "Cover letter", download: "Download PDF", copytext: "Copy text", copied: "Copied.",
     },
     fr: {
-      greeting: "Je suis Clau. Collez la partie de votre projet doctoral sur laquelle vous voulez travailler, et dites-moi ce qui vous semble incertain. Nous developperons votre texte ensemble. Je ne l'ecrirai pas a votre place.",
-      placeholder: "Collez votre texte ici, et ajoutez ce qui vous semble incertain...",
+      greet: {
+        expose: "Je suis Clau. Collez la partie de votre projet doctoral sur laquelle vous voulez travailler, et dites-moi ce qui vous semble incertain. Nous developperons votre texte ensemble. Je ne l'ecrirai pas a votre place.",
+        cv: "Je suis Clau. Presentez-vous en langage clair, ou collez ou importez un CV existant, et je vous aide a construire un CV academique clair a telecharger. Je n'utilise que ce que vous avez reellement fait.",
+        positionnement: "Je suis Clau. Donnez-moi votre profil (ou reprenez-le depuis votre CV) et le type de poste ou de secteur que vous visez. Nous cartographierons vos competences transferables et preparerons une candidature ciblee. Vos mots restent les votres.",
+        defense: "Je suis Clau. Partagez le texte de votre projet ou votre profil, et je vous poserai le genre de questions qu'un jury ou un recruteur poserait. Nous nous entrainerons jusqu'a ce que vos reponses soient solides.",
+      },
+      ph: {
+        expose: "Collez votre texte ici, et ajoutez ce qui vous semble incertain...",
+        cv: "Donnez-moi vos informations, ou collez/importez un ancien CV...",
+        positionnement: "Votre profil et le poste ou le secteur que vous visez...",
+        defense: "Collez le texte de votre projet ou votre profil pour commencer...",
+      },
       you: "Vous", clau: "Clau", thinking: "Clau vous lit",
       saved: "Enregistre. Conservez bien votre cle.", loaded: "Votre travail est de retour. Continuez ci-dessous.",
       notfound: "Aucun travail trouve pour cette cle. Verifiez-la et reessayez.", empty: "Ecrivez d'abord un texte.",
       err: "Une erreur s'est produite. Veuillez reessayer.", forgotten: "Votre travail enregistre a ete supprime.",
       badkey: "Cela ne ressemble pas a une cle Clau.", copyok: "Cle copiee.", nowork:"Commencez une conversation avant de garder votre travail.",
+      docCV: "CV", docLetter: "Lettre de motivation", download: "Telecharger le PDF", copytext: "Copier le texte", copied: "Copie.",
     }
   };
   let lang = (navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en';
-  let messages = [];      // {role:'user'|'assistant', content}
+  let currentTool = 'expose';
+  const convos = { expose:[], cv:[], positionnement:[], defense:[] }; // per-tool, so switching never loses a session's work
+  let messages = convos[currentTool]; // {role:'user'|'assistant', content} for the active tool
   let currentKey = null;  // the Clau key, held only in memory unless user saved it
   let pendingDoc = '', pendingDocLabel = ''; // an uploaded document, folded into the next message
 
@@ -335,8 +396,21 @@
     document.documentElement.lang = l;
     document.getElementById('btn-en').classList.toggle('active', l==='en');
     document.getElementById('btn-fr').classList.toggle('active', l==='fr');
-    document.getElementById('input').placeholder = T[l].placeholder;
-    if (!messages.length) renderGreeting();
+    document.getElementById('input').placeholder = T[l].ph[currentTool];
+    if (!messages.length) renderGreeting(); else renderConvo();
+  }
+
+  // ---- tool switching ----
+  function switchTool(tool, opts){
+    opts = opts || {};
+    if (!convos[tool]) return;
+    if (currentKey && messages.length && !opts.noSave) saveWork(true); // preserve the tool we are leaving
+    currentTool = tool;
+    messages = convos[tool];
+    document.querySelectorAll('.tool-tab').forEach(b=> b.classList.toggle('active', b.dataset.tool===tool));
+    document.getElementById('input').placeholder = T[lang].ph[tool];
+    if (messages.length) renderConvo(); else renderGreeting();
+    if (!opts.noScroll){ const w=document.getElementById('work'); if (w) w.scrollIntoView({behavior:'smooth', block:'start'}); }
   }
 
   // ---- tiny markdown (headings, bold, lists) ----
@@ -355,7 +429,16 @@
   const stream = document.getElementById('stream');
   function renderGreeting(){
     stream.innerHTML = '';
-    addBubble('clau', T[lang].greeting, false);
+    addBubble('clau', T[lang].greet[currentTool], false);
+  }
+  // rebuild the stream from the active tool's messages (on tool switch / resume / lang change)
+  function renderConvo(){
+    stream.innerHTML = '';
+    if (!messages.length){ addBubble('clau', T[lang].greet[currentTool], false); return; }
+    for (const m of messages){
+      if (m.role === 'assistant') renderAssistant(m.content);
+      else addBubble('you', m.content, false);
+    }
   }
   function addBubble(who, text, asMd){
     const wrap = document.createElement('div');
@@ -377,6 +460,43 @@
   }
   function showErr(msg){ const e=document.getElementById('errMsg'); e.textContent=msg; e.hidden=false; setTimeout(()=>e.hidden=true, 6000); }
 
+  // ---- Clau replies may carry a finished document (CV / cover letter) in a fenced block.
+  // Render the conversational part as a bubble and the document as a printable card. ----
+  const DOC_RE = /```(cv|lettre|letter)[^\n]*\n([\s\S]*?)```/gi;
+  function renderAssistant(text){
+    const docs = [];
+    let conv = String(text||'').replace(DOC_RE, (m, kind, body)=>{ docs.push({kind:kind.toLowerCase(), body:body.trim()}); return ''; });
+    conv = conv.replace(/\n{3,}/g,'\n\n').trim();
+    if (conv) addBubble('clau', conv, true);
+    for (const d of docs) addDocCard(d.kind, d.body);
+    if (!conv && !docs.length) addBubble('clau', String(text||''), true);
+  }
+  function docMd(s){
+    const lines = String(s).split('\n');
+    let head = '';
+    if (lines.length){
+      const first = lines[0].trim();
+      const m1 = first.match(/^\*\*(.+)\*\*$/) || first.match(/^#\s+(.+)$/);
+      if (m1){ head = '<h1>'+esc(m1[1].replace(/\*\*/g,''))+'</h1>'; lines.shift(); }
+    }
+    return head + md(lines.join('\n'));
+  }
+  function addDocCard(kind, mdText){
+    const label = kind==='cv' ? T[lang].docCV : T[lang].docLetter;
+    const card = document.createElement('div'); card.className='doc-card';
+    const bar = document.createElement('div'); bar.className='doc-bar';
+    const lab = document.createElement('span'); lab.className='doc-label'; lab.textContent = label;
+    const acts = document.createElement('div'); acts.className='doc-actions';
+    const dl = document.createElement('button'); dl.className='btn sm'; dl.textContent = T[lang].download;
+    const cp = document.createElement('button'); cp.className='btn ghost sm'; cp.textContent = T[lang].copytext;
+    acts.appendChild(dl); acts.appendChild(cp); bar.appendChild(lab); bar.appendChild(acts);
+    const bodyEl = document.createElement('div'); bodyEl.className='doc-body'; bodyEl.innerHTML = docMd(mdText);
+    card.appendChild(bar); card.appendChild(bodyEl);
+    stream.appendChild(card); stream.scrollTop = stream.scrollHeight;
+    dl.onclick = ()=>{ const mount=document.getElementById('printMount'); mount.innerHTML=''; mount.appendChild(bodyEl.cloneNode(true)); window.print(); };
+    cp.onclick = ()=> navigator.clipboard.writeText(mdText).then(()=>{ cp.textContent=T[lang].copied; setTimeout(()=>cp.textContent=T[lang].copytext,1500); }).catch(()=>{});
+  }
+
   async function send(){
     const ta = document.getElementById('input');
     const typed = ta.value.trim();
@@ -389,12 +509,12 @@
     ta.value=''; document.getElementById('send').disabled=true;
     const th = thinkingBubble();
     try{
-      const r = await fetch(API+'/develop', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({messages})});
+      const r = await fetch(API+'/develop', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({messages, tool: currentTool})});
       const j = await r.json();
       th.remove();
       if (!r.ok || !j.reply){ showErr(j.message || T[lang].err); messages.pop(); return; }
       messages.push({role:'assistant', content:j.reply});
-      addBubble('clau', j.reply, true);
+      renderAssistant(j.reply);
       if (currentKey) await saveWork(true); // silent autosave if the user is keeping work
     }catch(e){ th.remove(); showErr(T[lang].err); messages.pop(); }
     finally{ document.getElementById('send').disabled=false; }
@@ -440,27 +560,31 @@
 
   function keepMsg(msg, cls){ const e=document.getElementById('keepMsg'); e.textContent=msg; e.className='note '+(cls||''); e.hidden=false; }
   async function saveWork(silent){
-    if (!currentKey || !messages.length){ if(!silent) keepMsg(T[lang].nowork,'warn'); return; }
+    const hasAny = Object.values(convos).some(a=>a.length);
+    if (!currentKey || !hasAny){ if(!silent) keepMsg(T[lang].nowork,'warn'); return; }
+    // Save all four tools' conversations under the one key, plus the active tool.
+    const snap = { lang, tool: currentTool, convos, savedAt: Date.now() };
     try{
       const id = await idOf(currentKey);
       const wtok = await wtokOf(currentKey);
-      const payload = await encryptWork(currentKey, {lang, messages, savedAt:Date.now()});
+      const payload = await encryptWork(currentKey, snap);
       const r = await fetch(API+'/save', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({id, payload, wtok})});
-      if (r.ok && !silent) keepMsg(T[lang].saved,'');
+      if (!silent) keepMsg(r.ok ? T[lang].saved : T[lang].err, r.ok ? '' : 'err');
     }catch(e){ if(!silent) keepMsg(T[lang].err,'err'); }
   }
 
   // ---- key panel wiring ----
+  const hasWork = ()=> Object.values(convos).some(a=>a.length);
   document.getElementById('keepToggle').onclick = async ()=>{
     const p=document.getElementById('keepPanel'); document.getElementById('resumePanel').hidden=true;
     if (!currentKey){
-      if (!messages.length){ p.hidden=false; keepMsg(T[lang].nowork,'warn'); return; }
+      if (!hasWork()){ p.hidden=false; keepMsg(T[lang].nowork,'warn'); return; }
       currentKey = genKey();
       document.getElementById('keyVal').textContent = currentKey;
       await saveWork(true);
     }
     p.hidden = !p.hidden;
-    if(!p.hidden && messages.length) keepMsg(T[lang].saved,'');
+    if(!p.hidden && hasWork()) keepMsg(T[lang].saved,'');
   };
   document.getElementById('resumeToggle').onclick = ()=>{ const p=document.getElementById('resumePanel'); document.getElementById('keepPanel').hidden=true; p.hidden=!p.hidden; };
   document.getElementById('copyKey').onclick = ()=>{ navigator.clipboard.writeText(currentKey).then(()=>keepMsg(T[lang].copyok,'')); };
@@ -485,9 +609,19 @@
       const j=await r.json();
       if (!j.payload){ resumeMsgShow(T[lang].notfound,'warn'); return; }
       const work=await decryptWork(key, j.payload);
-      currentKey=key; messages=work.messages||[]; if(work.lang) setLang(work.lang);
-      stream.innerHTML='';
-      for (const m of messages) addBubble(m.role==='assistant'?'clau':'you', m.content, m.role==='assistant');
+      currentKey=key;
+      if (work.convos && typeof work.convos==='object'){
+        for (const k of Object.keys(convos)) convos[k] = Array.isArray(work.convos[k]) ? work.convos[k] : [];
+      } else { // back-compat: older single-tool saves stored {messages}
+        convos.expose=[]; convos.cv=[]; convos.positionnement=[]; convos.defense=[];
+        const t = convos[work.tool] ? work.tool : 'expose';
+        convos[t] = work.messages || [];
+      }
+      currentTool = convos[work.tool] ? work.tool : 'expose';
+      messages = convos[currentTool];
+      if (work.lang) lang = work.lang;
+      document.querySelectorAll('.tool-tab').forEach(b=> b.classList.toggle('active', b.dataset.tool===currentTool));
+      setLang(lang); // updates placeholder + rebuilds the stream via renderConvo
       document.getElementById('resumePanel').hidden=true;
       document.getElementById('keyVal').textContent=key;
       resumeMsgShow(T[lang].loaded,'');
@@ -496,6 +630,10 @@
 
   document.getElementById('send').onclick = send;
   document.getElementById('input').addEventListener('keydown', e=>{ if(e.key==='Enter' && (e.metaKey||e.ctrlKey)){ e.preventDefault(); send(); } });
+
+  // tool switcher: tabs (stay in place) and the four cards below (scroll up to the workspace)
+  document.querySelectorAll('.tool-tab').forEach(b=> b.onclick = ()=> switchTool(b.dataset.tool, {noScroll:true}));
+  document.querySelectorAll('.tool-grid .tool').forEach(b=> b.onclick = ()=> switchTool(b.dataset.tool));
 
   // ---- document upload: parsed IN THE BROWSER; the raw file never leaves the device ----
   function uploadMsg(html){ document.getElementById('uploadStatus').innerHTML = html; }
