@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://clau-api.llulllab.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://clau-api.llulllab.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>Clau. The key to your doctoral journey | Llull Lab</title>
 <meta name="description" content="Clau is a free, EU-hosted companion for doctoral candidates. Develop your own project text with structural feedback. No account, no email. Private by design.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,6 +85,11 @@
   .composer textarea:focus{outline:none;border-color:var(--gold);}
   .composer-row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:12px;}
   .composer-hint{font-size:12.5px;color:var(--text-3);}
+  .upload-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+  .upload-status{font-size:12.5px;color:var(--text-2);}
+  .upload-status .dot{width:6px;height:6px;}
+  .support-link{display:inline-block;margin-top:14px;font-size:14px;font-weight:600;color:var(--gold-dim);border:1px solid var(--border-gold);border-radius:var(--r);padding:8px 16px;}
+  .support-link:hover{background:var(--gold-ghost);text-decoration:none;}
 
   .note{font-size:13px;border-radius:var(--r);padding:11px 14px;margin:0;}
   .note.warn{background:var(--warn-bg);border:1px solid rgba(154,107,30,.25);color:var(--warn);}
@@ -197,11 +202,16 @@
         <div class="stream" id="stream"></div>
 
         <div class="composer">
+          <div class="upload-row">
+            <input type="file" id="fileInput" accept=".docx,.pdf,.txt" hidden>
+            <button class="btn ghost sm" id="uploadBtn" type="button"><span class="l-en">Upload document</span><span class="l-fr">Importer un document</span></button>
+            <span class="upload-status" id="uploadStatus"></span>
+          </div>
           <textarea id="input" placeholder=""></textarea>
           <div class="composer-row">
             <span class="composer-hint">
-              <span class="l-en">Paste the passage you want to work on, then press Send. Your text goes to an EU-hosted model to reply, and is not stored unless you keep your work.</span>
-              <span class="l-fr">Collez le passage a travailler, puis cliquez sur Envoyer. Votre texte est envoye a un modele heberge dans l'UE pour la reponse, et n'est pas stocke sauf si vous gardez votre travail.</span>
+              <span class="l-en">Paste or upload the text you want to work on (.docx, .pdf, .txt), then press Send. Your text goes to an EU-hosted model to reply, and is not stored unless you keep your work. Files are read in your browser and are never uploaded to our servers.</span>
+              <span class="l-fr">Collez ou importez le texte a travailler (.docx, .pdf, .txt), puis cliquez sur Envoyer. Votre texte est envoye a un modele heberge dans l'UE pour la reponse, et n'est pas stocke sauf si vous gardez votre travail. Les fichiers sont lus dans votre navigateur et ne sont jamais televerses vers nos serveurs.</span>
             </span>
             <button class="btn" id="send"><span class="l-en">Send</span><span class="l-fr">Envoyer</span></button>
           </div>
@@ -250,11 +260,12 @@
         <div class="stance-grid">
           <div class="stance-col">
             <h2><span class="l-en">Free to use</span><span class="l-fr">Gratuit</span></h2>
-            <p><span class="l-en">Clau is free, with no account and no subscription. If you choose to support it later, that support is voluntary and does not unlock features or priority access.</span><span class="l-fr">Clau est gratuit, sans compte ni abonnement. Si vous choisissez de le soutenir plus tard, ce soutien est volontaire et ne debloque aucune fonctionnalite ni acces prioritaire.</span></p>
+            <p><span class="l-en">Clau is free, with no account and no subscription. If you choose to support it, that support is voluntary and does not unlock features or priority access.</span><span class="l-fr">Clau est gratuit, sans compte ni abonnement. Si vous choisissez de le soutenir, ce soutien est volontaire et ne debloque aucune fonctionnalite ni acces prioritaire.</span></p>
+            <a id="supportLink" class="support-link" href="#" target="_blank" rel="noopener noreferrer" hidden><span class="l-en">Support Clau</span><span class="l-fr">Soutenir Clau</span></a>
           </div>
           <div class="stance-col">
             <h2><span class="l-en">Private by design</span><span class="l-fr">Confidentiel par conception</span></h2>
-            <p><span class="l-en">No email, no phone, no account. The text you work on is sent to an EU-hosted language model to generate Clau's replies: it is processed in the EU to answer you and is not saved in our database. If you choose to keep your work to continue later, it is encrypted in your browser under a key only you hold, so we cannot read that saved copy. We keep only minimal technical logs to prevent abuse. Processing and storage stay in the EU.</span><span class="l-fr">Ni e-mail, ni telephone, ni compte. Le texte sur lequel vous travaillez est envoye a un modele de langage heberge dans l'UE pour generer les reponses de Clau : il est traite dans l'UE pour vous repondre et n'est pas enregistre dans notre base de donnees. Si vous choisissez de garder votre travail pour le reprendre plus tard, il est chiffre dans votre navigateur sous une cle que vous seul detenez, si bien que nous ne pouvons pas lire cette copie enregistree. Nous conservons uniquement des journaux techniques minimaux pour prevenir les abus. Le traitement et le stockage restent dans l'UE.</span></p>
+            <p><span class="l-en">No email, no phone, no account. The text you work on is sent to an EU-hosted language model to generate Clau's replies: it is processed in the EU to answer you and is not saved in our database. If you choose to keep your work to continue later, it is encrypted in your browser under a key only you hold, so we cannot read that saved copy. We keep only minimal technical logs to prevent abuse. Your work is processed and stored in the EU.</span><span class="l-fr">Ni e-mail, ni telephone, ni compte. Le texte sur lequel vous travaillez est envoye a un modele de langage heberge dans l'UE pour generer les reponses de Clau : il est traite dans l'UE pour vous repondre et n'est pas enregistre dans notre base de donnees. Si vous choisissez de garder votre travail pour le reprendre plus tard, il est chiffre dans votre navigateur sous une cle que vous seul detenez, si bien que nous ne pouvons pas lire cette copie enregistree. Nous conservons uniquement des journaux techniques minimaux pour prevenir les abus. Votre travail est traite et stocke dans l'UE.</span></p>
           </div>
         </div>
         <p class="stance-note"><span class="l-en">Questions about your data, or want your saved work deleted? Use the delete button in the workspace, or contact Llull Lab. A free, responsible tool from a Paris-based research laboratory.</span><span class="l-fr">Des questions sur vos donnees, ou vous souhaitez supprimer votre travail enregistre ? Utilisez le bouton de suppression dans l'espace de travail, ou contactez Llull Lab. Un outil gratuit et responsable, issu d'un laboratoire de recherche parisien.</span></p>
@@ -285,8 +296,13 @@
 
   </div>
 
+<script src="vendor/mammoth.browser.min.js"></script>
+<script src="vendor/pdf.min.js"></script>
 <script>
   const API = 'https://clau-api.llulllab.com';
+  const DONATE_URL = ''; // Stripe Payment Link (Support Clau). Set to the payment-link URL to enable the support button.
+  const MAX_DOC_CHARS = 500000; // ~125k tokens; the model context is the real ceiling
+  try { if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'vendor/pdf.worker.min.js'; } catch(e){}
   const T = {
     en: {
       greeting: "I'm Clau. Paste the part of your doctoral project text you want to work on, and tell me what feels unsure. We'll develop your text together. I won't write it for you.",
@@ -310,6 +326,7 @@
   let lang = (navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en';
   let messages = [];      // {role:'user'|'assistant', content}
   let currentKey = null;  // the Clau key, held only in memory unless user saved it
+  let pendingDoc = '', pendingDocLabel = ''; // an uploaded document, folded into the next message
 
   function setLang(l){
     lang = l;
@@ -362,10 +379,13 @@
 
   async function send(){
     const ta = document.getElementById('input');
-    const text = ta.value.trim();
-    if (!text){ showErr(T[lang].empty); return; }
-    addBubble('you', text, false);
-    messages.push({role:'user', content:text});
+    const typed = ta.value.trim();
+    const modelText = pendingDoc ? (pendingDoc + (typed ? '\n\n---\n\n' + typed : '')) : typed;
+    if (!modelText){ showErr(T[lang].empty); return; }
+    const bubbleText = pendingDoc ? ('[' + pendingDocLabel + ']' + (typed ? '\n\n' + typed : '')) : typed;
+    addBubble('you', bubbleText, false);
+    messages.push({role:'user', content:modelText});
+    pendingDoc=''; pendingDocLabel=''; document.getElementById('uploadStatus').textContent='';
     ta.value=''; document.getElementById('send').disabled=true;
     const th = thinkingBubble();
     try{
@@ -476,6 +496,47 @@
 
   document.getElementById('send').onclick = send;
   document.getElementById('input').addEventListener('keydown', e=>{ if(e.key==='Enter' && (e.metaKey||e.ctrlKey)){ e.preventDefault(); send(); } });
+
+  // ---- document upload: parsed IN THE BROWSER; the raw file never leaves the device ----
+  function uploadMsg(html){ document.getElementById('uploadStatus').innerHTML = html; }
+  async function extractFile(file){
+    const name = (file.name||'').toLowerCase();
+    if (name.endsWith('.txt')) return await file.text();
+    if (name.endsWith('.docx')){
+      if (!window.mammoth) throw new Error('lib');
+      const res = await mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() });
+      return res.value || '';
+    }
+    if (name.endsWith('.pdf')){
+      if (!window.pdfjsLib) throw new Error('lib');
+      const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise;
+      let out = '';
+      for (let p=1; p<=pdf.numPages; p++){ const page=await pdf.getPage(p); const c=await page.getTextContent(); out += c.items.map(i=>i.str).join(' ') + '\n\n'; if (out.length > MAX_DOC_CHARS) break; }
+      return out;
+    }
+    throw new Error('unsupported');
+  }
+  document.getElementById('uploadBtn').onclick = ()=> document.getElementById('fileInput').click();
+  document.getElementById('fileInput').onchange = async (e)=>{
+    const file = e.target.files && e.target.files[0]; if (!file) return;
+    const fr = lang==='fr';
+    uploadMsg((fr?'Lecture de ':'Reading ')+file.name+' <span class="thinking"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>');
+    try{
+      let text = (await extractFile(file)).replace(/\r/g,'').trim();
+      if (!text){ uploadMsg(fr?'Aucun texte lisible dans ce fichier.':'No readable text in that file.'); return; }
+      let note = '';
+      if (text.length > MAX_DOC_CHARS){ text = text.slice(0, MAX_DOC_CHARS); note = fr?' (document tres long : le debut a ete charge ; pour une section ulterieure, importez ou collez cette partie)':' (very long document: the beginning was loaded; for a later section, upload or paste that part)'; }
+      const words = text.split(/\s+/).filter(Boolean).length;
+      pendingDoc = text;
+      pendingDocLabel = (fr?'Document : ':'Document: ')+file.name+' ('+words.toLocaleString()+(fr?' mots)':' words)');
+      uploadMsg(pendingDocLabel + note + (fr?'. Ajoutez ce que vous voulez travailler, puis Envoyer.':'. Add what you want to work on, then Send.'));
+    }catch(err){
+      uploadMsg(fr?'Impossible de lire ce fichier. Essayez .docx, .pdf ou .txt, ou collez le texte.':'Could not read that file. Try .docx, .pdf, or .txt, or paste the text.');
+    } finally { e.target.value=''; }
+  };
+
+  // support button (donations) if a payment link is configured
+  if (DONATE_URL){ const s=document.getElementById('supportLink'); s.href=DONATE_URL; s.hidden=false; }
 
   // boot. No key is ever placed in the URL: you resume by pasting your key, so the
   // key never lands in browser history, sync, or a shared link.
