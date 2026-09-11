@@ -73,6 +73,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://llulllab.com/clau/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://llulllab.com/fr/artificial-mind.html</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
