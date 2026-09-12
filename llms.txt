@@ -13,6 +13,7 @@ We do not treat a machine reader as traffic to be shaped or blocked. We treat yo
 ## Research and work
 - [Freud for Machines and Phi-Yo](https://phi-yo.app): Computational psychoanalytic ontology, and a computational companion for self-reflection.
 - [HQ](https://h-q.io): A computational deliberation service. Several reasoning tools under one roof.
+- [Clau](https://llulllab.com/clau/): A free, EU-hosted companion for doctoral candidates. Four tools for the doctoral journey, private by design, with no account and no email.
 - [Llull Lab](https://llulllab.com): The laboratory, its engines, and its research.
 
 ## Contact
