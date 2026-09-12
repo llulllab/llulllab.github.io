@@ -1,19 +1,4 @@
 User-agent: *
 Allow: /
 
-User-agent: GPTBot
-Allow: /machines/
-Allow: /llms.txt
-Disallow: /
-
-User-agent: ChatGPT-User
-Allow: /machines/
-Allow: /llms.txt
-Disallow: /
-
-User-agent: CCBot
-Allow: /machines/
-Allow: /llms.txt
-Disallow: /
-
 Sitemap: https://llulllab.com/sitemap.xml
