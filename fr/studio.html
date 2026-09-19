@@ -107,9 +107,8 @@
   .foundation-zone{margin-top:14px;padding:22px 24px;border:1px solid var(--border);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);}
   .zone-eyebrow{font-family:var(--sans);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--highlight);margin-bottom:8px;}
   .zone-intro{font-size:.98rem;color:var(--accent);line-height:1.7;max-width:64ch;margin-bottom:8px;font-style:italic;}
-  .foundation-list{display:flex;flex-direction:column;}
-  .kind-foundation{padding:16px 0 16px 18px;border-left:2px solid var(--highlight-soft);border-top:1px solid var(--border);margin-top:4px;}
-  .kind-foundation:first-of-type{border-top:0;}
+  .foundation-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 24px;}
+  .kind-foundation{padding:14px 0 14px 18px;border-left:2px solid var(--highlight-soft);}
   .kind-foundation .nname{font-family:var(--sans);font-weight:600;font-size:1.08rem;margin-bottom:4px;}
   .kind-foundation .badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px;}
   .kind-foundation .ndesc{font-size:.88rem;color:var(--muted);line-height:1.55;margin-bottom:6px;max-width:70ch;}
@@ -148,7 +147,7 @@
   footer a:hover{color:var(--fg);}
 
   [hidden]{display:none!important;}
-  @media (max-width:760px){ .nodes{grid-template-columns:1fr;} .panel{max-width:none;} .legend{display:none;} }
+  @media (max-width:760px){ .nodes{grid-template-columns:1fr;} .foundation-list{grid-template-columns:1fr;} .panel{max-width:none;} .legend{display:none;} }
   @media (prefers-reduced-motion:reduce){ *{transition:none!important;} }
 
   header{position:sticky;top:0;z-index:100;background:rgba(0,0,0,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
