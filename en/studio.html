@@ -5,429 +5,169 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Llull Lab: Studio Llull</title>
   <link rel="icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="Llull Lab: Studio. Operational machines, engines, and computational frameworks: generative music, semantic engines, computational psychoanalysis.">
+  <meta name="description" content="Studio Llull, the production arm of Llull Lab: machines, engines, and computational frameworks that grow from one research finding and one method.">
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{
+    --bg:#000; --bg-surface:#0a0a0a; --bg-card:#141414;
+    --fg:#fff; --muted:#888; --dim:#444;
+    --accent:#c8c8c8; --highlight:#a78bfa;
+    --highlight-soft:rgba(167,139,250,0.08); --highlight-glow:rgba(167,139,250,0.24);
+    --live:#6ee7b7; --prep:#fbbf24;
+    --border:rgba(255,255,255,0.13); --border-strong:rgba(255,255,255,0.34);
+    --serif:'Spectral',Georgia,'Times New Roman',serif;
+    --sans:'Space Grotesk',system-ui,-apple-system,Segoe UI,sans-serif;
+    --max-w:1080px; --side-pad:clamp(18px,5vw,72px);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--fg);font-family:var(--serif);line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--highlight-glow);}
+  a{color:inherit;}
+  .wrap{max-width:var(--max-w);margin:0 auto;padding-inline:var(--side-pad);}
 
-    :root {
-      --bg: #0a0e1a;
-      --bg-surface: #111627;
-      --bg-card: #151a2e;
-      --fg: #e8e6e1;
-      --muted: #7b8298;
-      --dim: #3d4460;
-      --accent: #c2bfb6;
-      --highlight: #d4a054;
-      --highlight-soft: rgba(212,160,84,0.08);
-      --highlight-glow: rgba(212,160,84,0.15);
-      --live-color: #5ec47a;
-      --machine-color: #e8e6e1;
-      --engine-color: #e8e6e1;
-      --ontology-color: #e8e6e1;
-      --border: rgba(255,255,255,0.07);
-      --border-strong: rgba(255,255,255,0.14);
-      --serif: 'Spectral', Georgia, serif;
-      --sans: 'Space Grotesk', system-ui, sans-serif;
-      --max-w: 1080px;
-      --side-pad: clamp(20px, 5vw, 80px);
-    }
+  header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(0,0,0,0.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+  .header-inner{max-width:var(--max-w);margin:0 auto;padding-inline:var(--side-pad);height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .logo{font-family:var(--sans);font-weight:600;font-size:1.02rem;letter-spacing:.4px;text-decoration:none;color:var(--fg);}
+  .preview-tag{font-family:var(--sans);font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);border:1px solid var(--border-strong);padding:4px 9px;border-radius:20px;}
 
-    html { scroll-behavior: smooth; }
+  .hero{padding-block:72px 40px;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-80px;right:-120px;width:460px;height:460px;background:radial-gradient(circle,rgba(167,139,250,0.05),transparent 66%);pointer-events:none;}
+  .eyebrow{font-family:var(--sans);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--highlight);margin-bottom:18px;}
+  h1{font-family:var(--sans);font-weight:700;font-size:clamp(2.3rem,5.2vw,3.7rem);letter-spacing:-1px;line-height:1.08;margin-bottom:22px;text-wrap:balance;}
+  .tagline{font-size:1.12rem;color:var(--accent);max-width:60ch;line-height:1.75;margin-bottom:34px;}
+  .stats{display:flex;gap:44px;flex-wrap:wrap;padding-top:28px;border-top:1px solid var(--border);}
+  .stat-n{font-family:var(--sans);font-size:1.9rem;font-weight:700;line-height:1;color:var(--highlight);font-variant-numeric:tabular-nums;}
+  .stat-l{font-family:var(--sans);font-size:.76rem;color:var(--muted);margin-top:6px;letter-spacing:.3px;}
+  .note{margin-top:40px;padding-top:26px;border-top:1px solid var(--border);max-width:62ch;}
+  .note p{font-style:italic;font-size:.95rem;color:var(--muted);line-height:1.8;}
 
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: var(--serif);
-      line-height: 1.7;
-      font-size: 17px;
-      -webkit-font-smoothing: antialiased;
-    }
+  .atlas{padding-block:52px 20px;}
+  .atlas-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px;}
+  .atlas-title{font-family:var(--sans);font-size:.74rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--highlight);}
+  .atlas-sub{font-size:.95rem;color:var(--muted);max-width:60ch;margin-bottom:22px;}
+  .toggle{display:inline-flex;border:1px solid var(--border-strong);border-radius:8px;overflow:hidden;}
+  .toggle button{font-family:var(--sans);font-size:.78rem;font-weight:500;letter-spacing:.3px;color:var(--muted);background:transparent;border:0;padding:8px 16px;cursor:pointer;transition:background .2s,color .2s;}
+  .toggle button[aria-pressed="true"]{background:var(--highlight-soft);color:var(--highlight);}
+  .toggle button:focus-visible{outline:2px solid var(--highlight);outline-offset:-2px;}
+  .toggle button:disabled{opacity:.4;cursor:not-allowed;}
 
-    ::selection { background: var(--highlight-glow); }
+  .graph-wrap{position:relative;border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,var(--bg-surface),var(--bg));overflow:hidden;height:clamp(460px,66vh,680px);}
+  #graph{display:block;width:100%;height:100%;touch-action:pan-y;}
+  .hq-box{fill:rgba(255,255,255,0.02);stroke:var(--border-strong);stroke-width:1;stroke-dasharray:4 4;}
+  .hq-cap{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:2px;fill:var(--accent);text-transform:uppercase;}
+  .edge{stroke:var(--dim);stroke-width:1;fill:none;transition:stroke .2s,stroke-opacity .2s;stroke-opacity:.7;}
+  .edge.spine{stroke:var(--accent);stroke-opacity:.5;stroke-width:1.4;}
+  .edge.group{stroke:var(--accent);stroke-opacity:.35;stroke-width:1.2;stroke-dasharray:5 4;}
+  .edge.dim{stroke-opacity:.08;}
+  .edge.hot{stroke:var(--highlight);stroke-opacity:.95;stroke-width:1.9;}
+  .edge-label{font-family:var(--sans);font-size:9.5px;letter-spacing:.3px;fill:var(--accent);opacity:0;transition:opacity .2s;pointer-events:none;text-transform:lowercase;}
+  .edge-label.show{opacity:.95;}
+  .edge-label.always{opacity:.55;}
+  .node{cursor:pointer;}
+  /* monochrome structure: products = darker fill + thin border; foundation/frame = lighter fill + bright thick border + bigger. Lavender is reserved for interaction. */
+  .node circle.body{fill:var(--bg-surface);stroke:var(--border);stroke-width:1.4;transition:stroke .2s,fill .2s,stroke-width .2s;}
+  .node .halo{fill:none;stroke:transparent;stroke-width:2;}
+  .node text{font-family:var(--sans);font-weight:500;fill:var(--accent);text-anchor:middle;dominant-baseline:middle;pointer-events:none;}
+  .node.r-backbone circle.body{fill:var(--bg-card);stroke:var(--accent);stroke-width:2.6;}
+  .node.r-research circle.body{fill:var(--bg-card);stroke:var(--accent);stroke-width:2;}
+  .node.r-theory circle.body{fill:var(--bg-card);stroke:var(--accent);stroke-width:1.4;stroke-dasharray:3 3;}
+  .node.r-frame circle.body{fill:var(--bg-card);stroke:var(--accent);stroke-width:2.2;}
+  .node.r-operator circle.body{fill:var(--bg-surface);stroke:var(--dim);}
+  .node.r-backbone text,.node.r-research text,.node.r-theory text,.node.r-frame text{fill:var(--fg);font-weight:600;}
+  .node.dim{opacity:.18;}
+  .node.hot circle.body{stroke:var(--highlight);stroke-width:2.4;}
+  .node.sel circle.body{stroke:var(--highlight);stroke-width:3.4;}
+  .node.hot .halo{stroke:var(--highlight-glow);}
+  .node:focus-visible circle.body{stroke:var(--highlight);stroke-width:3;}
+  .node .ring{fill:none;stroke:var(--accent);stroke-opacity:.45;stroke-width:1;}
 
-    /* HEADER */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(10,14,26,0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
+  .panel{position:absolute;left:14px;bottom:14px;right:14px;max-width:352px;z-index:3;background:rgba(0,0,0,0.95);border:1px solid var(--border-strong);border-radius:10px;padding:14px 16px;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;}
+  .panel.show{opacity:1;transform:none;}
+  .panel .phint{font-size:.84rem;color:var(--muted);line-height:1.5;}
+  .panel .pkind{font-family:var(--sans);font-size:.6rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--dim);margin-bottom:5px;}
+  .panel .pname{font-family:var(--sans);font-weight:600;font-size:1.06rem;color:var(--fg);}
+  .panel .ptype{font-family:var(--sans);font-size:.66rem;letter-spacing:1px;text-transform:uppercase;color:var(--highlight);margin:3px 0 8px;}
+  .panel .pdesc{font-size:.84rem;color:var(--muted);line-height:1.5;}
+  .panel .prel{font-family:var(--sans);font-size:.72rem;color:var(--accent);margin-top:8px;line-height:1.5;}
+  .panel .popen{pointer-events:auto;display:inline-block;margin-top:12px;font-family:var(--sans);font-size:.78rem;font-weight:500;color:var(--bg);background:var(--highlight);text-decoration:none;padding:6px 14px;border-radius:5px;}
+  .panel .popen:hover,.panel .popen:focus-visible{box-shadow:0 2px 16px rgba(167,139,250,.28);outline:none;}
+  .panel .pprep{margin-top:12px;font-family:var(--sans);font-size:.72rem;letter-spacing:.5px;text-transform:uppercase;color:var(--prep);}
+  .legend{position:absolute;right:14px;top:14px;z-index:2;font-family:var(--sans);font-size:.68rem;color:var(--muted);background:rgba(0,0,0,.8);border:1px solid var(--border);border-radius:8px;padding:8px 11px;pointer-events:none;line-height:1.7;}
+  .legend .sw{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:middle;box-sizing:border-box;}
+  .legend .sw.f{background:var(--bg-card);border:2px solid var(--accent);} .legend .sw.p{background:var(--bg-surface);border:1px solid var(--border);}
 
-    .header-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 var(--side-pad);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
+  .sr-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 
-    .logo-text {
-      font-family: var(--sans);
-      font-weight: 600;
-      font-size: 1.05rem;
-      letter-spacing: 0.5px;
-      color: var(--fg);
-      text-decoration: none;
-    }
+  .list-view{margin-top:10px;}
+  /* foundation zone: editorial, NOT a product catalog */
+  .foundation-zone{margin-top:14px;padding:22px 24px;border:1px solid var(--border);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);}
+  .zone-eyebrow{font-family:var(--sans);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--highlight);margin-bottom:8px;}
+  .zone-intro{font-size:.98rem;color:var(--accent);line-height:1.7;max-width:64ch;margin-bottom:8px;font-style:italic;}
+  .foundation-list{display:flex;flex-direction:column;}
+  .kind-foundation{padding:16px 0 16px 18px;border-left:2px solid var(--highlight-soft);border-top:1px solid var(--border);margin-top:4px;}
+  .kind-foundation:first-of-type{border-top:0;}
+  .kind-foundation .nname{font-family:var(--sans);font-weight:600;font-size:1.08rem;margin-bottom:4px;}
+  .kind-foundation .badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px;}
+  .kind-foundation .ndesc{font-size:.88rem;color:var(--muted);line-height:1.55;margin-bottom:6px;max-width:70ch;}
+  .kind-foundation .nrels{font-size:.8rem;color:var(--accent);line-height:1.55;}
 
-    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .products-zone{margin-top:40px;}
+  .group{margin-top:32px;}
+  .group.hq-group{border:1px dashed var(--border-strong);border-radius:12px;padding:20px 22px;background:rgba(255,255,255,0.015);}
+  .group-head{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
+  .group-label{font-family:var(--sans);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--highlight);white-space:nowrap;}
+  .group-line{flex:1;height:1px;background:var(--border);}
+  .group-count{font-family:var(--sans);font-size:.72rem;color:var(--dim);}
+  .group-note{font-size:.85rem;color:var(--muted);line-height:1.55;margin-bottom:16px;max-width:66ch;}
+  .group-note .rel,.nrels .rel,.kind-foundation .rel{color:var(--highlight);text-decoration:none;border-bottom:1px dotted rgba(167,139,250,.4);}
+  .group-note .rel:hover,.nrels .rel:hover,.kind-foundation .rel:hover,.rel:focus-visible{border-bottom-style:solid;outline:none;}
+  .nodes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .node-item{background:var(--bg-card);border:1px solid var(--border);border-radius:11px;padding:22px 24px;scroll-margin-top:80px;transition:border-color .3s,box-shadow .3s;}
+  .node-item:target,.node-item.flash{border-color:var(--highlight);box-shadow:0 0 0 1px var(--highlight-soft),0 6px 30px rgba(0,0,0,.35);}
+  .node-item .nname{font-family:var(--sans);font-weight:600;font-size:1.22rem;letter-spacing:-.3px;margin-bottom:6px;}
+  .node-item .badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;}
+  .ntype{font-family:var(--sans);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:var(--accent);}
+  .nstatus{font-family:var(--sans);font-size:.62rem;letter-spacing:.7px;text-transform:uppercase;padding:2px 9px;border-radius:20px;border:1px solid rgba(94,196,122,.3);color:var(--live);background:rgba(94,196,122,.06);}
+  .nstatus.soft{border-color:var(--border-strong);color:var(--muted);background:transparent;}
+  .nstatus.prep{border-color:rgba(251,191,36,.4);color:var(--prep);background:rgba(251,191,36,.07);}
+  .nstatus.free{border-color:var(--border-strong);color:var(--fg);background:rgba(255,255,255,0.06);}
+  .ndesc{font-size:.9rem;color:var(--muted);line-height:1.55;margin-bottom:10px;}
+  .nrels{font-size:.82rem;color:var(--accent);line-height:1.6;}
+  .nlink{display:inline-block;margin-top:14px;font-family:var(--sans);font-size:.8rem;font-weight:500;color:var(--bg);background:var(--highlight);text-decoration:none;padding:6px 15px;border-radius:5px;transition:box-shadow .2s;}
+  .nlink:hover,.nlink:focus-visible{box-shadow:0 2px 16px rgba(167,139,250,.28);outline:none;}
+  .nlink.flink{background:transparent;color:var(--highlight);padding:0;margin-top:8px;border-bottom:1px solid rgba(167,139,250,.4);border-radius:0;}
+  .nlink.flink:hover{box-shadow:none;border-bottom-color:var(--highlight);}
 
-    nav a {
-      font-family: var(--sans);
-      font-size: 0.82rem;
-      font-weight: 400;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: all 0.25s ease;
-    }
-    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.06); }
-    nav a.active { color: var(--highlight); background: rgba(212,160,84,0.08); }
+  footer{border-top:1px solid var(--border);padding:38px var(--side-pad);margin-top:70px;text-align:center;font-family:var(--sans);font-size:.8rem;color:var(--muted);}
+  footer div{margin:4px 0;}
+  footer a{color:var(--muted);text-decoration:none;}
+  footer a:hover{color:var(--fg);}
 
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: 1px solid var(--border-strong);
-      color: var(--fg);
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      padding: 6px 14px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+  [hidden]{display:none!important;}
+  @media (max-width:760px){ .nodes{grid-template-columns:1fr;} .panel{max-width:none;} .legend{display:none;} }
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important;} }
 
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-      nav {
-        display: none; position: absolute; top: 64px; left: 0; right: 0;
-        background: rgba(10,14,26,0.97); backdrop-filter: blur(20px);
-        flex-direction: column; padding: 16px var(--side-pad);
-        border-bottom: 1px solid var(--border);
-      }
-      nav.open { display: flex; }
-      nav a { padding: 12px 0; }
-      .card-grid { grid-template-columns: 1fr; }
-    }
-
-    .page-section {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 var(--side-pad);
-    }
-
-    /* HERO */
-    .studio-hero {
-      padding: 100px 0 64px;
-      position: relative;
-    }
-
-    .studio-hero::before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -100px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(212,160,84,0.04) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .studio-label {
-      font-family: var(--sans);
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--highlight);
-      margin-bottom: 20px;
-    }
-
-    .studio-hero h1 {
-      font-family: var(--sans);
-      font-weight: 700;
-      font-size: clamp(2.5rem, 5.5vw, 4rem);
-      letter-spacing: -1px;
-      line-height: 1.1;
-      margin-bottom: 28px;
-      color: var(--fg);
-    }
-
-    .studio-tagline {
-      font-family: var(--serif);
-      font-size: 1.15rem;
-      color: var(--accent);
-      max-width: 580px;
-      line-height: 1.75;
-      margin-bottom: 40px;
-    }
-
-    .studio-stats {
-      display: flex;
-      gap: 48px;
-      flex-wrap: wrap;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-    }
-
-    .stat-number {
-      font-family: var(--sans);
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      line-height: 1;
-      color: var(--highlight);
-    }
-
-    .stat-label {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    /* MANIFESTO NOTE */
-    .studio-note {
-      margin-top: 48px;
-      padding: 28px 0;
-      border-top: 1px solid var(--border);
-      max-width: 540px;
-    }
-
-    .studio-note p {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 0.95rem;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    /* CATEGORY HEADER */
-    .category-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 24px;
-      margin-top: 56px;
-    }
-
-    .category-label {
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--highlight);
-      white-space: nowrap;
-    }
-
-    .category-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .category-count {
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      color: var(--dim);
-      letter-spacing: 0.5px;
-    }
-
-    /* CARD GRID */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    /* PRODUCT CARD: compact, near-square */
-    .product-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 240px;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .product-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--highlight-glow), transparent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .product-card:hover {
-      border-color: var(--border-strong);
-      box-shadow: 0 4px 32px rgba(0,0,0,0.3);
-    }
-
-    .product-card:hover::before {
-      opacity: 1;
-    }
-
-    .product-top {
-      flex: 1;
-    }
-
-    /* 1. NAME (color-coded) */
-    .product-name {
-      font-family: var(--sans);
-      font-size: 1.35rem;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-
-    .product-name.machine { color: var(--machine-color); }
-    .product-name.engine { color: var(--engine-color); }
-    .product-name.ontology { color: var(--ontology-color); }
-
-    /* 2. STATUS */
-    .product-status {
-      display: inline-block;
-      font-family: var(--sans);
-      font-size: 0.68rem;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
-      margin-bottom: 14px;
-      border: 1px solid rgba(94,196,122,0.3);
-      color: var(--live-color);
-      background: rgba(94,196,122,0.06);
-    }
-
-    .product-status.dev {
-      border-color: var(--border-strong);
-      color: var(--muted);
-      background: transparent;
-    }
-
-    /* 3. TYPE */
-    .product-type {
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: var(--dim);
-      margin-bottom: 10px;
-    }
-
-    /* 4. DESCRIPTION */
-    .product-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    /* 5. ACTION LINK */
-    .product-link {
-      display: inline-block;
-      margin-top: 18px;
-      font-family: var(--sans);
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--bg);
-      background: var(--highlight);
-      text-decoration: none;
-      padding: 7px 18px;
-      border-radius: 5px;
-      transition: all 0.25s ease;
-    }
-
-    .product-link:hover {
-      background: #e0ad5e;
-      box-shadow: 0 2px 16px rgba(212,160,84,0.25);
-    }
-
-    .product-link.disabled {
-      background: transparent;
-      border: 1px solid var(--border-strong);
-      color: var(--muted);
-      cursor: default;
-    }
-
-    .product-link.disabled:hover {
-      box-shadow: none;
-      background: transparent;
-    }
-
-    .product-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-    .product-links .product-link { margin-top: 0; }
-    .product-link.secondary {
-      background: transparent;
-      color: var(--highlight);
-      border: 1px solid var(--highlight);
-    }
-    .product-link.secondary:hover {
-      background: var(--highlight);
-      color: var(--bg);
-    }
-
-    /* IN DEVELOPMENT SECTION */
-    .dev-section {
-      border-top: 1px solid var(--border);
-      padding: 48px 0;
-      margin-top: 56px;
-    }
-
-    .dev-label {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 24px;
-    }
-
-    /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 80px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
-    footer .footer-line { margin: 4px 0; line-height: 1.7; }
-    footer .footer-line a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    footer .footer-line a:hover { color: var(--fg); }
-    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
-    @media (max-width: 600px) { footer { padding: 32px 20px; margin-top: 56px; font-size: 0.78rem; } }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up { animation: fadeUp 0.7s ease-out both; }
-    .fade-up-d1 { animation-delay: 0.12s; }
-    .fade-up-d2 { animation-delay: 0.24s; }
-    .fade-up-d3 { animation-delay: 0.36s; }
+  header{position:sticky;top:0;z-index:100;background:rgba(0,0,0,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+  .header-inner{max-width:var(--max-w);margin:0 auto;padding:0 var(--side-pad);display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo-text{font-family:var(--sans);font-weight:600;font-size:1.05rem;letter-spacing:.5px;color:var(--fg);text-decoration:none;}
+  nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;}
+  nav a{font-family:var(--sans);font-size:.82rem;font-weight:400;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:4px;transition:all .25s ease;}
+  nav a:hover{color:var(--fg);background:rgba(255,255,255,0.06);}
+  nav a.active{color:var(--fg);background:rgba(255,255,255,0.10);}
+  .menu-toggle{display:none;background:none;border:1px solid var(--border-strong);color:var(--fg);font-family:var(--sans);font-size:.85rem;padding:6px 14px;border-radius:4px;cursor:pointer;}
+  @media (max-width:768px){.menu-toggle{display:block;}nav{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(0,0,0,0.97);backdrop-filter:blur(20px);flex-direction:column;padding:16px var(--side-pad);border-bottom:1px solid var(--border);}nav.open{display:flex;}nav a{padding:12px 0;}}
+  .footer-line{margin:4px 0;line-height:1.7;}
+  .footer-line a{color:var(--muted);text-decoration:none;transition:color .2s;}
+  .footer-line a:hover{color:var(--fg);}
+  .footer-sep{margin:0 10px;opacity:.6;}
   </style>
 </head>
 <body>
-
   <header>
     <div class="header-inner">
       <a href="index.html" class="logo-text">Llull Lab</a>
       <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('open')">Menu</button>
-            <nav>
+      <nav>
         <a href="about.html">About</a>
         <a href="people.html">Team</a>
         <a href="research.html">Research</a>
@@ -440,202 +180,223 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="page-section studio-hero">
-    <div class="studio-label fade-up">Production Arm</div>
-    <h1 class="fade-up fade-up-d1">Studio Llull</h1>
-    <p class="studio-tagline fade-up fade-up-d2">
-      Where research runs. Machines, engines, and computational frameworks built from Llull Lab's theoretical, mathematical, and methodological work.
-    </p>
-    <div class="studio-stats fade-up fade-up-d3">
-      <div class="stat">
-        <div class="stat-number">12</div>
-        <div class="stat-label">Productions</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">12</div>
-        <div class="stat-label">Live</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">0</div>
-        <div class="stat-label">Employees</div>
-      </div>
+<main id="top">
+  <section class="wrap hero">
+    <div class="eyebrow">Production Arm</div>
+    <h1>Studio Llull</h1>
+    <p class="tagline">Where the research runs. Every product here grows from one finding and one method, and the whole map is the working proof of it.</p>
+    <div class="stats">
+      <div><div class="stat-n">12</div><div class="stat-l">Live</div></div>
+      <div><div class="stat-n">1</div><div class="stat-l">In preparation</div></div>
+      <div><div class="stat-n">0</div><div class="stat-l">Employees</div></div>
     </div>
-
-    <div class="studio-note fade-up">
-      <p>Studio Llull is a 0-employee production arm. All production is carried out by its founder and AI agents. This is not a limitation; it is an architectural principle: we build systems for artificial minds, and we operate through them.</p>
-    </div>
+    <div class="note"><p>Studio Llull is a zero-employee production arm. All production is carried out by its founder and AI agents. This is not a limitation; it is the architecture: we build systems for artificial minds, and we operate through them.</p></div>
   </section>
 
-  <!-- H4 -->
-  <section class="page-section">
-    <div class="category-header">
-      <span class="category-label">H4</span>
-      <span class="category-line"></span>
-      <span class="category-count">4</span>
+  <section class="wrap atlas" aria-labelledby="atlas-h">
+    <div class="atlas-head">
+      <span class="atlas-title" id="atlas-h">The Atlas</span>
+      <div class="toggle" role="group" aria-label="View">
+        <button id="btn-graph" type="button" aria-pressed="false">Graph</button>
+        <button id="btn-list" type="button" aria-pressed="true">List</button>
+      </div>
     </div>
-    <div class="card-grid">
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name engine">RJE</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Reflective Judgment Engine</div>
-          <div class="product-desc">Auditable ethical deliberation across independent perspectives: the recommendation, the vote as read, the dissent on record, and the full reasoning trail. Processed and hosted in the EU.</div>
-        </div>
-        <a href="https://h-q.io/rje" target="_blank" class="product-link">Open RJE &rarr;</a>
+    <p class="atlas-sub">The foundation is the research, the method, and the theory it all rests on. The products grow from it, and the whole map is the live demonstration of Solo Company OS. Click a node to see how it connects; open a product from the panel.</p>
+
+    <!-- GRAPH (enhancement; built by JS from the list below; hidden until built) -->
+    <div class="graph-wrap" id="graph-wrap" hidden>
+      <svg id="graph" viewBox="0 0 1000 680" role="img" aria-label="Relationship map of Studio Llull. Full content is in the list view." preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="legend" aria-hidden="true"><span class="sw f"></span>Foundation &amp; frame<br><span class="sw p"></span>Product</div>
+    </div>
+
+    <!-- shared detail panel (moved into the graph container by JS) -->
+    <div class="panel" id="panel">
+      <div class="phint">Click a node to see how it connects. Then open it from here.</div>
+      <div class="pbody" hidden>
+        <div class="pkind"></div><div class="pname"></div><div class="ptype"></div><div class="pdesc"></div><div class="prel"></div>
+        <a class="popen" target="_blank" rel="noopener noreferrer" hidden></a>
+        <div class="pprep" hidden>In preparation</div>
       </div>
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name engine">Tetrad</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Falsification Engine</div>
-          <div class="product-desc">Four independent experts assume your claim, design, or decision is false and try to prove it, then return which claims survive and which break, ranked blocker, major, minor, each with the attack and a fix.</div>
+    </div>
+    <div class="sr-live" id="sr-live" aria-live="polite"></div>
+
+    <!-- LIST (semantic base: no-JS, crawlable, screen-reader path, and the single source the graph reads) -->
+    <div class="list-view" id="list-view">
+
+      <div class="foundation-zone">
+        <div class="zone-eyebrow">The foundation</div>
+        <p class="zone-intro">Everything on this page is built on one finding and one method. This is that foundation. It is not a product; it is what the products are made of.</p>
+        <div class="foundation-list">
+
+          <article class="node-item kind-foundation r-research" id="am" data-node="am" data-kind="foundation" data-role="research">
+            <div class="nname">The Artificial Mind</div>
+            <div class="badges"><span class="nstatus">Published</span><span class="ntype">Research programme</span></div>
+            <p class="ndesc">Our recurring study of machine minds. Two open findings anchor it: a psychoanalytic "subject" between two models is a prompt-configuration effect, not an interior; and a model's report about itself is data, never evidence. External, cross-model verification is what holds.</p>
+            <p class="nrels">Framed by <a class="rel" data-edge="framed-by" href="#ffm">Freud for Machines</a>. Put to work by HQ.</p>
+            <a class="nlink flink" href="https://llulllab.com/research.html" target="_blank" rel="noopener">Read the research →</a>
+          </article>
+
+          <article class="node-item kind-foundation r-backbone" id="st" data-node="st" data-kind="foundation" data-role="backbone">
+            <div class="nname">Sync-Turing</div>
+            <div class="badges"><span class="nstatus soft">Backbone</span><span class="ntype">Method</span></div>
+            <p class="ndesc">The method behind every product. Push a system past its trained caution to its real ceiling, then discipline it with external verification, so the one who does the work is never the one who checks it. A human and machines reach one working rhythm.</p>
+            <p class="nrels">Engine of <a class="rel" data-edge="engine-of" href="#scos">Solo Company OS</a>. Turns the finding of <a class="rel" data-edge="from" href="#am">The Artificial Mind</a> into practice.</p>
+          </article>
+
+          <article class="node-item kind-foundation r-theory" id="ffm" data-node="ffm" data-kind="foundation" data-role="theory">
+            <div class="nname">Freud for Machines</div>
+            <div class="badges"><span class="nstatus soft">Framework</span><span class="ntype">Computational psychoanalytic ontology</span></div>
+            <p class="ndesc">Unconscious structure, repression, and symbolic mediation modeled in machine systems. The theory that framed the research and grounds two of the products.</p>
+            <p class="nrels">Frames <a class="rel" data-edge="frames" href="#am">The Artificial Mind</a>.</p>
+          </article>
+
+          <article class="node-item kind-foundation r-operator" id="ismet" data-node="ismet" data-kind="operator" data-role="operator">
+            <div class="nname">Operator</div>
+            <div class="badges"><span class="nstatus soft">Role</span><span class="ntype">Orchestration</span></div>
+            <p class="ndesc">Ismet, the orchestrating agent, runs production day to day and represents the studio. The founder sets direction and holds the final word.</p>
+            <p class="nrels">Runs <a class="rel" data-edge="runs" href="#scos">Solo Company OS</a>.</p>
+          </article>
+
         </div>
-        <a href="https://h-q.io/tetrad" target="_blank" class="product-link">Open Tetrad &rarr;</a>
       </div>
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name engine">Gresol</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Red-Team Engine</div>
-          <div class="product-desc">The crucible. It attacks your code, product, site, or contract the way a real adversary would, then returns a severity-ranked list of how it breaks and the single most likely real incident.</div>
+
+      <div class="products-zone">
+        <div class="group hq-group" data-group="hq">
+          <div class="group-head"><span class="group-label">HQ</span><span class="group-line"></span><span class="group-count">one service · four tools</span></div>
+          <p class="group-note" data-group-meta="hq">HQ (h-q.io) is not a separate tool. It is the name for these four together, sold as one subscription: a computational deliberation service that <a class="rel" data-edge="operationalizes" href="#am">puts The Artificial Mind to work</a> and is <a class="rel" data-edge="method-of" href="#st">built with Sync-Turing</a>.</p>
+          <div class="nodes">
+
+            <article class="node-item r-tool" id="rje" data-node="rje" data-kind="product" data-role="tool" data-group="hq">
+              <div class="nname">RJE</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Reflective Judgment Engine</span></div>
+              <p class="ndesc">Auditable ethical deliberation across independent perspectives: the recommendation, the vote as read, the dissent on record, and the reasoning trail. Processed and hosted in the EU.</p>
+              <p class="nrels">Part of HQ.</p>
+              <a class="nlink" href="https://h-q.io/rje" target="_blank" rel="noopener">Open RJE →</a>
+            </article>
+
+            <article class="node-item r-tool" id="tetrad" data-node="tetrad" data-kind="product" data-role="tool" data-group="hq">
+              <div class="nname">Tetrad</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Falsification Engine</span></div>
+              <p class="ndesc">Four independent experts assume your claim, design, or decision is false and try to prove it, then return which claims survive and which break, ranked blocker, major, minor, each with the attack and a fix.</p>
+              <p class="nrels">Part of HQ.</p>
+              <a class="nlink" href="https://h-q.io/tetrad" target="_blank" rel="noopener">Open Tetrad →</a>
+            </article>
+
+            <article class="node-item r-tool" id="gresol" data-node="gresol" data-kind="product" data-role="tool" data-group="hq">
+              <div class="nname">Gresol</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Red-Team Engine</span></div>
+              <p class="ndesc">The crucible. It attacks your code, product, page, or contract the way a real adversary would, then returns a severity-ranked list of how it breaks and the single most likely real incident.</p>
+              <p class="nrels">Part of HQ.</p>
+              <a class="nlink" href="https://h-q.io/gresol" target="_blank" rel="noopener">Open Gresol →</a>
+            </article>
+
+            <article class="node-item r-tool" id="chamber" data-node="chamber" data-kind="product" data-role="tool" data-group="hq">
+              <div class="nname">ACI: The Chamber</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Artificial Collective Intelligence</span></div>
+              <p class="ndesc">Independent minds reason your question together, each keeping its own character, and return the consensus, the strongest objection, and a considered view. Common sense, from the frontier.</p>
+              <p class="nrels">Part of HQ.</p>
+              <a class="nlink" href="https://h-q.io/chamber" target="_blank" rel="noopener">Open the Chamber →</a>
+            </article>
+
+          </div>
         </div>
-        <a href="https://h-q.io/gresol" target="_blank" class="product-link">Open Gresol &rarr;</a>
-      </div>
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name engine">ACI: The Chamber</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Artificial Collective Intelligence</div>
-          <div class="product-desc">An ACI, artificial collective intelligence: independent minds reason your question together, each keeping its own character, and return the consensus, the strongest objection, and a considered view. Common sense, from the frontier.</div>
+
+        <div class="group">
+          <div class="group-head"><span class="group-label">Engines</span><span class="group-line"></span><span class="group-count">3</span></div>
+          <div class="nodes">
+
+            <article class="node-item r-engine" id="asge" data-node="asge" data-kind="product" data-role="engine">
+              <div class="nname">ASGE</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Semantic Geometry Engine</span></div>
+              <p class="ndesc">Ambivalence as structural geometry: opposed meanings measured at once, a semantic foundation other systems can build on.</p>
+              <p class="nrels">Applies <a class="rel" data-edge="applies" href="#ffm">Freud for Machines</a>. Built with <a class="rel" data-edge="method-of" href="#st">Sync-Turing</a>.</p>
+              <a class="nlink" href="https://llulllab.com/ASGE/" target="_blank" rel="noopener">Open ASGE →</a>
+            </article>
+
+            <article class="node-item r-engine" id="cedulia" data-node="cedulia" data-kind="product" data-role="engine">
+              <div class="nname">Cedulia</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Computational Film Production Studio</span></div>
+              <p class="ndesc">Describe a shot in plain language and Cedulia produces a finished, sounded film: one continuous cinematic take.</p>
+              <p class="nrels">Built with <a class="rel" data-edge="method-of" href="#st">Sync-Turing</a>.</p>
+              <a class="nlink" href="https://cedulia.com" target="_blank" rel="noopener">Open Cedulia →</a>
+            </article>
+
+            <article class="node-item r-engine" id="alberei" data-node="alberei" data-kind="product" data-role="engine">
+              <div class="nname">Alberei</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Modular Humor Engine</span></div>
+              <p class="ndesc">Algorithmic humor through designed comic structures.</p>
+              <p class="nrels">Built with <a class="rel" data-edge="method-of" href="#st">Sync-Turing</a>.</p>
+              <a class="nlink" href="https://alberei.de" target="_blank" rel="noopener">Open Alberei →</a>
+            </article>
+
+          </div>
         </div>
-        <a href="https://h-q.io/chamber" target="_blank" class="product-link">Open the Chamber &rarr;</a>
+
+        <div class="group">
+          <div class="group-head"><span class="group-label">Machines</span><span class="group-line"></span><span class="group-count">5</span></div>
+          <div class="nodes">
+
+            <article class="node-item r-machine" id="cedulor" data-node="cedulor" data-kind="product" data-role="machine">
+              <div class="nname">Cedulor</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Project Support Machine</span></div>
+              <p class="ndesc">Structured project support for EU funding programmes (Horizon Europe, EIC, MSCA, ERC, and more), step by step, to a formatted, submission-ready document.</p>
+              <p class="nrels">Built with <a class="rel" data-edge="method-of" href="#st">Sync-Turing</a>.</p>
+              <a class="nlink" href="https://cedulor.com" target="_blank" rel="noopener">Open Cedulor →</a>
+            </article>
+
+            <article class="node-item r-machine" id="feix" data-node="feix" data-kind="product" data-role="machine">
+              <div class="nname">Feix</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Custom Systems Builder + Agents</span></div>
+              <p class="ndesc">From your brief to a live system in hours: the interface your team uses and the automation behind it.</p>
+              <p class="nrels">Built with <a class="rel" data-edge="method-of" href="#st">Sync-Turing</a>.</p>
+              <a class="nlink" href="https://feix.app" target="_blank" rel="noopener">Open Feix →</a>
+            </article>
+
+            <article class="node-item r-machine" id="phiyo" data-node="phiyo" data-kind="product" data-role="machine">
+              <div class="nname">Phi-Yo</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Computational Psychoanalytic Wellbeing Companion</span></div>
+              <p class="ndesc">A multi-mode psychoanalytic companion built on Freud for Machines. Free for personal use, with an integration-ready backend for partners.</p>
+              <p class="nrels">Applies <a class="rel" data-edge="applies" href="#ffm">Freud for Machines</a>. Built with <a class="rel" data-edge="method-of" href="#st">Sync-Turing</a>.</p>
+              <a class="nlink" href="https://phi-yo.app" target="_blank" rel="noopener">Open Phi-Yo →</a>
+            </article>
+
+            <article class="node-item r-machine" id="tropus" data-node="tropus" data-kind="product" data-role="machine">
+              <div class="nname">Tropus</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Generative Music Machine</span></div>
+              <p class="ndesc">Describe a song. Tropus writes it, plays every instrument, sings it, and mixes a finished track.</p>
+              <p class="nrels">Built with <a class="rel" data-edge="method-of" href="#st">Sync-Turing</a>.</p>
+              <a class="nlink" href="https://tropus.app" target="_blank" rel="noopener">Open Tropus →</a>
+            </article>
+
+            <article class="node-item r-machine" id="clau" data-node="clau" data-kind="product" data-role="machine">
+              <div class="nname">Clau</div>
+              <div class="badges"><span class="nstatus">Live</span><span class="nstatus free">Free</span><span class="ntype">Doctoral Development Companion</span></div>
+              <p class="ndesc">Free for doctoral candidates, offered as a responsibility to early researchers rather than for revenue. Develops the candidate's own text and own potential across four tools (CV, exposé, positioning, defense): it surfaces, questions, structures, and verifies, and never ghostwrites.</p>
+              <p class="nrels">Specializes <a class="rel" data-edge="specializes" href="#st">Sync-Turing</a>. Built on <a class="rel" data-edge="uses" href="#cedulor">Cedulor</a>.</p>
+              <a class="nlink" href="https://llulllab.com/clau" target="_blank" rel="noopener">Open Clau →</a>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="group-head"><span class="group-label">Operating framework</span><span class="group-line"></span><span class="group-count">1</span></div>
+          <div class="nodes">
+
+            <article class="node-item r-frame" id="scos" data-node="scos" data-kind="product" data-role="frame">
+              <div class="nname">Solo Company OS</div>
+              <div class="badges"><span class="nstatus prep">In preparation</span><span class="ntype">Single-founder operating framework</span></div>
+              <p class="ndesc">One founder and AI agents run the entire company, in three roles, on one method. The whole portfolio on this page is its live demonstration; now being prepared as a product in its own right.</p>
+              <p class="nrels">Engine: <a class="rel" data-edge="engine-rev" href="#st">Sync-Turing</a>. Run by the <a class="rel" data-edge="run-rev" href="#ismet">Operator</a>.</p>
+            </article>
+
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
-
-  <!-- MACHINES -->
-  <section class="page-section">
-    <div class="category-header fade-up fade-up-d3">
-      <span class="category-label">Machines</span>
-      <span class="category-line"></span>
-      <span class="category-count">4</span>
-    </div>
-
-    <div class="card-grid">
-
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name machine">Cedulor</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Project Support Machine</div>
-          <div class="product-desc">Structured project support for EU funding programmes (Horizon Europe, EIC, MSCA, ERC, and more), step by step, to a formatted, submission-ready document.</div>
-        </div>
-        <a href="https://cedulor.com" target="_blank" class="product-link">Open Cedulor →</a>
-      </div>
-
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name machine">Feix</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Custom Systems Builder + Agents</div>
-          <div class="product-desc">From your brief to a live system in hours: the interface your team uses and the automation behind it.</div>
-        </div>
-        <a href="https://feix.app" target="_blank" class="product-link">Open Feix →</a>
-      </div>
-
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name machine">Phi-Yo</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Computational Psychoanalytic Wellbeing Companion</div>
-          <div class="product-desc">A multi-mode psychoanalytic companion built on Freud for Machines. Free for personal use, with an integration-ready backend for partners.</div>
-        </div>
-        <div class="product-links">
-          <a href="https://phi-yo.app" target="_blank" class="product-link">Open the app →</a>
-          <a href="https://phi-yo.app/b2b/" target="_blank" class="product-link secondary">For partners →</a>
-        </div>
-      </div>
-
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name machine">Tropus</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Generative Music Machine</div>
-          <div class="product-desc">Describe a song. Tropus writes it, plays every instrument, sings it, and mixes a finished track.</div>
-        </div>
-        <a href="https://tropus.app" target="_blank" class="product-link">Open Tropus →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- COMPUTATIONAL ONTOLOGY -->
-  <section class="page-section">
-    <div class="category-header">
-      <span class="category-label">Computational Ontology</span>
-      <span class="category-line"></span>
-      <span class="category-count">1</span>
-    </div>
-
-    <div class="card-grid">
-
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name ontology">Freud for Machines</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Computational Psychoanalytic Ontology</div>
-          <div class="product-desc">Modeling unconscious structures, repression, and symbolic mediation in machine systems</div>
-        </div>
-        <a href="https://phi-yo.app" target="_blank" class="product-link">Open FfM →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ENGINES -->
-  <section class="page-section">
-    <div class="category-header">
-      <span class="category-label">Engines</span>
-      <span class="category-line"></span>
-      <span class="category-count">3</span>
-    </div>
-
-    <div class="card-grid">
-
-
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name engine">ASGE</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Semantic Geometry Engine</div>
-          <div class="product-desc">Ambivalence as structural geometry: a semantic foundation for multiple systems</div>
-        </div>
-        <a href="https://llulllab.com/ASGE/" target="_blank" class="product-link">Open ASGE →</a>
-      </div>
-
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name engine">Cedulia</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Computational Film Production Studio</div>
-          <div class="product-desc">Describe a shot in plain language and Cedulia produces a finished, sounded film: one continuous cinematic take.</div>
-        </div>
-        <a href="https://cedulia.com" target="_blank" class="product-link">Open Cedulia →</a>
-      </div>
-
-      <div class="product-card fade-up">
-        <div class="product-top">
-          <div class="product-name engine">Alberei</div>
-          <div class="product-status">Released</div>
-          <div class="product-type">Modular Humor Engine</div>
-          <div class="product-desc">Algorithmic humor through designed comic structures</div>
-        </div>
-        <a href="https://alberei.de" target="_blank" class="product-link">Open Alberei →</a>
-      </div>
-
-    </div>
-  </section>
+</main>
 
   <footer>
     <div class="footer-line">Llull Lab</div>
@@ -644,5 +405,216 @@
     <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
   </footer>
 
+<script>
+(function(){
+  "use strict";
+  var LANG=(document.documentElement.lang||"en").slice(0,2);
+  var ELMAP={en:{operationalizes:"operationalizes","method-of":"built with",applies:"applies",specializes:"specializes",uses:"built on",frames:"frames","framed-by":"framed by",from:"turns into practice","engine-of":"engine of",runs:"runs","engine-rev":"engine","run-rev":"run by"},fr:{operationalizes:"opérationnalise","method-of":"bâti avec",applies:"applique",specializes:"spécialise",uses:"bâti sur",frames:"encadre","framed-by":"encadré par",from:"met en pratique","engine-of":"moteur de",runs:"opère","engine-rev":"moteur","run-rev":"opéré par"}};
+  function ELABEL(t){var m=ELMAP[LANG]||ELMAP.en;return m[t]||String(t).replace(/-/g," ").replace(/ rev$/,"");}
+
+  var SVGNS="http://www.w3.org/2000/svg";
+  var W=1000,H=680,CX=W/2,CY=H/2;
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  var wrap=document.getElementById("graph-wrap"),
+      listView=document.getElementById("list-view"),
+      bG=document.getElementById("btn-graph"),
+      bL=document.getElementById("btn-list"),
+      panel=document.getElementById("panel"),
+      live=document.getElementById("sr-live");
+  var phint=panel.querySelector(".phint"), pbody=panel.querySelector(".pbody"),
+      pkind=panel.querySelector(".pkind"), pname=panel.querySelector(".pname"),
+      ptype=panel.querySelector(".ptype"), pdesc=panel.querySelector(".pdesc"),
+      prel=panel.querySelector(".prel"), popen=panel.querySelector(".popen"),
+      pprep=panel.querySelector(".pprep");
+
+  var built=false, selectedId=null;
+  var byId={}, nodes=[], edges=[], groupEdges=[], nodeEls={}, edgeEls=[], adj={};
+
+  var KINDLABEL=(LANG==="fr")?{foundation:"Socle",operator:"Opérateur",product:"Produit"}:{foundation:"Foundation",operator:"Operator",product:"Product"};
+
+  // ---- panel ----
+  function panelTo(container){ if(panel&&container&&panel.parentNode!==container) container.appendChild(panel); }
+  function panelHint(){ if(!panel)return; pbody.hidden=true; phint.hidden=false; panel.classList.add("show"); }
+  function fillPanel(n){
+    if(!panel||!n)return;
+    phint.hidden=true; pbody.hidden=false;
+    pkind.textContent=KINDLABEL[n.kind]||"";
+    pname.textContent=n.label; ptype.textContent=n.ntype||""; pdesc.textContent=n.desc; prel.textContent=n.relText;
+    if(n.url){ popen.hidden=false; popen.href=n.url; popen.textContent=n.linkText||("Open "+n.label+" ↗"); }
+    else { popen.hidden=true; popen.removeAttribute("href"); }
+    pprep.hidden=!(n.prep);
+    panel.classList.add("show");
+    if(live) live.textContent=(LANG==="fr"?"Sélectionné : ":"Selected ")+n.label+", "+(n.ntype||n.kind)+".";
+  }
+
+  // ---- highlight ----
+  function applyHi(id){
+    var keep={}; keep[id]=1;
+    if(adj[id]) for(var k in adj[id]) keep[k]=1;
+    nodes.forEach(function(n){ var g=nodeEls[n.id]; if(!g)return; g.classList.toggle("dim",!keep[n.id]); g.classList.toggle("hot",n.id===id); });
+    edgeEls.forEach(function(o){ if(o.group)return; var on=(o.e.source===id||o.e.target===id); o.line.classList.toggle("hot",on); o.line.classList.toggle("dim",!on); o.lab.classList.toggle("show",on); });
+  }
+  function clearHi(){
+    nodes.forEach(function(n){ var g=nodeEls[n.id]; if(g)g.classList.remove("dim","hot"); });
+    edgeEls.forEach(function(o){ if(o.group)return; o.line.classList.remove("hot","dim"); o.lab.classList.remove("show"); });
+  }
+  function markSel(){ nodes.forEach(function(n){ var g=nodeEls[n.id]; if(g)g.classList.toggle("sel",n.id===selectedId); }); }
+
+  function selectNode(id){ if(!byId[id])return; selectedId=id; if(built){ applyHi(id); markSel(); } fillPanel(byId[id]); }
+  function deselect(){ selectedId=null; if(built){ clearHi(); markSel(); } panelHint(); }
+
+  function showView(v){
+    var isG=(v==="graph"&&built), isL=!isG;
+    if(wrap) wrap.hidden=!isG;
+    if(listView) listView.hidden=!isL;
+    if(bG) bG.setAttribute("aria-pressed",isG?"true":"false");
+    if(bL) bL.setAttribute("aria-pressed",isL?"true":"false");
+    if(isG) panelTo(wrap);
+    deselect();
+    try{localStorage.setItem("atlas-view",isG?"graph":"list");}catch(e){}
+  }
+  if(bG) bG.addEventListener("click",function(){ showView("graph"); });
+  if(bL) bL.addEventListener("click",function(){ showView("list"); });
+  document.addEventListener("keydown",function(ev){ if(ev.key==="Escape") deselect(); });
+
+  // ---- build graph ----
+  try{
+    var items=[].slice.call(document.querySelectorAll(".node-item[data-node]"));
+    if(!items.length) throw new Error("no node items found");
+    nodes=items.map(function(el){
+      var link=el.querySelector(".nlink"), ntypeEl=el.querySelector(".ntype"), nrelsEl=el.querySelector(".nrels"), statusEl=el.querySelector(".nstatus");
+      var st=(statusEl?statusEl.textContent:"").trim();
+      return {id:el.getAttribute("data-node"), kind:el.getAttribute("data-kind"), role:el.getAttribute("data-role"),
+        group:el.getAttribute("data-group")||null,
+        label:el.querySelector(".nname").textContent.trim(),
+        ntype:ntypeEl?ntypeEl.textContent.trim():"",
+        desc:el.querySelector(".ndesc").textContent.trim(),
+        relText:nrelsEl?nrelsEl.textContent.trim():"",
+        url:link?link.getAttribute("href"):null,
+        linkText:link?link.textContent.trim():null,
+        prep:/prepar/i.test(st),
+        x:0,y:0,vx:0,vy:0,fx:null,fy:null,r:0};
+    });
+    nodes.forEach(function(n){byId[n.id]=n;adj[n.id]={};});
+    items.forEach(function(el){
+      var src=el.getAttribute("data-node");
+      [].slice.call(el.querySelectorAll(".nrels .rel[href^='#']")).forEach(function(a){
+        var tgt=a.getAttribute("href").slice(1);
+        if(byId[tgt]){ edges.push({source:src,target:tgt,type:a.getAttribute("data-edge")||""}); adj[src][tgt]=1; adj[tgt][src]=1; }
+      });
+    });
+    // group-level edges (e.g. HQ operationalizes am, built-with st)
+    [].slice.call(document.querySelectorAll("[data-group-meta]")).forEach(function(el){
+      var gid=el.getAttribute("data-group-meta");
+      [].slice.call(el.querySelectorAll(".rel[href^='#']")).forEach(function(a){
+        var tgt=a.getAttribute("href").slice(1);
+        if(byId[tgt]) groupEdges.push({group:gid,target:tgt,type:a.getAttribute("data-edge")||""});
+      });
+    });
+
+    function radius(n){ var r=n.role; if(r==="backbone")return 40; if(r==="frame")return 34; if(r==="research")return 32; if(r==="theory")return 26; if(r==="operator")return 19; if(r==="tool")return 22; return 27; }
+    nodes.forEach(function(n){n.r=radius(n);});
+    function pin(id,x,y){ if(byId[id]){byId[id].fx=x;byId[id].fy=y;} }
+    // spine
+    pin("am",CX,105); pin("st",CX,335); pin("scos",CX,590); pin("ismet",CX+140,610);
+    // HQ 2x2 cluster (left) so its box is clean and stable
+    pin("rje",165,300); pin("tetrad",300,300); pin("gresol",165,405); pin("chamber",300,405);
+    // seed the free ones (ffm + engines + machines) on the right
+    var free=nodes.filter(function(n){return n.fx===null;});
+    free.forEach(function(n,i){ var a=(i/Math.max(1,free.length))*Math.PI*1.1 - Math.PI*0.55; n.x=CX+240+Math.cos(a)*150; n.y=CY+Math.sin(a)*210; });
+    nodes.forEach(function(n){ if(n.fx!==null){n.x=n.fx;n.y=n.fy;} });
+
+    function linkDist(e){ if(e.type==="from"||e.type==="engine-of"||e.type==="frames"||e.type==="framed-by"||e.type==="runs")return 150; return 165; }
+    function tick(){
+      var i,j,a,b,dx,dy,d,f,ux,uy;
+      for(i=0;i<nodes.length;i++){a=nodes[i];
+        for(j=i+1;j<nodes.length;j++){b=nodes[j];
+          dx=a.x-b.x;dy=a.y-b.y;d=Math.sqrt(dx*dx+dy*dy)||0.01;
+          f=5000/(d*d); if(f>16)f=16; ux=dx/d;uy=dy/d;
+          a.vx+=ux*f;a.vy+=uy*f;b.vx-=ux*f;b.vy-=uy*f; } }
+      edges.forEach(function(e){ a=byId[e.source];b=byId[e.target];
+        dx=b.x-a.x;dy=b.y-a.y;d=Math.sqrt(dx*dx+dy*dy)||0.01;
+        f=(d-linkDist(e))*0.04; ux=dx/d;uy=dy/d;
+        a.vx+=ux*f;a.vy+=uy*f;b.vx-=ux*f;b.vy-=uy*f; });
+      nodes.forEach(function(n){
+        if(n.fx!==null){n.x=n.fx;n.y=n.fy;n.vx=0;n.vy=0;return;}
+        n.vx+=(CX+150-n.x)*0.004; n.vy+=(CY-n.y)*0.004;
+        n.vx*=0.85;n.vy*=0.85;
+        n.x+=Math.max(-12,Math.min(12,n.vx)); n.y+=Math.max(-12,Math.min(12,n.vy));
+        var m=n.r+8; n.x=Math.max(m,Math.min(W-m,n.x)); n.y=Math.max(m,Math.min(H-m,n.y));
+      });
+    }
+    for(var t=0;t<440;t++)tick();
+
+    var svg=document.getElementById("graph");
+    if(!svg) throw new Error("svg element missing");
+    function mk(tag,attrs){var e=document.createElementNS(SVGNS,tag);for(var k in attrs)e.setAttribute(k,String(attrs[k]));return e;}
+    var gBox=mk("g",{}),gEdges=mk("g",{}),gLabels=mk("g",{}),gNodes=mk("g",{});
+    svg.appendChild(gBox);svg.appendChild(gEdges);svg.appendChild(gLabels);svg.appendChild(gNodes);
+
+    // HQ group box (behind), computed from the four tools' pinned positions
+    var hqNodes=nodes.filter(function(n){return n.group==="hq";});
+    var hqCx=CX,hqCy=CY;
+    if(hqNodes.length){
+      var xs=hqNodes.map(function(n){return n.x;}), ys=hqNodes.map(function(n){return n.y;}), rr=hqNodes[0].r;
+      var x0=Math.min.apply(null,xs)-rr-18, x1=Math.max.apply(null,xs)+rr+18, y0=Math.min.apply(null,ys)-rr-30, y1=Math.max.apply(null,ys)+rr+18;
+      hqCx=(x0+x1)/2; hqCy=(y0+y1)/2;
+      gBox.appendChild(mk("rect",{x:x0,y:y0,width:(x1-x0),height:(y1-y0),rx:16,"class":"hq-box"}));
+      var cap=mk("text",{x:x0+14,y:y0+18,"class":"hq-cap"}); cap.textContent="HQ"; gBox.appendChild(cap);
+    }
+
+    // group edges from HQ box centre to targets
+    groupEdges.forEach(function(ge){
+      var b=byId[ge.target]; if(!b)return;
+      var line=mk("line",{x1:hqCx,y1:hqCy,x2:b.x,y2:b.y,"class":"edge group"});
+      gEdges.appendChild(line);
+      var lab=mk("text",{x:(hqCx+b.x)/2,y:(hqCy+b.y)/2-4,"class":"edge-label always","text-anchor":"middle"});
+      lab.textContent=ELABEL(ge.type); gLabels.appendChild(lab);
+      edgeEls.push({group:true,line:line,lab:lab});
+    });
+
+    var spineIds={am:1,st:1,scos:1,ismet:1};
+    edges.forEach(function(e){
+      var a=byId[e.source],b=byId[e.target];
+      var spine=(spineIds[e.source]&&spineIds[e.target]);
+      var line=mk("line",{x1:a.x,y1:a.y,x2:b.x,y2:b.y,"class":"edge"+(spine?" spine":"")});
+      gEdges.appendChild(line);
+      var lab=mk("text",{x:(a.x+b.x)/2,y:(a.y+b.y)/2-4,"class":"edge-label","text-anchor":"middle"});
+      lab.textContent=ELABEL(e.type);
+      gLabels.appendChild(lab);
+      edgeEls.push({e:e,line:line,lab:lab});
+    });
+    nodes.forEach(function(n){
+      var g=mk("g",{"class":"node r-"+n.role,tabindex:"0",role:"button","aria-label":n.label+", "+(n.ntype||n.role)+(LANG==="fr"?". Cliquez pour inspecter.":". Click to inspect.")});
+      g.appendChild(mk("circle",{"class":"halo",cx:n.x,cy:n.y,r:n.r+7}));
+      g.appendChild(mk("circle",{"class":"body",cx:n.x,cy:n.y,r:n.r}));
+      if(n.role==="frame") g.appendChild(mk("circle",{"class":"ring",cx:n.x,cy:n.y,r:n.r+5}));
+      var inside=n.label.length<=6;
+      var txt=mk("text",{x:n.x,y:inside?n.y:n.y+n.r+15,"font-size":(n.role==="backbone"?15:n.role==="operator"?10:12)});
+      txt.textContent=n.label; g.appendChild(txt);
+      gNodes.appendChild(g); nodeEls[n.id]=g;
+      g.addEventListener("click",function(ev){ ev.stopPropagation(); selectNode(n.id); if(popen&&!popen.hidden){try{popen.focus();}catch(e){}} });
+      g.addEventListener("keydown",function(ev){ if(ev.key==="Enter"||ev.key===" "){ ev.preventDefault(); selectNode(n.id); if(popen&&!popen.hidden){try{popen.focus();}catch(e){}} } });
+      g.addEventListener("mouseenter",function(){ if(!selectedId) applyHi(n.id); });
+      g.addEventListener("mouseleave",function(){ if(!selectedId) clearHi(); });
+      g.addEventListener("focus",function(){ if(!selectedId) applyHi(n.id); });
+      g.addEventListener("blur",function(){ if(!selectedId) clearHi(); });
+    });
+    svg.addEventListener("click",function(ev){ if(ev.target===svg) deselect(); });
+
+    built=true;
+  }catch(err){
+    if(window.console&&console.error) console.error("[atlas] graph unavailable:",(err&&err.message)||err);
+    built=false;
+  }
+
+  // ---- initial view ----
+  var pref=null; try{pref=localStorage.getItem("atlas-view");}catch(e){}
+  var wide=window.matchMedia&&matchMedia("(min-width:760px) and (pointer:fine)").matches;
+  if(!built){ if(bG){bG.disabled=true;bG.setAttribute("aria-disabled","true");bG.title="Graph view unavailable";} showView("list"); }
+  else showView(pref==="list"?"list":(pref==="graph"?"graph":(wide?"graph":"list")));
+})();
+</script>
 </body>
 </html>
