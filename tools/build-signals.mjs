@@ -9,6 +9,9 @@
 // Per-block hints (optional, on the update-block element):
 //   data-tag="Release"        label shown in the signal pill
 //   data-signal="short text"  teaser text (falls back to the <strong> headline)
+// The block's first <a class="update-link"> becomes the signal's link, so a
+// homepage signal opens what the update is about (target="_blank" is kept).
+// A block without an update-link renders as a plain, unlinked row.
 // The file is authored newest-first, so the first N blocks are the newest N.
 //
 // Usage:  node tools/build-signals.mjs         (run from the repo root, after
@@ -69,18 +72,26 @@ function extractSignals(updatesHtml, lang) {
     const signal =
       attr(b.openAttrs, "data-signal") ||
       strong.replace(/<[^>]+>/g, "").replace(/\.\s*$/, "").trim();
-    return { date: shortDate(dateText, lang), tag, signal };
+    const linkTag = (b.inner.match(/<a\s[^>]*class="update-link"[^>]*>/) || [])[0] || "";
+    const href = linkTag ? attr(linkTag, "href") : null;
+    const external = linkTag ? attr(linkTag, "target") === "_blank" : false;
+    return { date: shortDate(dateText, lang), tag, signal, href, external };
   });
 }
 
 function renderList(signals) {
   const items = signals
-    .map(
-      (s) => `      <div class="signal-item">
+    .map((s) => {
+      // href is copied verbatim from updates.html, where it is already valid attribute text
+      const open = s.href
+        ? `<a class="signal-item" href="${s.href}"${s.external ? ' target="_blank" rel="noopener"' : ""}>`
+        : `<div class="signal-item">`;
+      const close = s.href ? "</a>" : "</div>";
+      return `      ${open}
         <div class="signal-date">${esc(s.date)}</div>
         <div class="signal-text"><span class="signal-tag">${esc(s.tag)}</span>${esc(s.signal)}</div>
-      </div>`
-    )
+      ${close}`;
+    })
     .join("\n");
   return `    <div class="signal-list">\n${items}\n    </div>`;
 }

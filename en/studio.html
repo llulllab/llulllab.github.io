@@ -345,7 +345,7 @@
               <div class="badges"><span class="nstatus">Live</span><span class="nstatus free">Free</span><span class="ntype">Doctoral Development Companion</span></div>
               <p class="ndesc">Free for doctoral candidates, offered as a responsibility to early researchers rather than for revenue. Develops the candidate's own text and own potential across four tools (CV, exposé, positioning, defense): it surfaces, questions, structures, and verifies, and never ghostwrites.</p>
               <p class="nrels">Specializes <a class="rel" data-edge="specializes" href="#st">Sync-Turing</a>. Built on <a class="rel" data-edge="uses" href="#cedulor">Cedulor</a>.</p>
-              <a class="nlink" href="https://llulllab.com/clau" target="_blank" rel="noopener">Open Clau →</a>
+              <a class="nlink" href="/clau/" target="_blank" rel="noopener">Open Clau →</a>
             </article>
 
           </div>
@@ -498,7 +498,7 @@
         relText:nrelsEl?nrelsEl.textContent.trim():"",
         url:link?link.getAttribute("href"):null,
         linkText:link?link.textContent.trim():null,
-        prep:/prepar/i.test(st),
+        prep:/pr[eé]par/i.test(st),
         x:0,y:0,vx:0,vy:0,fx:null,fy:null,r:0};
     });
     nodes.forEach(function(n){byId[n.id]=n;adj[n.id]={};});

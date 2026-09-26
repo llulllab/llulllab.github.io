@@ -342,7 +342,7 @@
               <div class="badges"><span class="nstatus">En ligne</span><span class="nstatus free">Gratuit</span><span class="ntype">Compagnon de développement doctoral</span></div>
               <p class="ndesc">Gratuit pour les doctorants, offert par responsabilité envers les jeunes chercheurs plutôt que pour générer un revenu. Développe le texte propre et le potentiel propre du candidat à travers quatre outils (CV, exposé, positionnement, défense) : il fait émerger, questionne, structure et vérifie, et n'écrit jamais à la place du candidat.</p>
               <p class="nrels">Spécialise <a class="rel" data-edge="specializes" href="#st">Sync-Turing</a>. Bâti sur <a class="rel" data-edge="uses" href="#cedulor">Cedulor</a>.</p>
-              <a class="nlink" href="https://llulllab.com/clau" target="_blank" rel="noopener">Ouvrir Clau →</a>
+              <a class="nlink" href="/clau/" target="_blank" rel="noopener">Ouvrir Clau →</a>
             </article>
 
           </div>
@@ -495,7 +495,7 @@
         relText:nrelsEl?nrelsEl.textContent.trim():"",
         url:link?link.getAttribute("href"):null,
         linkText:link?link.textContent.trim():null,
-        prep:/prepar/i.test(st),
+        prep:/pr[eé]par/i.test(st),
         x:0,y:0,vx:0,vy:0,fx:null,fy:null,r:0};
     });
     nodes.forEach(function(n){byId[n.id]=n;adj[n.id]={};});
