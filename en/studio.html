@@ -193,7 +193,8 @@
     <h1>Studio Llull</h1>
     <p class="tagline">Where the research runs. Every product here grows from one finding and one method, and the whole map is the working proof of it.</p>
     <div class="stats">
-      <div><div class="stat-n">12</div><div class="stat-l">Live</div></div>
+      <div><div class="stat-n">10</div><div class="stat-l">Live</div></div>
+      <div><div class="stat-n">2</div><div class="stat-l">In transition</div></div>
       <div><div class="stat-n">1</div><div class="stat-l">In preparation</div></div>
       <div><div class="stat-n">0</div><div class="stat-l">Employees</div></div>
     </div>
@@ -322,10 +323,10 @@
 
             <article class="node-item r-machine" id="feix" data-node="feix" data-kind="product" data-role="machine">
               <div class="nname">Feix</div>
-              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Custom Systems Builder + Agents</span></div>
-              <p class="ndesc">From your brief to a live system in hours: the interface your team uses and the automation behind it.</p>
+              <div class="badges"><span class="nstatus prep">Upgrading</span><span class="ntype">Custom Systems Builder + Agents</span></div>
+              <p class="ndesc">Closed while it is rebuilt as Feix Agents.</p>
               <p class="nrels">Built with <a class="rel" data-edge="method-of" href="#st">Sync-Turing</a>.</p>
-              <a class="nlink" href="https://feix.app" target="_blank" rel="noopener">Open Feix →</a>
+              <a class="nlink" href="https://feix.app" target="_blank" rel="noopener">Visit feix.app →</a>
             </article>
 
             <article class="node-item r-machine" id="phiyo" data-node="phiyo" data-kind="product" data-role="machine">
@@ -369,10 +370,10 @@
 
             <article class="node-item r-engine" id="cedulia" data-node="cedulia" data-kind="product" data-role="engine">
               <div class="nname">Cedulia</div>
-              <div class="badges"><span class="nstatus">Live</span><span class="ntype">Computational Film Production Studio</span></div>
-              <p class="ndesc">Describe a shot in plain language and Cedulia produces a finished, sounded film: one continuous cinematic take.</p>
+              <div class="badges"><span class="nstatus prep">Preparing for Machine Dream</span><span class="ntype">Computational Film Production Studio</span></div>
+              <p class="ndesc">The film studio has closed, and its name now belongs to Machine Dream, the Lab's research on the dream-work of machines and on the passage from dream to image.</p>
               <p class="nrels">Built with <a class="rel" data-edge="method-of" href="#st">Sync-Turing</a>.</p>
-              <a class="nlink" href="https://cedulia.com" target="_blank" rel="noopener">Open Cedulia →</a>
+              <a class="nlink" href="https://cedulia.com" target="_blank" rel="noopener">Visit cedulia.com →</a>
             </article>
 
             <article class="node-item r-engine" id="alberei" data-node="alberei" data-kind="product" data-role="engine">
@@ -451,7 +452,7 @@
     pname.textContent=n.label; ptype.textContent=n.ntype||""; pdesc.textContent=n.desc; prel.textContent=n.relText;
     if(n.url){ popen.hidden=false; popen.href=n.url; popen.textContent=n.linkText||("Open "+n.label+" ↗"); }
     else { popen.hidden=true; popen.removeAttribute("href"); }
-    pprep.hidden=!(n.prep);
+    pprep.hidden=!(n.prep); if(n.prep) pprep.textContent=n.stText;
     panel.classList.add("show");
     if(live) live.textContent=(LANG==="fr"?"Sélectionné : ":"Selected ")+n.label+", "+(n.ntype||n.kind)+".";
   }
@@ -502,7 +503,7 @@
         relText:nrelsEl?nrelsEl.textContent.trim():"",
         url:link?link.getAttribute("href"):null,
         linkText:link?link.textContent.trim():null,
-        prep:/pr[eé]par/i.test(st),
+        prep:!!(statusEl&&statusEl.classList.contains("prep")),stText:st,
         x:0,y:0,vx:0,vy:0,fx:null,fy:null,r:0};
     });
     nodes.forEach(function(n){byId[n.id]=n;adj[n.id]={};});
