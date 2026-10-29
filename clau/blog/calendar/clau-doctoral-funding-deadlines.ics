@@ -1,0 +1,153 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Clau//Funding deadlines//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Clau: doctoral funding deadlines
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:horizon-msca-2026-dn-01-01-d@llulllab.com
+DTSTAMP:20261029T200843Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+SUMMARY:Deadline\, usually 17:00 Brussels time: MSCA Doctoral Networks 2026
+DESCRIPTION:HORIZON-MSCA-2026-DN-01-01. Confirm the exact deadline time and
+  the call's status on the official topic page: https://ec.europa.eu/info/f
+ unding-tenders/opportunities/portal/screen/opportunities/topic-details/hor
+ izon-msca-2026-dn-01-01
+URL:https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/o
+ pportunities/topic-details/horizon-msca-2026-dn-01-01
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P7D
+DESCRIPTION:Deadline: HORIZON-MSCA-2026-DN-01-01
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Deadline: HORIZON-MSCA-2026-DN-01-01
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:erc-2027-cog-d@llulllab.com
+DTSTAMP:20261029T200843Z
+DTSTART;VALUE=DATE:20270112
+DTEND;VALUE=DATE:20270113
+SUMMARY:Deadline\, usually 17:00 Brussels time: ERC Consolidator Grant
+DESCRIPTION:ERC-2027-COG. Confirm the exact deadline time and the call's st
+ atus on the official topic page: https://ec.europa.eu/info/funding-tenders
+ /opportunities/portal/screen/opportunities/topic-details/erc-2027-cog
+URL:https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/o
+ pportunities/topic-details/erc-2027-cog
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P7D
+DESCRIPTION:Deadline: ERC-2027-COG
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Deadline: ERC-2027-COG
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:horizon-msca-2027-cofund-01-01-d@llulllab.com
+DTSTAMP:20261029T200843Z
+DTSTART;VALUE=DATE:20270406
+DTEND;VALUE=DATE:20270407
+SUMMARY:Deadline\, usually 17:00 Brussels time: MSCA COFUND 2027
+DESCRIPTION:HORIZON-MSCA-2027-COFUND-01-01. Confirm the exact deadline time
+  and the call's status on the official topic page: https://ec.europa.eu/in
+ fo/funding-tenders/opportunities/portal/screen/opportunities/topic-details
+ /horizon-msca-2027-cofund-01-01
+URL:https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/o
+ pportunities/topic-details/horizon-msca-2027-cofund-01-01
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P7D
+DESCRIPTION:Deadline: HORIZON-MSCA-2027-COFUND-01-01
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Deadline: HORIZON-MSCA-2027-COFUND-01-01
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:horizon-msca-2027-cofund-02-01-d@llulllab.com
+DTSTAMP:20261029T200843Z
+DTSTART;VALUE=DATE:20270406
+DTEND;VALUE=DATE:20270407
+SUMMARY:Deadline\, usually 17:00 Brussels time: MSCA Choose Europe for Scie
+ nce 2027
+DESCRIPTION:HORIZON-MSCA-2027-COFUND-02-01. Confirm the exact deadline time
+  and the call's status on the official topic page: https://ec.europa.eu/in
+ fo/funding-tenders/opportunities/portal/screen/opportunities/topic-details
+ /horizon-msca-2027-cofund-02-01
+URL:https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/o
+ pportunities/topic-details/horizon-msca-2027-cofund-02-01
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P7D
+DESCRIPTION:Deadline: HORIZON-MSCA-2027-COFUND-02-01
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Deadline: HORIZON-MSCA-2027-COFUND-02-01
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:horizon-msca-2027-pf-01-01-d@llulllab.com
+DTSTAMP:20261029T200843Z
+DTSTART;VALUE=DATE:20270908
+DTEND;VALUE=DATE:20270909
+SUMMARY:Deadline\, usually 17:00 Brussels time: MSCA Postdoctoral Fellowshi
+ ps 2027
+DESCRIPTION:HORIZON-MSCA-2027-PF-01-01. Confirm the exact deadline time and
+  the call's status on the official topic page: https://ec.europa.eu/info/f
+ unding-tenders/opportunities/portal/screen/opportunities/topic-details/hor
+ izon-msca-2027-pf-01-01
+URL:https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/o
+ pportunities/topic-details/horizon-msca-2027-pf-01-01
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P7D
+DESCRIPTION:Deadline: HORIZON-MSCA-2027-PF-01-01
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Deadline: HORIZON-MSCA-2027-PF-01-01
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:horizon-msca-2027-dn-01-01-d@llulllab.com
+DTSTAMP:20261029T200843Z
+DTSTART;VALUE=DATE:20271123
+DTEND;VALUE=DATE:20271124
+SUMMARY:Deadline\, usually 17:00 Brussels time: MSCA Doctoral Networks 2027
+DESCRIPTION:HORIZON-MSCA-2027-DN-01-01. Confirm the exact deadline time and
+  the call's status on the official topic page: https://ec.europa.eu/info/f
+ unding-tenders/opportunities/portal/screen/opportunities/topic-details/hor
+ izon-msca-2027-dn-01-01
+URL:https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/o
+ pportunities/topic-details/horizon-msca-2027-dn-01-01
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P7D
+DESCRIPTION:Deadline: HORIZON-MSCA-2027-DN-01-01
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Deadline: HORIZON-MSCA-2027-DN-01-01
+END:VALARM
+END:VEVENT
+END:VCALENDAR
