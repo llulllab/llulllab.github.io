@@ -19,6 +19,9 @@
 <meta name="twitter:image" content="https://llulllab.com/clau/og.png">
 <link rel="stylesheet" href="/fonts/clau.css">
 <script defer src="https://stats.llulllab.com/script.js" integrity="sha384-ZMxgpYfO/phGz4GiYTIZhcauuGKTb2onmOB5gsiigjmBR38DGAmIna5J1Y/dM/13" crossorigin="anonymous" data-website-id="c7bbd9b9-bb8a-4adb-af3e-46d1d4f8c160" data-domains="llulllab.com" data-do-not-track="true" data-exclude-search="true" data-exclude-hash="true"></script>
+<link rel="alternate" hreflang="en" href="https://llulllab.com/clau/">
+<link rel="alternate" hreflang="fr" href="https://llulllab.com/clau/fr/">
+<link rel="alternate" hreflang="x-default" href="https://llulllab.com/clau/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Doctoral Funding Notes","description":"A funding radar for doctoral and early-career researchers: upcoming Marie Skłodowska-Curie Actions and ERC calls, statuses, and preparation steps, from the team behind Clau.","url":"https://llulllab.com/clau/","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Clau","url":"https://llulllab.com/clau/","logo":{"@type":"ImageObject","url":"https://llulllab.com/clau/og.png"}}}</script>
 <style>*,*::before,*::after{box-sizing:border-box}
 :root{--paper:#fff;--ink:#18212a;--muted:#52606b;--accent:#294f63;--wash:#f2f5f7;--rule:#c5cdd2;--open:#20583f;--urgent:#8a302c;--focus:#075dcc;
@@ -55,6 +58,9 @@ time,.number,.meta,.status{font-variant-numeric:lining-nums tabular-nums}
 .publication-name{margin:8px 0 0;font-size:14px;color:var(--muted)}
 .imprint{text-align:right}
 .imprint a{margin-left:auto}
+.imprint .lang-alt{font-weight:600}
+.fr-entry h1{font-size:44px;line-height:1.08}
+.fr-cta{display:inline-flex;align-items:center;min-height:48px;margin-top:24px;padding:10px 18px;background:var(--accent);color:#fff;font-weight:600;text-decoration:none}.fr-cta:visited{color:#fff}.fr-cta:hover{background:var(--ink);color:#fff}.fr-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .section-nav{display:flex;align-items:stretch;flex-wrap:wrap;gap:0 26px;border-top:1px solid var(--ink);border-bottom:2px solid var(--ink)}
 .section-nav a{display:flex;align-items:center;min-height:48px;font-size:14px;font-weight:600;text-decoration:none}
 .section-nav a[aria-current]{text-decoration:underline;text-decoration-thickness:2px}
@@ -153,6 +159,7 @@ footer{margin-top:48px;padding:24px 0 36px;border-top:2px solid var(--ink);color
 @media (max-width:1100px){.scope a{display:block}.scope .number,.scope .caption{display:block}.directory{grid-template-columns:repeat(2,minmax(0,1fr))}.edition-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:899px){.wrap{width:calc(100% - 48px)}.opening,.columns{grid-template-columns:1fr}.rail{border-left:0;padding-left:0;display:grid;grid-template-columns:1fr 1fr;gap:24px}.rail-section{margin-bottom:0}.section-nav{gap:0 20px}.section-nav .tool-nav{margin:0;min-width:0;justify-self:stretch;padding-inline:12px}}
 @media (max-width:599px){.wrap{width:calc(100% - 40px)}.masthead{padding:20px 0 14px;display:block}.masthead .name{font-size:48px}.inner .masthead .name{font-size:36px}.publication-name{margin-top:6px;font-size:13px}.imprint{text-align:left;margin-top:12px}.imprint .publisher{display:none}
+@media (max-width:599px){.imprint .lang-alt{margin-left:0}.fr-entry h1{font-size:32px}}
 @media (max-width:599px){.tools-strip{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;align-items:start}.tools-strip .label{grid-column:1/-1;margin:0;padding-top:10px}.tools-strip a{min-height:40px;padding:6px 0;font-size:13.5px;line-height:1.35}}
 .section-nav{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.section-nav a{min-height:44px;font-size:13px}
 .scope{grid-template-columns:repeat(2,minmax(0,1fr));padding:8px 0}.scope a{display:flex;align-items:center;gap:10px;padding:4px 12px;min-height:44px}.scope a:nth-child(odd){padding-left:0;border:0}.scope .number{font-size:28px}.scope .caption{font-size:12px}
@@ -175,6 +182,7 @@ footer{margin-top:48px;padding:24px 0 36px;border-top:2px solid var(--ink);color
     <div class="imprint meta">
       <div data-as-of="2026-10-30">As of 30 October 2026</div>
       <a class="block-link publisher" href="https://llulllab.com/">Llull Lab</a>
+      <a class="block-link lang-alt" href="/clau/fr/" hreflang="fr" lang="fr">En français</a>
     </div>
   </div>
   <nav class="section-nav" aria-label="Publication">
@@ -187,7 +195,7 @@ footer{margin-top:48px;padding:24px 0 36px;border-top:2px solid var(--ink);color
     <a class="tool-nav" href="/clau/tools/">Doctoral tools</a>
   </nav>
 </header>
-<nav class="tools-strip wrap" aria-label="Four free tools"><span class="label">Four free tools</span><a href="/clau/tools/">Work on your project text</a><a href="/clau/tools/">Work on your CV</a><a href="/clau/tools/">Explore positioning beyond academia</a><a href="/clau/tools/">Rehearse your defense</a></nav>
+<nav class="tools-strip wrap" aria-label="Four free tools"><span class="label">Four free tools</span><a href="/clau/tools/?tool=expose">Work on your project text</a><a href="/clau/tools/?tool=cv">Work on your CV</a><a href="/clau/tools/?tool=positionnement">Explore positioning beyond academia</a><a href="/clau/tools/?tool=defense">Rehearse your defense</a></nav>
 <nav class="scope wrap" aria-label="Coverage">
   <a href="/clau/blog/calls/"><span class="number">6</span><span class="caption">Calls with a future deadline</span></a>
   <a href="/clau/blog/calls/"><span class="number">2</span><span class="caption">Open for submission</span></a>
@@ -220,10 +228,10 @@ footer{margin-top:48px;padding:24px 0 36px;border-top:2px solid var(--ink);color
       <h2 id="tools-title">Four free tools</h2>
       <p class="meta">Free. No account. Private by design.</p>
       <ul class="tools">
-        <li><a href="/clau/tools/">Work on your project text&nbsp;&#8599;<span class="what">Develop your doctoral project text from your own material.</span></a></li>
-        <li><a href="/clau/tools/">Work on your CV&nbsp;&#8599;<span class="what">Build your academic CV.</span></a></li>
-        <li><a href="/clau/tools/">Explore positioning beyond academia&nbsp;&#8599;<span class="what">Position yourself for roles beyond academia.</span></a></li>
-        <li><a href="/clau/tools/">Rehearse your defense&nbsp;&#8599;<span class="what">Prepare for the questions of your defense.</span></a></li>
+        <li><a href="/clau/tools/?tool=expose">Work on your project text&nbsp;&#8599;<span class="what">Develop your doctoral project text from your own material.</span></a></li>
+        <li><a href="/clau/tools/?tool=cv">Work on your CV&nbsp;&#8599;<span class="what">Build your academic CV.</span></a></li>
+        <li><a href="/clau/tools/?tool=positionnement">Explore positioning beyond academia&nbsp;&#8599;<span class="what">Position yourself for roles beyond academia.</span></a></li>
+        <li><a href="/clau/tools/?tool=defense">Rehearse your defense&nbsp;&#8599;<span class="what">Prepare for the questions of your defense.</span></a></li>
       </ul>
     </section>
     <section class="rail-section" aria-labelledby="next-deadlines">
