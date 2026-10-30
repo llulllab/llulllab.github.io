@@ -692,6 +692,11 @@
   // support button (donations) if a payment link is configured
   if (DONATE_URL){ const s=document.getElementById('supportLink'); s.href=DONATE_URL; s.hidden=false; }
 
+  // Links from the publication pages (2026-10-30): ?lang=fr|en sets the language and ?tool=<id> opens that tool.
+  // Nothing else is read from the URL.
+  (function(){ const q = new URLSearchParams(location.search), l = q.get('lang'), t = q.get('tool');
+    if (l === 'fr' || l === 'en') lang = l;
+    if (t && convos[t] && t !== currentTool) switchTool(t, { noScroll: true, noSave: true }); })();
   // boot. No key is ever placed in the URL: you resume by pasting your key, so the
   // key never lands in browser history, sync, or a shared link.
   setLang(lang);
