@@ -93,6 +93,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .footer-inner a{text-decoration:underline;display:inline-flex;align-items:center;min-height:44px}
 .footer-links{display:flex;flex-wrap:wrap;gap:0 1.25rem}
 @media (max-width:1024px){.masthead-grid{grid-template-columns:1fr;gap:.75rem}.journal-grid,.journal-grid.two{grid-template-columns:1fr 1fr}.col-rail{grid-column:span 2;border-top:2px solid var(--rule-heavy);padding-top:1.5rem}}
+@media (max-width:480px){.masthead-top .upd{display:none}}
 @media (max-width:768px){.lab-home-link .sub{display:none}.digest-nav-links{display:grid;grid-template-columns:1fr 1fr;width:100%}.digest-nav-links a{border-bottom:1px solid var(--rule-light);padding:0 .5rem}.digest-nav-links a:first-child{padding-left:.5rem}
 .journal-grid,.journal-grid.two{grid-template-columns:1fr}.col-rail{grid-column:span 1}.legal-pill{font-size:.7rem;padding:.15rem .4rem}.lab-bar-inner{gap:.5rem;padding:0 .75rem}}
 @media (max-width:480px){.lab-bar-inner{flex-wrap:wrap;padding:.25rem .75rem}.lab-controls{flex-wrap:wrap;gap:.4rem}.legal-pill{white-space:normal}}
@@ -109,7 +110,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 </div></div>
 <header class="container">
   <div class="masthead">
-    <div class="masthead-top"><span>As of 30 October 2026 &middot; Updated three times a day</span><span>Llull Lab &middot; Paris</span></div>
+    <div class="masthead-top"><span>As of 30 October 2026<span class="upd"> &middot; Updated three times a day</span></span><span>Llull Lab &middot; Paris</span></div>
     <div class="masthead-grid">
       <h1 class="masthead-title"><a href="/ai-robotics/">AI &amp; Robotics News</a></h1>
       <p class="masthead-dek">Research and policy news on artificial intelligence and robotics, updated three times a day from the public feeds of research laboratories, universities and EU institutions, with a daily selection of new research papers. Each item has a short summary and a link to the source.</p>
