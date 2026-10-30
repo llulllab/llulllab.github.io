@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,85 +13,144 @@
 <meta property="og:title" content="How This Digest Is Made">
 <meta property="og:description" content="The AI and Robotics Digest is a selection of research and policy news on artificial intelligence and robotics, published by Llull Lab, a Paris-based research laboratory that studies machine minds, machine ethics and embodied robots.">
 <meta name="twitter:card" content="summary">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem("digest-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<link rel="stylesheet" href="/fonts/digest.css">
 <script defer src="https://stats.llulllab.com/script.js" integrity="sha384-ZMxgpYfO/phGz4GiYTIZhcauuGKTb2onmOB5gsiigjmBR38DGAmIna5J1Y/dM/13" crossorigin="anonymous" data-website-id="c7bbd9b9-bb8a-4adb-af3e-46d1d4f8c160" data-domains="llulllab.com" data-do-not-track="true" data-exclude-search="true" data-exclude-hash="true"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"How This Digest Is Made","description":"The AI and Robotics Digest is a selection of research and policy news on artificial intelligence and robotics, published by Llull Lab, a Paris-based research laboratory that studies machine minds, machine ethics and embodied robots.","url":"https://llulllab.com/ai-robotics/about/","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Llull Lab","url":"https://llulllab.com/"}}</script>
-<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg-ivory:#ffffff;--bg-warm:#f5f7fa;--ink:#1a1f2e;--gold:#3d6b8e;--gold-dim:#2c5470;--text-1:#1a1f2e;--text-2:#4a5568;--text-3:#718096;--text-heading:#0f1624;--border:rgba(26,31,46,0.10);--border-gold:rgba(61,107,142,0.20);--gold-ghost:rgba(61,107,142,0.06);--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Libre Franklin','Segoe UI',sans-serif}
-body{font-family:var(--font-body);background:var(--bg-ivory);color:var(--text-1);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
-.wrap{max-width:760px;margin:0 auto;padding:48px 24px 96px}
-header.doc{border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:36px}
-.home{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);text-decoration:none}
-.home:hover{color:var(--gold)}
-.brandkey{color:var(--gold);flex:0 0 auto}
-.pill{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim);background:var(--gold-ghost);border:1px solid var(--border-gold);border-radius:100px;padding:5px 13px;margin:18px 0 4px}
-h1{font-family:var(--font-display);font-weight:600;font-size:clamp(30px,5vw,44px);line-height:1.12;color:var(--text-heading);margin:10px 0 10px;letter-spacing:-0.01em}
-.byline{font-size:13px;color:var(--text-2)}
-.lede{font-size:16px;color:var(--text-2)}
-.call{border-top:1px solid var(--border);padding-top:26px;margin:30px 0 0}
-h2{font-family:var(--font-display);font-weight:600;font-size:24px;line-height:1.22;color:var(--text-heading);margin:0 0 8px}
-.callmeta{font-size:13.5px;color:var(--text-2);margin:0 0 10px;line-height:1.5}
-.callmeta strong{color:var(--gold-dim);font-weight:600}
-.who{font-size:13.5px;color:var(--text-2);margin:0 0 14px;line-height:1.5}
-.who strong{color:var(--gold-dim);font-weight:600}
-p{margin:0 0 15px;color:var(--text-2)}
-strong{color:var(--text-1);font-weight:600}
-.step strong{color:var(--gold-dim)}
-a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent}
-a:hover{border-bottom-color:var(--gold)}
-.topiclink{font-size:13.5px;margin-top:12px}
-.note{background:var(--bg-warm);border:1px solid var(--border);border-radius:6px;padding:16px 20px;margin:34px 0 0;font-size:14px;color:var(--text-2)}
-.note a{color:var(--gold-dim)}
-footer{margin-top:52px;padding:28px 20px 16px;text-align:center;font-family:var(--font-body);font-size:0.78rem;color:var(--text-3);border-top:1px solid var(--border)}
-footer .footer-line{margin:4px 0;line-height:1.7}
-footer .footer-line a{color:var(--text-3);text-decoration:none;border-bottom:1px solid transparent}
-footer .footer-line a:hover{color:var(--text-1)}
-footer .footer-sep{margin:0 10px;opacity:0.6}
-.post-list{list-style:none;padding:0;margin:34px 0 0}
-.post-list li{padding:24px 0;border-bottom:1px solid var(--border)}.post-list li:first-child{border-top:1px solid var(--border)}
-.post-date{font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-3)}
-.post-title{font-family:var(--font-display);font-weight:600;font-size:22px;line-height:1.25;margin:6px 0 8px}
-.post-title a{color:var(--text-heading);border-bottom:1px solid transparent}.post-title a:hover{color:var(--gold);border-bottom-color:var(--gold)}
-.post-teaser{color:var(--text-2);margin:0}
-.news{border-top:1px solid var(--border);padding-top:24px;margin:28px 0 0}
-.newsmeta{font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-3);margin:0 0 6px}
-.newsmeta .src{color:var(--gold-dim)}
-.news h2{font-size:22px;margin:0 0 8px}
-.news h2 a{color:var(--text-heading);border-bottom:1px solid transparent}.news h2 a:hover{color:var(--gold);border-bottom-color:var(--gold)}
-.srclink{font-size:13.5px;margin-top:10px}
-.srcnote{font-size:13px;color:var(--text-2);background:var(--bg-warm);border:1px solid var(--border);border-radius:6px;padding:11px 15px;margin:0 0 8px}
-.editions{margin:52px 0 0}
-.editions h2{font-size:22px;margin:0 0 6px}
-.editions-note{font-size:14px;margin:0 0 14px}
-.edition-list{list-style:none;padding:0;margin:0}
-.edition-list li{padding:6px 0;font-size:14.5px;color:var(--text-2)}
-.edition-date{display:inline-block;min-width:11.5em;color:var(--text-3)}
-.edition-links{white-space:nowrap}
-.ed-sep{margin:0 9px;opacity:0.6}
-@media (max-width:520px){.edition-list li{padding:8px 0}.edition-date{display:block;min-width:0}}
-.item{border-top:1px solid var(--border);padding-top:24px;margin:28px 0 0}.item h2,.item h3{font-size:23px;margin:0 0 8px}.item h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;color:var(--text-heading)}.item h2 a,.item h3 a{color:var(--text-heading);border-bottom:1px solid transparent}.item h2 a:hover,.item h3 a:hover{color:var(--gold);border-bottom-color:var(--gold)}.ai-label{font-size:12.5px;color:var(--text-3);margin:6px 0 0}.section-h{margin:52px 0 0;font-size:26px}.edition-banner{font-size:14px;color:var(--text-2);background:var(--bg-warm);border:1px solid var(--border);border-radius:6px;padding:11px 15px;margin:0 0 8px}</style>
+<style>:root{--bg-paper:#F7F6F2;--bg-well:#ECEAE3;--ink-primary:#0A0A0C;--ink-secondary:#2E3036;--ink-muted:#5A5D66;--accent:#1E3A8A;--accent-wash:#E8ECF7;--rule-heavy:#0A0A0C;--rule-light:#D5D3CA;
+--font-serif:'Spectral',Georgia,serif;--font-sans:'Space Grotesk',-apple-system,BlinkMacSystemFont,sans-serif;--font-mono:'IBM Plex Mono',ui-monospace,monospace;--max-w:1320px}
+[data-theme="dark"]{--bg-paper:#0A0A0C;--bg-well:#12141A;--ink-primary:#F2F0EA;--ink-secondary:#C4C2BA;--ink-muted:#8C8A82;--accent:#7BA2FF;--accent-wash:#192236;--rule-heavy:#F2F0EA;--rule-light:#262934}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg-paper);color:var(--ink-primary);font-family:var(--font-serif);font-size:1rem;line-height:1.62;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}a:hover{color:var(--accent);text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-100px;background:#fff;color:#0A0A0C;padding:12px 16px;z-index:10}.skip:focus{top:8px}
+.lab-bar{background:#0A0A0C;color:#F2F0EA;border-bottom:1px solid #262934;font-family:var(--font-sans);font-size:.78rem}
+.lab-bar-inner{max-width:var(--max-w);margin:0 auto;padding:0 1.25rem;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.lab-home-link{font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#F2F0EA;display:inline-flex;align-items:center;gap:.5rem;min-height:44px}
+.lab-home-link:hover{color:#F2F0EA}.lab-home-link .sub{color:#8C8A82;font-weight:400;font-family:var(--font-mono);font-size:.72rem}
+.lab-controls{display:flex;align-items:center;gap:.75rem}
+.legal-pill{font-family:var(--font-mono);font-size:.74rem;color:#E4E2DA;background:#171A22;border:1px solid #3A3E4D;padding:.2rem .6rem;letter-spacing:.02em;white-space:nowrap}
+.theme-btn{background:transparent;border:1px solid #3A3E4D;color:#F2F0EA;font-family:var(--font-mono);font-size:.72rem;min-height:44px;padding:0 .75rem;cursor:pointer;text-transform:uppercase}
+.theme-btn:hover{border-color:#F2F0EA}.theme-btn[aria-pressed="true"]{background:#F2F0EA;color:#0A0A0C}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 1.25rem}
+.masthead{padding:1.75rem 0 1.25rem;border-bottom:3px double var(--rule-heavy)}
+.masthead-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;font-family:var(--font-mono);font-size:.75rem;color:var(--ink-muted);margin-bottom:.5rem;text-transform:uppercase}
+.masthead-grid{display:grid;grid-template-columns:7fr 5fr;gap:2rem;align-items:end}
+.masthead-title{font-family:var(--font-serif);font-size:clamp(2.35rem,4.2vw,3.6rem);font-weight:700;line-height:1.02;letter-spacing:-.02em}
+.masthead-title a:hover{color:inherit;text-decoration:none}
+.masthead-dek{font-family:var(--font-sans);font-size:.92rem;line-height:1.52;color:var(--ink-secondary);border-left:2px solid var(--rule-heavy);padding-left:1rem}
+.digest-nav{border-bottom:1px solid var(--rule-heavy);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;font-family:var(--font-sans)}
+.digest-nav-links{display:flex;flex-wrap:wrap}
+.digest-nav-links a{min-height:44px;padding:0 1.15rem;display:inline-flex;align-items:center;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;border-right:1px solid var(--rule-light);position:relative}
+.digest-nav-links a:first-child{padding-left:0}
+.digest-nav-links a[aria-current="page"]::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--accent)}
+.digest-counts{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-muted);padding:.5rem 0;text-transform:uppercase}
+.journal-grid{display:grid;grid-template-columns:5fr 4fr 3fr;gap:2.25rem;padding:1.75rem 0 3.5rem;align-items:start}
+.journal-grid.two{grid-template-columns:5fr 4fr}
+.col-news,.col-papers{position:relative;min-width:0}.col-rail{min-width:0}
+@media (min-width:1025px){.col-news::after,.col-papers::after{content:"";position:absolute;top:0;bottom:0;right:-1.125rem;width:1px;background:var(--rule-light)}.journal-grid.two .col-papers::after{display:none}}
+.sec-head{border-top:2px solid var(--rule-heavy);padding-top:.45rem;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:baseline;gap:.75rem}
+.sec-head h2{font-family:var(--font-sans);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.sec-head .tag{font-family:var(--font-mono);font-size:.7rem;color:var(--ink-muted);text-transform:uppercase}
+.news-item{padding-bottom:1.35rem;margin-bottom:1.35rem;border-bottom:1px solid var(--rule-light)}.news-item:last-child{border-bottom:none}
+.item-kicker{font-family:var(--font-mono);font-size:.72rem;margin-bottom:.35rem;display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.source-name{font-weight:600;text-transform:uppercase;color:var(--accent);letter-spacing:.04em}.item-date{color:var(--ink-muted)}
+.news-title{font-family:var(--font-serif);font-size:1.3rem;font-weight:600;line-height:1.25;margin-bottom:.5rem}
+.news-item.lead .news-title{font-size:1.6rem;line-height:1.18}
+.news-summary{font-size:.98rem;color:var(--ink-secondary);line-height:1.62;margin-bottom:.55rem}
+.source-link{font-family:var(--font-sans);font-size:.78rem;font-weight:600;color:var(--ink-muted);display:inline-flex;align-items:center;gap:.25rem;min-height:44px}
+.preprint-notice{font-family:var(--font-mono);font-size:.72rem;background:var(--bg-well);border-left:2px solid var(--rule-heavy);padding:.45rem .7rem;margin-bottom:1.25rem;color:var(--ink-secondary)}
+.paper-item{padding-bottom:1.25rem;margin-bottom:1.25rem;border-bottom:1px solid var(--rule-light);display:grid;grid-template-columns:28px 1fr;gap:.65rem}.paper-item:last-child{border-bottom:none}
+.paper-num{font-family:var(--font-mono);font-size:.78rem;font-weight:600;color:var(--ink-muted);padding-top:.15rem}
+.cat-pill{font-family:var(--font-mono);font-size:.7rem;font-weight:600;padding:.1rem .4rem;background:var(--accent-wash);color:var(--accent);border:1px solid var(--rule-light)}
+.paper-title{font-family:var(--font-serif);font-size:1.12rem;font-weight:600;line-height:1.28;margin:.3rem 0 .45rem}
+.paper-summary{font-size:.92rem;color:var(--ink-secondary);line-height:1.58;margin-bottom:.45rem}
+.analysis-card{background:var(--bg-well);border:1px solid var(--rule-heavy);padding:1.15rem;margin-bottom:1.75rem}
+.analysis-meta{display:flex;justify-content:space-between;gap:.5rem;font-family:var(--font-mono);font-size:.7rem;color:var(--ink-muted);margin-bottom:.45rem;border-bottom:1px solid var(--rule-light);padding-bottom:.35rem}
+.analysis-title{font-family:var(--font-serif);font-size:1.25rem;font-weight:700;line-height:1.22;margin-bottom:.5rem}
+.analysis-excerpt{font-size:.9rem;color:var(--ink-secondary);line-height:1.55;margin-bottom:.5rem}
+.analysis-cta{font-family:var(--font-sans);font-size:.8rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;min-height:44px}
+.sources-ledger{font-family:var(--font-sans);font-size:.82rem;color:var(--ink-secondary);margin-bottom:1.75rem}
+.sources-group{margin-bottom:.75rem}
+.sources-group strong{font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-primary);display:block;margin-bottom:.15rem}
+.archive-list{list-style:none;font-family:var(--font-mono);font-size:.78rem;columns:2;column-gap:1rem}
+.archive-list li{border-bottom:1px dotted var(--rule-light);break-inside:avoid}
+.archive-list a{display:flex;align-items:center;min-height:44px;color:var(--ink-secondary)}
+.edition-banner{font-family:var(--font-sans);font-size:.9rem;background:var(--bg-well);border-left:3px solid var(--rule-heavy);padding:.75rem 1rem;margin:1.25rem 0 0}
+.edition-banner a{color:var(--accent);text-decoration:underline}
+.article{max-width:740px;padding:2rem 0 3rem}
+.article h1{font-family:var(--font-serif);font-size:clamp(2rem,3.6vw,2.9rem);font-weight:700;line-height:1.08;letter-spacing:-.015em;margin:.5rem 0 1.25rem}
+.article .meta{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-muted);text-transform:uppercase}
+.article p{font-size:1.08rem;line-height:1.72;color:var(--ink-secondary);margin-bottom:1.1rem}
+.article h2{font-family:var(--font-sans);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;border-top:2px solid var(--rule-heavy);padding-top:.45rem;margin:2rem 0 1rem}
+.article ul{list-style:none}.article li{border-bottom:1px solid var(--rule-light);padding:.6rem 0;font-family:var(--font-sans);font-size:.92rem}
+.article li a{color:var(--accent);text-decoration:underline}.article p a{color:var(--accent);text-decoration:underline}
+.note{font-family:var(--font-sans);font-size:.82rem;line-height:1.55;color:var(--ink-muted);border-top:1px solid var(--rule-light);padding:1rem 0 0;margin:0 0 2rem;max-width:90ch}
+.note a{color:var(--accent);text-decoration:underline}
+.site-footer{border-top:3px double var(--rule-heavy);padding:2rem 0 3rem;font-family:var(--font-sans);font-size:.82rem;color:var(--ink-muted)}
+.footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-inner a{text-decoration:underline;display:inline-flex;align-items:center;min-height:44px}
+.footer-links{display:flex;flex-wrap:wrap;gap:0 1.25rem}
+@media (max-width:1024px){.masthead-grid{grid-template-columns:1fr;gap:.75rem}.journal-grid,.journal-grid.two{grid-template-columns:1fr 1fr}.col-rail{grid-column:span 2;border-top:2px solid var(--rule-heavy);padding-top:1.5rem}}
+@media (max-width:768px){.lab-home-link .sub{display:none}.digest-nav-links{display:grid;grid-template-columns:1fr 1fr;width:100%}.digest-nav-links a{border-bottom:1px solid var(--rule-light);padding:0 .5rem}.digest-nav-links a:first-child{padding-left:.5rem}
+.journal-grid,.journal-grid.two{grid-template-columns:1fr}.col-rail{grid-column:span 1}.legal-pill{font-size:.7rem;padding:.15rem .4rem}.lab-bar-inner{gap:.5rem;padding:0 .75rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}</style>
 </head>
 <body>
-<div class="wrap">
-<header class="doc">
-  <a class="home" href="https://llulllab.com/">&larr; Llull Lab</a>
-  <h1>How This Digest Is Made</h1>
-  <div class="byline">As of 30 October 2026.</div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="lab-bar"><div class="lab-bar-inner">
+  <a href="https://llulllab.com/" class="lab-home-link"><span>&larr; Llull Lab</span><span class="sub">&middot; Paris research laboratory</span></a>
+  <div class="lab-controls">
+    <button type="button" class="theme-btn" id="theme-toggle" aria-pressed="false" aria-label="Night reading mode">Paper / Night</button>
+  </div>
+</div></div>
+<header class="container">
+  <div class="masthead">
+    <div class="masthead-top"><span>As of 30 October 2026 &middot; Updated three times a day</span><span>Llull Lab &middot; Paris</span></div>
+    <div class="masthead-grid">
+      <p class="masthead-title"><a href="/ai-robotics/">AI and Robotics Digest</a></p>
+      <p class="masthead-dek">Research and policy news on artificial intelligence and robotics, updated three times a day from the public feeds of research laboratories, universities and EU institutions, with a daily selection of new research papers. Each item has a short summary and a link to the source.</p>
+    </div>
+  </div>
+  <nav class="digest-nav" aria-label="Digest sections">
+    <div class="digest-nav-links">
+      <a href="/ai-robotics/#news">News (9)</a>
+      <a href="/ai-robotics/#papers">New research papers (6)</a>
+      <a href="/ai-robotics/about/" aria-current="page">How this digest is made</a>
+      <a href="/ai-robotics/#archive">Earlier editions</a>
+    </div>
+    <div class="digest-counts">18 public feeds &middot; arXiv cs.AI and cs.RO</div>
+  </nav>
 </header>
-<p>The AI and Robotics Digest is a selection of research and policy news on artificial intelligence and robotics, published by Llull Lab, a Paris-based research laboratory that studies machine minds, machine ethics and embodied robots.</p>
-<p>News: three times a day from the public news feeds of research laboratories (Google Research, Google DeepMind, OpenAI, Microsoft Research, IBM Research, Apple Machine Learning Research, Amazon Science, Hugging Face, the Allen Institute for AI), universities and research institutes (MIT News, ETH Zurich, EPFL, the University of Cambridge, the Carnegie Mellon Robotics Institute, the Max Planck Society) and EU institutions (the European Commission's Shaping Europe's digital future, the Joint Research Centre); up to eight items a run, at most two from the same publisher, favouring new research results, safety, evaluation and ethics, robotics and embodiment, scientific uses of AI and public policy over product marketing, events and funding announcements. What an organisation says about its own work is reported as its statement, not as established fact.</p>
-<p>Research papers: once a day, up to ten new preprints from the arXiv categories Robotics and Artificial Intelligence, chosen from the latest submissions and summarised from their abstracts. Preprints are not peer reviewed.</p>
-<p>Weekly analysis: every Monday, a short reading of the week's items.</p>
-<p>Summaries and the analysis are written and checked automatically from the source text. A summary that copies the source, adds a figure the source does not give, or is judged unsupported by an automatic review is not published. They are not individually reviewed by a person; the original is authoritative.</p>
-<p>Spotted an error? Write to <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>.</p>
-<p><a href="/ai-robotics/">AI and Robotics Digest</a></p>
-<div class="note">Items, titles and links come from the publishers' public news feeds and from arXiv, and each title links to the original. Summaries are written and checked automatically from the source text and are not individually reviewed by a person; the original is authoritative. Research papers are preprints, not peer reviewed. Llull Lab is independent of the publishers listed. <a href="/ai-robotics/about/">How this digest is made</a>.</div>
-<footer>
-  <div class="footer-line">Llull Lab</div>
-  <div class="footer-line" lang="fr">Conçu et développé en France</div>
-  <div class="footer-line"><a href="https://llulllab.com/privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="https://llulllab.com/mentions-legales.html" lang="fr">Mentions Légales</a></div>
-  <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
-</footer>
-</div>
+<main id="main" class="container">
+<article class="article">
+  <h1>How This Digest Is Made</h1>
+  <p>The AI and Robotics Digest is a selection of research and policy news on artificial intelligence and robotics, published by Llull Lab, a Paris-based research laboratory that studies machine minds, machine ethics and embodied robots.</p>
+  <p>News: three times a day from the public news feeds of research laboratories (Google Research, Google DeepMind, OpenAI, Microsoft Research, IBM Research, Apple Machine Learning Research, Amazon Science, Hugging Face, the Allen Institute for AI), universities and research institutes (MIT News, ETH Zurich, EPFL, the University of Cambridge, the Carnegie Mellon Robotics Institute, the Max Planck Society) and EU institutions (the European Commission's Shaping Europe's digital future, the Joint Research Centre); up to eight items a run, at most two from the same publisher, favouring new research results, safety, evaluation and ethics, robotics and embodiment, scientific uses of AI and public policy over product marketing, events and funding announcements. What an organisation says about its own work is reported as its statement, not as established fact.</p>
+  <p>Research papers: once a day, up to ten new preprints from the arXiv categories Robotics and Artificial Intelligence, chosen from the latest submissions and summarised from their abstracts. Preprints are not peer reviewed.</p>
+  <p>Weekly analysis: every Monday, a short reading of the week's items.</p>
+  <p>Summaries and the analysis are written and checked automatically from the source text. A summary that copies the source, adds a figure the source does not give, or is judged unsupported by an automatic review is not published. They are not individually reviewed by a person; the original is authoritative.</p>
+  <p>Spotted an error? Write to <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>.</p>
+  <h2>Public feeds</h2>
+  <ul>
+    <li><strong>Research laboratories:</strong> Google Research, Google DeepMind, OpenAI, Microsoft Research, IBM Research, Apple Machine Learning Research, Amazon Science, Hugging Face, Allen Institute for AI.</li>
+    <li><strong>Universities and research institutes:</strong> MIT News, ETH Zurich, EPFL, University of Cambridge, Carnegie Mellon Robotics Institute, Max Planck Society.</li>
+    <li><strong>EU institutions:</strong> European Commission (Shaping Europe's digital future), Joint Research Centre.</li>
+  </ul>
+  <p><a href="/ai-robotics/">AI and Robotics Digest</a></p>
+</article>
+</main>
+<footer class="site-footer"><div class="container footer-inner">
+  <div><strong>AI and Robotics Digest</strong> &middot; Published by <a href="https://llulllab.com/">Llull Lab</a> (Paris). <span lang="fr">Conçu et développé en France.</span></div>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/ai-robotics/about/">How this digest is made</a>
+    <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>
+    <a href="https://llulllab.com/privacy-policy.html">Privacy Policy</a>
+    <a href="https://llulllab.com/mentions-legales.html" lang="fr">Mentions Légales</a>
+    <span>Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></span>
+  </nav>
+</div></footer>
+<script>(function(){var b=document.getElementById("theme-toggle");if(!b)return;var r=document.documentElement;function s(){b.setAttribute("aria-pressed",r.getAttribute("data-theme")==="dark"?"true":"false");}s();b.addEventListener("click",function(){var t=r.getAttribute("data-theme")==="dark"?"light":"dark";r.setAttribute("data-theme",t);try{localStorage.setItem("digest-theme",t);}catch(e){}s();});})();</script>
 </body>
 </html>
