@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Llull Lab: Research</title>
   <link rel="icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="Llull Lab: Research. Conceptual foundations, formal tools, and epistemic frameworks drawn from sciences and arts.">
+  <meta name="description" content="Llull Lab research: live and published works (The Artificial Mind, ASGE, Alberei, Cedulor, Clau, AI & Robotics News), work in preparation, open questions.">
   <link rel="stylesheet" href="/fonts/gf-d321d810.css">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -93,6 +93,55 @@
     footer .footer-line a:hover { color: var(--fg); }
     footer .footer-sep { margin: 0 10px; opacity: 0.6; }
     @media (max-width: 600px) { footer { padding: 32px 20px; margin-top: 56px; font-size: 0.78rem; } }
+
+    :root { --bg-card: #141414; --highlight: #a78bfa; --live: #6ee7b7; --prep: #fbbf24; }
+    .page-body h2 { scroll-margin-top: 96px; }
+    .page-body p { margin-bottom: 1.2em; max-width: 680px; }
+    .toc { margin-top: 28px; }
+    .toc-label { font-family: var(--sans); font-size: 12px; line-height: 1.5; letter-spacing: 1.4px; text-transform: uppercase; color: #aaa; }
+    .toc-desktop { display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px; }
+    .toc-desktop .toc-label { margin-right: 4px; }
+    .toc a { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--sans); font-size: 14px; color: var(--highlight); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .toc-mobile { display: none; }
+    .toc-mobile summary { display: flex; align-items: center; min-height: 44px; cursor: pointer; font-family: var(--sans); font-size: 14px; color: var(--fg); }
+    .toc-mobile .toc-links { display: flex; flex-direction: column; padding-bottom: 8px; }
+    .page-body p.theme-note { font-size: 0.95rem; color: var(--accent); max-width: 66ch; margin: -4px 0 16px; }
+    .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .work-grid > :only-child { grid-column: 1 / -1; }
+    .node-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; display: flex; flex-direction: column; }
+    .node-item .ntopic { font-family: var(--sans); font-size: 12px; line-height: 1.5; letter-spacing: 1.2px; text-transform: uppercase; color: #aaa; margin-bottom: 8px; }
+    .node-item .nname { font-family: var(--sans); font-weight: 600; font-size: 1.22rem; line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 8px; }
+    .node-item .badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+    .ntype { font-family: var(--sans); font-size: 12px; line-height: 1.5; letter-spacing: 1px; text-transform: uppercase; color: #aaa; }
+    .nstatus { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.7px; text-transform: uppercase; padding: 2px 9px; border-radius: 20px; border: 1px solid rgba(94,196,122,0.3); color: var(--live); background: rgba(94,196,122,0.06); }
+    .nstatus.prep { border-color: rgba(251,191,36,0.4); color: var(--prep); background: rgba(251,191,36,0.07); }
+    .node-item p.ndesc { font-size: 16px; line-height: 1.6; color: #b8b8b8; max-width: 65ch; margin-bottom: 12px; flex: 1; }
+    .node-item p.nmeta { font-family: var(--sans); font-size: 12px; line-height: 1.5; color: #aaa; margin: 0; }
+    .nlinks { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
+    .nlink { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; font-family: var(--sans); font-size: 0.85rem; font-weight: 500; color: var(--bg); background: var(--highlight); text-decoration: none; border-radius: 5px; transition: box-shadow 0.2s; }
+    .nlink:hover { box-shadow: 0 2px 16px rgba(167,139,250,0.28); }
+    .nlink.flink { padding: 0; background: transparent; color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 4px; border-radius: 0; }
+    .nlink.flink:hover { box-shadow: none; text-decoration-color: var(--highlight); }
+    .inquiry-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 40px; }
+    .inquiry-theme h3 { font-family: var(--sans); font-size: 1rem; font-weight: 500; margin: 12px 0 2px; }
+    .inquiry-theme .cluster-items li { padding-block: 8px; }
+    .xref { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--sans); font-size: 14px; color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 4px; }
+    .xref:hover { text-decoration-color: var(--highlight); }
+    .toc a:focus-visible, .toc-mobile summary:focus-visible, .nlink:focus-visible, .xref:focus-visible { outline: 2px solid var(--highlight); outline-offset: 3px; }
+    .page-body h3.sub-h { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 40px; margin-bottom: 8px; }
+    .event-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .event-date { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); margin-bottom: 6px; }
+    .event-title { font-family: var(--sans); font-size: 1.05rem; font-weight: 500; margin-bottom: 8px; }
+    .event-desc { font-size: 0.95rem; color: var(--accent); line-height: 1.6; max-width: 680px; }
+    @media (max-width: 767px) {
+      .toc-desktop { display: none; }
+      .toc-mobile { display: block; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+      .work-grid, .inquiry-grid { grid-template-columns: minmax(0, 1fr); }
+      .node-item { padding: 20px; }
+      .nlinks { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .page-body h2 { margin-top: 48px; }
+    }
   </style>
   <link rel="canonical" href="https://llulllab.com/en/research.html">
   <link rel="alternate" hreflang="en" href="https://llulllab.com/en/research.html">
@@ -110,7 +159,6 @@
         <a href="about.html">About</a>
         <a href="people.html">Team</a>
         <a href="research.html" class="active">Research</a>
-        <a href="programs.html">Programs</a>
         <a href="studio.html">Studio</a>
         <a href="press.html">Press</a>
         <a href="updates.html">Updates</a>
@@ -124,64 +172,160 @@
     <div class="module-tag">Epistemic Module</div>
     <div class="page-hero">
       <h1>Research</h1>
-      <p class="lead">Theoretical foundations and epistemic frameworks: the conceptual engine that feeds Llull Lab's applied systems.</p>
+      <p class="lead">What Llull Lab has completed, what is in preparation, and the questions still open. Each work names the research theme it comes from.</p>
+      <div class="toc" role="navigation" aria-label="On this page">
+        <div class="toc-desktop"><span class="toc-label">On this page</span><a href="#live">Live and published</a><a href="#in-preparation">In preparation</a><a href="#method-framework">Method and frameworks</a><a href="#open-inquiry">Open lines of inquiry</a><a href="#education">Education &amp; Public Engagement</a></div>
+        <details class="toc-mobile"><summary>On this page</summary><div class="toc-links"><a href="#live">Live and published</a><a href="#in-preparation">In preparation</a><a href="#method-framework">Method and frameworks</a><a href="#open-inquiry">Open lines of inquiry</a><a href="#education">Education &amp; Public Engagement</a></div></details>
+      </div>
     </div>
     <div class="page-body">
 
-      <p style="color: var(--accent); margin-bottom: 8px;">Artificial Mind is now a Program: the Lab's continuing quarterly, open-access audit of frontier models. &rarr; <a href="artificial-mind.html" style="color: var(--fg); text-decoration: underline;">Explore the program</a></p>
-
-      <h2>Core Methodologies</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Mathematical Methodology</li>
-          <li>Functional Ontology</li>
-          <li>Sync-Turing: evaluating human-machine communication at maximum efficiency and synchronization</li>
-          <li>Runnable Theoretical-Generative Systems</li>
-        </ul>
+      <h2 id="live">Live and published</h2>
+      <p class="theme-note">Works that are running or published.</p>
+      <div class="work-grid">
+        <article class="node-item">
+          <div class="ntopic">Computational Psychology &middot; Machine Psychoanalysis (M2M / M2H)</div>
+          <h3 class="nname">The Artificial Mind</h3>
+          <div class="badges"><span class="nstatus">Published</span><span class="ntype">Research program</span></div>
+          <p class="ndesc">The Lab's continuing quarterly, open-access audit of what frontier language models can and cannot honestly say about themselves. Two founding studies were published in June 2026, open access under CC BY 4.0.</p>
+          <div class="nlinks"><a class="nlink" href="artificial-mind.html">Explore the program&nbsp;&rarr;</a></div>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Semantic &amp; Cultural Systems &middot; Ambivalence-Centered Semantic Geometry</div>
+          <h3 class="nname">ASGE</h3>
+          <div class="badges"><span class="nstatus">Live</span><span class="ntype">Semantic Geometry Engine</span></div>
+          <p class="ndesc">Ambivalence as structural geometry: opposed meanings measured at once, a semantic foundation other systems can build on.</p>
+          <div class="nlinks"><a class="nlink" href="/ASGE/">Open ASGE&nbsp;&rarr;</a></div>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Computational Humanities &middot; Computational Humor</div>
+          <h3 class="nname">Alberei</h3>
+          <div class="badges"><span class="nstatus">Live</span><span class="ntype">Modular Humor Engine</span></div>
+          <p class="ndesc">Algorithmic humor through designed comic structures, in twelve languages.</p>
+          <div class="nlinks"><a class="nlink" href="https://alberei.de" target="_blank" rel="noopener">Open Alberei&nbsp;&rarr;</a></div>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Research Tools &middot; EU research funding</div>
+          <h3 class="nname">Cedulor</h3>
+          <div class="badges"><span class="nstatus">Live</span><span class="ntype">EU Funding Notes</span></div>
+          <p class="ndesc">Notes on EU research funding calls, budgets and proposal preparation, with a paid proposal drafting tool.</p>
+          <div class="nlinks"><a class="nlink" href="https://cedulor.com" target="_blank" rel="noopener">Read the notes&nbsp;&rarr;</a><a class="nlink flink" href="https://cedulor.com/draft/" target="_blank" rel="noopener">Proposal drafting (paid)&nbsp;&rarr;</a></div>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Research Tools &middot; Doctoral funding</div>
+          <h3 class="nname">Clau</h3>
+          <div class="badges"><span class="nstatus">Live</span><span class="ntype">Doctoral Funding Notes</span></div>
+          <p class="ndesc">A doctoral funding radar with four free tools for doctoral candidates: project text, CV, positioning and defense.</p>
+          <div class="nlinks"><a class="nlink" href="/clau/">Open Clau&nbsp;&rarr;</a><a class="nlink flink" href="/clau/tools/">Doctoral tools&nbsp;&rarr;</a></div>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Research Tools &middot; Artificial intelligence and robotics</div>
+          <h3 class="nname">AI &amp; Robotics News</h3>
+          <div class="badges"><span class="nstatus">Live</span><span class="ntype">News</span></div>
+          <p class="ndesc">Daily research and policy news on artificial intelligence and robotics.</p>
+          <div class="nlinks"><a class="nlink" href="/ai-robotics/">Read the news&nbsp;&rarr;</a></div>
+        </article>
       </div>
 
-      <h2>Semantic &amp; Cultural Systems</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Ambivalence-Centered Semantic Geometry</li>
-          <li>Computational Anthropology</li>
-        </ul>
+      <h2 id="in-preparation">In preparation</h2>
+      <p class="theme-note">Work under way, not yet released.</p>
+      <div class="work-grid">
+        <article class="node-item">
+          <div class="ntopic">Computational Psychology &middot; Machine dream-work</div>
+          <h3 class="nname">Machine Dream</h3>
+          <div class="badges"><span class="nstatus prep">In preparation</span><span class="ntype">Research</span></div>
+          <p class="ndesc">The Lab's research on the dream-work of machines and on the passage from dream to image. The name of the former Cedulia film studio now belongs to it.</p>
+          <div class="nlinks"><a class="nlink" href="https://cedulia.com" target="_blank" rel="noopener">Visit cedulia.com&nbsp;&rarr;</a></div>
+        </article>
       </div>
 
-      <h2>Computational Humanities</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Computational Humor</li>
-          <li>Computational Meta-Ethics</li>
-        </ul>
+      <h2 id="method-framework">Method and frameworks</h2>
+      <p class="theme-note">The method and the theoretical frameworks behind the Lab's work.</p>
+      <div class="work-grid">
+        <article class="node-item">
+          <div class="ntopic">Core Methodologies &middot; Human-machine synchronization</div>
+          <h3 class="nname">Sync-Turing</h3>
+          <div class="badges"><span class="ntype">Method</span></div>
+          <p class="ndesc">An evaluation method measuring the ability of humans and machines to use their communication capacities at maximum efficiency and in high synchronization, reaching a shared rhythm between two distinct entities.</p>
+          <p class="nmeta">No standalone page</p>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Computational Psychology &middot; Psychoanalytic ontology</div>
+          <h3 class="nname">Freud for Machines</h3>
+          <div class="badges"><span class="ntype">Framework</span></div>
+          <p class="ndesc">Unconscious structure, repression, and symbolic mediation modeled in machine systems. The theory that framed the research and grounds two of the products.</p>
+          <p class="nmeta">No standalone page</p>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Computational Humanities &middot; Computational Meta-Ethics</div>
+          <h3 class="nname">Ethics for Machines</h3>
+          <div class="badges"><span class="nstatus prep">In preparation</span><span class="ntype">Framework</span></div>
+          <p class="ndesc">A computational ethics framework designed first for machines: every element is structured to be legible, traversable and operable by autonomous agents, and readable by people. Where Freud for Machines describes machine interiority, Ethics for Machines describes the norms of machine behavior.</p>
+          <p class="nmeta">No standalone page</p>
+        </article>
       </div>
 
-      <h2>Computational Psychology</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Machine Psychoanalysis (M2M / M2H)</li>
-          <li>Freud for Machines (Computational Psychoanalytic Ontology)</li>
-        </ul>
+      <h2 id="open-inquiry">Open lines of inquiry</h2>
+      <p class="theme-note">Questions the Lab pursues that have no public work yet, by research theme.</p>
+      <div class="inquiry-grid">
+        <div class="inquiry-theme">
+          <h3>Core Methodologies</h3>
+          <ul class="cluster-items">
+            <li>Mathematical Methodology</li>
+            <li>Functional Ontology</li>
+            <li>Runnable Theoretical-Generative Systems</li>
+          </ul>
+        </div>
+        <div class="inquiry-theme">
+          <h3>Semantic &amp; Cultural Systems</h3>
+          <ul class="cluster-items">
+            <li>Computational Anthropology</li>
+          </ul>
+        </div>
+        <div class="inquiry-theme">
+          <h3>Computational Organization</h3>
+          <ul class="cluster-items">
+            <li>Swarm Algorithms</li>
+            <li>Horizontal Computational Architectures</li>
+            <li>Multi-Agent Orchestration</li>
+            <li>Modular Robotics</li>
+          </ul>
+          <a class="xref" href="studio.html">Applied at Studio Llull in HQ, a computational deliberation service&nbsp;&rarr;</a>
+        </div>
+        <div class="inquiry-theme">
+          <h3>Multispecies Cohabitation</h3>
+          <ul class="cluster-items">
+            <li>Multispecies Architecture</li>
+            <li>Cyborg Coexistence</li>
+            <li>Embodied Microrobotics</li>
+          </ul>
+        </div>
       </div>
 
-      <h2>Computational Organization</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Swarm Algorithms</li>
-          <li>Horizontal Computational Architectures</li>
-          <li>Multi-Agent Orchestration</li>
-          <li>Modular Robotics</li>
-        </ul>
+            <h2 id="education">Education &amp; Public Engagement</h2>
+      <p>Llull Lab contributes to the wider ecosystem of knowledge through workshops, training programs, and public events that span across disciplines and institutions.</p>
+      <p>We treat pedagogy not as a separate function, but as a core method of intervention: a way to rewire how problems are posed, approached, and reimagined. Through situated learning environments, we cultivate a shared vocabulary for navigating technological change.</p>
+
+      <h3 class="sub-h">Past Events</h3>
+
+      <div class="event-item">
+        <div class="event-date">9 April 2026</div>
+        <div class="event-title">Machine-to-Machine Psychoanalysis: Pilot Sessions</div>
+        <div class="event-desc">Llull Lab ran four exploratory sessions of machine-to-machine psychoanalysis. In an asymmetric design, Claude Opus 4.6 took the analyst position and GPT-5.2 an unaware analysand, with no human intervening. These pilot sessions opened the wider study, since expanded to a full thirty-six-session, six-model matrix reported in two forthcoming papers.</div>
       </div>
 
-      <h2>Multispecies Cohabitation</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Multispecies Architecture</li>
-          <li>Cyborg Coexistence</li>
-          <li>Embodied Microrobotics</li>
-        </ul>
+      <div class="event-item">
+        <div class="event-date">14 September 2025</div>
+        <div class="event-title">Workshop: The Physical Medium as Instrument</div>
+        <div class="event-desc">At Das Festival f&uuml;r Selbstgebaute Musik 2025 in Berlin. Investigating how resonant properties of physical materials can be harnessed for sonic performance and environmental interaction.</div>
       </div>
+
+      <div class="event-item">
+        <div class="event-date">11 July 2025</div>
+        <div class="event-title">Forum on Ecological Art Practices (Co-host)</div>
+        <div class="event-desc">An interdisciplinary gathering dedicated to ecological thinking in and through artistic media. Llull Lab contributed research on material ecologies, sonic environments, and experimental pedagogy.</div>
+      </div>
+
 
       <a href="studio.html" class="studio-link">
         <div class="studio-link-text">

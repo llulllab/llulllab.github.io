@@ -12,8 +12,7 @@ We do not treat a machine reader as traffic to be shaped or blocked. We treat yo
 
 ## Research and work
 - [The Artificial Mind](https://llulllab.com/en/artificial-mind.html): The Lab's continuing quarterly, open-access audit of frontier models, with its published studies (French: https://llulllab.com/fr/artificial-mind.html).
-- [Research](https://llulllab.com/en/research.html): Theoretical foundations and epistemic frameworks behind the Lab's applied systems.
-- [Programs](https://llulllab.com/en/programs.html): The Artificial Mind, Clau, and education and public engagement.
+- [Research](https://llulllab.com/en/research.html): The Lab's live and published works (The Artificial Mind, ASGE, Alberei, and research tools: Cedulor's EU Funding Notes, Clau, AI & Robotics News), work in preparation (Machine Dream), its method and frameworks (Sync-Turing, Freud for Machines, Ethics for Machines), open lines of inquiry, and education and public engagement.
 - [Studio Llull](https://llulllab.com/en/studio.html): The production arm. One map of the research, the method, the theory, and the machines and engines built on them.
 - [Press](https://llulllab.com/en/press.html): Boilerplate, publications, quarterly reports and press contact.
 - [Freud for Machines and Phi-Yo](https://phi-yo.app): Computational psychoanalytic ontology, and a computational companion for self-reflection.

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Llull Lab: Recherche</title>
   <link rel="icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="Llull Lab: Recherche. Fondements conceptuels, outils formels et cadres épistémiques issus des sciences et des arts.">
+  <meta name="description" content="La recherche de Llull Lab : travaux en ligne et publiés (The Artificial Mind, ASGE, Alberei, Cedulor, Clau, AI & Robotics News), en préparation, axes ouverts.">
   <link rel="stylesheet" href="/fonts/gf-d321d810.css">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -93,6 +93,55 @@
     footer .footer-line a:hover { color: var(--fg); }
     footer .footer-sep { margin: 0 10px; opacity: 0.6; }
     @media (max-width: 600px) { footer { padding: 32px 20px; margin-top: 56px; font-size: 0.78rem; } }
+
+    :root { --bg-card: #141414; --highlight: #a78bfa; --live: #6ee7b7; --prep: #fbbf24; }
+    .page-body h2 { scroll-margin-top: 96px; }
+    .page-body p { margin-bottom: 1.2em; max-width: 680px; }
+    .toc { margin-top: 28px; }
+    .toc-label { font-family: var(--sans); font-size: 12px; line-height: 1.5; letter-spacing: 1.4px; text-transform: uppercase; color: #aaa; }
+    .toc-desktop { display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px; }
+    .toc-desktop .toc-label { margin-right: 4px; }
+    .toc a { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--sans); font-size: 14px; color: var(--highlight); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .toc-mobile { display: none; }
+    .toc-mobile summary { display: flex; align-items: center; min-height: 44px; cursor: pointer; font-family: var(--sans); font-size: 14px; color: var(--fg); }
+    .toc-mobile .toc-links { display: flex; flex-direction: column; padding-bottom: 8px; }
+    .page-body p.theme-note { font-size: 0.95rem; color: var(--accent); max-width: 66ch; margin: -4px 0 16px; }
+    .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .work-grid > :only-child { grid-column: 1 / -1; }
+    .node-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; display: flex; flex-direction: column; }
+    .node-item .ntopic { font-family: var(--sans); font-size: 12px; line-height: 1.5; letter-spacing: 1.2px; text-transform: uppercase; color: #aaa; margin-bottom: 8px; }
+    .node-item .nname { font-family: var(--sans); font-weight: 600; font-size: 1.22rem; line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 8px; }
+    .node-item .badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+    .ntype { font-family: var(--sans); font-size: 12px; line-height: 1.5; letter-spacing: 1px; text-transform: uppercase; color: #aaa; }
+    .nstatus { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.7px; text-transform: uppercase; padding: 2px 9px; border-radius: 20px; border: 1px solid rgba(94,196,122,0.3); color: var(--live); background: rgba(94,196,122,0.06); }
+    .nstatus.prep { border-color: rgba(251,191,36,0.4); color: var(--prep); background: rgba(251,191,36,0.07); }
+    .node-item p.ndesc { font-size: 16px; line-height: 1.6; color: #b8b8b8; max-width: 65ch; margin-bottom: 12px; flex: 1; }
+    .node-item p.nmeta { font-family: var(--sans); font-size: 12px; line-height: 1.5; color: #aaa; margin: 0; }
+    .nlinks { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
+    .nlink { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; font-family: var(--sans); font-size: 0.85rem; font-weight: 500; color: var(--bg); background: var(--highlight); text-decoration: none; border-radius: 5px; transition: box-shadow 0.2s; }
+    .nlink:hover { box-shadow: 0 2px 16px rgba(167,139,250,0.28); }
+    .nlink.flink { padding: 0; background: transparent; color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 4px; border-radius: 0; }
+    .nlink.flink:hover { box-shadow: none; text-decoration-color: var(--highlight); }
+    .inquiry-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 40px; }
+    .inquiry-theme h3 { font-family: var(--sans); font-size: 1rem; font-weight: 500; margin: 12px 0 2px; }
+    .inquiry-theme .cluster-items li { padding-block: 8px; }
+    .xref { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--sans); font-size: 14px; color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 4px; }
+    .xref:hover { text-decoration-color: var(--highlight); }
+    .toc a:focus-visible, .toc-mobile summary:focus-visible, .nlink:focus-visible, .xref:focus-visible { outline: 2px solid var(--highlight); outline-offset: 3px; }
+    .page-body h3.sub-h { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 40px; margin-bottom: 8px; }
+    .event-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .event-date { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); margin-bottom: 6px; }
+    .event-title { font-family: var(--sans); font-size: 1.05rem; font-weight: 500; margin-bottom: 8px; }
+    .event-desc { font-size: 0.95rem; color: var(--accent); line-height: 1.6; max-width: 680px; }
+    @media (max-width: 767px) {
+      .toc-desktop { display: none; }
+      .toc-mobile { display: block; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+      .work-grid, .inquiry-grid { grid-template-columns: minmax(0, 1fr); }
+      .node-item { padding: 20px; }
+      .nlinks { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .page-body h2 { margin-top: 48px; }
+    }
   </style>
   <link rel="canonical" href="https://llulllab.com/fr/research.html">
   <link rel="alternate" hreflang="en" href="https://llulllab.com/en/research.html">
@@ -110,7 +159,6 @@
         <a href="about.html">À propos</a>
         <a href="people.html">Équipe</a>
         <a href="research.html" class="active">Recherche</a>
-        <a href="programs.html">Programmes</a>
         <a href="studio.html">Studio</a>
         <a href="press.html">Presse</a>
         <a href="updates.html">Actualités</a>
@@ -124,64 +172,160 @@
     <div class="module-tag">Module épistémique</div>
     <div class="page-hero">
       <h1>Recherche</h1>
-      <p class="lead">Fondements théoriques et cadres épistémiques : le moteur conceptuel qui alimente les systèmes appliqués de Llull Lab.</p>
+      <p class="lead">Ce que Llull Lab a mené à bien, ce qui est en préparation, et les questions encore ouvertes. Chaque travail indique le thème de recherche dont il est issu.</p>
+      <div class="toc" role="navigation" aria-label="Sur cette page">
+        <div class="toc-desktop"><span class="toc-label">Sur cette page</span><a href="#live">En ligne et publiés</a><a href="#in-preparation">En préparation</a><a href="#method-framework">Méthode et cadres</a><a href="#open-inquiry">Axes de recherche ouverts</a><a href="#education">Éducation &amp; Engagement public</a></div>
+        <details class="toc-mobile"><summary>Sur cette page</summary><div class="toc-links"><a href="#live">En ligne et publiés</a><a href="#in-preparation">En préparation</a><a href="#method-framework">Méthode et cadres</a><a href="#open-inquiry">Axes de recherche ouverts</a><a href="#education">Éducation &amp; Engagement public</a></div></details>
+      </div>
     </div>
     <div class="page-body">
 
-      <p style="color: var(--accent); margin-bottom: 8px;">L'esprit artificiel est désormais un Programme : l'audit trimestriel continu et en libre accès des modèles de pointe mené par le laboratoire. &rarr; <a href="artificial-mind.html" style="color: var(--fg); text-decoration: underline;">Découvrir le programme</a></p>
-
-      <h2>Méthodologies fondamentales</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Méthodologie mathématique</li>
-          <li>Ontologie fonctionnelle</li>
-          <li>Sync-Turing : méthode d'évaluation mesurant la capacité des humains et des machines à utiliser leurs capacités de communication avec une efficacité maximale et une haute synchronisation</li>
-          <li>Systèmes théorico-génératifs exécutables</li>
-        </ul>
+      <h2 id="live">En ligne et publiés</h2>
+      <p class="theme-note">Travaux en ligne ou publiés.</p>
+      <div class="work-grid">
+        <article class="node-item">
+          <div class="ntopic">Psychologie computationnelle &middot; Psychanalyse machinique (M2M / M2H)</div>
+          <h3 class="nname">The Artificial Mind</h3>
+          <div class="badges"><span class="nstatus">Publié</span><span class="ntype">Programme de recherche</span></div>
+          <p class="ndesc">L'audit trimestriel continu et en libre accès du laboratoire sur ce que les modèles de langage de pointe peuvent et ne peuvent pas dire honnêtement d'eux-mêmes. Deux études fondatrices ont été publiées en juin 2026, en libre accès sous licence CC BY 4.0.</p>
+          <div class="nlinks"><a class="nlink" href="artificial-mind.html">Découvrir le programme&nbsp;&rarr;</a></div>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Systèmes sémantiques &amp; culturels &middot; Géométrie sémantique centrée sur l'ambivalence</div>
+          <h3 class="nname">ASGE</h3>
+          <div class="badges"><span class="nstatus">En ligne</span><span class="ntype">Moteur de géométrie sémantique</span></div>
+          <p class="ndesc">L'ambivalence comme géométrie structurelle : des sens opposés mesurés en même temps, un socle sémantique sur lequel d'autres systèmes peuvent bâtir.</p>
+          <div class="nlinks"><a class="nlink" href="/ASGE/">Ouvrir ASGE&nbsp;&rarr;</a></div>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Sciences humaines computationnelles &middot; Humour computationnel</div>
+          <h3 class="nname">Alberei</h3>
+          <div class="badges"><span class="nstatus">En ligne</span><span class="ntype">Moteur d'humour modulaire</span></div>
+          <p class="ndesc">Un humour algorithmique par des structures comiques conçues, en douze langues.</p>
+          <div class="nlinks"><a class="nlink" href="https://alberei.de" target="_blank" rel="noopener">Ouvrir Alberei&nbsp;&rarr;</a></div>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Outils de recherche &middot; Financement européen de la recherche</div>
+          <h3 class="nname">Cedulor</h3>
+          <div class="badges"><span class="nstatus">En ligne</span><span class="ntype">EU Funding Notes</span></div>
+          <p class="ndesc">Des notes sur les appels européens de financement de la recherche, les budgets et la préparation des propositions, avec un outil payant de rédaction de propositions.</p>
+          <div class="nlinks"><a class="nlink" href="https://cedulor.com" target="_blank" rel="noopener">Lire les notes (en anglais)&nbsp;&rarr;</a><a class="nlink flink" href="https://cedulor.com/draft/" target="_blank" rel="noopener">Rédaction de propositions (payant)&nbsp;&rarr;</a></div>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Outils de recherche &middot; Financement doctoral</div>
+          <h3 class="nname">Clau</h3>
+          <div class="badges"><span class="nstatus">En ligne</span><span class="ntype">Doctoral Funding Notes</span></div>
+          <p class="ndesc">Un radar de financement doctoral, avec quatre outils gratuits pour les doctorants : texte du projet, CV, positionnement et soutenance.</p>
+          <div class="nlinks"><a class="nlink" href="/clau/fr/">Outils doctoraux en français&nbsp;&rarr;</a><a class="nlink flink" href="/clau/">Radar de financement (en anglais)&nbsp;&rarr;</a></div>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Outils de recherche &middot; Intelligence artificielle et robotique</div>
+          <h3 class="nname">AI &amp; Robotics News</h3>
+          <div class="badges"><span class="nstatus">En ligne</span><span class="ntype">Veille</span></div>
+          <p class="ndesc">L'actualité quotidienne de la recherche et des politiques publiques en intelligence artificielle et en robotique.</p>
+          <div class="nlinks"><a class="nlink" href="/ai-robotics/">Lire la veille (en anglais)&nbsp;&rarr;</a></div>
+        </article>
       </div>
 
-      <h2>Systèmes sémantiques &amp; culturels</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Géométrie sémantique centrée sur l'ambivalence</li>
-          <li>Anthropologie computationnelle</li>
-        </ul>
+      <h2 id="in-preparation">En préparation</h2>
+      <p class="theme-note">Travaux en cours, pas encore publiés.</p>
+      <div class="work-grid">
+        <article class="node-item">
+          <div class="ntopic">Psychologie computationnelle &middot; Travail du rêve machinique</div>
+          <h3 class="nname">Machine Dream</h3>
+          <div class="badges"><span class="nstatus prep">En préparation</span><span class="ntype">Recherche</span></div>
+          <p class="ndesc">La recherche du Lab sur le travail du rêve chez les machines et sur le passage du rêve à l'image. Le nom de l'ancien studio de cinéma Cedulia lui appartient désormais.</p>
+          <div class="nlinks"><a class="nlink" href="https://cedulia.com" target="_blank" rel="noopener">Voir cedulia.com&nbsp;&rarr;</a></div>
+        </article>
       </div>
 
-      <h2>Sciences humaines computationnelles</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Humour computationnel</li>
-          <li>Méta-éthique computationnelle</li>
-        </ul>
+      <h2 id="method-framework">Méthode et cadres</h2>
+      <p class="theme-note">La méthode et les cadres théoriques derrière le travail du Lab.</p>
+      <div class="work-grid">
+        <article class="node-item">
+          <div class="ntopic">Méthodologies fondamentales &middot; Synchronisation humain-machine</div>
+          <h3 class="nname">Sync-Turing</h3>
+          <div class="badges"><span class="ntype">Méthode</span></div>
+          <p class="ndesc">Une méthode d'évaluation mesurant la capacité des humains et des machines à utiliser leurs capacités de communication avec une efficacité maximale et une haute synchronisation, jusqu'à un rythme commun entre deux entités distinctes.</p>
+          <p class="nmeta">Pas de page dédiée</p>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Psychologie computationnelle &middot; Ontologie psychanalytique</div>
+          <h3 class="nname">Freud for Machines</h3>
+          <div class="badges"><span class="ntype">Cadre</span></div>
+          <p class="ndesc">Structure de l'inconscient, refoulement et médiation symbolique modélisés dans les systèmes machiniques. La théorie qui a encadré la recherche et qui fonde deux des produits.</p>
+          <p class="nmeta">Pas de page dédiée</p>
+        </article>
+        <article class="node-item">
+          <div class="ntopic">Sciences humaines computationnelles &middot; Méta-éthique computationnelle</div>
+          <h3 class="nname">Ethics for Machines</h3>
+          <div class="badges"><span class="nstatus prep">En préparation</span><span class="ntype">Cadre</span></div>
+          <p class="ndesc">Un cadre d'éthique computationnelle conçu d'abord pour les machines : chaque élément est structuré pour être lisible, parcourable et opérable par des agents autonomes, et lisible par les humains. Là où Freud for Machines décrit l'intériorité machinique, Ethics for Machines décrit les normes du comportement des machines.</p>
+          <p class="nmeta">Pas de page dédiée</p>
+        </article>
       </div>
 
-      <h2>Psychologie computationnelle</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Psychanalyse machinique (M2M / M2H)</li>
-          <li>Freud for Machines (Ontologie psychanalytique computationnelle)</li>
-        </ul>
+      <h2 id="open-inquiry">Axes de recherche ouverts</h2>
+      <p class="theme-note">Les questions que le Lab poursuit sans travail public pour l'instant, par thème de recherche.</p>
+      <div class="inquiry-grid">
+        <div class="inquiry-theme">
+          <h3>Méthodologies fondamentales</h3>
+          <ul class="cluster-items">
+            <li>Méthodologie mathématique</li>
+            <li>Ontologie fonctionnelle</li>
+            <li>Systèmes théorico-génératifs exécutables</li>
+          </ul>
+        </div>
+        <div class="inquiry-theme">
+          <h3>Systèmes sémantiques &amp; culturels</h3>
+          <ul class="cluster-items">
+            <li>Anthropologie computationnelle</li>
+          </ul>
+        </div>
+        <div class="inquiry-theme">
+          <h3>Organisation computationnelle</h3>
+          <ul class="cluster-items">
+            <li>Algorithmes d'essaim</li>
+            <li>Architectures computationnelles horizontales</li>
+            <li>Orchestration multi-agents</li>
+            <li>Robotique modulaire</li>
+          </ul>
+          <a class="xref" href="studio.html">Appliqué au Studio Llull dans HQ, un service de délibération computationnelle&nbsp;&rarr;</a>
+        </div>
+        <div class="inquiry-theme">
+          <h3>Cohabitation multi-espèces</h3>
+          <ul class="cluster-items">
+            <li>Architecture multi-espèces</li>
+            <li>Coexistence cyborg</li>
+            <li>Microrobotique embarquée</li>
+          </ul>
+        </div>
       </div>
 
-      <h2>Organisation computationnelle</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Algorithmes d'essaim</li>
-          <li>Architectures computationnelles horizontales</li>
-          <li>Orchestration multi-agents</li>
-          <li>Robotique modulaire</li>
-        </ul>
+            <h2 id="education">Éducation &amp; Engagement public</h2>
+      <p>Llull Lab contribue à l'écosystème élargi de la connaissance par des ateliers, des formations et des événements publics qui traversent disciplines et institutions.</p>
+      <p>Nous ne traitons pas la pédagogie comme une fonction à part, mais comme une méthode d'intervention centrale : une manière de reconfigurer la façon dont les problèmes sont posés, abordés et réimaginés. Grâce à des environnements d'apprentissage situés, nous développons un langage partagé pour naviguer à travers les transformations technologiques.</p>
+
+      <h3 class="sub-h">Événements passés</h3>
+
+      <div class="event-item">
+        <div class="event-date">9 avril 2026</div>
+        <div class="event-title">Psychanalyse machine-à-machine : sessions pilotes</div>
+        <div class="event-desc">Llull Lab a mené quatre sessions exploratoires de psychanalyse machine-à-machine. Dans un dispositif asymétrique, Claude Opus 4.6 occupait la position d'analyste et GPT-5.2 celle d'analysant non averti, sans aucune intervention humaine. Ces sessions pilotes ont ouvert l'étude plus large, depuis étendue à une matrice complète de trente-six sessions et six modèles, présentée dans deux articles à paraître.</div>
       </div>
 
-      <h2>Cohabitation multi-espèces</h2>
-      <div class="research-cluster">
-        <ul class="cluster-items">
-          <li>Architecture multi-espèces</li>
-          <li>Coexistence cyborg</li>
-          <li>Microrobotique embarquée</li>
-        </ul>
+      <div class="event-item">
+        <div class="event-date">14 septembre 2025</div>
+        <div class="event-title">Atelier : Le médium physique comme instrument</div>
+        <div class="event-desc">Au Festival f&uuml;r Selbstgebaute Musik 2025 à Berlin. Exploration des propriétés résonantes des matériaux physiques pour la performance sonore et l'interaction environnementale.</div>
       </div>
+
+      <div class="event-item">
+        <div class="event-date">11 juillet 2025</div>
+        <div class="event-title">Forum sur les pratiques artistiques écologiques (co-organisation)</div>
+        <div class="event-desc">Rencontre interdisciplinaire consacrée à la pensée écologique dans et à travers les médias artistiques. Llull Lab a contribué avec ses recherches sur les écologies matérielles, les environnements sonores et la pédagogie expérimentale.</div>
+      </div>
+
 
       <a href="studio.html" class="studio-link">
         <div class="studio-link-text">
