@@ -128,6 +128,11 @@
     .inquiry-theme .cluster-items li { padding-block: 8px; }
     .xref { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--sans); font-size: 14px; color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 4px; }
     .xref:hover { text-decoration-color: var(--highlight); }
+    .at-work { color: var(--muted); font-size: 0.9em; }
+    .at-work a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .at-work a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 3px; }
+    .node-item[id] { scroll-margin-top: 96px; }
+    .node-item:target { border-color: var(--highlight); }
     .toc a:focus-visible, .toc-mobile summary:focus-visible, .nlink:focus-visible, .xref:focus-visible { outline: 2px solid var(--highlight); outline-offset: 3px; }
     .page-body h3.sub-h { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 40px; margin-bottom: 8px; }
     .event-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
@@ -242,7 +247,7 @@
       <h2 id="method-framework">Method and frameworks</h2>
       <p class="theme-note">The method and the theoretical frameworks behind the Lab's work.</p>
       <div class="work-grid">
-        <article class="node-item">
+        <article class="node-item" id="sync-turing">
           <div class="ntopic">Core Methodologies &middot; Human-machine synchronization</div>
           <h3 class="nname">Sync-Turing</h3>
           <div class="badges"><span class="ntype">Method</span></div>
@@ -266,14 +271,14 @@
       </div>
 
       <h2 id="open-inquiry">Open lines of inquiry</h2>
-      <p class="theme-note">Questions the Lab pursues that have no public work yet, by research theme.</p>
+      <p class="theme-note">Lines of inquiry without a dedicated work of their own yet, by research theme; where one is already at work in a system, the system is named.</p>
       <div class="inquiry-grid">
         <div class="inquiry-theme">
           <h3>Core Methodologies</h3>
           <ul class="cluster-items">
-            <li>Mathematical Methodology</li>
+            <li>Mathematical Methodology <span class="at-work">(at work in <a href="#sync-turing">Sync-Turing</a>)</span></li>
             <li>Functional Ontology</li>
-            <li>Runnable Theoretical-Generative Systems</li>
+            <li>Runnable Theoretical-Generative Systems <span class="at-work">(at work in <a href="https://tropus.app" target="_blank" rel="noopener">Tropus</a> and <a href="https://alberei.de" target="_blank" rel="noopener">Alberei</a>)</span></li>
           </ul>
         </div>
         <div class="inquiry-theme">
@@ -286,11 +291,10 @@
           <h3>Computational Organization</h3>
           <ul class="cluster-items">
             <li>Swarm Algorithms</li>
-            <li>Horizontal Computational Architectures</li>
-            <li>Multi-Agent Orchestration</li>
+            <li>Horizontal Computational Architectures <span class="at-work">(at work in <a href="https://h-q.io" target="_blank" rel="noopener">HQ</a>)</span></li>
+            <li>Multi-Agent Orchestration <span class="at-work">(at work in <a href="https://h-q.io" target="_blank" rel="noopener">HQ</a>)</span></li>
             <li>Modular Robotics</li>
           </ul>
-          <a class="xref" href="studio.html">Applied at Studio Llull in HQ, a computational deliberation service&nbsp;&rarr;</a>
         </div>
         <div class="inquiry-theme">
           <h3>Multispecies Cohabitation</h3>
