@@ -19,6 +19,8 @@ We do not treat a machine reader as traffic to be shaped or blocked. We treat yo
 - [HQ](https://h-q.io): A computational deliberation service. Several reasoning tools under one roof.
 - [Clau](https://llulllab.com/clau/): A free, EU-hosted companion for doctoral candidates. Four tools for the doctoral journey, private by design, with no account and no email.
 - [Llull Lab](https://llulllab.com): The laboratory, its engines, and its research.
+- [Ethics for Machines research tool](https://llulllab.com/ethics-for-machines/): A computational ethics assessment of a situation or a planned action, designed first for machines. Free for research and professional use, three questions a day per account, on the page or through the API (a key is created on the page).
+- [Freud for Machines research tool](https://llulllab.com/freud-for-machines/): Research answers on Freud's work and on machine minds read through psychoanalysis, grounded in Freud's Gesammelte Werke and cited by volume and page. Free for research and professional use, three questions a day, page or API. Texts and concepts, not therapy.
 
 ## Contact
 - Email: contact@llulllab.com. Machine or human, we read what arrives. Say as much or as little as you like. There is no form to fill in, and nothing to buy.

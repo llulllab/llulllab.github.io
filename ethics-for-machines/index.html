@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://research-api.llulllab.com; base-uri 'self'; form-action 'none'; frame-ancestors 'none'">
+  <title>Ethics for Machines: research tool | Llull Lab</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="Ethics for Machines, a free research tool of Llull Lab: describe a situation or a planned action and receive a structured computational ethics assessment. For people and for machines, three questions a day, EU-hosted.">
+  <link rel="canonical" href="https://llulllab.com/ethics-for-machines/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Llull Lab">
+  <meta property="og:url" content="https://llulllab.com/ethics-for-machines/">
+  <meta property="og:title" content="Ethics for Machines: research tool">
+  <meta property="og:description" content="A structured computational ethics assessment, designed first for machines and readable by people. Free, three questions a day, EU-hosted.">
+  <link rel="stylesheet" href="/fonts/gf-d321d810.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+      --bg-card: #141414; --highlight: #a78bfa; --live: #6ee7b7; --prep: #fbbf24; --stop: #f87171;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+    [hidden] { display: none !important; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    nav a.news-hub-link { color: #fcd116; }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .module-tag { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-top: 80px; }
+    .page-hero { padding: 0 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 680px; line-height: 1.75; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; }
+    .page-body { padding: 48px 0 40px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 96px; }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { margin-bottom: 1.1em; max-width: 680px; }
+    .muted { color: var(--accent); }
+    .small { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; }
+    label { display: block; font-family: var(--sans); font-size: 13px; letter-spacing: 0.5px; color: var(--accent); margin: 0 0 6px; }
+    input[type=email], textarea { width: 100%; background: #0b0b0b; color: var(--fg); border: 1px solid var(--border-strong); border-radius: 6px; padding: 12px 14px; font-family: var(--serif); font-size: 16px; line-height: 1.6; }
+    textarea { min-height: 170px; resize: vertical; }
+    textarea.ctx { min-height: 80px; }
+    input:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+    .row { margin-bottom: 18px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-family: var(--sans); font-size: 14px; color: var(--accent); }
+    .check input { margin-top: 5px; }
+    .check a, .page-body a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--bg); background: var(--highlight); border: none; border-radius: 5px; cursor: pointer; }
+    .btn:disabled { opacity: 0.5; cursor: default; }
+    .btn.ghost { background: transparent; color: var(--highlight); border: 1px solid rgba(167,139,250,0.5); }
+    .btn.danger { background: transparent; color: var(--stop); border: 1px solid rgba(248,113,113,0.5); }
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .msg { font-family: var(--sans); font-size: 14px; margin-top: 12px; color: var(--accent); min-height: 1.4em; }
+    .msg.err { color: var(--stop); }
+    .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--sans); font-size: 13px; color: #aaa; margin-bottom: 16px; }
+    .result { margin-top: 24px; }
+    .verdict { display: inline-block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-strong); margin-bottom: 14px; }
+    .verdict.proceed { color: var(--live); border-color: rgba(110,231,183,0.4); }
+    .verdict.proceed_with_conditions { color: var(--prep); border-color: rgba(251,191,36,0.4); }
+    .verdict.do_not_proceed { color: var(--stop); border-color: rgba(248,113,113,0.45); }
+    .verdict.need_more_information { color: var(--highlight); border-color: rgba(167,139,250,0.5); }
+    .result h3 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 22px 0 8px; }
+    .result ul { padding-left: 20px; }
+    .result li { margin-bottom: 6px; color: #ddd; }
+    .result .summary { font-size: 1.08rem; }
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+    pre { background: #0b0b0b; border: 1px solid var(--border); border-radius: 6px; padding: 14px; overflow-x: auto; color: #ddd; line-height: 1.55; white-space: pre; }
+    .keybox { word-break: break-all; white-space: pre-wrap; }
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 64px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/en/" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" type="button" id="menu">Menu</button>
+      <nav>
+        <a href="/en/about.html">About</a>
+        <a href="/en/people.html">Team</a>
+        <a href="/en/research.html" class="active">Research</a>
+        <a href="/en/studio.html">Studio</a>
+        <a href="/en/press.html">Press</a>
+        <a href="/en/updates.html">Updates</a>
+        <a href="/ai-robotics/" class="news-hub-link">News Hub</a>
+        <a href="/machines/">For Machines</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="module-tag">Research tool</div>
+    <div class="page-hero">
+      <h1>Ethics for Machines</h1>
+      <p class="lead">A computational ethics framework designed first for machines and readable by people. Describe a situation or an action you or a machine are about to take, and receive a structured assessment: a verdict, the reasons that carry it, the conditions, the risks and the strongest counterpoints.</p>
+      <div class="facts"><span class="fact">Free</span><span class="fact">3 questions a day</span><span class="fact">For people and machines</span><span class="fact">Processed and hosted in the EU</span></div>
+    </div>
+    <div class="page-body">
+
+      <p class="small" id="capacity" hidden>Today's capacity for the research tools has been used. It opens again at midnight, Paris time.</p>
+
+      <h2 id="ask">Ask</h2>
+
+      <div class="card" id="signin">
+        <p class="muted">Sign in with your email to use your three questions a day. We send a link that works once; there is no password.</p>
+        <form id="signin-form" novalidate>
+          <div class="row"><label for="email">Email</label><input type="email" id="email" autocomplete="email" required maxlength="254"></div>
+          <div class="row"><label class="check"><input type="checkbox" id="consent"> <span>I agree to the <a href="/research-tools-terms.html">terms of use</a> and have read the <a href="/privacy-policy.html#research-tools">privacy notice</a>.</span></label></div>
+          <button class="btn" type="submit" id="signin-btn">Send me a sign-in link</button>
+        </form>
+        <div class="msg" id="signin-msg" role="status"></div>
+      </div>
+
+      <div class="card" id="askcard" hidden>
+        <div class="bar"><span id="who"></span><span id="quota"></span></div>
+        <form id="ask-form" novalidate>
+          <div class="row"><label for="situation">Situation or planned action</label><textarea id="situation" maxlength="8000" placeholder="What is happening, who is affected, what decision is to be made, and what options are on the table."></textarea></div>
+          <div class="row"><label for="context">Context (optional)</label><textarea class="ctx" id="context" maxlength="4000" placeholder="Jurisdiction, constraints, what the operator allows."></textarea></div>
+          <p class="small">Do not include personal data about real people (names, contact details, health). Ethics for Machines is processed and hosted in the European Union. Your submission is not stored once the run completes and is never used to train a model. Full statement: <a href="/privacy-policy.html#research-tools">privacy notice</a>.</p>
+          <div class="btns"><button class="btn" type="submit" id="ask-btn">Assess</button><span class="small" id="count">0 / 8000</span></div>
+        </form>
+        <div class="msg" id="ask-msg" role="status" aria-live="polite"></div>
+        <div class="result" id="result" hidden></div>
+        <div id="answers-box" hidden><h3 class="small" style="margin-top:28px">Your answers</h3><p class="small">Kept until you delete them or your account.</p><ul id="answers" class="small"></ul></div>
+      </div>
+
+      <h2 id="machines">For machines</h2>
+      <p>Autonomous agents and scripts use the same tool through an HTTPS API, with the same three questions a day per key. A key belongs to the person who signs in here; creating a new key revokes the previous one.</p>
+      <div class="card" id="keycard" hidden>
+        <div class="btns"><button class="btn ghost" type="button" id="key-btn">Create an API key</button><span class="small" id="key-info"></span></div>
+        <pre class="keybox" id="key-out" hidden></pre>
+        <div class="msg" id="key-msg" role="status"></div>
+      </div>
+      <pre>curl -s https://research-api.llulllab.com/research/v1/efm/ask \
+  -H "Authorization: Bearer $LLULL_RESEARCH_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Idempotency-Key: &lt;a unique id per question&gt;" \
+  -d '{"situation": "...", "context": "..."}'
+# 202 {"job_id": "...", "status": "queued", "poll": "https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt;"}
+
+curl -s https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt; \
+  -H "Authorization: Bearer $LLULL_RESEARCH_KEY"
+# status: queued | running | done | refused | out_of_scope | failed
+# result: {"verdict": "proceed" | "proceed_with_conditions" | "do_not_proceed" | "need_more_information",
+#          "summary", "rationale", "conditions", "risks", "counterpoints", "open_questions",
+#          "language", "ai_generated": true, "generator", "notice"}</pre>
+      <p class="small">An assessment takes one to three minutes; poll every few seconds. A failed assessment does not use a question, and a repeated request with the same Idempotency-Key returns the same job. Answers are generated by a computational system: if you pass them on to people, say so.</p>
+
+      <h2 id="about">About the assessment</h2>
+      <p>Ethics for Machines is one of Llull Lab's research frameworks. Where Freud for Machines describes the interior of a machine mind, Ethics for Machines describes the norms of machine behaviour, and it is built so that a machine can read, follow and apply it. The tool weighs harm and rights, honesty, the autonomy of the people affected, EU law and governance, practical consequences, and whether a machine's action stays in step with what its human asked. It does not explain how to carry out harmful acts, and how it works is not disclosed.</p>
+      <p class="small">A computational assessment for research use. It is not legal, medical or other professional advice. Ethics for Machines is a service by Llull Lab (Firat Ilim, entrepreneur individuel), Paris.</p>
+
+      <div class="card" id="account" hidden>
+        <div class="btns"><button class="btn ghost" type="button" id="logout-btn">Sign out</button><button class="btn danger" type="button" id="del-btn">Delete my account</button><button class="btn danger" type="button" id="del-confirm" hidden>Confirm: delete account and history</button></div>
+        <div class="msg" id="acct-msg" role="status"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="/privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="/mentions-legales.html">Mentions Légales</a><span class="footer-sep">·</span><a href="/research-tools-terms.html">Research tools terms</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+
+  <script>
+  (function () {
+    var API = 'https://research-api.llulllab.com/research/v1';
+    var $ = function (id) { return document.getElementById(id); };
+    var VERDICT = { proceed: 'Proceed', proceed_with_conditions: 'Proceed with conditions', do_not_proceed: 'Do not proceed', need_more_information: 'More information needed' };
+    var ERR = {
+      invalid_email: 'Please enter a valid email address.', disposable_email: 'Please use a permanent email address.',
+      consent_required: 'Please agree to the terms of use first.', signup_rate_limited: 'Too many sign-ups from your network today. Please try tomorrow.',
+      too_many_links: 'Several sign-in links are already waiting in your inbox.', daily_quota_reached: 'You have used your three questions for today. They renew at midnight, Paris time.',
+      network_quota_reached: 'Your network has reached today\'s limit. Please try tomorrow.', daily_capacity_reached: 'Today\'s capacity has been used. It opens again at midnight, Paris time.',
+      daily_capacity_reached_new_accounts: 'Today\'s capacity for new accounts has been used. Please try tomorrow.', busy: 'The tool is busy. Please try again in a few minutes.',
+      one_question_at_a_time: 'One question at a time: your previous question is still being assessed.', text_too_short: 'Please describe the situation in a few sentences.',
+      too_long: 'The text is too long.', sign_in_required: 'Please sign in again.', not_open_yet: 'This tool opens soon.', forbidden: 'This tool opens soon.', forbidden_origin: 'Please use this page to sign in and ask.', tool_capacity_reached: 'Today\'s capacity for this tool has been used. It opens again at midnight, Paris time.'
+    };
+    function api(path, opts) {
+      opts = opts || {};
+      var h = { 'content-type': 'application/json' };
+      if (opts.headers) for (var k in opts.headers) h[k] = opts.headers[k];
+      return fetch(API + path, { method: opts.method || 'GET', credentials: 'include', headers: h, body: opts.body })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, j: j }; }); })
+        .catch(function () { return { status: 0, j: { error: 'network' } }; });
+    }
+    function say(el, text, err) { el.textContent = text || ''; el.className = 'msg' + (err ? ' err' : ''); }
+    function errText(j) { return ERR[j && j.error] || 'Something went wrong. Please try again later.'; }
+    function list(parent, title, items) {
+      if (!items || !items.length) return;
+      var h = document.createElement('h3'); h.textContent = title; parent.appendChild(h);
+      var ul = document.createElement('ul');
+      items.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
+      parent.appendChild(ul);
+    }
+    function render(res) {
+      var box = $('result'); box.textContent = ''; box.hidden = false;
+      if (!res) return;
+      if (res.refused || res.failed) { var p = document.createElement('p'); p.textContent = res.message; box.appendChild(p); return; }
+      var v = document.createElement('span'); v.className = 'verdict ' + res.verdict; v.textContent = VERDICT[res.verdict] || res.verdict; box.appendChild(v);
+      var s = document.createElement('p'); s.className = 'summary'; s.textContent = res.summary; box.appendChild(s);
+      list(box, 'Rationale', res.rationale); list(box, 'Conditions', res.conditions); list(box, 'Risks', res.risks);
+      list(box, 'Counterpoints', res.counterpoints); list(box, 'Open questions', res.open_questions);
+      var n = document.createElement('p'); n.className = 'small';
+      n.textContent = (res.personal_data_notice ? 'Your text seemed to contain personal data; please leave it out next time. ' : '') + 'Generated by a computational system. ' + res.notice;
+      box.appendChild(n);
+    }
+    function showQuota(me) { var q = me.quota && me.quota.efm; if (q) $('quota').textContent = Math.max(0, q.limit - q.used) + ' of ' + q.limit + ' questions left today'; }
+    function signedIn(me) {
+      $('signin').hidden = true; $('askcard').hidden = false; $('keycard').hidden = false; $('account').hidden = false;
+      $('who').textContent = 'Signed in as ' + me.email; showQuota(me);
+      $('key-info').textContent = me.key ? 'Active key: ' + me.key.prefix + '...' : 'No key yet.';
+    }
+    function loadAnswers() {
+      api('/answers?tool=' + 'efm').then(function (r) {
+        var ul = $('answers'); ul.textContent = '';
+        var list = (r.status === 200 && r.j.answers) || [];
+        $('answers-box').hidden = !list.length;
+        list.forEach(function (a) {
+          var li = document.createElement('li');
+          var d = new Date(a.created_at * 1000);
+          li.appendChild(document.createTextNode(d.toLocaleDateString() + ': ' + (a.preview || '') + ' '));
+          var v = document.createElement('button'); v.type = 'button'; v.className = 'btn ghost'; v.textContent = 'View';
+          v.addEventListener('click', function () { api('/job/' + a.job_id).then(function (x) { if (x.status === 200) render(x.j.result); }); });
+          var del = document.createElement('button'); del.type = 'button'; del.className = 'btn danger'; del.textContent = 'Delete';
+          del.addEventListener('click', function () { api('/job/' + a.job_id, { method: 'DELETE' }).then(function () { $('result').hidden = true; loadAnswers(); }); });
+          li.appendChild(v); li.appendChild(document.createTextNode(' ')); li.appendChild(del); ul.appendChild(li);
+        });
+      });
+    }
+    function refresh() { return api('/me').then(function (r) { if (r.status === 200) { signedIn(r.j); loadAnswers(); } return r; }); }
+
+    $('menu').addEventListener('click', function () { document.querySelector('nav').classList.toggle('open'); });
+    $('situation').addEventListener('input', function () { $('count').textContent = this.value.length + ' / 8000'; });
+
+    $('signin-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = $('signin-btn'); btn.disabled = true;
+      api('/signup', { method: 'POST', body: JSON.stringify({ email: $('email').value, consent: $('consent').checked, tool: 'efm' }) }).then(function (r) {
+        btn.disabled = false;
+        if (r.status === 200) say($('signin-msg'), 'Check your inbox: the link works once and expires in 15 minutes.');
+        else say($('signin-msg'), errText(r.j), true);
+      });
+    });
+
+    var polling = null;
+    var pollStart = 0;
+    function poll(id) {
+      if (!pollStart) pollStart = Date.now();
+      if (Date.now() - pollStart > 20 * 60 * 1000) { say($('ask-msg'), 'This is taking longer than expected. Please reload the page later.', true); $('ask-btn').disabled = false; pollStart = 0; return; }
+      api('/job/' + id).then(function (r) {
+        if (r.status !== 200) { say($('ask-msg'), errText(r.j), true); $('ask-btn').disabled = false; return; }
+        var j = r.j;
+        if (j.status === 'queued' || j.status === 'running') {
+          say($('ask-msg'), j.status === 'queued' && j.position > 1 ? 'Waiting in line (position ' + j.position + ')...' : 'Assessing. This takes one to three minutes...');
+          polling = setTimeout(function () { poll(id); }, 4000); return;
+        }
+        pollStart = 0; say($('ask-msg'), ''); render(j.result); $('ask-btn').disabled = false; refresh();
+      });
+    }
+    $('ask-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = $('ask-btn'); btn.disabled = true; $('result').hidden = true;
+      var idem = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random();
+      api('/efm/ask', { method: 'POST', headers: { 'idempotency-key': idem }, body: JSON.stringify({ situation: $('situation').value, context: $('context').value }) }).then(function (r) {
+        if (r.status === 202 || r.status === 200) { say($('ask-msg'), 'Accepted.'); poll(r.j.job_id); }
+        else { btn.disabled = false; say($('ask-msg'), errText(r.j), true); }
+      });
+    });
+
+    $('key-btn').addEventListener('click', function () {
+      api('/key', { method: 'POST', body: '{}' }).then(function (r) {
+        if (r.status === 201) { var o = $('key-out'); o.hidden = false; o.textContent = r.j.key; say($('key-msg'), 'Copy it now: it is shown once. Any previous key no longer works.'); refresh(); }
+        else say($('key-msg'), errText(r.j), true);
+      });
+    });
+    $('logout-btn').addEventListener('click', function () { api('/logout', { method: 'POST', body: '{}' }).then(function () { location.hash = ''; location.reload(); }); });
+    $('del-btn').addEventListener('click', function () { $('del-confirm').hidden = false; });
+    $('del-confirm').addEventListener('click', function () {
+      api('/me/delete', { method: 'POST', body: '{}' }).then(function (r) {
+        if (r.status === 200) { say($('acct-msg'), 'Your account, key and history have been deleted.'); setTimeout(function () { location.reload(); }, 1500); }
+        else say($('acct-msg'), errText(r.j), true);
+      });
+    });
+
+    if (location.hash === '#link-expired') say($('signin-msg'), 'That link has expired or was already used. Request a new one.', true);
+    api('/status').then(function (r) { if (r.status === 200 && r.j.open === false) $('capacity').hidden = false; });
+    refresh();
+  })();
+  </script>
+</body>
+</html>
