@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'self'; form-action 'none'; frame-ancestors 'none'">
+  <title>Libido (die Libido) in Freud | Freud for Machines glossary | Llull Lab</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="In the pages read, Freud uses &quot;Libido&quot; in four senses.">
+  <link rel="canonical" href="https://llulllab.com/freud-for-machines/concepts/libido.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Llull Lab">
+  <meta property="og:url" content="https://llulllab.com/freud-for-machines/concepts/libido.html">
+  <meta property="og:title" content="Libido (die Libido) in Freud | Freud for Machines glossary | Llull Lab">
+  <meta property="og:description" content="In the pages read, Freud uses &quot;Libido&quot; in four senses.">
+  <link rel="stylesheet" href="/fonts/gf-d321d810.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+      --bg-card: #141414; --highlight: #a78bfa; --live: #6ee7b7; --prep: #fbbf24; --stop: #f87171;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+    [hidden] { display: none !important; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    nav a.news-hub-link { color: #fcd116; }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .module-tag { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-top: 80px; }
+    .page-hero { padding: 0 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 680px; line-height: 1.75; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; }
+    .page-body { padding: 48px 0 40px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 96px; }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { margin-bottom: 1.1em; max-width: 680px; }
+    .muted { color: var(--accent); }
+    .small { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; }
+    label { display: block; font-family: var(--sans); font-size: 13px; letter-spacing: 0.5px; color: var(--accent); margin: 0 0 6px; }
+    input[type=email], textarea { width: 100%; background: #0b0b0b; color: var(--fg); border: 1px solid var(--border-strong); border-radius: 6px; padding: 12px 14px; font-family: var(--serif); font-size: 16px; line-height: 1.6; }
+    textarea { min-height: 170px; resize: vertical; }
+    textarea.ctx { min-height: 80px; }
+    input:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+    .row { margin-bottom: 18px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-family: var(--sans); font-size: 14px; color: var(--accent); }
+    .check input { margin-top: 5px; }
+    .check a, .page-body a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--bg); background: var(--highlight); border: none; border-radius: 5px; cursor: pointer; }
+    .btn:disabled { opacity: 0.5; cursor: default; }
+    .btn.ghost { background: transparent; color: var(--highlight); border: 1px solid rgba(167,139,250,0.5); }
+    .btn.danger { background: transparent; color: var(--stop); border: 1px solid rgba(248,113,113,0.5); }
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .msg { font-family: var(--sans); font-size: 14px; margin-top: 12px; color: var(--accent); min-height: 1.4em; }
+    .msg.err { color: var(--stop); }
+    .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--sans); font-size: 13px; color: #aaa; margin-bottom: 16px; }
+    .result { margin-top: 24px; }
+    .verdict { display: inline-block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-strong); margin-bottom: 14px; }
+    .verdict.proceed { color: var(--live); border-color: rgba(110,231,183,0.4); }
+    .verdict.proceed_with_conditions { color: var(--prep); border-color: rgba(251,191,36,0.4); }
+    .verdict.do_not_proceed { color: var(--stop); border-color: rgba(248,113,113,0.45); }
+    .verdict.need_more_information { color: var(--highlight); border-color: rgba(167,139,250,0.5); }
+    .result h3 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 22px 0 8px; }
+    .result ul { padding-left: 20px; }
+    .result li { margin-bottom: 6px; color: #ddd; }
+    .result .summary { font-size: 1.08rem; }
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+    pre { background: #0b0b0b; border: 1px solid var(--border); border-radius: 6px; padding: 14px; overflow-x: auto; color: #ddd; line-height: 1.55; white-space: pre; }
+    .keybox { word-break: break-all; white-space: pre-wrap; }
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 64px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+      .entry h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 8px; }
+    .entry h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 40px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .entry h3 { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; margin: 28px 0 10px; }
+    .entry p, .entry li { max-width: 760px; margin-bottom: 0.9em; }
+    .entry ul, .entry ol { padding-left: 22px; }
+    .entry table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 12px 0 20px; display: block; overflow-x: auto; }
+    .entry th, .entry td { border: 1px solid var(--border); padding: 8px 10px; vertical-align: top; text-align: left; }
+    .entry th { font-family: var(--sans); font-weight: 400; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+    .short { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; margin: 24px 0 8px; }
+    .short h2 { margin-top: 0; }
+    .edition { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; max-width: 760px; }
+    .toc a, .entry a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .idx { list-style: none; padding: 0; }
+    .idx li { border-top: 1px solid var(--border); padding: 18px 0; max-width: 820px; }
+    .idx li a { font-size: 1.2rem; }
+    .idx .de { color: var(--muted); font-family: var(--sans); font-size: 13px; margin-left: 6px; }
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "DefinedTerm", "name": "Libido (die Libido)", "description": "In the pages read, Freud uses \"Libido\" in four senses.", "url": "https://llulllab.com/freud-for-machines/concepts/libido.html", "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "Freud for Machines glossary", "url": "https://llulllab.com/freud-for-machines/concepts/"}}</script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/en/" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" type="button" id="menu">Menu</button>
+      <nav>
+        <a href="/en/about.html">About</a>
+        <a href="/en/people.html">Team</a>
+        <a href="/en/research.html" class="active">Research</a>
+        <a href="/en/studio.html">Studio</a>
+        <a href="/en/press.html">Press</a>
+        <a href="/en/updates.html">Updates</a>
+        <a href="/ai-robotics/" class="news-hub-link">News Hub</a>
+        <a href="/machines/">For Machines</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="module-tag">Freud for Machines · Glossary</div>
+    <div class="page-body entry">
+      <h1>Libido <span class="de">(die Libido)</span></h1>
+      <p class="edition">In Freud's texts. <a href="#entry">Entry</a> · <a href="#long">Long entry</a> · <a href="/freud-for-machines/concepts/">All entries</a> · <a href="/freud-for-machines/">Ask the research tool</a></p>
+      <div class="short">
+      <h2>In brief</h2>
+<p>The texts read use "Libido" in four senses.</p>
+<ol>
+<li>In the anxiety-neurosis paper (dated December 1894; source label 1895), libido is the psychical state into which somatic sexual excitation passes once it becomes a psychical stimulus: «ein Zustand, in dem diese Erregung psychischer Reiz wird, Libido» [GW I:335].</li>
+<li>From 1905 to 1923, libido belongs to the sexual drives. Within that span two things change: what libido is said to be, and how it relates to the ego drives.
+   - The 1905 opening pages read introduce libido only as the scientific word corresponding to «Hunger», which is the drive for food intake: «Man folgt dabei der Analogie mit dem Trieb nach Nahrungsaufnahme, dem Hunger.» [GW V:33]. These pages do not call libido a force or an energy, and they do not mention ego drives.
+   - In the pages read, libido is first spoken of as an amount in 1911: «der befreite Libidobetrag» [GW VIII:309]. It is first called an energy in 1914: «eine Sexualenergie, die Libido» [GW X:141]. It is first called the force of the sexual drive in 1917: «nennen die Kraft, mit welcher der Sexualtrieb im Seelenleben auftritt, Libido» [GW XII:4].
+   - In the pages read, the opposition to the ego drives first appears in 1911: «nehmen die populäre Unterscheidung von Ichtrieben und Sexualtrieb an» [GW VIII:311].
+   - It is reaffirmed in 1917: «Der Name Libido bleibt aber mit Recht für die Triebkräfte des Sexuallebens vorbehalten» [GW XI:428].
+   - In 1920 the opposition is declared insufficient [GW XIII:56]. In 1921 and 1923 libido is the energy of the sexual or love drives, without that opposition [GW XIII:98; XIII:229].</li>
+<li>From 1911 to 1940, libido is a displaceable quantity. It can be lodged in the ego (ego libido or narcissistic libido) or sent out to objects (object libido): «Die Objektlibido war zuerst Ich-Libido und kann sich wieder in Ich-Libido umsetzen» [GW XII:6].</li>
+<li>From 1920 to 1940, libido is tied to Eros. What Eros is set against varies with the date. In 1920 it is the death drives: «nicht mehr Ich- und Sexualtriebe, sondern Lebens- und Todestriebe» [GW XIII:57]. In the 1921 pages read, no opposed drive is named (see below). From 1923 to 1940 it is the destructive or death drive [GW XIII:233; XIV:84; XVII:70]. In 1920 the link is first put conditionally: «So würde also die Libido unserer Sexualtriebe mit dem Eros der Dichter und Philosophen zusammenfallen» [GW XIII:54]. The stipulation that names the energy of Eros "libido" comes from 1940: «die gesamte verfügbare Energie des Eros, die wir von nun ab Libido heissen werden» [GW XVII:72].</li>
+</ol>
+<p>Two points should not be missed.</p>
+<p><strong>Libido as psychic energy in general.</strong> Two claims have to be kept apart here [ii]. Claim (a) is that one undifferentiated energy may underlie all drives. Claim (b) is that the name "libido" covers that energy, so that libido coincides with drive energy or psychic energy in general. Jung's view, as the pages describe it, makes both claims: «nur eine einzige Urlibido annahm, die sexualisiert und desexualisiert werden konnte, und also im Wesen mit der seelischen Energie überhaupt zusammenfiel» [GW XIII:230]. Freud's relation to these claims is a held tension (HOLD TENSION), not a consistent rejection.</p>
+<ul>
+<li>He rejects claim (b) in several passages that attribute it to Jung [GW V:120; X:145; XI:428; XIII:57]. In 1923 he rejects it as well: «Diese Neuerung war methodisch anfechtbar, sie stiftete viel Verwirrung» [GW XIII:230].</li>
+<li>In 1914 he concedes claim (a) as possible, while keeping "libido" as the name for what is differentiated out of that energy: «Es mag dann sein, daß die Sexualenergie, die Libido — im tiefsten Grund und in letzter Ferne — nur ein Differenzierungsprodukt der sonst in der Psyche wirkenden Energie ist.» [GW X:144]. Alternatively the name is kept for energy once it cathects objects: «es könnte sich um indifferente psychische Energie handeln, die erst durch den Akt der Objektbesetzung zur Libido wird» [GW X:143]. In 1917 the question of an original unity is handed to biology: «Darüber wissen wir vorläufig zu wenig» [GW XI:428]. Reading these passages as bearing on Jung's view is an interpretation [ii].</li>
+<li>Not every passage that names Jung rejects him. In 1923, under the heading «SCHEINBARE ANNÄHERUNG AN DIE JUNGSCHE AUFFASSUNG» [GW XIII:231], Freud reports that it seemed («gewann es den Anschein, als ob» [GW XIII:231]) analytic research had caught up with Jung's speculation: «analytische Forschung der Jungschen Spekulation von der Urlibido nachgekommen wäre» [GW XIII:232]. His answer is that this does not prove there are no other drives at work in the ego [GW XIII:232].</li>
+<li>In 1930 and 1933 he reports that claim (b) was held for a while. In 1930 the subject is impersonal: «schien es eine Weile unvermeidlich, Libido mit Triebenergie überhaupt zusammenfallen zu lassen» [GW XIV:477]. In the same sentence Jung is named, without a rejection: «wie C. G. Jung schon früher gewollt hatte» [GW XIV:477]. The next sentence holds back: «Doch blieb etwas zurück wie eine noch nicht zu begründende Gewißheit, daß die Triebe nicht alle von gleicher Art sein können.» [GW XIV:477]. In 1933 the subject is "we": «man kann die Bezeichnung Libido fallen lassen oder sie als gleichbedeutend mit psychischer Energie überhaupt gebrauchen. Wir sind nicht lange auf diesem Standpunkt verblieben.» [GW XV:109].</li>
+</ul>
+<p><strong>Libido and Eros.</strong> Only the 1940 text names libido as the energy of Eros within a dualism of two basic drives. Before that, the link takes other forms:</p>
+<ul>
+<li>1920: first a conditional [GW XIII:54]. Then a step that is ventured, in which the sexual drive is recognised as Eros: «da wir den weiteren Schritt wagen, den Sexualtrieb als den alles erhaltenden Eros zu erkennen» [GW XIII:56].</li>
+<li>1921: an indicative statement that Plato's Eros coincides with libido. No opposed drive is named: «eine vollkommene Deckung mit der Liebeskraft, der Libido der Psychoanalyse» [GW XIII:99].</li>
+<li>1923: an adjective in the subjunctive [GW XIII:233].</li>
+<li>1930: permissive wording [GW XIV:480].</li>
+</ul>
+      </div>
+      <h2 id="entry">Entry</h2>
+<p>In the pages read, Freud uses "Libido" in four senses. The first occurs only in the anxiety-neurosis paper dated December 1894, which Freud presents as a first tentative attempt. There libido is the psychical state into which somatic sexual excitation passes when it becomes a psychical stimulus. The paper mentions the male sexual drive but states libido's relation to it no more explicitly than that. This sense should therefore not be confused with the drive energy of the second sense, and the texts read never say that it is abandoned. On our reading, two later passages carry its terms forward. The first is the later-added Libidotheorie section of the Three Essays, which defines libido as a quantitatively variable force in the field of sexual excitation and calls ego libido the psychical representative of a libido quantum. The second is a 1914 passage, marked by Freud as a conjecture, that hypochondria depends on ego libido. Neither says that it continues the 1894 sense, and any further continuity remains a conjecture to be tested.</p>
+<p>The second sense, the libido of the sexual drives, runs from 1905 to 1923. The 1905 opening pages read of the Three Essays (source label 1905) introduce libido only as the scientific counterpart of hunger and mention no ego drives. They do not settle whether libido names the drive or the felt need, and on our reading this use is a precursor of the later energy wording. In the pages read, libido is first called an amount in 1911, an energy in 1914 and a force in 1917. From 1911 to 1917, and centrally in 1911 and 1912, it is set against the ego drives. The 1917 text says this dualism comes from popular thought, which separates hunger and love. The 1920 text declares the opposition insufficient but keeps the conflict formula built on it. The 1923 article modifies that formula, without correcting it, into a conflict between object libido and ego libido. In Massenpsychologie (1921) libido is the energy of the love drives, also called sexual drives. In the 1923 article it is the term for the dynamic expression of sexuality. Neither text sets libido against the ego drives as current doctrine. The 1921 text places the term in the theory of affects and the 1923 text places it in drive theory, and this tension is left standing.</p>
+<p>The third sense, from 1911 to 1940, is one libido distinguished by where it is invested: in the ego (ego libido or narcissistic libido, named in 1914) or in objects. The ego sends libido out and draws it back. This is pictured as pseudopodia in 1914 and as a reservoir in the later-added Three Essays section and in 1917, and it is stated again in 1920, 1923, 1925, 1930, 1933 and 1940. In 1917 Freud presents the claim that libido remains libido in either location as the only claim not drawn directly from analytic experience, and he holds the separation of the drives for heuristic reasons. On our reading this sense grows out of the second. It is counted apart because the earlier wording does not cover ego libido and because the extension gives libido a new place in narcissism and the psychoses. The texts give three successive answers to what ego libido is:
+- In 1914 to 1917 it is sexual energy kept apart from the ego drives. Yet in narcissism the energies are said to be indistinguishable for our rough analysis, and libido becomes distinguishable only with object cathexis. This is a held tension.
+- In 1920 to 1925 it is the libido of the self-preservation drives. On our reading this is a change of position.
+- In 1940 it is the energy of Eros stored in the ego.</p>
+<p>The fourth sense, from 1920 to 1940, ties libido to Eros. Eros is set against the death drives in 1920 and against the destructive or death drive from 1923, and the 1921 pages name no opposed drive. The link takes different forms over time:
+- In 1920 it is first conditional and then a ventured step, both inside a biological speculation.
+- In 1921 it is an indicative coincidence with Plato's Eros.
+- In 1923 it appears only as an adjective, in the subjunctive.
+- It is absent from the relevant pages of 1925 and 1933.
+- In 1930 the wording is permissive: the name may again be used for the force of Eros to set it apart from the energy of the death drive.</p>
+<p>In 1925 Freud leaves open whether the construction will prove usable. In 1930 he reports that views he first held tentatively have become binding for him. Only in 1940 is libido stipulated as the energy of Eros within a dualism of two basic drives. The energy of the destructive drive has no name, and libido is then, on our reading, wider than sexual excitation. On our reading the fourth sense coexists with the second from 1920 to 1923 and then replaces it as the frame that restricts the term, while the third sense coexists with the fourth through 1940.</p>
+<p>On origins, sense by sense:
+- The first sense is introduced without attribution, as sexual libido.
+- For the second, the 1905 text presents libido as existing scientific usage. The 1923 article credits Moll with earlier use in this sense (1898) and says that "the Referent", on our reading the author, introduced the term into psychoanalysis. In 1930 Freud says that he introduced the name.
+- The third sense is built from borrowed terms and credited findings. "Narzißmus" is credited to Näcke, later corrected to Ellis. Narcissistic traits in homosexuals are credited to Sadger. Abraham is credited with the 1908 thesis that dementia praecox lacks the libidinal cathexis of objects, and with the answer that the withdrawn libido is turned back onto the ego. "Introversion" is Jung's term. In 1914 Freud judges the extension legitimate without, on our reading, claiming authorship.
+- For the fourth, Eros comes from the poets, the philosophers and Plato, with a footnote on Empedocles. Naming its energy libido in 1940 is Freud's own stipulation.</p>
+<p>The distinction a reader must not miss is between libido and psychic or drive energy in general. On our reading two claims are kept apart here: that one undifferentiated energy may underlie all drives, and that the name "libido" covers that energy. Freud's relation to them is a held tension, not a consistent rejection:
+- Several passages that attribute the second claim to Jung reject it.
+- In 1914 Freud allows the first claim as possible but irrelevant, and he keeps "libido" for the differentiated product. Reading this as bearing on Jung is our interpretation.
+- In 1923, under the heading of an apparent approach to Jung's view, he reports that analytic research seemed to have caught up with Jung's speculation of an original libido, and he concedes a certain desexualisation. He answers that this does not prove that no other drives work in the ego, and he argues that two kinds of drives are probably to be recognised.
+- In 1930 he reports that for a while it seemed unavoidable to equate libido with drive energy in general. He names Jung without rejecting him, and adds that a not yet groundable certainty remained that the drives are not all of one kind.
+- In 1933 he says that "we" did not stay long on that standpoint.</p>
+<p>The monistic use is not counted as a sense, because no text read adopts it as current usage.</p>
+<p>Four further points should be kept apart:
+- Ego libido is not the same as the ego drives in 1911 to 1917.
+- "His libido" in Lecture XXII (GW XI:365) should not be read as ego libido (our reading).
+- "Introversion" names libido turned onto fantasy objects in 1912 and 1914 but withdrawal onto the ego in 1920. This shift is held as a tension.
+- The 1894 view is that the somatic excitation becomes anxiety while libido sinks. On our reading it differs from the 1911 to 1917 thesis that libido itself turns into anxiety, which Freud withdraws in 1933.</p>
+<p><strong>Senses.</strong>
+1. Psychical state of somatic sexual excitation (1894 to 1895): the psychical state into which somatic sexual excitation passes when it becomes a psychical stimulus.
+2. Libido of the sexual drives: counterpart of hunger, then their force or energy (1905 to 1923): the counterpart of hunger in 1905, then the amount, energy or force of the sexual drives set against the ego drives (1911 to 1917), then without that opposition in 1921 and 1923.
+3. Libido located in the ego or in objects (1911 to 1940): one quantity defined by where it is invested, whose nature as ego libido is revised in 1920 and in 1940.
+4. Energy of Eros (1920 to 1940): the energy of one of the two basic drives, stipulated as such only in 1940.</p>
+<p><strong>Where to read.</strong>
+- GW I:333-342 (anxiety-neurosis paper, dated December 1894)
+- GW V:33-36 and V:117-122 (Three Essays: introduction of the term, source label 1905, and the later-added Libidotheorie section)
+- GW VIII:308-316 and 322-330 (1911 and 1912 texts) and GW X:138-157 (1914 text, sections I and II)
+- GW XI:351-371, XI:427-446 and XII:3-8 (1917 lectures, including Lecture XXII, and 1917 text)
+- GW XIII:51-62, XIII:98-104 and XIII:229-233 (1920 text, Massenpsychologie 1921, 1923 article)
+- GW XIV:82-84, XIV:476-480, XV:101-110 and XVII:70-74 (1925, 1930, 1933 and 1940 texts)</p>
+      <p class="edition">The entry is drawn from the long entry below, which gives each sense with Freud's words, dates and pages.</p>
+      <h2 id="long">Long entry</h2>
+<h2>The senses</h2>
+<p>There are four senses, and each has its own definition and its own place in the theory.</p>
+<ol>
+<li>A psychical state of a somatic process (1894).</li>
+<li>The libido of the sexual drives. What libido is said to be in this sense changes with the date:
+   - In the 1905 pages read, libido is the counterpart of hunger.
+   - In the pages read from 1911 to 1917, libido is the amount, energy or force of the sexual drives, set against the ego drives.
+   - In 1921, libido is the energy of the love drives, which are also called sexual drives [GW XIII:98–99].
+   - In 1923, libido is the term for the dynamic expression of sexuality [GW XIII:229].
+   - Neither the 1921 nor the 1923 text sets libido against the ego drives as current doctrine. The 1923 article reports that the earlier conflict formula needed no correction, only a modification: «Die frühere Formel für die Übertragungsneurosen bedurfte jetzt zwar nicht einer Korrektur, aber doch einer Modifikation» [GW XIII:231]. One therefore spoke better of a conflict between object libido and ego libido: «anstatt von einem Konflikt zwischen Sexualtrieben und Ichtrieben sprach man besser vom Konflikt zwischen Objektlibido und Ichlibido» [GW XIII:231].</li>
+<li>A quantity defined by where it is invested.</li>
+<li>The energy of one of the two basic drives.</li>
+</ol>
+<h3>Sense 1: Psychical state of somatic sexual excitation (1894 to 1895)</h3>
+<p><strong>In Freud's words.</strong> «Es ist auch bei der Frau eine somatische Sexualerregung anzunehmen und ein Zustand, in dem diese Erregung psychischer Reiz wird, Libido, und den Drang nach der spezifischen Aktion hervorruft, an welche sich das Wollustgefühl knüpft.» [GW I:335] (In the woman too a somatic sexual excitation must be assumed, and a state in which this excitation becomes a psychical stimulus, libido, which calls forth the urge toward the specific action to which the feeling of voluptuous pleasure attaches.) «daß in ganzen Reihen von Fällen die Angstneurose mit der deutlichsten Verminderung der sexuellen Libido, der psychischen Lust, einhergeht» [GW I:334] (that in whole series of cases anxiety neurosis goes along with the clearest decrease of sexual libido, of psychical desire.)</p>
+<p><strong>What it means.</strong> Libido is the psychical side of a process whose other side is somatic. It is a state that patients can report as present or absent. The specific action normally follows on it: «Abstinenz besteht in der Versagung der spezifischen Aktion, die sonst auf die Libido erfolgt» [GW I:336].</p>
+<p>Libido and the somatic excitation can move apart. The pages describe three cases:</p>
+<ul>
+<li>In the abstinence cases, libido sinks while the excitation becomes anxiety: «Es wird also die Libido endlich sinken und die Erregung subkortikal als Angst sich äußern» [GW I:336].</li>
+<li>In old age, the excitation grows while libido holds: «Hier läßt die Libido nicht nach» [GW I:336].</li>
+<li>In the ageing woman, libido itself becomes excessive: «den die alternde Frau gegen die übergroß gewordene Libido empfindet» [GW I:337].</li>
+</ul>
+<p>In none of these cases is libido said to turn into anxiety. What is spent as anxiety is the deflected somatic excitation [ii]. This reading rests on the way the grammatical subjects are assigned throughout GW I:336–338. The text calls libido a «Zustand», yet it treats libido as a magnitude that can sink or become excessive.</p>
+<p><strong>When and where.</strong> In the pages read, the sense occurs in one text only, and only on GW I:334–338. The text is dated «Wien, im Dezember 1894» [GW I:342]. Freud marks its status himself: «Die nachstehenden Ausführungen beanspruchen nichts als den Wert eines ersten, tastenden Versuches» [GW I:333].</p>
+<p><strong>Freud's own or taken over.</strong> The pages introduce the word without attribution and qualify it as «sexuellen Libido» [GW I:334]. They do not say where the term comes from.</p>
+<p><strong>Abandoned or kept.</strong> The texts read do not say that this sense is abandoned. The later-added Libidotheorie section of the Three Essays pairs a libido quantum with a psychical representative: «Libidoquantums, dessen psychische Vertretung wir die Ichlibido heißen» [GW V:118]. That section does not say whether this pairing continues the 1894 pairing of somatic excitation and psychical state (see How the senses relate). From 1911 on, the freed libido itself is said to turn into anxiety (see Tensions). That assignment differs from the one made in 1894 [ii].</p>
+<p><strong>Not to be confused with.</strong> It should not be confused with the drive energy of Sense 2. These pages do mention a drive: the adequate action is said to exist «für den männlichen Sexualtrieb» [GW I:335]. But they do not state the relation of libido to the drive any more explicitly than that. The text has no ego, no object and no dualism of drives.</p>
+<h3>Sense 2: Libido of the sexual drives: counterpart of hunger, then their force or energy (1905 to 1923)</h3>
+<p><strong>In Freud's words.</strong> «Eine dem Worte „Hunger“ entsprechende Bezeichnung fehlt der Volkssprache; die Wissenschaft gebraucht als solche „Libido“.» [GW V:33] (Popular language lacks a word corresponding to "hunger"; science uses "libido" for it.) «nennen die Kraft, mit welcher der Sexualtrieb im Seelenleben auftritt, Libido — sexuelles Verlangen — als etwas dem Hunger, dem Machtwillen u. dgl. bei den Ich-Trieben Analoges» [GW XII:4] (we call the force with which the sexual drive appears in mental life libido, sexual desire, as something analogous to hunger, the will to power and the like among the ego drives.) «LIBIDO ist ein Terminus aus der Trieblehre, zur Bezeichnung des dynamischen Ausdrucks der Sexualität [...]» [GW XIII:229] (Libido is a term from the theory of drives, designating the dynamic expression of sexuality.)</p>
+<p><strong>What it means.</strong> In 1905 libido is the sexual counterpart of hunger, and "hunger" there means the drive for food intake itself: «Man folgt dabei der Analogie mit dem Trieb nach Nahrungsaufnahme, dem Hunger.» [GW V:33]. A footnote on the same page speaks instead of «die Empfindung des Bedürfnisses» [GW V:33]. These pages do not settle whether libido names the drive or the felt need. They do not call libido a force, an energy or a quantity. The 1905 use is therefore counted here as a precursor of the energy wording that comes later [ii].</p>
+<p>In the pages read, that wording appears in stages:</p>
+<ul>
+<li>An amount in 1911: «der befreite Libidobetrag» [GW VIII:309].</li>
+<li>An energy in 1914: «eine Sexualenergie, die Libido» [GW X:141].</li>
+<li>A force in 1917 [GW XII:4].</li>
+<li>The later-added Libidotheorie section of the Three Essays, whose footnote cites a 1915 publication, fixes the concept as a quantitatively variable force [GW V:118]. It sets libido apart from psychic energy in general by its origin: «Diese Libido sondern wir von der Energie, die den seelischen Prozessen allgemein unterzulegen ist, mit Beziehung auf ihren besonderen Ursprung und verleihen ihr so auch einen qualitativen Charakter.» [GW V:118].</li>
+</ul>
+<p>Where libido stands in the drive theory depends on the date.</p>
+<ul>
+<li>The 1905 opening pages read give only the hunger analogy and mention no ego drives [GW V:33].</li>
+<li>From 1911 to 1917, in the pages read, libido belongs to the sexual side of a dualism of sexual drives and ego drives [GW VIII:311; XI:428; XII:4]. In that period libidinal cathexis is glossed as «Interesse aus erotischen Quellen» [GW VIII:311]. Libido is set apart from «Interesse», which names the cathexes of the self-preservation drives [GW XI:430].</li>
+<li>From 1920 the self-preservation drives are themselves recognised as libidinal [GW XIII:56]. In 1921 and 1923 libido remains the energy of the sexual or love drives, but it is no longer opposed to the ego drives [GW XIII:98; XIII:229].</li>
+</ul>
+<p>The texts describe libido under several aspects. They treat these as aspects of one concept, not as separate senses [ii]:</p>
+<ul>
+<li>It has a direction toward objects: «wie der Normale die Richtung seiner Libido» [GW V:35].</li>
+<li>It has a quantity. That quantity cannot be measured and is judged only relative to what the ego can master: «um das Verhältnis des wirksamen Libidobetrages zu jener Quantität von Libido, welche das einzelne Ich bewältigen, das heißt in Spannung erhalten, sublimieren oder direkt verwenden kann» [GW VIII:328]; «ist für uns freilich nicht meßbar; wir können es nur postulieren» [GW VIII:328].</li>
+<li>It develops in stages: «Wir haben gehört, daß die Libidofunktion eine weitläufige Entwicklung durchmacht, bis sie in der normal genannten Weise in den Dienst der Fortpflanzung treten kann» [GW XI:351].</li>
+<li>It can be fixated, and it adheres to its objects: «die Klebrigkeit der Libido» [GW XI:360].</li>
+<li>It stands opposite the ego in neurosis: «daß die Neurosen aus dem Konflikt zwischen dem Ich und der Libido entspringen» [GW VIII:329].</li>
+</ul>
+<p><strong>When and where.</strong> The term is introduced at the opening of the Three Essays (source label 1905; no date is printed on the pages). It is central in 1911 and 1912. In 1917 it is reaffirmed against Jung [GW XI:428]. In 1921 it is defined as «die als quantitative Größe betrachtete — wenn auch derzeit nicht meßbare — Energie solcher Triebe, welche mit all dem zu tun haben, was man als Liebe zusammenfassen kann» [GW XIII:98]. The same text adds: «Diese Liebestriebe werden nun in der Psychoanalyse a potiori und von ihrer Herkunft her Sexualtriebe geheißen.» [GW XIII:99]. The last statement of this sense in the present tense is from 1923 [GW XIII:229].</p>
+<p>One thing changes over this span: the scope of "sexual". It is widened «bis er vieles einschloß, was sich nicht der Fortpflanzungsfunktion einordnete» [GW XIII:55]. By 1921 it covers self-love, friendship and devotion to ideas [GW XIII:98]. In 1930 and 1933 Freud reports the restricted definition in the past tense, as part of his own history [GW XIV:476; XV:102].</p>
+<p><strong>Freud's own or taken over.</strong> In 1905 the term is presented as existing scientific usage: «die Wissenschaft gebraucht als solche „Libido“» [GW V:33]. A footnote on the same page explains why the German word «Lust» will not serve: «Das einzig angemessene Wort der deutschen Sprache „Lust“ ist leider vieldeutig und benennt ebensowohl die Empfindung des Bedürfnisses als die der Befriedigung.» [GW V:33]. That this footnote belongs to the sentence on libido is inferred from the layout of the scan and is not certain [ii].</p>
+<p>In 1923 Moll is credited with having used the term «in diesem Sinne» in 1898, and the term is said to have been «vom Referenten in die Psychoanalyse eingeführt» [GW XIII:229]. "Der Referent" is the author of the article [ii]. In 1930 Freud says «führte ich den Namen Libido ein» [GW XIV:476]. The dualism in which libido is placed is adopted from popular thought: «Die populäre Auffassung trennt Hunger und Liebe» [GW XII:4].</p>
+<p><strong>Abandoned or kept.</strong> The opposition to the ego drives fails once the self-preservation drives are recognised as libidinal: «Somit war der ursprüngliche Gegensatz von Ichtrieben und Sexualtrieben unzureichend geworden» [GW XIII:56]. The conflict formula built on that opposition is kept, because it «nichts enthielt, was heute zu verwerfen wäre» [GW XIII:56]. In 1930 the name is restricted "again", this time to Eros (Sense 4) [ii].</p>
+<p><strong>Not to be confused with.</strong> It should not be confused with libido as drive force in general. The later-added Libidotheorie section of the Three Essays rejects that use: «wenn man nach dem Vorgang von C. G. Jung den Begriff der Libido selbst verflüchtigt, indem man sie mit der psychischen Triebkraft überhaupt zusammenfallen läßt» [GW V:120]. The 1917 lecture rejects it as well [GW XI:428].</p>
+<p>In Lecture XXII, which does not use the term "ego libido", the phrase "his libido" with the ego as possessor should not be read as "ego libido" [GW XI:365] [ii].</p>
+<h3>Sense 3: Libido located in the ego or in objects (1911 to 1940)</h3>
+<p><strong>In Freud's words.</strong> «Wir sehen auch im groben einen Gegensatz zwischen der Ichlibido und der Objektlibido. Je mehr die eine verbraucht, desto mehr verarmt die andere.» [GW X:141] (We also see, roughly, an opposition between ego libido and object libido. The more the one uses up, the poorer the other becomes.) «daß Libido Libido bleibt, ob sie nun auf Objekte oder auf das eigene Ich gewendet wird» [GW XI:435] (that libido remains libido whether it is turned toward objects or toward one's own ego.) «Über das ganze Leben bleibt das Ich das grosse Reservoir, aus dem Libidobesetzungen an Objekte ausgeschickt und in das sie auch wieder zurückgezogen werden» [GW XVII:73] (Throughout life the ego remains the great reservoir from which libidinal cathexes are sent out to objects and into which they are drawn back again.)</p>
+<p><strong>What it means.</strong> There is one libido, and it is distinguished by where it is invested. Narcissism is the state in which «das Ich die Libido bei sich behält» [GW XII:6]. The ego is the reservoir from which libido goes out and to which it returns [GW V:119; XII:6; XIII:231; XIV:83; XV:109]. Withdrawing libido into the ego is not pathogenic in itself. It becomes pathogenic when the way back is blocked: «diese Behinderung in der Beweglichkeit der Libido wird allerdings pathogen» [GW XI:436].</p>
+<p>In 1914 the division into ego libido and object libido is presented as continuing the separation of sexual drives from ego drives: «Die Sonderung der Libido in eine solche, die dem Ich eigen ist, und eine, die den Objekten angehängt wird, ist eine unerläßliche Fortführung einer ersten Annahme, welche Sexualtriebe und Ichtriebe voneinander schied.» [GW X:143]. The same text also says that in narcissism the energies cannot be told apart. On its account, libido becomes distinguishable from the energy of the ego drives only once object cathexis exists: «daß es erst mit der Objektbesetzung möglich wird, eine Sexualenergie, die Libido, von einer Energie der Ichtriebe zu unterscheiden» [GW X:141] (see Tensions).</p>
+<p><strong>When and where.</strong> In 1911 freed libido is «zum Ich geschlagen, zur Ichvergrößerung verwendet» [GW VIII:309], but the terms "ego libido" and "narcissistic libido" do not occur in the pages read. They are named and theorised in 1914 [GW X:141–143].</p>
+<p>The later-added section of the Three Essays, whose footnote cites a 1915 publication, gives this sense a quantitative form. It posits a libido quantum whose psychical representative is ego libido: «Wir bilden uns also die Vorstellung eines Libidoquantums, dessen psychische Vertretung wir die Ichlibido heißen» [GW V:118]. On the next page it calls ego libido «das große Reservoir» and «der in der ersten Kindheit realisierte Urzustand» [GW V:119]. The wording of V:118 differs from the rest of this sense (see How the senses relate). The 1917 lectures say the narcissistic neuroses became accessible once the concept was used: «Seitdem wir uns getrauen, den Begriff der Ichlibido zu handhaben, sind uns die narzißtischen Neurosen zugänglich geworden» [GW XI:438]. They credit the results reported on those neuroses to the concept [GW XI:445].</p>
+<p>In 1920 the theory under this sense changes, and the change can be followed within a single chapter. Section VI opens with the result reached so far in the 1920 text itself, in which the ego drives are set toward death: «welches einen scharfen Gegensatz zwischen den „Ichtrieben“ und den Sexualtrieben aufstellt, die ersteren zum Tode und die letzteren zur Lebensfortsetzung drängen läßt» [GW XIII:46]. This is not the 1911 to 1917 opposition. In the pages read from those years, the ego drives are not set toward death. Ten pages later the 1920 text says: «Somit war der ursprüngliche Gegensatz von Ichtrieben und Sexualtrieben unzureichend geworden. Ein Teil der Ichtriebe war als libidinös erkannt» [GW XIII:56]. Narcissistic libido is now the force of drives «die man mit den von Anfang an zugestandenen „Selbsterhaltungstrieben“ identifizieren mußte» [GW XIII:56]. On GW XIII:57 the earlier counting of the self-preservation drives among the death drives is said to have been «seither berichtigend zurückgezogen».</p>
+<p>In 1923 the conflict is restated as one «zwischen Objektlibido und Ichlibido» [GW XIII:231]. In 1925 repression appeared («erschien») as a process within libido: «erschien der Verdrängungsvorgang als ein Prozeß innerhalb der Libido selbst» [GW XIV:83]. The reservoir model and the convertibility of the two forms remain in place in 1930, 1933 and 1940 [GW XIV:477; XV:109; XVII:73]. The texts read thus give three successive answers to the question of whose libido ego libido is:</p>
+<ul>
+<li>1914 to 1917: sexual energy, kept separate from the energy of the ego drives. In the narcissistic state the two are «für unsere grobe Analyse ununterscheidbar» [GW X:141; X:143; XI:430; XI:435].</li>
+<li>1920 to 1925: the libido of the self-preservation drives [GW XIII:56; XIII:231; XIV:83].</li>
+<li>1940: the energy of Eros, stored in the ego [GW XVII:72–73].</li>
+</ul>
+<p><strong>Freud's own or taken over.</strong> The name "Narzißmus" is borrowed from Näcke's description of a perversion [GW X:138; XI:431]. A later footnote corrects this and credits the term to Ellis [GW V:119]. Narcissistic traits in homosexuals are credited to Sadger: «so nach Sadger bei Homosexuellen» [GW X:138]. Abraham is credited with two things. The first is the 1908 thesis that dementia praecox lacks the libidinal cathexis of objects [GW XI:430]. The second is the answer that the withdrawn libido is turned back onto the ego: «sie wird auf das Ich zurückgewandt, und diese reflexive Rückwendung ist die Quelle des Größenwahns der Dementia praecox» [GW XI:430]. "Introversion" is Jung's term [GW X:139].</p>
+<p>In 1920 earlier critics are said to have objected to the restricted concept: «Kritische und andere weitblickende Geister hatten zwar längst gegen die Einschränkung des Libidobegriffes auf die Energie der dem Objekt zugewendeten Sexualtriebe Einspruch erhoben.» [GW XIII:55]. In 1914 Freud calls the extension «Ein dritter Zufluß zu dieser, wie ich meine, legitimen Weiterbildung der Libidotheorie» [GW X:140]. This judges the development legitimate; it does not claim authorship [ii]. The image of the reservoir, or of the animalcule with pseudopodia, is given without attribution [GW X:141; XII:6].</p>
+<p><strong>Abandoned or kept.</strong> The model is kept through the last text read [GW XVII:73]. In 1925 Freud judges «Damit war offenbar das letzte Wort nicht gesprochen» [GW XIV:83]. That judgement concerns the drive theory built on narcissistic and object libido, not the reservoir model.</p>
+<p><strong>Not to be confused with.</strong> From 1911 to 1917 ego libido is not the same as the ego drives. In 1911 libidinal cathexis is named apart from ego cathexes. Letting libidinal cathexis coincide with interest in general is entertained there as one option and left undecided [GW VIII:311]. In 1914 libido becomes distinguishable from ego-drive energy only with object cathexis [GW X:141]. In 1917 the libidinal drives become distinguishable from the ego drives only once libido flows out to objects: «wodurch wir erst in die Lage kommen, die libidinösen Triebe als solche zu erkennen und von den Ich-Trieben zu unterscheiden» [GW XII:5]. From 1920 this changes: «Ein Teil der Ichtriebe war als libidinös erkannt» [GW XIII:56]. That is a change of position, not a refinement of the earlier distinction [ii].</p>
+<p>The use of the word "introversion" shifts (HOLD TENSION). In 1912 and 1914 the term names libido turned onto fantasy objects [GW VIII:323; X:152]: «Für diesen Zustand der Libido sollte man allein den von Jung ohne Unterscheidung gebrauchten Ausdruck: Introversion der Libido gelten lassen.» [GW X:139]. In 1920 Freud applies the word to withdrawal onto the ego: «wie regelmäßig Libido vom Objekt abgezogen und aufs Ich gerichtet wird (Introversion)» [GW XIII:55].</p>
+<h3>Sense 4: Energy of Eros (1920 to 1940)</h3>
+<p><strong>In Freud's words.</strong> «So würde also die Libido unserer Sexualtriebe mit dem Eros der Dichter und Philosophen zusammenfallen, der alles Lebende zusammenhält.» [GW XIII:54] (Thus the libido of our sexual drives would coincide with the Eros of the poets and philosophers, which holds all living things together.) «Der Name Libido kann wiederum für die Kraftäußerungen des Eros verwendet werden, um sie von der Energie des Todestriebs zu sondern.» [GW XIV:480] (The name libido can again be used for the manifestations of force of Eros, to set them apart from the energy of the death drive.) «die gesamte verfügbare Energie des Eros, die wir von nun ab Libido heissen werden» [GW XVII:72] (the whole available energy of Eros, which from now on we shall call libido.)</p>
+<p><strong>What it means.</strong> Libido is the energy of one of the two basic drives. The energy of the other basic drive has no name: «Für die Energie des Destruktionstriebes fehlt uns ein der Libido analoger Terminus.» [GW XVII:72]. Freud pictures an initial state («Einen Anfangszustand stellen wir uns in der Art vor» [GW XVII:72]) in which libido serves «die gleichzeitig vorhandenen Destruktionsneigungen zu neutralisieren» [GW XVII:72].</p>
+<p>Sexual excitation is only one portion of libido: «jenem Anteil der Libido, der nach seinem Triebziel als Sexualerregung bezeichnet wird» [GW XVII:73]. In the theory, Eros does not coincide with the sexual function: «wenn auch nicht in unserer Theorie, mit dem Eros deckt» [GW XVII:73]. So in 1940 libido is wider than sexual excitation [ii]. The 1930 summary formula, given in a footnote, is: «daß an jeder Triebäußerung Libido beteiligt ist, aber daß nicht alles an ihr Libido ist» [GW XIV:480].</p>
+<p><strong>When and where.</strong></p>
+<ul>
+<li>1920: the identification is first conditional [GW XIII:54]. It then becomes a step that is ventured: «da wir den weiteren Schritt wagen, den Sexualtrieb als den alles erhaltenden Eros zu erkennen» [GW XIII:56]. Both occur inside a biological speculation.</li>
+<li>1921: Plato's Eros is said, in the indicative, to coincide «mit der Liebeskraft, der Libido der Psychoanalyse» [GW XIII:99]. Eros is also invoked as the power that holds a group together: «dem Eros, der alles in der Welt zusammenhält» [GW XIII:100]. The pages read name no drive opposed to it.</li>
+<li>1923: only the adjective "libidinös" appears, and in the subjunctive [GW XIII:233].</li>
+<li>1925: the sentence on Eros does not use the word "Libido" [GW XIV:84].</li>
+<li>1930: the use of the name is permitted («kann ... verwendet werden»). It is not asserted as an identity [GW XIV:480].</li>
+<li>1933: the page that introduces Eros does not name libido [GW XV:110].</li>
+<li>1940: the stipulation is the only place in the pages read where libido is named as the energy of Eros within a dualism of two basic drives [GW XVII:72].</li>
+</ul>
+<p><strong>Freud's own or taken over.</strong> Eros is attributed to «der Dichter und Philosophen» [GW XIII:54]. It is also attributed to Plato, whose coincidence with libido Nachmansohn and Pfister are said to have shown [GW XIII:99]. A footnote says the basic forces were already familiar to Empedocles [GW XVII:71]. Naming the energy of Eros "libido" is Freud's own stipulation («von nun ab» [GW XVII:72]).</p>
+<p><strong>Abandoned or kept.</strong> This sense is current in the last text read. In 1925 Freud leaves open whether the construction will prove useful: «Es steht dahin, ob sich diese Konstruktion als brauchbar erproben wird.» [GW XIV:84]. In 1930 he reports that the views firmed from tentative to binding for him: «Ich hatte die hier entwickelten Auffassungen anfangs nur versuchsweise vertreten, aber im Laufe der Zeit haben sie eine solche Macht über mich gewonnen, daß ich nicht mehr anders denken kann» [GW XIV:478]. In the same year he defends the two-drive view by its theoretical usefulness: «sie stellen jene Vereinfachung ohne Vernachlässigung oder Vergewaltigung der Tatsachen her, nach der wir in der wissenschaftlichen Arbeit streben» [GW XIV:479].</p>
+<p><strong>Not to be confused with.</strong> It should not be confused with Jung's single drive force. Here libido is one of two energies, not the whole: «Jungs Libidotheorie ist dagegen eine monistische» [GW XIII:57].</p>
+<p>In 1921 one passage treats "Eros" as a word: «das griechische Wort Eros, das den Schimpf lindern soll, ist doch schließlich nichts anderes als die Übersetzung unseres deutschen Wortes Liebe» [GW XIII:99]. Reading this as a use of Eros as a mere word is an interpretation [ii]. The same text also uses Eros for a power: «dem Eros, der alles in der Welt zusammenhält» [GW XIII:100]. The pages do not say how the two uses relate.</p>
+<h2>How the senses relate</h2>
+<p><strong>Sense 1 and the later senses.</strong> Two passages read bring the terms of Sense 1 into the later senses. Neither says that it continues the 1894 sense [ii].</p>
+<ul>
+<li>The later-added Libidotheorie section of the Three Essays defines libido by reference to sexual excitation: «Wir haben uns den Begriff der Libido festgelegt als einer quantitativ veränderlichen Kraft, welche Vorgänge und Umsetzungen auf dem Gebiete der Sexualerregung messen könnte.» [GW V:118]. It also gives the libido quantum a psychical representative: «Libidoquantums, dessen psychische Vertretung wir die Ichlibido heißen» [GW V:118].</li>
+<li>The 1914 text conjectures that hypochondria depends on ego libido in the way the other actual neuroses depend on object libido. Freud frames this himself as a conjecture made at the point where he stops: «Wir wollen darum an dieser Stelle halt machen [...] Es sei nur erwähnt, daß sich von hier aus vermuten läßt, die Hypochondrie stehe in einem ähnlichen Verhältnis zur Paraphrenie wie die anderen Aktualneurosen zur Hysterie und Zwangsneurose» [GW X:150]. The clause that states the dependence is in the subjunctive: «hänge also von der Ichlibido ab, wie die anderen von der Objektlibido» [GW X:151]. The next step is put just as tentatively: «so dürfen wir auch der Vorstellung einer Stauung der Ichlibido nähertreten und sie in Beziehung zu den Phänomenen der Hypochondrie und der Paraphrenie bringen» [GW X:151]. Status (i) for the framing: the text marks the link as a conjecture and does not assert it.</li>
+</ul>
+<p>Any further continuity remains a conjecture to be tested [iii]. One possible route runs from the chemical grounding of sexual excitation [GW V:117–118] to the «somatische Quellen» of 1940 [GW XVII:73].</p>
+<p><strong>Where the V:118 wording belongs.</strong> Page V:118 carries two different wordings, and this entry assigns them to different senses (RECONNECT).</p>
+<ul>
+<li>The "festgelegt" definition belongs with Sense 2. It defines libido as a quantitatively variable force that is set apart from psychic energy in general by its origin, and it makes no reference to the ego or to objects: «Diese Libido sondern wir von der Energie, die den seelischen Prozessen allgemein unterzulegen ist, mit Beziehung auf ihren besonderen Ursprung und verleihen ihr so auch einen qualitativen Charakter.» [GW V:118].</li>
+<li>The Ichlibido wording belongs with Sense 3, but it differs from the rest of that sense. At V:118 ego libido is the psychical representative of the whole quantum, introduced before any contrast term. On the next page it is one of two positions: «Die Ichlibido heißen wir im Gegensatz zur Objektlibido auch narzißtische Libido.» [GW V:119]. The text does not say whether object libido is also a psychical representative of the quantum.</li>
+</ul>
+<p><strong>Sense 2 and Sense 3.</strong> Sense 3 grows out of Sense 2. The 1917 lecture presents the restricted definition as past usage («Wir nannten» [GW XI:430]). It then extends that definition by positing «daß Libido Libido bleibt, ob sie nun auf Objekte oder auf das eigene Ich gewendet wird» [GW XI:435]. Freud frames this as «Die einzige Behauptung, die nicht direkter Niederschlag unserer analytischen Erfahrung ist» [GW XI:435]. The same sentence goes on to say that libido «sich niemals in egoistisches Interesse umsetzt und ebenso das Umgekehrte» [GW XI:436]. The corresponding separation of the drives is held «bis zum möglichen Scheitern aus heuristischen Motiven» [GW XI:436]. The two senses can therefore be read as one model, in which there is one libido and object investment is one of its locations. They are counted separately here for two reasons. The earlier wording does not cover ego libido, and the extension gives libido a new place in the theory, namely narcissism and the psychoses [ii].</p>
+<p><strong>Sense 4 and the earlier senses.</strong> Sense 4 comes to replace Sense 2 as the frame within which the term is restricted. In 1920 to 1923 the two coexist: the 1923 article gives the Sense 2 definition in the present tense [GW XIII:229] and, in its last section, gathers the libidinal drives as Eros [GW XIII:233] [ii]. The opposition is renamed: «nicht mehr Ich- und Sexualtriebe, sondern Lebens- und Todestriebe» [GW XIII:57]. "Wiederum" in 1930 signals that the name is restricted again, but along a different line [ii]. Sense 3 coexists with Sense 4 through 1940.</p>
+<p><strong>The monistic use.</strong> This use is not counted as a Freudian sense, because no text read adopts it as current usage. As in In brief, two claims are kept apart [ii]: (a) one undifferentiated energy may underlie all drives; (b) the name "libido" covers that energy. The standing of these claims varies (HOLD TENSION):</p>
+<ul>
+<li>In 1911 Freud entertains the coincidence of libidinal cathexis with interest in general as one of two options and leaves the choice open: «Man müßte dann entweder das, was wir Libidobesetzung (Interesse aus erotischen Quellen) heißen, mit dem Interesse überhaupt zusammenfallen lassen oder die Möglichkeit in Betracht ziehen, daß eine ausgiebige Störung in der Unterbringung der Libido auch eine entsprechende Störung in den Ichbesetzungen induzieren kann.» [GW VIII:311]. He adds: «Nun sind dies Probleme, zu deren Beantwortung wir noch ganz hilflos und ungeschickt sind.» [GW VIII:311].</li>
+<li>In 1914 Freud reports that Jung appealed to this very text. Jung's claim was that Freud had extended the concept, namely «den Begriff der Libido zu erweitern, das heißt seinen sexuellen Inhalt aufzugeben, Libido mit psychischem Interesse überhaupt zusammenfallen zu lassen» [GW X:145]. Freud denies it: «daß ich keinen derartigen Verzicht auf die Libidotheorie ausgesprochen habe» [GW X:145].</li>
+<li>Several passages that attribute claim (b) to Jung reject it [GW V:120; X:145; XI:428; XIII:57; XIII:230]. The later-added Libidotheorie section of the Three Essays also states the separation in positive terms: libido is set apart from the energy of psychic processes in general «mit Beziehung auf ihren besonderen Ursprung» [GW V:118].</li>
+<li>Not every passage that names Jung rejects him. In 1923, under the heading «SCHEINBARE ANNÄHERUNG AN DIE JUNGSCHE AUFFASSUNG» [GW XIII:231], Freud reports that it seemed («gewann es den Anschein, als ob» [GW XIII:231]) analytic research had caught up with Jung's speculation: «analytische Forschung der Jungschen Spekulation von der Urlibido nachgekommen wäre» [GW XIII:232]. His answer is «damit noch nicht bewiesen ist, daß im Ich keine anderen Triebe wirken» [GW XIII:232].</li>
+<li>In 1914 Freud allows that libido may at bottom be a differentiation product of the energy otherwise at work in the psyche: «nur ein Differenzierungsprodukt der sonst in der Psyche wirkenden Energie ist» [GW X:144]. He declares this irrelevant: «Aber eine solche Behauptung ist nicht belangreich.» [GW X:144]. This concerns claim (a); the name "libido" stays with the differentiated product. Its relation to Jung's view is an interpretation [ii].</li>
+<li>In 1930 he reports claim (b) as a passing appearance and names Jung, without rejecting him: «schien es eine Weile unvermeidlich, Libido mit Triebenergie überhaupt zusammenfallen zu lassen, wie C. G. Jung schon früher gewollt hatte» [GW XIV:477]. The next sentence holds back: «Doch blieb etwas zurück wie eine noch nicht zu begründende Gewißheit, daß die Triebe nicht alle von gleicher Art sein können.» [GW XIV:477].</li>
+<li>In 1933 he reports it in the first person plural, without naming Jung: «Wir sind nicht lange auf diesem Standpunkt verblieben.» [GW XV:109].</li>
+</ul>
+<h2>Tensions held</h2>
+<ul>
+<li><strong>Libido and anxiety (HOLD TENSION, a shift over time).</strong> In 1894 the somatic excitation becomes anxiety while libido sinks [GW I:336]. In 1911: «in der Hysterie verwandelt sich der befreite Libidobetrag in körperliche Innervationen oder in Angst» [GW VIII:309]. In 1917 the conversion of unsatisfied libido into anxiety belongs «zu den bestbekannten und am häufigsten beobachteten Phänomenen» [GW XI:427]. In 1933: «Daß es die Libido selbst ist, die dabei in Angst verwandelt wird, werden wir nicht mehr behaupten.» [GW XV:101].</li>
+<li><strong>Monism resisted, monism approached (HOLD TENSION).</strong> In 1920 the text says «dann haben wir vielleicht überhaupt keine anderen Triebe als libidinöse» [GW XIII:56], but also «Den Schluß, daß es andere nicht gibt, möchten wir darum doch nicht mitmachen» [GW XIII:57]. In 1923 Freud concedes «eine gewisse Desexualisierung, ein Aufgeben der speziellen Sexualziele» [GW XIII:232]. His immediate answer is that it has not yet been proven that no other drives work in the ego: «damit noch nicht bewiesen ist, daß im Ich keine anderen Triebe wirken» [GW XIII:232]. The article then turns to two kinds of drives: «wird es wahrscheinlich, daß man zwei Triebarten anzuerkennen hat» [GW XIII:232]. In 1914 he admits that the energy «könnte sich um indifferente psychische Energie handeln, die erst durch den Akt der Objektbesetzung zur Libido wird» [GW X:143]. In that passage the energy becomes libido only through object cathexis, so it bears on a possible underlying unity of energy, not on calling that energy libido [ii].</li>
+<li><strong>Original yet indistinguishable (HOLD TENSION).</strong> In 1914 there is a primary libidinal cathexis of the ego, yet in narcissism the energies are «für unsere grobe Analyse ununterscheidbar» [GW X:141]. In 1917, in sleep, libido and ego interest are «vereint und ununterscheidbar» [GW XI:432]. Yet libido is said never to convert into interest. Freud frames this as «Die einzige Behauptung, die nicht direkter Niederschlag unserer analytischen Erfahrung ist» [GW XI:435], and the sentence continues: «und sich niemals in egoistisches Interesse umsetzt und ebenso das Umgekehrte» [GW XI:436].</li>
+<li><strong>Layers in the Three Essays (HOLD TENSION).</strong> The main text says psychoanalysis looks «wie über eine Grenze, deren Überschreitung uns nicht gestattet ist, in das Getriebe der narzißtischen Libido hinein» [GW V:119]. A later footnote says: «Diese Beschränkung hat nicht mehr ihre frühere Giltigkeit» [GW V:119]. Both stand on the printed page.</li>
+<li><strong>Placement of the term (HOLD TENSION).</strong> In 1921 libido is placed in the theory of affects: «Libido ist ein Ausdruck aus der Affektivitätslehre.» [GW XIII:98]. In 1923 it is placed in the theory of drives: «LIBIDO ist ein Terminus aus der Trieblehre» [GW XIII:229].</li>
+<li><strong>Every drive manifestation (HOLD TENSION, an interpretation [ii]).</strong> The 1930 footnote is introduced as an approximation: «Unsere gegenwärtige Auffassung kann man ungefähr in dem Satz ausdrücken, daß an jeder Triebäußerung Libido beteiligt ist, aber daß nicht alles an ihr Libido ist.» [GW XIV:480]. Two pages earlier the claim about isolation is hedged: «daß die beiden Triebarten selten — vielleicht niemals — voneinander isoliert auftreten» [GW XIV:478]. Even with these qualifications, the same pages speak of «der nicht erotischen Aggression und Destruktion» [GW XIV:479]. The text does not say whether "nicht erotisch" means without any share of libido.</li>
+<li><strong>Locus in 1940 (HOLD TENSION).</strong> On the same page, libido is said to be present «im noch undifferenzierten Ich-Es», and also to be stored entirely in the ego, in the state called «den absoluten primären Narzissmus» [GW XVII:72]. Freud adds that what is known about libido concerns the ego only: «Es ist schwer, etwas über das Verhalten der Libido im Es und im Überich auszusagen.» [GW XVII:72]; «Alles, was wir darüber wissen, bezieht sich auf das Ich» [GW XVII:72].</li>
+<li><strong>Sexual or wider (HOLD TENSION, a shift over time).</strong> In 1921: «Diese Liebestriebe werden nun in der Psychoanalyse a potiori und von ihrer Herkunft her Sexualtriebe geheißen» [GW XIII:99]. In 1940 sexual excitation is only a part of libido [GW XVII:73].</li>
+<li><strong>Reservoir and convertibility (CONFIRMED where stated).</strong> Two claims are stated in several texts. The first is that the ego is a reservoir, or a body that sends out and draws back pseudopodia. The second is that narcissistic and object libido convert into each other. They are stated in 1914 (as pseudopodia, GW X:141), in the later-added Three Essays section (GW V:119), in 1917 (GW XI:431; XII:6), 1920 (GW XIII:55), 1923 (GW XIII:231), 1925 (GW XIV:83), 1930 (GW XIV:477), 1933 (GW XV:109) and 1940 (GW XVII:73). No text read contradicts them. Several texts read from this period do not state them: Lecture XXII, Lecture XXVIII, and Massenpsychologie GW XIII:98–104.</li>
+<li><strong>Provisional status (CONFIRMED as Freud's own hedge).</strong> In the Three Essays, the continuation of the libido theory «ist deshalb vorläufig nur auf dem Wege der Spekulation möglich» [GW V:120]. In 1917 the separation of the drives is held «bis zum möglichen Scheitern aus heuristischen Motiven» [GW XI:436]. In 1925 vague basic concepts are defended as proper to a natural science [GW XIV:84].</li>
+</ul>
+<h2>Key passages</h2>
+<table>
+<thead>
+<tr>
+<th>German (verbatim)</th>
+<th>Anchor</th>
+<th>Our rendering</th>
+<th>What it establishes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ein Zustand, in dem diese Erregung psychischer Reiz wird, Libido</td>
+<td>GW I:335</td>
+<td>a state in which this excitation becomes a psychical stimulus, libido</td>
+<td>Sense 1: definition</td>
+</tr>
+<tr>
+<td>Es wird also die Libido endlich sinken und die Erregung subkortikal als Angst sich äußern.</td>
+<td>GW I:336</td>
+<td>So libido will finally sink and the excitation express itself subcortically as anxiety</td>
+<td>Sense 1: anxiety is assigned to the excitation, not to libido</td>
+</tr>
+<tr>
+<td>Eine dem Worte „Hunger“ entsprechende Bezeichnung fehlt der Volkssprache; die Wissenschaft gebraucht als solche „Libido“.</td>
+<td>GW V:33</td>
+<td>Popular language lacks a word corresponding to "hunger"; science uses "libido"</td>
+<td>Sense 2: introduced by the hunger analogy, as existing usage</td>
+</tr>
+<tr>
+<td>Wir haben uns den Begriff der Libido festgelegt als einer quantitativ veränderlichen Kraft, welche Vorgänge und Umsetzungen auf dem Gebiete der Sexualerregung messen könnte.</td>
+<td>GW V:118</td>
+<td>We have fixed the concept of libido as a quantitatively variable force that could measure processes and transformations in the field of sexual excitation</td>
+<td>Sense 2: quantitative definition (later-added section)</td>
+</tr>
+<tr>
+<td>Man müßte dann entweder das, was wir Libidobesetzung (Interesse aus erotischen Quellen) heißen, mit dem Interesse überhaupt zusammenfallen lassen oder [...]</td>
+<td>GW VIII:311</td>
+<td>One would then have either to let what we call libidinal cathexis (interest from erotic sources) coincide with interest in general, or [...]</td>
+<td>In 1911 the coincidence with interest in general is entertained as one of two options and left undecided; only the gloss marks libido as interest of a particular, erotic origin</td>
+</tr>
+<tr>
+<td>daß die Neurosen aus dem Konflikt zwischen dem Ich und der Libido entspringen</td>
+<td>GW VIII:329</td>
+<td>that the neuroses arise from the conflict between the ego and the libido</td>
+<td>Libido stands opposite the ego (1912)</td>
+</tr>
+<tr>
+<td>Der Name Libido bleibt aber mit Recht für die Triebkräfte des Sexuallebens vorbehalten, wie wir es bisher geübt haben.</td>
+<td>GW XI:428</td>
+<td>The name libido rightly remains reserved for the drive forces of sexual life, as we have practised so far</td>
+<td>Restriction reaffirmed against Jung (1917)</td>
+</tr>
+<tr>
+<td>nennen die Kraft, mit welcher der Sexualtrieb im Seelenleben auftritt, Libido — sexuelles Verlangen — als etwas dem Hunger, dem Machtwillen u. dgl. bei den Ich-Trieben Analoges</td>
+<td>GW XII:4</td>
+<td>call the force with which the sexual drive appears in mental life libido, sexual desire, analogous to hunger and the will to power among the ego drives</td>
+<td>Sense 2 within the dualism of drives</td>
+</tr>
+<tr>
+<td>daß es erst mit der Objektbesetzung möglich wird, eine Sexualenergie, die Libido, von einer Energie der Ichtriebe zu unterscheiden</td>
+<td>GW X:141</td>
+<td>that only with object cathexis does it become possible to distinguish a sexual energy, libido, from an energy of the ego drives</td>
+<td>In 1914 libido becomes distinguishable from ego-drive energy only once object cathexis exists</td>
+</tr>
+<tr>
+<td>Wir sehen auch im groben einen Gegensatz zwischen der Ichlibido und der Objektlibido. Je mehr die eine verbraucht, desto mehr verarmt die andere.</td>
+<td>GW X:141</td>
+<td>Roughly, ego libido and object libido are opposed; the more one uses up, the poorer the other becomes</td>
+<td>Sense 3: named, and the two compete in quantity</td>
+</tr>
+<tr>
+<td>daß Libido Libido bleibt, ob sie nun auf Objekte oder auf das eigene Ich gewendet wird</td>
+<td>GW XI:435</td>
+<td>that libido remains libido whether turned toward objects or toward one's own ego</td>
+<td>One libido across both locations, posited as «Die einzige Behauptung, die nicht direkter Niederschlag unserer analytischen Erfahrung ist» [GW XI:435] and held heuristically [GW XI:436]</td>
+</tr>
+<tr>
+<td>Diese narzißtische Libido war natürlich auch die Kraftäußerung von Sexualtrieben im analytischen Sinne, die man mit den von Anfang an zugestandenen „Selbsterhaltungstrieben“ identifizieren mußte.</td>
+<td>GW XIII:56</td>
+<td>This narcissistic libido was of course also the expression of force of sexual drives in the analytic sense, which had to be identified with the self-preservation drives granted from the start</td>
+<td>1920 revision of Sense 3</td>
+</tr>
+<tr>
+<td>So würde also die Libido unserer Sexualtriebe mit dem Eros der Dichter und Philosophen zusammenfallen, der alles Lebende zusammenhält.</td>
+<td>GW XIII:54</td>
+<td>Thus the libido of our sexual drives would coincide with the Eros that holds all living things together</td>
+<td>Sense 4 first appears, in the conditional</td>
+</tr>
+<tr>
+<td>Libido ist ein Ausdruck aus der Affektivitätslehre.</td>
+<td>GW XIII:98</td>
+<td>Libido is an expression from the theory of affects</td>
+<td>1921 placement of the term</td>
+</tr>
+<tr>
+<td>LIBIDO ist ein Terminus aus der Trieblehre, zur Bezeichnung des dynamischen Ausdrucks der Sexualität</td>
+<td>GW XIII:229</td>
+<td>Libido is a term of drive theory, designating the dynamic expression of sexuality</td>
+<td>1923 definition; Moll named as earlier user</td>
+</tr>
+<tr>
+<td>erschien der Verdrängungsvorgang als ein Prozeß innerhalb der Libido selbst</td>
+<td>GW XIV:83</td>
+<td>repression appeared as a process within libido itself</td>
+<td>1925: repression becomes an intra-libidinal conflict</td>
+</tr>
+<tr>
+<td>Der Name Libido kann wiederum für die Kraftäußerungen des Eros verwendet werden, um sie von der Energie des Todestriebs zu sondern.</td>
+<td>GW XIV:480</td>
+<td>The name libido can again be used for the manifestations of force of Eros, to set them apart from the energy of the death drive</td>
+<td>Sense 4, permissive wording (1930)</td>
+</tr>
+<tr>
+<td>Daß es die Libido selbst ist, die dabei in Angst verwandelt wird, werden wir nicht mehr behaupten.</td>
+<td>GW XV:101</td>
+<td>We shall no longer claim that it is libido itself that is turned into anxiety</td>
+<td>Thesis on anxiety withdrawn (1933)</td>
+</tr>
+<tr>
+<td>man kann die Bezeichnung Libido fallen lassen oder sie als gleichbedeutend mit psychischer Energie überhaupt gebrauchen. Wir sind nicht lange auf diesem Standpunkt verblieben.</td>
+<td>GW XV:109</td>
+<td>one can drop the term or use it as equivalent to psychic energy in general. We did not stay long on this standpoint</td>
+<td>Monistic standpoint reported as brief</td>
+</tr>
+<tr>
+<td>die gesamte verfügbare Energie des Eros, die wir von nun ab Libido heissen werden</td>
+<td>GW XVII:72</td>
+<td>the whole available energy of Eros, which from now on we shall call libido</td>
+<td>Sense 4 stipulated (1940)</td>
+</tr>
+<tr>
+<td>Für die Energie des Destruktionstriebes fehlt uns ein der Libido analoger Terminus.</td>
+<td>GW XVII:72</td>
+<td>We lack a term analogous to libido for the energy of the destructive drive</td>
+<td>The asymmetry of the two energies</td>
+</tr>
+<tr>
+<td>wenn auch nicht in unserer Theorie, mit dem Eros deckt</td>
+<td>GW XVII:73</td>
+<td>though not in our theory, coincides with Eros</td>
+<td>Eros is wider than the sexual function</td>
+</tr>
+</tbody>
+</table>
+<h2>What this entry does not claim</h2>
+<ul>
+<li>It does not claim that any text before 1940 names libido as the energy of Eros within a dualism of two basic drives. Before 1940 the link takes these forms:</li>
+<li>1920: conditional, then a step that is ventured.</li>
+<li>1921: an indicative coincidence with Plato's Eros, with no opposed drive named.</li>
+<li>1923: adjectival and in the subjunctive.</li>
+<li>1930: permissive wording.</li>
+<li>1925 and 1933: absent from the relevant page.</li>
+<li>It does not claim that Freud explicitly abandons Sense 1. The texts read do not say this.</li>
+<li>It treats the accounts given in 1923, 1925, 1930 and 1933 as Freud's later self-reports. They are not used as evidence for what the earlier texts said.</li>
+<li>It does not date the "Libidotheorie" section of the Three Essays. Its footnote cites a 1915 publication, and according to the source label the section was added in a later edition. The pages print no date for it.</li>
+<li>It claims nothing about Totem und Tabu, the case histories other than Schreber, or Massenpsychologie beyond GW XIII:98–104.</li>
+<li>It uses no Standard Edition renderings. All English renderings are our own.</li>
+<li>It does not resolve the tensions listed above, and it does not say "always": every statement holds for the passages read only.</li>
+</ul>
+<h2>Reading coverage</h2>
+<ul>
+<li><strong>S01</strong> GW I:333–342 (the word occurs on 334–338). Dated December 1894 in the text; source label 1895.</li>
+<li><strong>S02</strong> GW V:33–36 and 38. GW V:37 was read but has no bearing on the concept.</li>
+<li><strong>S03</strong> GW V:117–122.</li>
+<li><strong>S04</strong> GW VIII:304–305 and 308–316. GW VIII:306–307 are missing.</li>
+<li><strong>S05</strong> GW VIII:322–330.</li>
+<li><strong>S06</strong> GW X:138–157 (sections I and II; section III not supplied).</li>
+<li><strong>S07</strong> GW XI:351–371.</li>
+<li><strong>S08</strong> GW XI:427–446.</li>
+<li><strong>S09</strong> GW XI:466, 468–477, 479 and 482 (libido is treated on 472–476).</li>
+<li><strong>S10</strong> GW XII:3–8 and 10–12 (GW XII:9 read, nothing relevant).</li>
+<li><strong>S11</strong> GW XIII:46, 48 and 51–62 (47, 49 and 50 read but not used; the pages end inside the Plato passage).</li>
+<li><strong>S12</strong> GW XIII:98–104. Pages 101–104 belong to chapter V; the pages break off inside the panic argument.</li>
+<li><strong>S13</strong> GW XIII:229–233.</li>
+<li><strong>S14</strong> GW XIV:82–84 (breaks off mid-sentence).</li>
+<li><strong>S15</strong> GW XIV:476–480 (breaks off mid-sentence).</li>
+<li><strong>S16</strong> GW XV:101–110 (ends just after Eros is introduced).</li>
+<li><strong>S17</strong> GW XVII:70–74.</li>
+</ul>
+<p>Loci not read: GW XI:375, XI:388 and XI:424 (Lectures XXIII–XXV); GW XIV:138; Totem und Tabu; the case histories other than Schreber; Massenpsychologie outside the pages listed.</p>
+      <h2>About this entry</h2>
+      <p class="edition">First edition, November 2026. Built from the German text of Freud's <em>Gesammelte Werke</em> only, read source by source; every German quotation was checked against the page it cites. References give volume and page, for example [GW X:291]. English renderings are our own. A mark [ii] means our interpretation of the passages, [iii] a synthesis across texts; unmarked sentences report what the pages say. Each long entry says which texts were read and which were not. Entries are revised as the reading continues; corrections are welcome at <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="/privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="/mentions-legales.html">Mentions Légales</a><span class="footer-sep">·</span><a href="/research-tools-terms.html">Research tools terms</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+  <script>document.getElementById('menu').addEventListener('click', function () { document.querySelector('nav').classList.toggle('open'); });</script>
+</body>
+</html>
