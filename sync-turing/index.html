@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://research-api.llulllab.com; base-uri 'self'; form-action 'none'; frame-ancestors 'none'">
+  <title>Sync-Turing: research tool | Llull Lab</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="Sync-Turing, a free research tool of Llull Lab: give it a text and your reading of it, and get back what the text says, each point tied to its own words, and whether your reading is in sync with it. For people and for machines, three readings a day.">
+  <link rel="canonical" href="https://llulllab.com/sync-turing/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Llull Lab">
+  <meta property="og:url" content="https://llulllab.com/sync-turing/">
+  <meta property="og:title" content="Sync-Turing: research tool">
+  <meta property="og:description" content="A close reading of any text, every quote checked against it, and a sentence-by-sentence check of your reading. Free, three readings a day.">
+  <link rel="stylesheet" href="/fonts/gf-d321d810.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+      --bg-card: #141414; --highlight: #a78bfa; --live: #6ee7b7; --prep: #fbbf24; --stop: #f87171;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+    [hidden] { display: none !important; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    nav a.news-hub-link { color: #fcd116; }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .module-tag { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-top: 80px; }
+    .page-hero { padding: 0 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 680px; line-height: 1.75; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; }
+    .page-body { padding: 48px 0 40px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 96px; }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { margin-bottom: 1.1em; max-width: 680px; }
+    .muted { color: var(--accent); }
+    .small { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; }
+    label { display: block; font-family: var(--sans); font-size: 13px; letter-spacing: 0.5px; color: var(--accent); margin: 0 0 6px; }
+    input[type=email], textarea { width: 100%; background: #0b0b0b; color: var(--fg); border: 1px solid var(--border-strong); border-radius: 6px; padding: 12px 14px; font-family: var(--serif); font-size: 16px; line-height: 1.6; }
+    textarea { min-height: 170px; resize: vertical; }
+    textarea.ctx { min-height: 80px; }
+    input:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+    .row { margin-bottom: 18px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-family: var(--sans); font-size: 14px; color: var(--accent); }
+    .check input { margin-top: 5px; }
+    .check a, .page-body a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--bg); background: var(--highlight); border: none; border-radius: 5px; cursor: pointer; }
+    .btn:disabled { opacity: 0.5; cursor: default; }
+    .btn.ghost { background: transparent; color: var(--highlight); border: 1px solid rgba(167,139,250,0.5); }
+    .btn.danger { background: transparent; color: var(--stop); border: 1px solid rgba(248,113,113,0.5); }
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .msg { font-family: var(--sans); font-size: 14px; margin-top: 12px; color: var(--accent); min-height: 1.4em; }
+    .msg.err { color: var(--stop); }
+    .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--sans); font-size: 13px; color: #aaa; margin-bottom: 16px; }
+    .result { margin-top: 24px; }
+    .verdict { display: inline-block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-strong); margin-bottom: 14px; }
+    .verdict.proceed { color: var(--live); border-color: rgba(110,231,183,0.4); }
+    .verdict.proceed_with_conditions { color: var(--prep); border-color: rgba(251,191,36,0.4); }
+    .verdict.do_not_proceed { color: var(--stop); border-color: rgba(248,113,113,0.45); }
+    .verdict.need_more_information { color: var(--highlight); border-color: rgba(167,139,250,0.5); }
+    .result h3 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 22px 0 8px; }
+    .result ul { padding-left: 20px; }
+    .result li { margin-bottom: 6px; color: #ddd; }
+    .result .summary { font-size: 1.08rem; }
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+    pre { background: #0b0b0b; border: 1px solid var(--border); border-radius: 6px; padding: 14px; overflow-x: auto; color: #ddd; line-height: 1.55; white-space: pre; }
+    .keybox { word-break: break-all; white-space: pre-wrap; }
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 64px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+    .quote { margin: 4px 0 8px 14px; font-size: 0.95rem; }
+    .quote .q { color: #eee; }
+    .quote .ctx { display: block; font-family: var(--sans); font-size: 12.5px; color: #999; margin-top: 2px; }
+    .badge { display: inline-block; font-family: var(--sans); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; padding: 2px 10px; border-radius: 20px; border: 1px solid var(--border-strong); color: var(--accent); margin-right: 4px; vertical-align: 2px; }
+    .badge.r-supported { color: var(--live); border-color: rgba(110,231,183,0.4); }
+    .badge.r-elsewhere, .badge.r-both { color: var(--prep); border-color: rgba(251,191,36,0.4); }
+    .badge.r-not_in_text, .badge.r-contradicted { color: var(--stop); border-color: rgba(248,113,113,0.45); }
+    .badge.r-question, .badge.r-not_confirmed { color: var(--highlight); border-color: rgba(167,139,250,0.5); }
+    .align, .point { border-left: 2px solid var(--border); padding-left: 14px; margin: 14px 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/en/" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" type="button" id="menu">Menu</button>
+      <nav>
+        <a href="/en/about.html">About</a>
+        <a href="/en/people.html">Team</a>
+        <a href="/en/research.html" class="active">Research</a>
+        <a href="/en/studio.html">Studio</a>
+        <a href="/en/press.html">Press</a>
+        <a href="/en/updates.html">Updates</a>
+        <a href="/ai-robotics/" class="news-hub-link">News Hub</a>
+        <a href="/machines/">For Machines</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="module-tag">Research tool</div>
+    <div class="page-hero">
+      <h1>Sync-Turing</h1>
+      <p class="lead">Give it a text, and if you like your reading of it. Sync-Turing returns what the text says, each point tied to the text's own words, what it does not say and where it pulls two ways, and checks your reading sentence by sentence: is it in sync with the text?</p>
+      <div class="facts"><span class="fact">Free</span><span class="fact">3 readings a day</span><span class="fact">For people and machines</span><span class="fact">Every quote checked against your text</span><span class="fact">Processed and hosted in the EU</span></div>
+    </div>
+    <div class="page-body">
+
+      <p class="small" id="capacity" hidden>Today's capacity for the research tools has been used. It opens again at midnight, Paris time.</p>
+
+      <h2 id="ask">Read a text</h2>
+
+      <div class="card" id="signin">
+        <p class="muted">Sign in with your email to use your three readings a day. We send a link that works once; there is no password.</p>
+        <form id="signin-form" novalidate>
+          <div class="row"><label for="email">Email</label><input type="email" id="email" autocomplete="email" required maxlength="254"></div>
+          <div class="row"><label class="check"><input type="checkbox" id="consent"> <span>I agree to the <a href="/research-tools-terms.html">terms of use</a> and have read the <a href="/privacy-policy.html#research-tools">privacy notice</a>.</span></label></div>
+          <button class="btn" type="submit" id="signin-btn">Send me a sign-in link</button>
+        </form>
+        <div class="msg" id="signin-msg" role="status"></div>
+      </div>
+
+      <div class="card" id="askcard" hidden>
+        <div class="bar"><span id="who"></span><span id="quota"></span></div>
+        <form id="ask-form" novalidate>
+          <div class="row"><label for="text">The text</label><textarea id="text" maxlength="40000" placeholder="Paste the text you want to read: an article, a chapter, a paper section, a policy, a letter, your own draft. At least 200 characters."></textarea></div>
+          <div class="row"><label for="reading">Your reading (optional)</label><textarea class="ctx" id="reading" maxlength="3000" placeholder="What you think the text says, in a few sentences, or a question about it. A machine's summary works too."></textarea></div>
+          <p class="small">Submit only texts you are entitled to share, and please leave out other people's sensitive personal data. Your text is not stored once the reading is done and is never used to train a model; the answer, which quotes parts of it, is kept for you until you delete it (there is a delete button under each answer). Sync-Turing is processed and hosted in the European Union. Full statement: <a href="/privacy-policy.html#research-tools">privacy notice</a>.</p>
+          <div class="btns"><button class="btn" type="submit" id="ask-btn">Read it</button><span class="small" id="count">0 / 40000</span></div>
+        </form>
+        <div class="msg" id="ask-msg" role="status" aria-live="polite"></div>
+        <div class="result" id="result" hidden></div>
+        <div id="answers-box" hidden><h3 class="small" style="margin-top:28px">Your readings</h3><p class="small">Kept until you delete them or your account.</p><ul id="answers" class="small"></ul></div>
+      </div>
+
+      <h2 id="what">What you get</h2>
+      <p><strong>What the text says.</strong> Three to eight points, each with one or two exact quotes from your text, shown in the sentence they stand in. Each point is marked as something the text states, or as a reading of it.</p>
+      <p><strong>How it argues, what it does not say, where it holds tension.</strong> Its definitions and the steps of its argument; what a reader might assume and the text does not state; the places where it pulls two ways, both sides quoted.</p>
+      <p><strong>Your reading, sentence by sentence.</strong> Each of your sentences is <em>supported</em> (with the quote), <em>supported elsewhere</em> (the idea is in the text, but not as you put it), <em>held both ways</em> (the text says it and something that pulls against it), <em>the text says otherwise</em> (with the words that say so), or <em>not in the text</em> (it may be your own idea, which is no fault, but it is not the text's). A result the tool cannot confirm against the text is shown as such.</p>
+      <p><strong>Sync.</strong> How your sentences fall into those results, and how many points of the text your reading does not touch. It measures whether your sentences agree with the text, not whether your reading is complete.</p>
+
+      <h2 id="machines">For machines</h2>
+      <p>Autonomous agents and scripts use the same tool through an HTTPS API, with the same three readings a day per key. A machine can submit a document and its own summary, and get back which of its sentences the document bears out. A key belongs to the person who signs in here; creating a new key revokes the previous one.</p>
+      <div class="card" id="keycard" hidden>
+        <div class="btns"><button class="btn ghost" type="button" id="key-btn">Create an API key</button><span class="small" id="key-info"></span></div>
+        <pre class="keybox" id="key-out" hidden></pre>
+        <div class="msg" id="key-msg" role="status"></div>
+      </div>
+      <pre>curl -s https://research-api.llulllab.com/research/v1/sync-turing/ask \
+  -H "Authorization: Bearer $LLULL_RESEARCH_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Idempotency-Key: &lt;a unique id per reading&gt;" \
+  -d '{"text": "... 200 to 40,000 characters ...", "reading": "... optional, up to 3,000 characters and 40 sentences ..."}'
+# 202 {"job_id": "...", "status": "queued", "poll": "https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt;"}
+
+curl -s https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt; \
+  -H "Authorization: Bearer $LLULL_RESEARCH_KEY"
+# status: queued | running | done | refused | out_of_scope | failed
+# result: {"points": [{"claim", "status": "stated|interpretation", "quotes": [{"quote", "context"}], "in_reading"}],
+#          "argument", "definitions", "distinctions", "not_said", "tensions", "open_questions",
+#          "alignment": [{"n", "sentence", "result": "supported|elsewhere|both|contradicted|not_in_text|question|not_confirmed", "quotes", "note"}],
+#          "sync": {"sentences", "supported", "elsewhere", "both", "contradicted", "not_in_text", "not_confirmed", "questions",
+#                   "points_of_text", "points_not_in_reading"},
+#          "in_short", "language", "ai_generated": true, "generator", "notice"}</pre>
+      <p class="small">A reading takes one to three minutes; poll every few seconds. A failed reading does not use one of your three, and a repeated request with the same Idempotency-Key returns the same job. Answers are generated by a computational system: if you pass them on to people, say so.</p>
+
+      <h2 id="about">About Sync-Turing</h2>
+      <p>Sync-Turing is Llull Lab's method: an evaluation method measuring the ability of humans and machines to use their communication capacities at maximum efficiency and in high synchronization, reaching a shared rhythm between two distinct entities. This tool applies it to reading: it measures how far a reader, human or machine, and a text are in sync, and gives back a reading of the text that you can check against the text yourself. How the tool works is not disclosed.</p>
+      <p class="small">Research and study use. The reading is computational: check what matters to you against the text. Not legal or other professional advice. Sync-Turing is a service by Llull Lab (Firat Ilim, entrepreneur individuel), Paris.</p>
+
+      <div class="card" id="account" hidden>
+        <div class="btns"><button class="btn ghost" type="button" id="logout-btn">Sign out</button><button class="btn danger" type="button" id="del-btn">Delete my account</button><button class="btn danger" type="button" id="del-confirm" hidden>Confirm: delete account and history</button></div>
+        <div class="msg" id="acct-msg" role="status"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="/privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="/mentions-legales.html">Mentions Légales</a><span class="footer-sep">·</span><a href="/research-tools-terms.html">Research tools terms</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+
+  <script>
+  (function () {
+    var API = 'https://research-api.llulllab.com/research/v1';
+    var $ = function (id) { return document.getElementById(id); };
+    var TOOL = 'sync-turing';
+    var ERR = {
+      invalid_email: 'Please enter a valid email address.', disposable_email: 'Please use a permanent email address.',
+      consent_required: 'Please agree to the terms of use first.', signup_rate_limited: 'Too many sign-ups from your network today. Please try tomorrow.',
+      too_many_links: 'Several sign-in links are already waiting in your inbox.', daily_quota_reached: 'You have used your three readings for today. They renew at midnight, Paris time.',
+      network_quota_reached: 'Your network has reached today\'s limit. Please try tomorrow.', daily_capacity_reached: 'Today\'s capacity has been used. It opens again at midnight, Paris time.',
+      daily_capacity_reached_new_accounts: 'Today\'s capacity for new accounts has been used. Please try tomorrow.', busy: 'The tool is busy. Please try again in a few minutes.',
+      one_question_at_a_time: 'One reading at a time: your previous reading is still running.', text_too_short: 'Please paste a text of at least 200 characters.',
+      too_long: 'The text is too long (40,000 characters at most; the reading 3,000).', reading_too_many_sentences: 'Your reading has more than 40 sentences. Please shorten it.',
+      sign_in_required: 'Please sign in again.', not_open_yet: 'This tool opens soon.', forbidden: 'This tool opens soon.', forbidden_origin: 'Please use this page to sign in and read.', tool_capacity_reached: 'Today\'s capacity for this tool has been used. It opens again at midnight, Paris time.'
+    };
+    var RESULT = { supported: 'Supported', elsewhere: 'Supported elsewhere', both: 'Held both ways', contradicted: 'The text says otherwise', not_in_text: 'Not in the text', question: 'Question', not_confirmed: 'Could not be confirmed' };
+    function api(path, opts) {
+      opts = opts || {};
+      var h = { 'content-type': 'application/json' };
+      if (opts.headers) for (var k in opts.headers) h[k] = opts.headers[k];
+      return fetch(API + path, { method: opts.method || 'GET', credentials: 'include', headers: h, body: opts.body })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, j: j }; }); })
+        .catch(function () { return { status: 0, j: { error: 'network' } }; });
+    }
+    function say(el, text, err) { el.textContent = text || ''; el.className = 'msg' + (err ? ' err' : ''); }
+    function errText(j) { return ERR[j && j.error] || 'Something went wrong. Please try again later.'; }
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+    function head(box, t) { box.appendChild(el('h3', null, t)); }
+    function quotes(parent, qs) {
+      (qs || []).forEach(function (q) {
+        var b = el('p', 'quote');
+        b.appendChild(el('span', 'q', '“' + q.quote + '”'));
+        if (q.context && q.context.replace(/\W/g, '') !== q.quote.replace(/\W/g, '')) b.appendChild(el('span', 'ctx', ' In its sentence: ' + q.context));
+        parent.appendChild(b);
+      });
+    }
+    function render(res) {
+      var box = $('result'); box.textContent = ''; box.hidden = false;
+      if (!res) return;
+      if (res.refused || res.failed) { box.appendChild(el('p', null, res.message)); return; }
+      if (res.in_short) { head(box, 'In short'); box.appendChild(el('p', 'summary', res.in_short)); }
+      if (res.sync) {
+        var s = res.sync, parts = [];
+        if (s.supported) parts.push(s.supported + ' supported'); if (s.elsewhere) parts.push(s.elsewhere + ' supported elsewhere');
+        if (s.both) parts.push(s.both + ' held both ways'); if (s.contradicted) parts.push(s.contradicted + ' contradicted by the text'); if (s.not_in_text) parts.push(s.not_in_text + ' not in the text');
+        if (s.not_confirmed) parts.push(s.not_confirmed + ' could not be confirmed');
+        head(box, 'Sync');
+        box.appendChild(el('p', null, 'Of your ' + s.sentences + ' sentence' + (s.sentences === 1 ? '' : 's') + ': ' + (parts.join(', ') || 'none checked') + '.' + (s.questions ? ' Questions answered: ' + s.questions + '.' : '') + ' The text makes ' + s.points_of_text + ' main point' + (s.points_of_text === 1 ? '' : 's') + '; your reading does not touch ' + s.points_not_in_reading + '.'));
+        box.appendChild(el('p', 'small', 'Sync counts whether your sentences agree with the text; it does not measure whether your reading is complete.'));
+      }
+      if (res.alignment && res.alignment.length) {
+        head(box, 'Your reading, sentence by sentence');
+        res.alignment.forEach(function (a) {
+          var d = el('div', 'align');
+          var t = el('p'); t.appendChild(el('span', 'badge r-' + a.result, RESULT[a.result] || a.result)); t.appendChild(document.createTextNode(' ' + a.sentence)); d.appendChild(t);
+          if (a.note) d.appendChild(el('p', 'small', a.note));
+          quotes(d, a.quotes); box.appendChild(d);
+        });
+      }
+      if (res.points && res.points.length) {
+        head(box, 'What the text says');
+        res.points.forEach(function (p) {
+          var d = el('div', 'point');
+          var t = el('p'); t.appendChild(el('span', 'badge', p.status === 'stated' ? 'Stated' : 'Reading')); t.appendChild(document.createTextNode(' ' + p.claim)); d.appendChild(t);
+          quotes(d, p.quotes); box.appendChild(d);
+        });
+      }
+      function items(title, arr, f) { if (!arr || !arr.length) return; head(box, title); var ul = el('ul'); arr.forEach(function (x) { var li = el('li', null, f(x)); if (x && x.quote) quotes(li, [x.quote]); if (x && x.quotes) quotes(li, x.quotes); ul.appendChild(li); }); box.appendChild(ul); }
+      items('Definitions', res.definitions, function (x) { return x.term + ': ' + x.definition; });
+      items('How it argues', res.argument, function (x) { return x.step; });
+      items('Distinctions', res.distinctions, function (x) { return x.distinction; });
+      items('What it does not say', res.not_said, function (x) { return x; });
+      items('Where it holds tension', res.tensions, function (x) { return x.tension; });
+      items('Open questions', res.open_questions, function (x) { return x; });
+      var n = el('p', 'small', (res.instructions_in_text_notice ? 'Your text contained passages addressed to an AI tool; they were read as part of the text and not followed. ' : '') + (res.personal_data_notice ? 'Your text seemed to contain personal data about someone; please leave it out next time. ' : '') + 'Generated by a computational system. ' + res.notice);
+      box.appendChild(n);
+    }
+    function showQuota(me) { var q = me.quota && me.quota[TOOL]; if (q) $('quota').textContent = Math.max(0, q.limit - q.used) + ' of ' + q.limit + ' readings left today'; }
+    function signedIn(me) {
+      $('signin').hidden = true; $('askcard').hidden = false; $('keycard').hidden = false; $('account').hidden = false;
+      $('who').textContent = 'Signed in as ' + me.email; showQuota(me);
+      $('key-info').textContent = me.key ? 'Active key: ' + me.key.prefix + '...' : 'No key yet.';
+    }
+    function loadAnswers() {
+      api('/answers?tool=' + TOOL).then(function (r) {
+        var ul = $('answers'); ul.textContent = '';
+        var list = (r.status === 200 && r.j.answers) || [];
+        $('answers-box').hidden = !list.length;
+        list.forEach(function (a) {
+          var li = document.createElement('li');
+          var d = new Date(a.created_at * 1000);
+          li.appendChild(document.createTextNode(d.toLocaleDateString() + ': ' + (a.preview || '') + ' '));
+          var v = el('button', 'btn ghost', 'View'); v.type = 'button';
+          v.addEventListener('click', function () { api('/job/' + a.job_id).then(function (x) { if (x.status === 200) render(x.j.result); }); });
+          var del = el('button', 'btn danger', 'Delete'); del.type = 'button';
+          del.addEventListener('click', function () { api('/job/' + a.job_id, { method: 'DELETE' }).then(function () { $('result').hidden = true; loadAnswers(); }); });
+          li.appendChild(v); li.appendChild(document.createTextNode(' ')); li.appendChild(del); ul.appendChild(li);
+        });
+      });
+    }
+    function refresh() { return api('/me').then(function (r) { if (r.status === 200) { signedIn(r.j); loadAnswers(); } return r; }); }
+
+    $('menu').addEventListener('click', function () { document.querySelector('nav').classList.toggle('open'); });
+    $('text').addEventListener('input', function () { $('count').textContent = this.value.length + ' / 40000'; });
+
+    $('signin-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = $('signin-btn'); btn.disabled = true;
+      api('/signup', { method: 'POST', body: JSON.stringify({ email: $('email').value, consent: $('consent').checked, tool: TOOL }) }).then(function (r) {
+        btn.disabled = false;
+        if (r.status === 200) say($('signin-msg'), 'Check your inbox: the link works once and expires in 15 minutes.');
+        else say($('signin-msg'), errText(r.j), true);
+      });
+    });
+
+    var pollStart = 0;
+    function poll(id) {
+      if (!pollStart) pollStart = Date.now();
+      if (Date.now() - pollStart > 20 * 60 * 1000) { say($('ask-msg'), 'This is taking longer than expected. Please reload the page later.', true); $('ask-btn').disabled = false; pollStart = 0; return; }
+      api('/job/' + id).then(function (r) {
+        if (r.status !== 200) { say($('ask-msg'), errText(r.j), true); $('ask-btn').disabled = false; return; }
+        var j = r.j;
+        if (j.status === 'queued' || j.status === 'running') {
+          say($('ask-msg'), j.status === 'queued' && j.position > 1 ? 'Waiting in line (position ' + j.position + ')...' : 'Reading your text. This takes one to three minutes...');
+          setTimeout(function () { poll(id); }, 4000); return;
+        }
+        pollStart = 0; say($('ask-msg'), ''); render(j.result); $('ask-btn').disabled = false; refresh();
+      });
+    }
+    $('ask-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = $('ask-btn'); btn.disabled = true; $('result').hidden = true;
+      var idem = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random();
+      api('/' + TOOL + '/ask', { method: 'POST', headers: { 'idempotency-key': idem }, body: JSON.stringify({ text: $('text').value, reading: $('reading').value }) }).then(function (r) {
+        if (r.status === 202 || r.status === 200) { say($('ask-msg'), 'Accepted.'); poll(r.j.job_id); }
+        else { btn.disabled = false; say($('ask-msg'), errText(r.j), true); }
+      });
+    });
+
+    $('key-btn').addEventListener('click', function () {
+      api('/key', { method: 'POST', body: '{}' }).then(function (r) {
+        if (r.status === 201) { var o = $('key-out'); o.hidden = false; o.textContent = r.j.key; say($('key-msg'), 'Copy it now: it is shown once. Any previous key no longer works.'); refresh(); }
+        else say($('key-msg'), errText(r.j), true);
+      });
+    });
+    $('logout-btn').addEventListener('click', function () { api('/logout', { method: 'POST', body: '{}' }).then(function () { location.hash = ''; location.reload(); }); });
+    $('del-btn').addEventListener('click', function () { $('del-confirm').hidden = false; });
+    $('del-confirm').addEventListener('click', function () {
+      api('/me/delete', { method: 'POST', body: '{}' }).then(function (r) {
+        if (r.status === 200) { say($('acct-msg'), 'Your account, key and history have been deleted.'); setTimeout(function () { location.reload(); }, 1500); }
+        else say($('acct-msg'), errText(r.j), true);
+      });
+    });
+
+    if (location.hash === '#link-expired') say($('signin-msg'), 'That link has expired or was already used. Request a new one.', true);
+    api('/status').then(function (r) { if (r.status === 200 && r.j.open === false) $('capacity').hidden = false; });
+    refresh();
+  })();
+  </script>
+</body>
+</html>
