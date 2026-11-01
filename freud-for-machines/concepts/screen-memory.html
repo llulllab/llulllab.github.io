@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'self'; form-action 'none'; frame-ancestors 'none'">
+  <title>The screen memory (die Deckerinnerung) in Freud | Freud for Machines glossary | Llull Lab</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="The two texts read are Über Deckerinnerungen (1899) and chapter IV of Zur Psychopathologie des Alltagslebens (1901); in them the name is Freud&#x27;s own coinage of 1899, and on our reading, which is an interpretation, it has two senses.">
+  <link rel="canonical" href="https://llulllab.com/freud-for-machines/concepts/screen-memory.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Llull Lab">
+  <meta property="og:url" content="https://llulllab.com/freud-for-machines/concepts/screen-memory.html">
+  <meta property="og:title" content="The screen memory (die Deckerinnerung) in Freud | Freud for Machines glossary | Llull Lab">
+  <meta property="og:description" content="The two texts read are Über Deckerinnerungen (1899) and chapter IV of Zur Psychopathologie des Alltagslebens (1901); in them the name is Freud&#x27;s own coinage of 1899, and on our reading, which is an interpretation, it has two senses.">
+  <link rel="stylesheet" href="/fonts/gf-d321d810.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+      --bg-card: #141414; --highlight: #a78bfa; --live: #6ee7b7; --prep: #fbbf24; --stop: #f87171;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+    [hidden] { display: none !important; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    nav a.news-hub-link { color: #fcd116; }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .module-tag { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-top: 80px; }
+    .page-hero { padding: 0 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 680px; line-height: 1.75; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; }
+    .page-body { padding: 48px 0 40px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 96px; }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { margin-bottom: 1.1em; max-width: 680px; }
+    .muted { color: var(--accent); }
+    .small { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; }
+    label { display: block; font-family: var(--sans); font-size: 13px; letter-spacing: 0.5px; color: var(--accent); margin: 0 0 6px; }
+    input[type=email], textarea { width: 100%; background: #0b0b0b; color: var(--fg); border: 1px solid var(--border-strong); border-radius: 6px; padding: 12px 14px; font-family: var(--serif); font-size: 16px; line-height: 1.6; }
+    textarea { min-height: 170px; resize: vertical; }
+    textarea.ctx { min-height: 80px; }
+    input:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+    .row { margin-bottom: 18px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-family: var(--sans); font-size: 14px; color: var(--accent); }
+    .check input { margin-top: 5px; }
+    .check a, .page-body a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--bg); background: var(--highlight); border: none; border-radius: 5px; cursor: pointer; }
+    .btn:disabled { opacity: 0.5; cursor: default; }
+    .btn.ghost { background: transparent; color: var(--highlight); border: 1px solid rgba(167,139,250,0.5); }
+    .btn.danger { background: transparent; color: var(--stop); border: 1px solid rgba(248,113,113,0.5); }
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .msg { font-family: var(--sans); font-size: 14px; margin-top: 12px; color: var(--accent); min-height: 1.4em; }
+    .msg.err { color: var(--stop); }
+    .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--sans); font-size: 13px; color: #aaa; margin-bottom: 16px; }
+    .result { margin-top: 24px; }
+    .verdict { display: inline-block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-strong); margin-bottom: 14px; }
+    .verdict.proceed { color: var(--live); border-color: rgba(110,231,183,0.4); }
+    .verdict.proceed_with_conditions { color: var(--prep); border-color: rgba(251,191,36,0.4); }
+    .verdict.do_not_proceed { color: var(--stop); border-color: rgba(248,113,113,0.45); }
+    .verdict.need_more_information { color: var(--highlight); border-color: rgba(167,139,250,0.5); }
+    .result h3 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 22px 0 8px; }
+    .result ul { padding-left: 20px; }
+    .result li { margin-bottom: 6px; color: #ddd; }
+    .result .summary { font-size: 1.08rem; }
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+    pre { background: #0b0b0b; border: 1px solid var(--border); border-radius: 6px; padding: 14px; overflow-x: auto; color: #ddd; line-height: 1.55; white-space: pre; }
+    .keybox { word-break: break-all; white-space: pre-wrap; }
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 64px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+      .entry h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 8px; }
+    .entry h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 40px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .entry h3 { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; margin: 28px 0 10px; }
+    .entry p, .entry li { max-width: 760px; margin-bottom: 0.9em; }
+    .entry ul, .entry ol { padding-left: 22px; }
+    .entry table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 12px 0 20px; display: block; overflow-x: auto; }
+    .entry th, .entry td { border: 1px solid var(--border); padding: 8px 10px; vertical-align: top; text-align: left; }
+    .entry th { font-family: var(--sans); font-weight: 400; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+    .short { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; margin: 24px 0 8px; }
+    .short h2 { margin-top: 0; }
+    .edition { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; max-width: 760px; }
+    .toc a, .entry a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .idx { list-style: none; padding: 0; }
+    .idx li { border-top: 1px solid var(--border); padding: 18px 0; max-width: 820px; }
+    .idx li a { font-size: 1.2rem; }
+    .idx .de { color: var(--muted); font-family: var(--sans); font-size: 13px; margin-left: 6px; }
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "DefinedTerm", "name": "The screen memory (die Deckerinnerung)", "description": "The two texts read are Über Deckerinnerungen (1899) and chapter IV of Zur Psychopathologie des Alltagslebens (1901); in them the name is Freud's own coinage of 1899, and on our reading, which is an interpretation, it has two senses.", "url": "https://llulllab.com/freud-for-machines/concepts/screen-memory.html", "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "Freud for Machines glossary", "url": "https://llulllab.com/freud-for-machines/concepts/"}}</script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/en/" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" type="button" id="menu">Menu</button>
+      <nav>
+        <a href="/en/about.html">About</a>
+        <a href="/en/people.html">Team</a>
+        <a href="/en/research.html" class="active">Research</a>
+        <a href="/en/studio.html">Studio</a>
+        <a href="/en/press.html">Press</a>
+        <a href="/en/updates.html">Updates</a>
+        <a href="/ai-robotics/" class="news-hub-link">News Hub</a>
+        <a href="/machines/">For Machines</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="module-tag">Freud for Machines · Glossary</div>
+    <div class="page-body entry">
+      <h1>The screen memory <span class="de">(die Deckerinnerung)</span></h1>
+      <p class="edition">In Freud's texts. <a href="#entry">Entry</a> · <a href="#long">Long entry</a> · <a href="/freud-for-machines/concepts/">All entries</a> · <a href="/freud-for-machines/">Ask the research tool</a></p>
+      <div class="short">
+      <h2>In brief</h2>
+<p>The two texts read give "Deckerinnerung" one definition and one generalised application. We count these as two senses, and that count is our interpretation [ii].</p>
+<p>Sense 1 is a memory retained not for its own content but for that content's relation to another, suppressed or repressed content: «Der Begriff einer Deckerinnerung als einer solchen, die ihren Gedächtniswert nicht dem eigenen Inhalt, sondern dessen Beziehung zu einem anderen unterdrückten Inhalt verdankt» [GW I:551].</p>
+<p>Sense 2 applies the existing term to childhood memories in general, on the ground that they are later elaborations of the trace: «Die „Kindheitserinnerungen" der Individuen rücken so ganz allgemein zur Bedeutung von „Deckerinnerungen" vor» [GW IV:56]. GW IV:56 does not define the term anew.</p>
+<p>The dated line runs from 1899 to 1901. In 1899 the term is coined, and the generalising thought appears without the term. In 1901 the term is applied to the generalisation, and the temporal classes are expanded.</p>
+<p>A reader must not miss two points. First, Freud marks the 1901 generalisation as resting on a «Vermutung» [GW IV:56]. Second, the same chapter leaves open how large a share of the whole store of memory belongs to the category [GW IV:52].</p>
+      </div>
+      <h2 id="entry">Entry</h2>
+<p>The two texts read are Über Deckerinnerungen (1899) and chapter IV of Zur Psychopathologie des Alltagslebens (1901); in them the name is Freud's own coinage of 1899, and on our reading, which is an interpretation, it has two senses. The first is a memory retained not for its own content but for that content's relation to another, suppressed or repressed content; the second is not a new definition but the 1901 application of the existing term to childhood memories in general, on the ground that they are later elaborations of the memory trace, a thought whose substance already closes the 1899 essay without the term. The first sense has a dated line in 1899: the term is announced at GW I:533, and the relational criterion is first stated at GW I:536, before the term is defined, for a first mechanism, repression with replacement by something neighbouring within one experience [GW I:537]; the term is then defined twice, first in a narrower form fitted to the dandelion case, as a memory standing for later impressions through symbolic relations [GW I:546], which does not fit that first mechanism, and then in general relational form [GW I:551], which restates the criterion and takes in the first class only conditionally; the 1901 chapter restates the criterion [GW IV:51]. Both senses are Freud's own, and others supply only parts: he accepts, with a correction of wording, a report by a respondent of V. and C. Henri that anticipates part of the phenomenon, notes that the Henris' respondents stress the self-seen figure he observes himself, and in 1901 draws on Charcot's division of rememberers into visual, auditory and motor types; in the 1899 dialogue Freud describes his own share in the dandelion analysis as small, saying his partner found the rest [GW I:542], yet key interpretations stand in Freud's voice and others, such as the deflowering reading, in the interlocutor's, and the word "Gesetz" (law) occurs only in the interlocutor's mouth [GW I:548], where Freud's own lines speak of more general grounds [GW I:547], a difference held as a tension. Both senses are kept within the pages read, which say nothing about later works; within the first sense the 1901 pages expand the temporal kinds from two to three, the 1899 positive and negative screen memories (or "defiance memories") are not found in the 1901 pages, and the 1899 text does not say which of its names, retrograde or anticipatory, goes with which temporal relation [GW I:551], so that although the 1901 chapter reports that the analysed kind, early content standing for later thoughts, was called retrograde [GW IV:52], reading that back into 1899 is a conjecture, the reading by order of mention would conflict with that report, and the point is held as a tension. The senses coexist in both texts without either replacing the other, and on our reading they are linked by the shared terms repression and replacement [GW I:537; GW I:553]; reading them as one model of later shaping is our conjecture, and they are counted apart because their grounds and scope differ and, for 1901 only, because Freud there marks the second as resting on a «Vermutung» [GW IV:56]. The inference behind the second sense, from seeing oneself from outside to a reworking of the scene, is claimed as «einen Beweis» [GW I:552] in 1899, where the "perhaps" concerns only whether we have conscious childhood memories at all, but leads to a conjecture in 1901, and these two statuses are held in tension with their dates; the 1901 question of how large a share of the whole store of memory belongs to screen memories [GW IV:52] is, on our reading, about all memory and so does not conflict with GW IV:56, which speaks only of childhood memories. A reader must not confuse the two senses with each other, nor screen memories with substitute names in name forgetting, which share the mechanism but are known to be false while the screen memory is a lasting possession, nor with retained childhood memories that simply show the child's own interest, nor read «deckt sich» at GW I:549, which means "coincides", as "covers". Nor should childhood memories be taken as fantasies or screen memories as false: in 1899 Freud defends the dandelion scene's authenticity on the ground of unresolved residue [GW I:549], in a role he says he must play [GW I:548], and on our reading this fits his statements that memory has no guarantee [GW I:546] and that the process certainly produces falsifications [GW I:549], since neither excludes a genuine scene, and his concession grants that this scene is genuine and was selected [GW I:546]; in 1901 no occasion was found to dispute the m/n memory [GW IV:57], such scenes may prove «wahr oder [...] verfälscht» [GW IV:56], and both texts reject simple unfaithfulness of memory as the cause of falsified childhood memories, an exclusion whose extension to screen memories is our interpretation.</p>
+<p><strong>Senses.</strong>
+1. The relational substitute memory (1899 to 1901): a memory retained for its relation to another, suppressed or repressed content rather than for its own content, with the criterion first stated at GW I:536 and the term defined at GW I:546 and GW I:551.
+2. Childhood memories in general as later formations (substance 1899, term 1901): the earliest childhood memories taken as later elaborations of the trace and so given the significance of screen memories, with the inference behind this called a proof in 1899 and a conjecture in 1901.</p>
+<p><strong>Where to read.</strong>
+- GW I:531-554 (Über Deckerinnerungen, 1899)
+- GW I:536 (Über Deckerinnerungen, 1899)
+- GW I:546 (Über Deckerinnerungen, 1899)
+- GW I:551 (Über Deckerinnerungen, 1899)
+- GW IV:51-60 (Zur Psychopathologie des Alltagslebens, chapter IV, Über Kindheits- und Deckerinnerungen, 1901)
+- GW IV:56 (Zur Psychopathologie des Alltagslebens, chapter IV, Über Kindheits- und Deckerinnerungen, 1901)</p>
+      <p class="edition">The entry is drawn from the long entry below, which gives each sense with Freud's words, dates and pages.</p>
+      <h2 id="long">Long entry</h2>
+<h2>The senses</h2>
+<p>We count two senses, and this count is an interpretation [ii]. The texts give one definition of the term, by a relation to a covered content [GW I:551; GW IV:51]. A narrower, case-bound form of it appears at GW I:546.</p>
+<p>GW IV:56 does not redefine the term. It characterises the earliest childhood memories as later elaborations of the trace. Then, with the word «so», it carries them over to the significance of screen memories.</p>
+<p>We treat this generalised application as a second sense for three reasons [ii]. Its ground differs: later elaboration, not a relation to a specific covered content. Its scope differs. Freud also gives it the status of a conjecture.</p>
+<h3>Sense 1: The relational substitute memory (1899 to 1901)</h3>
+<p><strong>In Freud's words.</strong>
+- «Unverständlich erscheint sie uns, weil wir den Grund ihrer Gedächtniserhaltung gern aus ihrem eigenen Inhalt ersehen möchten, während er doch in der Beziehung dieses Inhalts zu einem anderen, unterdrückten Inhalt ruht.» [GW I:536] (it seems unintelligible to us because we would like to see the ground of its retention in its own content, whereas that ground rests in the relation of this content to another, suppressed content).
+- «Der Begriff einer Deckerinnerung als einer solchen, die ihren Gedächtniswert nicht dem eigenen Inhalt, sondern dessen Beziehung zu einem anderen unterdrückten Inhalt verdankt» [GW I:551] (the concept of a screen memory as one that owes its memory value not to its own content but to the relation of that content to another, suppressed content).
+- «Da sie ihre Erhaltung nicht dem eigenen Inhalt, sondern einer assoziativen Beziehung ihres Inhalts zu einem anderen, verdrängten, verdanken, haben sie auf den Namen „Deckerinnerungen", mit welchen ich sie ausgezeichnet habe, begründeten Anspruch.» [GW IV:51] (since they owe their preservation not to their own content but to an associative relation of their content to another, repressed one, they have a well-founded claim to the name "screen memories" with which I marked them out).</p>
+<p><strong>What it means.</strong> A screen memory is one term of a two-term relation, «zwischen Deckendem und Gedecktem» [GW I:551] (between the covering and the covered). Its puzzle is retention: «bei den Deckerinnerungen verwundern wir uns, daß wir sie überhaupt besitzen» [GW IV:53] (with screen memories we are surprised that we possess them at all).</p>
+<p>Freud calls the «Hauptcharakter» (main character) of screen memories «große Gedächtnisfähigkeit bei völlig gleichgültigem Inhalt» [GW I:551] (great memorability with completely indifferent content). We read this main character as a mark by which a screen memory shows itself, not as its definition. The reason is that the definition in the same passage names the relation to a suppressed content, not indifference [ii].</p>
+<p>The 1899 text gives two formation mechanisms.
+- The first is substitution within one experience: «eine Verdrängung mit Ersetzung durch etwas Benachbartes (im örtlichen und zeitlichen Zusammenhange)» [GW I:537] (a repression with replacement by something neighbouring, in spatial and temporal connection). It results from a compromise between a force that wants to remember and a resistance [GW I:536].
+- The second is introduced with the remark that the formation of indifferent childhood memories «noch anders zugehen kann» [GW I:538] (can also proceed otherwise). It is shown in the dandelion case, where a later fantasy settles into a childhood trace that offers «Berührungspunkte» [GW I:549] (points of contact).</p>
+<p>The 1901 text names the mechanism as «Verschiebung längs einer oberflächlichen Assoziation» [GW IV:53] (displacement along a superficial association). One case is called a «Wortbrücken» case: «Das Aufbinden des Rockes ist aber eine Deckerinnerung für die Entbindung.» [GW IV:58] (the tying-up of the skirt is a screen memory for the delivery).</p>
+<p><strong>When and where.</strong> The relational criterion is stated first at GW I:536, for the substitute memory of the first mechanism. At that point the word "Deckerinnerung" has been announced but not yet defined. The term is announced as «der von mir so genannten „Deckerinnerungen“» [GW I:533] (what I have called "screen memories"). It is defined twice in the 1899 essay.</p>
+<ul>
+<li>The first definition is fitted to the dandelion case. It speaks of a memory that «im Gedächtnisse Eindrücke und Gedanken späterer Zeit vertritt», linked «durch symbolische und ähnliche Beziehungen» [GW I:546] (stands in memory for impressions and thoughts of a later time, linked by symbolic and similar relations).</li>
+<li>The second definition is general and relational [GW I:551]. It restates the criterion of GW I:536 and attaches the term to it.</li>
+</ul>
+<p>The 1899 essay sorts screen memories in two ways:
+- by the temporal relation between covering and covered: «rückläufige oder [...] vorgreifende» [GW I:551] (retrograde or anticipatory);
+- by the content relation: «positive und negative Deckerinnerungen (oder Trutzerinnerungen)» [GW I:551] (positive and negative screen memories, or "defiance memories").</p>
+<p>It also foresees screen memories «aus den Gedächtnisresten der späteren Lebenszeiten» [GW I:551] (from the memory residues of later periods of life).</p>
+<p>In 1901 the definition opens on «Die indifferenten Kindheitserinnerungen» [GW IV:51] (the indifferent childhood memories). The temporal kinds then become three:
+- «rückgreifende oder rückläufige» [GW IV:52] (reaching back, or retrograde);
+- «vorgreifende oder vorgeschobene Deckerinnerungen» [GW IV:52] (anticipatory or pushed-forward screen memories);
+- «die gleichzeitige oder anstoßende Deckerinnerung» [GW IV:52] (the simultaneous or adjoining screen memory).</p>
+<p>The positive and negative distinction is not found in GW IV:51-60. Across both texts, the ground of retention stays the same: the relation to another content, not the memory's own content.</p>
+<p><strong>Freud's own or taken over.</strong> The name is Freud's, as both texts say [GW I:533; GW IV:51]. Part of the phenomenon is anticipated by a respondent of V. and C. Henri: incompletely retained scenes whose forgotten parts held what was memorable [GW I:535]. Freud accepts this but corrects the wording: «nur würde ich es vorziehen, anstatt „vergessene Elemente des Erlebnisses“ „weggelassene“ zu sagen» [GW I:535] (only I would prefer to say "left-out" instead of "forgotten elements of the experience").</p>
+<p>In the 1899 dialogue Freud describes his own share in the dandelion analysis as small: «das übrige fand mein Partner, der kein Neuling in solchen Arbeiten war, von selbst» [GW I:542] (the rest my partner, who was no novice at such work, found by himself). That is Freud's own account. The dialogue itself gives several key interpretations to Freud's voice.
+- One is the reading of the flowers thrown away for bread: «Die Blumen wegwerfen, um ein Brot dafür einzutauschen, scheint mir keine üble Verkleidung für die Absicht, die Ihr Vater mit Ihnen hatte.» [GW I:545] (throwing away the flowers to get bread in exchange seems to me no bad disguise for the intention your father had for you).
+- Another is the summary «So ist es; die beiden Phantasien aufeinander projiziert und eine Kindheitserinnerung daraus gemacht.» [GW I:546] (so it is; the two fantasies projected onto each other and made into a childhood memory).</p>
+<p>Other readings, such as the deflowering reading, are voiced by the interlocutor [GW I:546-547].</p>
+<p><strong>Abandoned or kept.</strong> Kept within the pages read. The 1901 chapter restates the naming criterion [GW IV:51]. It says the earlier essay had treated the variety of screen memories «nur gestreift, keineswegs erschöpft» [GW IV:52] (only touched on, by no means exhausted). The texts read do not say anything about later works.</p>
+<p><strong>Not to be confused with.</strong>
+- <em>Retained childhood memories that simply show the child's own interest.</em> The dolls example [GW I:534] is not presented as a screen memory. It stands with the claim that retained childhood memories testify «auf welche Eindrücke sich das Interesse des Kindes zum Unterschiede von dem des Erwachsenen gerichtet hat» [GW I:534] (to which impressions the child's interest, as distinct from the adult's, was directed).
+- <em>Substitute names in name forgetting.</em> Of these «wissen wir, daß die Ersatznamen falsch sind» [GW IV:53] (we know that the substitute names are false). The mechanism is shared, but the screen memory is a lasting possession [GW IV:53].
+- <em>Simple unfaithfulness of memory as the cause of falsification.</em> Both texts reject this explanation for falsified or erroneous childhood memories. The 1899 text says «Einfache Untreue der Erinnerung spielt gerade hier [...] keine erhebliche Rolle» [GW I:553] (simple unfaithfulness of memory plays no considerable role precisely here). The 1901 text says «daß nicht einfache Gedächtnisuntreue die Ursache dieser Erinnerungsfehler sein kann» [GW IV:55] (that simple unfaithfulness of memory cannot be the cause of these memory errors). These passages speak of falsified childhood memories, not of screen memories as such. Extending the point to screen memories is an interpretation [ii].
+- <em>The reflexive verb in «Die Phantasie deckt sich also nicht ganz mit der Kindheitsszene» [GW I:549].</em> Here "sich decken" means "to coincide", not "to cover".</p>
+<h3>Sense 2: Childhood memories in general as later formations (substance 1899, term 1901)</h3>
+<p><strong>In Freud's words.</strong>
+- «Unsere Kindheitserinnerungen zeigen uns die ersten Lebensjahre, nicht wie sie waren, sondern wie sie späteren Erweckungszeiten erschienen sind.» [GW I:553] (our childhood memories show us the first years of life not as they were but as they appeared to later times of awakening).
+- «Man wird so von verschiedenen Seiten her zur Vermutung gedrängt, daß wir in den sogenannten frühesten Kindheitserinnerungen nicht die wirkliche Erinnerungsspur, sondern eine spätere Bearbeitung derselben besitzen» [GW IV:56] (one is thus pushed from various sides to the conjecture that in the so-called earliest childhood memories we possess not the real memory trace but a later elaboration of it).
+- «Die „Kindheitserinnerungen" der Individuen rücken so ganz allgemein zur Bedeutung von „Deckerinnerungen" vor» [GW IV:56] (the "childhood memories" of individuals thus advance quite generally to the significance of "screen memories").</p>
+<p><strong>What it means.</strong> Childhood memories in general are characterised as formed or worked over at a later time. They are not direct deposits of the childhood experience. The argument in both texts runs as follows:
+1. In childhood scenes one sees oneself from outside.
+2. In the original situation the child attended to the external world.
+3. Therefore the scene has been reworked: «daß der ursprüngliche Eindruck eine Überarbeitung erfahren hat» [GW I:552] (that the original impression has undergone a reworking). The 1901 text draws the same inference [GW IV:56].</p>
+<p>The two texts give this inference a different status. In 1899 the self-seen figure is claimed as proof: «darf man diese Gegenüberstellung des handelnden und des erinnernden Ichs als einen Beweis dafür in Anspruch nehmen, daß der ursprüngliche Eindruck eine Überarbeitung erfahren hat» [GW I:552] (one may claim this opposition of the acting and the remembering self as a proof that the original impression has undergone a reworking). The 1899 doubt, «Vielleicht ist es überhaupt zweifelhaft» [GW I:553] (perhaps it is altogether doubtful), concerns the wider question whether we have conscious memories from childhood at all. In 1901 the same inference ends in a conjecture: one is «zur Vermutung gedrängt» [GW IV:56] (pushed to the conjecture).</p>
+<p>This sense does not say that childhood memories are false. Such scenes may prove «ob sie sich nun als wahr oder als verfälscht erweisen» [GW IV:56] (whether they turn out true or falsified).</p>
+<p><strong>When and where.</strong> The substance appears at the close of the 1899 essay. There Freud says that childhood memories were not «aufgetaucht» but «sie sind damals gebildet worden» [GW I:554] (did not emerge, but were formed then).</p>
+<p>In the 1899 pages, however, the word "Deckerinnerung" is not applied to childhood memories in general. GW I:553 does not say that all childhood memories are screen memories. It says only that the distance between screen memories and other childhood memories shrinks in our estimation.</p>
+<p>The term is applied to childhood memories in general only in 1901 [GW IV:56]. There the step is also linked to an analogy with the childhood memories of peoples in sagas and myths [GW IV:56].</p>
+<p><strong>Freud's own or taken over.</strong> The generalisation is Freud's, as the pages show. The supporting observation, that one sees oneself as a child from outside, is made by Freud himself at GW I:552. He adds that the Henris point to their respondents' emphasis on it: «Die Henri versäumen nicht aufmerksam zu machen, daß viele ihrer Gewährspersonen diese Eigentümlichkeit der Kinderszenen ausdrücklich hervorheben.» [GW I:552] (the Henris do not fail to point out that many of their respondents expressly emphasise this peculiarity of childhood scenes).</p>
+<p>The 1901 argument also uses Charcot's proposal to divide people who remember into visual, auditory and motor types [GW IV:55-56]. Freud's own claim built on it is that childhood memories are visual even in people whose later remembering is not [GW IV:56].</p>
+<p><strong>Abandoned or kept.</strong> It is kept from 1899 to 1901. That it is strengthened in 1901 by being given the term is our interpretation, resting on the contrast between GW IV:56 and the 1899 pages [ii]. In both texts, hedged statements stand beside categorical ones.
+- In 1899 Freud writes «Vielleicht ist es überhaupt zweifelhaft» [GW I:553] (perhaps it is altogether doubtful), and soon after, categorically, «sie sind damals gebildet worden» [GW I:554] (they were formed then).
+- In 1901 he speaks of being «zur Vermutung gedrängt» [GW IV:56] (pushed to the conjecture). He also states without hedge: «Starke Mächte aus der späteren Lebenszeit haben die Erinnerungsfähigkeit der Kindheitserlebnisse gemodelt» [GW IV:55] (strong powers from later life have shaped the capacity to remember childhood experiences).</p>
+<p>The texts read say nothing about any later fate.</p>
+<p><strong>Not to be confused with.</strong>
+- <em>Sense 1.</em> Sense 2 is not defined by a relation to a specific suppressed content. It applies the existing term to childhood memories in general on the ground of their later elaboration [GW IV:56]. It is not to be confused either with the open question at GW IV:52, which concerns the share of screen memories in the whole store of memory, «Ein wie großer Teil unseres Gedächtnisschatzes in die Kategorie der Deckerinnerungen gehört» [GW IV:52] (how large a part of our store of memory belongs to the category of screen memories).
+- <em>A thesis that childhood memories are fantasies.</em> In 1899 Freud defends the dandelion scene's authenticity on the ground of unresolved residue [GW I:549]. He frames that defence as a role he takes up: «Nun muß ich aber den Verteidiger der Echtheit spielen.» [GW I:548] (now I must play the defender of authenticity). In 1901, of the m/n memory: «Es fand sich kein Anlaß, die Zuverlässigkeit dieser Kindheitserinnerung zu bestreiten» [GW IV:57] (no occasion was found to dispute the reliability of this childhood memory).</p>
+<h2>How the senses relate</h2>
+<p>In both texts, sense 2 comes after the treatment of sense 1. In both, it follows the argument from seeing oneself from outside.</p>
+<p>In 1899 the premise is stated as «Man befand sich ja mitten in der Situation und achtete nicht auf sich, sondern auf die Außenwelt.» [GW I:552] (one was in the middle of the situation and attended not to oneself but to the external world). The inference to a reworking follows on the same page, where it is claimed as «einen Beweis» [GW I:552] (a proof). The 1901 chapter draws the same inference, but as a conjecture: «zur Vermutung gedrängt» [GW IV:56] (pushed to the conjecture).</p>
+<p>In 1899 a second argument follows. Some childhood memories of important events, when checked (for example against what adults remember), turn out to be falsified. Their falsifications are tendentious: «daß sie den Zwecken der Verdrängung und Ersetzung von anstößigen oder unliebsamen Eindrücken dienen» [GW I:553] (that they serve the purposes of repression and replacement of objectionable or unwelcome impressions). This argument rests on memories checked in this way, not on the dandelion analysis. It too is stated without hedge: «eingehende Untersuchung zeigt vielmehr, daß solche Erinnerungsfälschungen tendenziöse sind» [GW I:553] (detailed investigation shows, rather, that such falsifications of memory are tendentious). The same pair of terms, repression and replacement, names the first mechanism of sense 1 [GW I:537]. That shared vocabulary is a link between the two senses [ii].</p>
+<p>The two texts differ only in particular points of the route and in the status given to the inference [ii].
+- Charcot's typology of rememberers appears only in the 1901 pages [GW IV:55-56].
+- The check against adults' memory appears only in the 1899 pages [GW I:553]. The 1901 chapter states falsification as a result of analytic examination [GW IV:55].
+- In 1899 the inference from the self-seen figure is called a proof [GW I:552]. In 1901 it leads to a conjecture [GW IV:56].</p>
+<p>The two senses coexist in both texts, and neither replaces the other. In 1901 the naming of indifferent childhood memories as screen memories at GW IV:51 and the general statement at GW IV:56 stand in the same chapter.</p>
+<p>The two senses can be read as one model, in which every childhood memory is shaped later by something other than its own content [iii]. They are counted as two here for three reasons [ii].
+1. Their grounds differ. Sense 1 is a definition of the term by a relation to a suppressed or repressed content [GW I:551; GW IV:51]. Sense 2 is not a second definition. It is a characterisation of the earliest childhood memories as later elaborations of the trace, which then leads to applying the term to them [GW IV:56].
+2. Their scope differs.
+3. In 1901, Freud gives sense 2 the explicit status of a conjecture [GW IV:56]. This reason holds for 1901 only. In 1899 the same inference is claimed as «einen Beweis» [GW I:552], and the 1899 doubt, «Vielleicht ist es überhaupt zweifelhaft» [GW I:553], attaches only to the wider question whether we have conscious memories from childhood at all.</p>
+<p>Within sense 1, the 1899 classes and the 1901 classes overlap but are not identical.
+- The 1899 first mechanism uses contiguity within one experience [GW I:537].
+- The 1901 third kind uses «Kontiguität in der Zeit» [GW IV:52] (contiguity in time).</p>
+<p>Whether these name the same class is not stated [iii].</p>
+<h2>Tensions held</h2>
+<p><strong>Scope of the 1899 term.</strong> RECONNECT. The case definition covers later content represented through symbolic relations [GW I:546]. The first mechanism, where substitute and substituted belong to the same experience, does not fit it. The relational criterion itself was first stated for that mechanism, at GW I:536. What enters only conditionally at GW I:551 is the term, not the criterion: «wenn wir nämlich die unvollständige und durch diese Unvollständigkeit harmlose Infantilszene mit unter den Begriff der Deckerinnerung fallen lassen» [GW I:551] (if, that is, we let the incomplete scene, harmless through its incompleteness, fall under the concept of the screen memory).</p>
+<p><strong>Scope of the term in 1901.</strong> RECONNECT. GW IV:51 says that «Die indifferenten Kindheitserinnerungen» [GW IV:51] owe their existence to displacement and have a well-founded claim to the name. It names them as screen memories, but it does not restrict the term to them. So the anticipatory kind on the next page extends the term without contradicting GW IV:51. That kind is a recent impression: «daß ein indifferenter Eindruck der jüngsten Zeit sich als Deckerinnerung im Gedächtnis festsetzt» [GW IV:52] (that an indifferent impression of the most recent time settles in memory as a screen memory).</p>
+<p>GW IV:52 leaves open «Ein wie großer Teil unseres Gedächtnisschatzes in die Kategorie der Deckerinnerungen gehört» [GW IV:52]. That is a question about the whole store of memory. GW IV:56 speaks only of childhood memories, which «ganz allgemein» take on the significance of screen memories. Read this way, the statements do not conflict [ii]. The chapter itself does not relate them to each other.</p>
+<p><strong>The temporal names.</strong> HOLD TENSION, with a CONJECTURE for 1899. The 1899 essay describes both temporal relations in the sentence before it names them: «Ein Teil dieser Deckerinnerungen mit später erlebtem Inhalt verdankt seine Bedeutung der Beziehung zu unterdrückt gebliebenen Erlebnissen der frühen Jugend, also umgekehrt wie in dem von mir analysierten Falle, in dem eine Kindererinnerung durch später Erlebtes gerechtfertigt wird.» [GW I:551] (some of these screen memories with later-experienced content owe their significance to the relation to experiences of early youth that have remained suppressed; this is the reverse of the case I analysed, in which a childhood memory is justified by later experience). It then names the classes by «das eine oder das andere zeitliche Verhältnis» [GW I:551] (the one or the other temporal relation). It does not say which name goes with which relation.</p>
+<p>The 1901 text reports that the analysed example, early content standing for later thoughts, was called «rückgreifende oder rückläufige» [GW IV:52]. Reading that assignment back into the 1899 sentence is a conjecture, not a statement of the 1899 text [iii]. A second possible reading would match the names to the relations in the order in which the relations are mentioned. That reading would make the analysed case "vorgreifend", which conflicts with the 1901 report [iii]. So no mapping can be read off the 1899 page. Two further points:
+- In 1901, "rückgreifend" names a kind of «Verschiebung» (displacement), while "vorgreifend" names a kind of screen memory [GW IV:52].
+- Of the 1901 pair «rückgreifende oder rückläufige» [GW IV:52], only «rückläufige» occurs in the 1899 sentence [GW I:551].</p>
+<p><strong>Authenticity.</strong> RECONNECT for both texts [ii].</p>
+<p>In 1899 Freud writes «Für die Angaben unseres Gedächtnisses gibt es überhaupt keine Garantie.» [GW I:546] (for the statements of our memory there is no guarantee at all). He then grants authenticity: «Ich will Ihnen aber zugeben, daß die Szene echt ist; dann haben Sie sie aus unzählig viel ähnlichen oder anderen hervorgesucht» [GW I:546] (but I will grant you that the scene is genuine; then you picked it out from countless similar or other ones). When the interlocutor goes further, Freud frames his defence as a role: «Nun muß ich aber den Verteidiger der Echtheit spielen. Sie gehen zu weit.» [GW I:548] (now I must play the defender of authenticity; you go too far). The defence ends with «Das spricht für die Echtheit der Kindheitserinnerung.» [GW I:549] (that speaks for the authenticity of the childhood memory).</p>
+<p>Alongside the defence he holds falsifications certain: «Sehr wohl möglich, daß bei diesem Prozeß auch die Kinderszene selbst Veränderungen unterliegt; ich halte es für sicher, daß auf diesem Wege auch Erinnerungsfälschungen zustande gebracht werden.» [GW I:549] (it is quite possible that the childhood scene itself undergoes changes in this process; I hold it certain that falsifications of memory are also produced in this way). For the dandelion scene itself he gives only a hedged judgement on the same page: here the scene seems only to have been embellished, in his word "ziseliert" [GW I:549].</p>
+<p>These 1899 statements are compatible [ii]. The lack of a guarantee and the certainty that the process produces falsifications do not exclude evidence that a particular scene is genuine. The concession at GW I:546 itself states how the two fit together for this case: the scene is genuine and was selected. The role framing at GW I:548 marks the defence as a stance Freud takes up in the dialogue, but it does not make his statements contradict each other. How much of the scene is original is not settled in the pages read; that is an open point, not a conflict.</p>
+<p>In 1901 the general verdict is that for retained memories «daß eine Gewähr für die Richtigkeit derselben nicht besteht» [GW IV:55] (that there is no guarantee of their correctness). He adds: «Einige der Erinnerungsbilder sind sicherlich gefälscht, unvollständig oder zeitlich und räumlich verschoben.» [GW IV:55] (some of the memory images are certainly falsified, incomplete, or displaced in time and space). Of the m/n memory, by contrast, he writes: «Es fand sich kein Anlaß, die Zuverlässigkeit dieser Kindheitserinnerung zu bestreiten» [GW IV:57] (no occasion was found to dispute the reliability of this childhood memory).</p>
+<p>These 1901 statements are compatible in the same way. The lack of a general guarantee and the certain falsification of some images do not exclude a screen memory whose reliability is not disputed. The formula «wahr oder [...] verfälscht» [GW IV:56] (true or falsified) allows this case. The text implies this reconciliation but does not state it [ii].</p>
+<p><strong>Proof in 1899, conjecture in 1901.</strong> HOLD TENSION. The two texts give the same inference a different status. In 1899 the opposition of the acting and the remembering self is claimed as «einen Beweis» [GW I:552] (a proof) that the original impression was reworked. The falsification argument is stated without hedge: «eingehende Untersuchung zeigt vielmehr, daß solche Erinnerungsfälschungen tendenziöse sind» [GW I:553]. The 1899 «Vielleicht» (perhaps) at GW I:553 attaches only to the wider question whether we have conscious memories from childhood at all. It is followed by the categorical «sie sind damals gebildet worden» (they were formed then) at GW I:554. In 1901 the same inference ends in a conjecture: one is «zur Vermutung gedrängt» [GW IV:56] (pushed to the conjecture). Both statuses stand in the pages read, each with its date.</p>
+<p><strong>Terms for the covered content.</strong> Not stated in the pages read. The pages show no conflict, only several terms whose relation is not defined. In 1899 the covered content is called:
+- «unterdrückten» (suppressed) [GW I:551];
+- in Freud's line, «verdrängten Gedanken und Wünschen» (repressed thoughts and wishes), which flee into childhood memories [GW I:547];
+- in Freud's reply, «Unbewußte Gedanken, welche die bewußten fortsetzen.» (unconscious thoughts that continue the conscious ones) [GW I:547];
+- in the interlocutor's line, «der unbewußt gebliebene Satz» (the sentence that remained unconscious) [GW I:548].</p>
+<p>The 1899 process is called «Verdrängung» (repression) [GW I:537]. So the 1899 pages already use "verdrängt" for the covered content. In 1901 the covered content is called:
+- «verdrängten» (repressed) [GW IV:51];
+- «fast unbewußt geblieben» (having remained almost unconscious) [GW IV:52];
+- the object of «Vergessen» (forgetting) [GW IV:53].</p>
+<p>No page read defines these terms against each other, so they are neither equated nor separated here.</p>
+<p><strong>"Harmlos" and "indifferent".</strong> RECONNECT for the 1899 pair [ii]; otherwise not stated in the pages read.
+- The one apparent conflict in 1899 sets the dandelion memory, which «Man kann sie nicht mehr eine harmlose nennen» [GW I:546] (one can no longer call harmless), against the main character of screen memories, «große Gedächtnisfähigkeit bei völlig gleichgültigem Inhalt» [GW I:551] (great memorability with completely indifferent content). The two fit together once the indifference is taken as a feature of the content and the harmlessness as only apparent. The text says this in general terms: «daß sich hinter ihrer scheinbaren Harmlosigkeit eine ungeahnte Fülle von Bedeutung zu verbergen pflegt» [GW I:538] (that behind their apparent harmlessness an unsuspected wealth of meaning is usually hidden).
+- Harmlessness has two different roles in 1899, which are distinct but do not conflict. Banality results from the omission of what is important: «sie wird darum leicht banal ausfallen» [GW I:536] (it will therefore easily turn out banal). Freud also suggests, with a "perhaps", that harmlessness may be the reason a childhood scene is chosen as a hiding place: «Vielleicht gerade der Harmlosigkeit zuliebe.» [GW I:547] (perhaps precisely for the sake of harmlessness).
+- In 1901, the definition speaks of indifference [GW IV:51]. The Kasten scene is characterised instead as senseless, a memory «die vorher keinen Sinn zu enthalten schien» [GW IV:58] (which previously seemed to contain no sense). The pages do not say whether "indifferent" and "senseless" name the same mark.</p>
+<p><strong>Who says what in 1899.</strong> HOLD TENSION. The word "Gesetz" (law) occurs only in the interlocutor's mouth: «nach einem geltenden Gesetz, wie Sie sagen» [GW I:548] (according to a valid law, as you say). The matching statement in Freud's own lines speaks of «allgemeinere Gründe» [GW I:547] (more general grounds).</p>
+<p><strong>"Verschiebung" in 1901.</strong> Not stated in the pages read. The word names the process that produces a substitute [GW IV:51]. It also describes details of a memory image that are «zeitlich und räumlich verschoben» [GW IV:55] (displaced in time and space). The text does not say whether these are one process, and no passage sets the two uses against each other.</p>
+<h2>Key passages</h2>
+<table>
+<thead>
+<tr>
+<th>German (verbatim)</th>
+<th>Anchor</th>
+<th>Our rendering</th>
+<th>What it establishes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«von denen aus ich zur Einführung der von mir so genannten „Deckerinnerungen“ gelangen kann»</td>
+<td>GW I:533</td>
+<td>from which I can arrive at introducing what I have called "screen memories"</td>
+<td>The term is Freud's coinage (1899).</td>
+</tr>
+<tr>
+<td>«Ich würde eine solche Erinnerung, deren Wert darin besteht, daß sie im Gedächtnisse Eindrücke und Gedanken späterer Zeit vertritt, deren Inhalt mit dem eigenen durch symbolische und ähnliche Beziehungen verknüpft ist, eine Deckerinnerung heißen.»</td>
+<td>GW I:546</td>
+<td>I would call such a memory, whose value lies in standing in memory for impressions and thoughts of a later time whose content is linked with its own by symbolic and similar relations, a screen memory.</td>
+<td>The first, case-bound definition.</td>
+</tr>
+<tr>
+<td>«Der Begriff einer Deckerinnerung als einer solchen, die ihren Gedächtniswert nicht dem eigenen Inhalt, sondern dessen Beziehung zu einem anderen unterdrückten Inhalt verdankt»</td>
+<td>GW I:551</td>
+<td>the concept of a screen memory as one that owes its memory value not to its own content but to that content's relation to another, suppressed content</td>
+<td>The general relational definition (sense 1).</td>
+</tr>
+<tr>
+<td>«Es ist eine Verschiebung auf der Kontiguitätsassoziation, oder wenn man den ganzen Vorgang ins Auge faßt, eine Verdrängung mit Ersetzung durch etwas Benachbartes (im örtlichen und zeitlichen Zusammenhange).»</td>
+<td>GW I:537</td>
+<td>It is a displacement along contiguity association, or, taking the whole process into view, a repression with replacement by something neighbouring (in spatial and temporal connection).</td>
+<td>The first mechanism.</td>
+</tr>
+<tr>
+<td>«wenn wir nämlich die unvollständige und durch diese Unvollständigkeit harmlose Infantilszene mit unter den Begriff der Deckerinnerung fallen lassen»</td>
+<td>GW I:551</td>
+<td>if, that is, we let the incomplete infantile scene, harmless through its incompleteness, fall under the concept of the screen memory</td>
+<td>The conditional inclusion of the first class.</td>
+</tr>
+<tr>
+<td>«Je nachdem das eine oder das andere zeitliche Verhältnis zwischen Deckendem und Gedecktem statt hat, kann man die Deckerinnerung als eine rückläufige oder als eine vorgreifende bezeichnen.»</td>
+<td>GW I:551</td>
+<td>Depending on whether the one or the other temporal relation holds between covering and covered, one can call the screen memory retrograde or anticipatory.</td>
+<td>The 1899 temporal classes, with no stated mapping.</td>
+</tr>
+<tr>
+<td>«Nach einer anderen Beziehung unterscheidet man positive und negative Deckerinnerungen (oder Trutzerinnerungen), deren Inhalt im Verhältnis des Gegensatzes zum unterdrückten Inhalt steht.»</td>
+<td>GW I:551</td>
+<td>By another relation one distinguishes positive and negative screen memories (or defiance memories), whose content stands in opposition to the suppressed content.</td>
+<td>The 1899 content classes.</td>
+</tr>
+<tr>
+<td>«Für die Angaben unseres Gedächtnisses gibt es überhaupt keine Garantie.»</td>
+<td>GW I:546</td>
+<td>For the statements of our memory there is no guarantee at all.</td>
+<td>One side of the authenticity tension.</td>
+</tr>
+<tr>
+<td>«Das spricht für die Echtheit der Kindheitserinnerung.»</td>
+<td>GW I:549</td>
+<td>That speaks for the authenticity of the childhood memory.</td>
+<td>The other side of the authenticity tension.</td>
+</tr>
+<tr>
+<td>«Unsere Kindheitserinnerungen zeigen uns die ersten Lebensjahre, nicht wie sie waren, sondern wie sie späteren Erweckungszeiten erschienen sind.»</td>
+<td>GW I:553</td>
+<td>Our childhood memories show us the first years not as they were but as they appeared to later times of awakening.</td>
+<td>Sense 2 in substance (1899).</td>
+</tr>
+<tr>
+<td>«Zu diesen Zeiten der Erweckung sind die Kindheitserinnerungen nicht, wie man zu sagen gewohnt ist, aufgetaucht, sondern sie sind damals gebildet worden»</td>
+<td>GW I:554</td>
+<td>At these times of awakening childhood memories did not, as one usually says, emerge; they were formed then.</td>
+<td>Later formation, stated categorically.</td>
+</tr>
+<tr>
+<td>«Die indifferenten Kindheitserinnerungen verdanken ihre Existenz einem Verschiebungsvorgang; sie sind der Ersatz in der Reproduktion für andere wirklich bedeutsame Eindrücke»</td>
+<td>GW IV:51</td>
+<td>The indifferent childhood memories owe their existence to a process of displacement; they are the substitute in reproduction for other, truly significant impressions</td>
+<td>The 1901 opening definition.</td>
+</tr>
+<tr>
+<td>«Da sie ihre Erhaltung nicht dem eigenen Inhalt, sondern einer assoziativen Beziehung ihres Inhalts zu einem anderen, verdrängten, verdanken, haben sie auf den Namen „Deckerinnerungen", mit welchen ich sie ausgezeichnet habe, begründeten Anspruch.»</td>
+<td>GW IV:51</td>
+<td>Since they owe their preservation not to their own content but to an associative relation of their content to another, repressed one, they have a well-founded claim to the name "screen memories" with which I marked them out.</td>
+<td>The 1901 naming criterion, continuous with GW I:551.</td>
+</tr>
+<tr>
+<td>«Ich nannte diese Art der Verschiebung eine rückgreifende oder rückläufige.»</td>
+<td>GW IV:52</td>
+<td>I called this kind of displacement reaching-back or retrograde.</td>
+<td>The 1901 report of the earlier naming.</td>
+</tr>
+<tr>
+<td>«Dies wären vorgreifende oder vorgeschobene Deckerinnerungen.»</td>
+<td>GW IV:52</td>
+<td>These would be anticipatory or pushed-forward screen memories.</td>
+<td>The second temporal kind: a recent impression covering an earlier one.</td>
+</tr>
+<tr>
+<td>«also die gleichzeitige oder anstoßende Deckerinnerung»</td>
+<td>GW IV:52</td>
+<td>thus the simultaneous or adjoining screen memory</td>
+<td>The third temporal kind (1901).</td>
+</tr>
+<tr>
+<td>«Beim Namenvergessen wissen wir, daß die Ersatznamen falsch sind; bei den Deckerinnerungen verwundern wir uns, daß wir sie überhaupt besitzen.»</td>
+<td>GW IV:53</td>
+<td>In name forgetting we know the substitute names are false; with screen memories we are surprised that we possess them at all.</td>
+<td>The distinction from name forgetting.</td>
+</tr>
+<tr>
+<td>«Das Aufbinden des Rockes ist aber eine Deckerinnerung für die Entbindung.»</td>
+<td>GW IV:58</td>
+<td>But the tying-up of the skirt is a screen memory for the delivery.</td>
+<td>A worked example with a word-bridge.</td>
+</tr>
+<tr>
+<td>«Man wird so von verschiedenen Seiten her zur Vermutung gedrängt, daß wir in den sogenannten frühesten Kindheitserinnerungen nicht die wirkliche Erinnerungsspur, sondern eine spätere Bearbeitung derselben besitzen»</td>
+<td>GW IV:56</td>
+<td>One is pushed from various sides to the conjecture that in the so-called earliest childhood memories we possess not the real memory trace but a later elaboration of it</td>
+<td>Sense 2, marked as conjecture.</td>
+</tr>
+<tr>
+<td>«Die „Kindheitserinnerungen" der Individuen rücken so ganz allgemein zur Bedeutung von „Deckerinnerungen" vor»</td>
+<td>GW IV:56</td>
+<td>Individuals' "childhood memories" thus advance quite generally to the significance of "screen memories"</td>
+<td>The term applied to sense 2 (1901).</td>
+</tr>
+<tr>
+<td>«Ein wie großer Teil unseres Gedächtnisschatzes in die Kategorie der Deckerinnerungen gehört»</td>
+<td>GW IV:52</td>
+<td>How large a part of our store of memory belongs to the category of screen memories</td>
+<td>The share of screen memories in the whole store of memory is left open.</td>
+</tr>
+</tbody>
+</table>
+<h2>What this entry does not claim</h2>
+<ul>
+<li>It does not report anything outside GW I:531-554 and GW IV:51-60: no case histories, no other works, and no later positions.</li>
+<li>It does not claim that screen memories cover childhood sexuality as a rule. In the main 1899 case, the covered content is adolescent and young-adult fantasies [GW I:546-548]. The sexual reading of the branch case is called «ein Scherz» [GW I:550] (a joke).</li>
+<li>It does not claim that screen memories are false.</li>
+<li>It does not attach any systemic vocabulary to the concept. In the pages read, "vorbewußt" and "Zensur" do not occur. In 1899, "unbewußt" occurs several times, in Freud's lines and in the interlocutor's [GW I:547; GW I:548]. In 1901 it occurs only as «fast unbewußt» (almost unconscious) [GW IV:52]. No page read gives the word a systemic definition.</li>
+<li>It supplies no meaning for the image in "Deck-", which the texts do not explain.</li>
+<li>It gives no characterisation of the "positive" class and no example of a «Trutzerinnerung», since none is given in the pages read.</li>
+<li>It does not state which 1899 class name maps to which temporal order. The 1899 text does not say so.</li>
+<li>It does not say that Freud's own Kasten scene is called a screen memory. Only the coin detail is said to claim «selbst wieder» (in its turn) the value of one [GW IV:59].</li>
+<li>It uses no Standard Edition terminology. All renderings are our own.</li>
+</ul>
+<h2>Reading coverage</h2>
+<ul>
+<li><strong>S01</strong>, Über Deckerinnerungen (1899, bibliographic year): GW I:531-554. All pages were read and used. No date is printed in these pages except through the volume's running head.</li>
+<li><strong>S02</strong>, Zur Psychopathologie des Alltagslebens, chapter IV, Über Kindheits- und Deckerinnerungen (1901, bibliographic year): GW IV:51-60. All pages were read and used. GW IV:51 prints «1899» for Freud's earlier treatise in the Monatsschrift für Psychiatrie und Neurologie but gives no title. We identify that treatise with S01 because the description and the term "rückläufig" match [ii]. The pages of S02 do not themselves contain the 1899 essay; in this entry the essay is read as S01.</li>
+<li><strong>Loci not read:</strong> other mentions of screen memories, including the case histories and Eine Kindheitserinnerung aus "Dichtung und Wahrheit". These were not read for this entry.</li>
+<li><strong>Pages missing from the scan:</strong> none reported for either source.</li>
+</ul>
+      <h2>About this entry</h2>
+      <p class="edition">First edition, November 2026. Built from the German text of Freud's <em>Gesammelte Werke</em> only, read source by source; every German quotation was checked against the page it cites. References give volume and page, for example [GW X:291]. English renderings are our own. A mark [ii] means our interpretation of the passages, [iii] a synthesis across texts; unmarked sentences report what the pages say. Each long entry says which texts were read and which were not. Entries are revised as the reading continues; corrections are welcome at <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="/privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="/mentions-legales.html">Mentions Légales</a><span class="footer-sep">·</span><a href="/research-tools-terms.html">Research tools terms</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+  <script>document.getElementById('menu').addEventListener('click', function () { document.querySelector('nav').classList.toggle('open'); });</script>
+</body>
+</html>

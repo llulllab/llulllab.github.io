@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'self'; form-action 'none'; frame-ancestors 'none'">
+  <title>The ego (das Ich) in Freud | Freud for Machines glossary | Llull Lab</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="In the passages read, Freud uses &quot;Ich&quot; in six senses: the defending, repressing Ich; the Ichtriebe as a drive group; a developing Ich (Lust-Ich and Real-Ich); the Ich as seat and object of libido in narcissism; the Ich as a differentiated whole conta">
+  <link rel="canonical" href="https://llulllab.com/freud-for-machines/concepts/ego.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Llull Lab">
+  <meta property="og:url" content="https://llulllab.com/freud-for-machines/concepts/ego.html">
+  <meta property="og:title" content="The ego (das Ich) in Freud | Freud for Machines glossary | Llull Lab">
+  <meta property="og:description" content="In the passages read, Freud uses &quot;Ich&quot; in six senses: the defending, repressing Ich; the Ichtriebe as a drive group; a developing Ich (Lust-Ich and Real-Ich); the Ich as seat and object of libido in narcissism; the Ich as a differentiated whole conta">
+  <link rel="stylesheet" href="/fonts/gf-d321d810.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+      --bg-card: #141414; --highlight: #a78bfa; --live: #6ee7b7; --prep: #fbbf24; --stop: #f87171;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+    [hidden] { display: none !important; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    nav a.news-hub-link { color: #fcd116; }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .module-tag { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-top: 80px; }
+    .page-hero { padding: 0 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 680px; line-height: 1.75; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; }
+    .page-body { padding: 48px 0 40px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 96px; }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { margin-bottom: 1.1em; max-width: 680px; }
+    .muted { color: var(--accent); }
+    .small { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; }
+    label { display: block; font-family: var(--sans); font-size: 13px; letter-spacing: 0.5px; color: var(--accent); margin: 0 0 6px; }
+    input[type=email], textarea { width: 100%; background: #0b0b0b; color: var(--fg); border: 1px solid var(--border-strong); border-radius: 6px; padding: 12px 14px; font-family: var(--serif); font-size: 16px; line-height: 1.6; }
+    textarea { min-height: 170px; resize: vertical; }
+    textarea.ctx { min-height: 80px; }
+    input:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+    .row { margin-bottom: 18px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-family: var(--sans); font-size: 14px; color: var(--accent); }
+    .check input { margin-top: 5px; }
+    .check a, .page-body a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--bg); background: var(--highlight); border: none; border-radius: 5px; cursor: pointer; }
+    .btn:disabled { opacity: 0.5; cursor: default; }
+    .btn.ghost { background: transparent; color: var(--highlight); border: 1px solid rgba(167,139,250,0.5); }
+    .btn.danger { background: transparent; color: var(--stop); border: 1px solid rgba(248,113,113,0.5); }
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .msg { font-family: var(--sans); font-size: 14px; margin-top: 12px; color: var(--accent); min-height: 1.4em; }
+    .msg.err { color: var(--stop); }
+    .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--sans); font-size: 13px; color: #aaa; margin-bottom: 16px; }
+    .result { margin-top: 24px; }
+    .verdict { display: inline-block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-strong); margin-bottom: 14px; }
+    .verdict.proceed { color: var(--live); border-color: rgba(110,231,183,0.4); }
+    .verdict.proceed_with_conditions { color: var(--prep); border-color: rgba(251,191,36,0.4); }
+    .verdict.do_not_proceed { color: var(--stop); border-color: rgba(248,113,113,0.45); }
+    .verdict.need_more_information { color: var(--highlight); border-color: rgba(167,139,250,0.5); }
+    .result h3 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 22px 0 8px; }
+    .result ul { padding-left: 20px; }
+    .result li { margin-bottom: 6px; color: #ddd; }
+    .result .summary { font-size: 1.08rem; }
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+    pre { background: #0b0b0b; border: 1px solid var(--border); border-radius: 6px; padding: 14px; overflow-x: auto; color: #ddd; line-height: 1.55; white-space: pre; }
+    .keybox { word-break: break-all; white-space: pre-wrap; }
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 64px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+      .entry h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 8px; }
+    .entry h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 40px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .entry h3 { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; margin: 28px 0 10px; }
+    .entry p, .entry li { max-width: 760px; margin-bottom: 0.9em; }
+    .entry ul, .entry ol { padding-left: 22px; }
+    .entry table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 12px 0 20px; display: block; overflow-x: auto; }
+    .entry th, .entry td { border: 1px solid var(--border); padding: 8px 10px; vertical-align: top; text-align: left; }
+    .entry th { font-family: var(--sans); font-weight: 400; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+    .short { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; margin: 24px 0 8px; }
+    .short h2 { margin-top: 0; }
+    .edition { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; max-width: 760px; }
+    .toc a, .entry a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .idx { list-style: none; padding: 0; }
+    .idx li { border-top: 1px solid var(--border); padding: 18px 0; max-width: 820px; }
+    .idx li a { font-size: 1.2rem; }
+    .idx .de { color: var(--muted); font-family: var(--sans); font-size: 13px; margin-left: 6px; }
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "DefinedTerm", "name": "The ego (das Ich)", "description": "In the passages read, Freud uses \"Ich\" in six senses: the defending, repressing Ich; the Ichtriebe as a drive group; a developing Ich (Lust-Ich and Real-Ich); the Ich as seat and object of libido in narcissism; the Ich as a differentiated whole conta", "url": "https://llulllab.com/freud-for-machines/concepts/ego.html", "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "Freud for Machines glossary", "url": "https://llulllab.com/freud-for-machines/concepts/"}}</script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/en/" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" type="button" id="menu">Menu</button>
+      <nav>
+        <a href="/en/about.html">About</a>
+        <a href="/en/people.html">Team</a>
+        <a href="/en/research.html" class="active">Research</a>
+        <a href="/en/studio.html">Studio</a>
+        <a href="/en/press.html">Press</a>
+        <a href="/en/updates.html">Updates</a>
+        <a href="/ai-robotics/" class="news-hub-link">News Hub</a>
+        <a href="/machines/">For Machines</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="module-tag">Freud for Machines · Glossary</div>
+    <div class="page-body entry">
+      <h1>The ego <span class="de">(das Ich)</span></h1>
+      <p class="edition">In Freud's texts. <a href="#entry">Entry</a> · <a href="#long">Long entry</a> · <a href="/freud-for-machines/concepts/">All entries</a> · <a href="/freud-for-machines/">Ask the research tool</a></p>
+      <div class="short">
+      <h2>In brief</h2>
+<p>In the passages read, Freud uses the term "Ich" in six senses.</p>
+<ol>
+<li><strong>The defending, repressing Ich before the structural theory</strong> (1894–1921, recapitulated in 1923). In 1894 it is the instance against which an idea can be "incompatible".</li>
+<li><strong>The name of a drive group</strong>, the Ichtriebe or self-preservation drives (1911–1920).</li>
+<li><strong>A developing Ich</strong> that passes between Lust-Ich and Real-Ich (1911–1915).</li>
+<li><strong>The seat and object of libido</strong> in narcissism (1914–1940).</li>
+<li><strong>A differentiated whole</strong> that contains a critical agency or ideal (1914–1940).</li>
+<li><strong>The structural Ich</strong> of 1923–1940, «der durch den direkten Einfluß der Außenwelt unter Vermittlung von W-Bw veränderte Teil des Es» [GW XIII:252].</li>
+</ol>
+<p>The main dated line runs as follows. The drive-group sense is renamed in 1920: «seitdem wir die Gegensätze nicht mehr Ich- und Sexualtriebe, sondern Lebens- und Todestriebe benennen.» [GW XIII:57]. The differentiated Ich of 1914–1921 grows into the Ich/Über-Ich pair of 1923 [ii]. This reading rests on the 1923 naming of the grade within the Ich: «eine Stufe im Ich anzunehmen, eine Differenzierung innerhalb des Ichs, die Ich Ideal oder Über-Ich zu nennen ist» [GW XIII:256].</p>
+<p>A reader must not miss one distinction. From 1923 Freud states that the Ich and the conscious do not coincide. In doing so he corrects an older way of speaking, which he describes as follows: «wenn wir an unserer gewöhnten Ausdrucksweise festhalten und zum Beispiel die Neurose auf einen Konflikt zwischen dem Bewußten und dem Unbewußten zurückführen wollen» [GW XIII:244]. His correction is: «Auch ein Teil des Ichs, ein Gott weiß wie wichtiger Teil des Ichs, kann ubw sein, ist sicherlich ubw.» [GW XIII:244].</p>
+<p>Consciousness stays tied to the Ich. In 1926 only processes in the Ich can become conscious, though not all of them: «daß alles, was im Es vorgeht, unbewußt ist und bleibt, und daß die Vorgänge im Ich bewußt werden können, sie allein» [GW XIV:225]. The same page lets the consciousness organ register sensations from the Es. How these two statements fit is held under Tensions.</p>
+<p>A note on dates: most of the pages print no date. Unless noted otherwise, the years given here come from the source headers. Texts written in 1938 and published in 1940 are given as 1940 (written 1938).</p>
+      </div>
+      <h2 id="entry">Entry</h2>
+<p>In the passages read, Freud uses "Ich" in six senses: the defending, repressing Ich; the Ichtriebe as a drive group; a developing Ich (Lust-Ich and Real-Ich); the Ich as seat and object of libido in narcissism; the Ich as a differentiated whole containing a critical agency; and the structural Ich of 1923 to 1940 (written 1938). Freud presents the libido sense (from 1914) as a continuation of the drive-group sense, which it then undermines; on our reading, the differentiated Ich of 1914 to 1921 grows into the Ich/Über-Ich pair of 1923, and the developing Ich's work of replacing the pleasure principle reappears as a function of the structural Ich. The libido sense and the structural sense coexist up to 1940, and in 1933 the structural sense adds a narrow Ich in the strict sense beside the wide one; in 1933 Freud also recalls the repressing Ich as continuous with the structural Ich, but the pages do not say whether the 1894 Ich, which had no Es, is the same entity as the later one. In 1920 the dualism of Ichtriebe and sexual drives is renamed as life and death drives, though the old conflict formula is kept in a topical reading and the word Ichtriebe survives for non-libidinal drives Freud still supposes in the Ich; a 1923 footnote names the Es as the reservoir of libido, yet in 1940 (written 1938) libido is again first stored in the Ich, and on the same page in an undifferentiated Ich-Es, so the reservoir question stays in tension. The repressing function of the Ich is kept, though the texts disagree on the Über-Ich's share in repression; the Lust-Ich and Real-Ich pair does not recur in the pages read after 1915, but the texts read do not say it was abandoned; the differentiated Ich is kept but narrowed, and the structural Ich lasts to the last pages read. No cited author is credited with the defending Ich, though in 1933 Freud says the repressing agency coincides with the Ich of popular psychology, and the differentiated Ich is Freud's own in the pages read. The other senses carry named sources. The drive split follows the popular separation of hunger and love, and Jung's single libido is rejected. For the developing Ich, Freud adopts a phrase of Shaw's as apt and credits only the term "introjizieren" to Ferenczi. In 1917 he reports that Abraham, after an exchange of ideas with him, stated in 1908 that libido turns back onto the Ich, while the name "narcissism" is credited to Näcke in 1917 and to Ellis in an undated footnote, a tension the texts leave open. The structural Ich of 1923 is proposed to take account of Groddeck's view, with "Es" taken after Groddeck's usage; a footnote says Groddeck probably followed Nietzsche, the 1933 main text names both, and in 1926 the Ich is grounded in everyday wisdom. The distinction a reader must not miss is that from 1923 the Ich and the conscious do not coincide, since a part of the Ich is certainly unconscious, although consciousness stays tied to the Ich through its perception-consciousness core. On our reading, the Ichtriebe are also not all the drives of the Ich, since the developing Ich of 1915 has sexual drives too, and the normal, reversible splitting of 1933 differs from the permanent defensive Ichspaltung of 1940 (written 1938), as does the 1923 splitting that arises from incompatible identifications.</p>
+<p><strong>Senses.</strong>
+1. Defending, repressing Ich (1894 to 1921, recapitulated 1923, recalled in retrospect in 1920 and 1933; the 1894 paper on defence, the 1914 narcissism essay, the 1917 lecture, a 1921 text, chapter I of Das Ich und das Es): the agency that fends off incompatible ideas and from which repression proceeds, before there is any Es. In 1917 the repressions issue from the Ichzensor within the Ich, and whether the 1894 Ich is a theoretical entity or a manner of speaking is left open.
+2. Ichtriebe (1911 to 1920; a 1911 text, the 1914 narcissism essay, a 1915 text (GW X:214-232), the 1917 lecture, a 1920 text): the name of the self-preservation drive group opposed to the sexual drives.
+3. Developing Ich, Lust-Ich and Real-Ich (1911 to 1915; a 1911 text and a 1915 text (GW X:214-232)): an Ich with phases whose direction of change is reversed between the two texts. The texts define the pair by different criteria (aim in 1911, the separation of inside and outside in 1915), which on our reading may explain part of the reversal. But Real-Ich still names the end of the change in 1911 and its beginning in 1915, and the texts do not relate the two uses, so the tension stays.
+4. Seat and object of libido (1914 to 1940; the 1914 narcissism essay, the undated Libidotheorie section of the Drei Abhandlungen, 1917, 1920, a 1923 footnote, 1933, the Abriß 1940 written 1938): the Ich as both container and target of libido in narcissism.
+5. Differentiated whole containing a critical agency (1914 to 1940; texts of 1914, 1917, 1921, 1923, 1933 and 1940 written 1938): an Ich holding a part that observes it and an ideal it is measured against. The 1914 and 1933 texts keep the two apart, other passages (1914, 1921) blur them, and this entry does not treat them as one part.
+6. Structural Ich (1923 to 1940; Das Ich und das Es 1923, a 1924 text on neurosis and psychosis, Hemmung, Symptom und Angst and Laienanalyse 1926, 1933, a 1937 text on defence, the texts of 1940 written 1938): the part of the Es altered by the external world through perception-consciousness, and the organised part of the Es.</p>
+<p><strong>Where to read.</strong>
+- GW X:138-170 (narcissism essay, 1914)
+- GW XI:427-446 (lecture, 1917)
+- GW XIII:46-62 (renaming of the drive dualism, 1920)
+- GW XIII:239-267 (Das Ich und das Es, 1923)
+- GW XV:62-86 (1933)
+- GW XVII:125-138 (Abriß, 1940, written 1938)</p>
+      <p class="edition">The entry is drawn from the long entry below, which gives each sense with Freud's words, dates and pages.</p>
+      <h2 id="long">Long entry</h2>
+<h2>The senses</h2>
+<p>There are six senses. Each has a different definition or a different place in the theory: defence theory, drive theory, developmental theory, libido economy, the internal articulation of the Ich, and the three-agency structure. Senses 5 and 6 could be read as one structural model seen in two phases. They are counted separately because the texts mark a change of scope, from a wide Ich that contains the critical agency to «des eigentlichen Ichs, insofern es sich vom Es und vom Über-Ich sondern läßt» [GW XV:81].</p>
+<h3>Sense 1: The defending, repressing Ich before the structural theory (1894 to 1921, recapitulated 1923)</h3>
+<p><strong>In Freud's words.</strong>
+- «Die Aufgabe, welche sich das abwehrende Ich stellt, die unverträgliche Vorstellung als „non arrivée" zu behandeln, ist für dasselbe direkt unlösbar» [GW I:63] (the task the defending Ich sets itself, to treat the incompatible idea as "not arrived", is directly unsolvable for it).
+- «Man ist also berechtigt zu sagen, daß das Ich durch die Flucht in die Psychose die unerträgliche Vorstellung abgewehrt hat» [GW I:73] (one may say that the Ich fended off the unbearable idea by fleeing into psychosis).
+- «Die Verdrängung, haben wir gesagt, geht vom Ich aus; wir könnten präzisieren: von der Selbstachtung des Ichs.» [GW X:160] (repression, we have said, proceeds from the Ich; more precisely, from the self-regard of the Ich).</p>
+<p><strong>What it means.</strong> In 1894 the Ich is never defined. It is the instance an idea can "approach" and contradict. It sets itself a task, gains and suffers, and can detach itself from reality: «hat es sich auch von der Realität ganz oder teilweise losgelöst» [GW I:73].</p>
+<p>There is no Es and no topography. The paper does not call the Ich either conscious or unconscious. It does, however, place the decisive step of the defence outside consciousness: «dies sind Vorgänge, die ohne Bewußtsein geschehen, die man nur supponieren, aber durch keine klinisch-psychologische Analyse erweisen kann» [GW I:67]. The psychotic defence likewise «entzieht sich wiederum der Selbstwahrnehmung wie der psychologisch-klinischen Analyse» [GW I:73]. The defending Ich is thus the named agent of a process that runs without consciousness [ii].</p>
+<p>Freud introduces this way of speaking with a proviso: «die sich in den gebräuchlichen psychologischen Abstraktionen etwa so ausdrücken läßt» [GW I:63]. Whether the Ich here is a theoretical entity or a manner of speaking is left open [iii].</p>
+<p>Before 1923 the repressing function stays with the Ich in the pages read:
+- In 1914 repression proceeds from the Ich [GW X:160], and the dream censorship is recalled as the side «der das Ich beherrschenden, verdrängenden Tendenzen» [GW X:165].
+- In 1917 the repressions issue from an agency inside the Ich, not from the Ich as a whole: «Die selbstbeobachtende Instanz kennen wir als den Ichzensor, das Gewissen; sie ist dieselbe, die nächtlicherweile die Traumzensur ausübt, von der die Verdrängungen gegen unzulässige Wunschregungen ausgehen.» [GW XI:444].
+- In 1921 a coherent Ich is set against what is repressed: «eine Sonderung unseres seelischen Bestandes in ein kohärentes Ich und ein außerhalb dessen gelassenes, unbewußtes Verdrängtes» [GW XIII:146]. That page does not name the Ich as the agent of repression.</p>
+<p>Chapter I of Das Ich und das Es recapitulates this Ich as a conception already formed: «An diesem Ich hängt das Bewußtsein» and «Von diesem Ich gehen auch die Verdrängungen aus» [GW XIII:243]. Freud then corrects it: «Wir haben im Ich selbst etwas gefunden, was auch unbewußt ist, sich gerade so benimmt wie das Verdrängte» [GW XIII:244]. Grouping the 1894 Ich with the 1914–1923 uses rests on their shared function of repressing [ii].</p>
+<p><strong>When and where.</strong> The first use is signed «Wien, Ende Jänner 1894» [GW I:74]. The extract flags that the paper also cites works dated 1895. The agent of defence varies within that paper: "die Person", "der Kranke", the will, and the Ich. The 1914 page presents repression from the Ich as already said («haben wir gesagt») but does not name where it was said [GW X:160]. The further uses are 1917 [GW XI:444], 1921 [GW XIII:146], and the 1923 recapitulation [GW XIII:243]. Later texts also recall the agency in retrospect: as «als verdrängende, zensurierende und zu Schutzbauten, Reaktionsbildungen befähigte Instanz» [GW XIII:55] (1920), and as «diese widerstehende, abweisende, verdrängende Instanz» [GW XV:63] (1933).</p>
+<p><strong>Freud's own or taken over.</strong> No cited author is credited with this Ich. Janet's thesis concerns consciousness: «Sie beruht auf einer angeborenen Schwäche der Fähigkeit zur psychischen Synthese» [GW I:60]. In 1933 Freud says the repressing agency «die eben mit dem Ich der populären Psychologie zusammenfällt» [GW XV:63] (coincides with the Ich of popular psychology).</p>
+<p><strong>Abandoned or kept.</strong> The repressing function is kept. In 1933 Freud claims continuity: «So haben wir's auch früher immer aufgefaßt.» [GW XV:75].</p>
+<p>What 1923 corrects is the coincidence of this Ich with what is conscious. It does not detach consciousness from the Ich. The correction adds an unconscious part [GW XIII:244], while the structural Ich still starts from the perception system: «Wir sehen es vom System W als seinem Kern ausgehen» [GW XIII:251]. A 1923 footnote makes the same point: «daß nur das System W-Bw als Kern des Ichs anzuerkennen ist» [GW XIII:256]. In 1933 Freud states the result: «Es trifft zu, daß Ich und bewußt, Verdrängt und unbewußt nicht zusammenfallen.» [GW XV:76].</p>
+<p>The pages read do not say whether the 1894 Ich, which had no Es, is the same entity as the later one [iii].</p>
+<p><strong>Not to be confused with.</strong>
+- In 1894 what is split is consciousness, not the Ich: «Weniger geklärt sind die Meinungen über die Herkunft dieser Bewußtseinsspaltung» [GW I:60].
+- In 1917 the repressing agency is the Ichzensor within the Ich, not the Ich as such [GW XI:444].
+- This sense should also not be merged with the defending structural Ich of sense 6 [ii].</p>
+<h3>Sense 2: Ichtriebe, the drive group (1911 to 1920)</h3>
+<p><strong>In Freud's words.</strong>
+- «Während aber diese Entwicklung an den Ichtrieben vor sich geht, lösen sich die Sexualtriebe in sehr bedeutsamer Weise von ihnen ab.» [GW VIII:234] (while this development takes place on the ego drives, the sexual drives detach themselves from them).
+- «die der Ich- oder Selbsterhaltungstriebe und die der Sexualtriebe.» [GW X:216] (that of the ego or self-preservation drives and that of the sexual drives).</p>
+<p><strong>What it means.</strong> Here "Ich" labels one of two drive groups. The group is equated with self-preservation and opposed to sexuality. This use cannot mean "all the drives of the Ich", because the developing Ich also has sexual drives: «die frühe Entwicklungsphase des Ichs, während welcher dessen Sexualtriebe sich autoerotisch befriedigen» [GW X:224] [ii].</p>
+<p><strong>When and where.</strong> The sense appears in 1911. Its status varies across texts:
+- 1914: «wesentlich biologisch gestützt» [GW X:144] (essentially supported by biology). The same page already holds the assumption as provisional: «Ich werde also auch konsequent genug sein, diese Annahme fallen zu lassen, wenn sich aus der psychoanalytischen Arbeit selbst eine andere Voraussetzung über die Triebe als die besser verwertbare erheben würde.» [GW X:144]. The "Ich" that opens this sentence is Freud's first-person pronoun.
+- 1915: «sie ist eine bloße Hilfskonstruktion, die nicht länger festgehalten werden soll, als sie sich nützlich erweist» [GW X:217] (a mere auxiliary construction, to be kept only while useful). Given the 1914 passage, this restates the provisional status rather than changing it [ii].
+- 1917: «An unserem guten Recht, Ich- und Sexualtriebe zu sondern, kann doch wohl nicht gerüttelt werden.» [GW XI:427] (our right to separate them can hardly be shaken). The same lecture holds the separation only heuristically: «an der wir bis zum möglichen Scheitern aus heuristischen Motiven festhalten wollen» [GW XI:436] (which we mean to keep, for heuristic reasons, until it may fail). The 1917 text therefore carries both the firm and the provisional status.</p>
+<p>In 1920 chapter VI opens by restating, and doubting, the speculative result of the preceding chapters, which set the Ichtriebe as drives towards death: «Unser bisheriges Ergebnis, welches einen scharfen Gegensatz zwischen den „Ichtrieben" und den Sexualtrieben aufstellt, die ersteren zum Tode und die letzteren zur Lebensfortsetzung drängen läßt, wird uns gewiß nach vielen Richtungen selbst nicht befriedigen.» [GW XIII:46]. Freud later restates this starting point: «Wir sind ja vielmehr von einer scharfen Scheidung zwischen Ichtrieben = Todestrieben und Sexualtrieben = Lebenstrieben ausgegangen.» [GW XIII:57].</p>
+<p>What he retracts is narrower than the whole equation: «Wir waren ja bereit, auch die angeblichen Selbsterhaltungstriebe des Ichs zu den Todestrieben zu rechnen, was wir seither berichtigend zurückgezogen haben.» [GW XIII:57]. The self-preservation drives are now said to be libidinal: «Um so mehr müssen wir den libidinösen Charakter der Selbsterhaltungstriebe jetzt betonen» [GW XIII:56].</p>
+<p>The meaning of the distinction also changes. Freud keeps the old conflict formula: «doch ist man berechtigt zu sagen, daß die alte Formel, die Psychoneurose beruhe auf einem Konflikt zwischen den Ichtrieben und den Sexualtrieben, nichts enthielt, was heute zu verwerfen wäre.» [GW XIII:56]. He redefines the difference: «Der Unterschied der beiden Triebarten, der ursprünglich irgendwie qualitativ gemeint war, ist jetzt nur anders, nämlich topisch zu bestimmen.» [GW XIII:56].</p>
+<p>Freud still supposes non-libidinal drives in the Ich: «Wir vermuten, daß im Ich noch andere als die libidinösen Selbsterhaltungstriebe tätig sind; wir sollten nur imstande sein, sie aufzuzeigen.» [GW XIII:57]. The dualism is renamed on the same page [GW XIII:57], and that page still speaks of «den anderen, uns noch fremden Ichtrieben» [GW XIII:57].</p>
+<p><strong>Freud's own or taken over.</strong> The distinction follows «der populär so geläufigen Trennung von Hunger und Liebe» [GW X:143]. Jung's single libido is rejected [GW XI:428].</p>
+<p><strong>Abandoned or kept.</strong> As the name of a pole of the basic dualism, the sense is given up in 1920 [GW XIII:57]. Two things are kept:
+- the old conflict formula, now read topically rather than qualitatively [GW XIII:56]. Glossing "topically" as "by place relative to the Ich" is an interpretation [ii]. It is licensed by the sentence on the same page that restates the conflict with the Ich as one of its terms: «Insbesondere die Übertragungsneurose, das eigentliche Studienobjekt der Psychoanalyse, bleibt das Ergebnis eines Konflikts zwischen dem Ich und der libidinösen Objektbesetzung.» [GW XIII:56];
+- the word Ichtriebe, for drives still supposed in the Ich [GW XIII:57].</p>
+<p>In 1933 the Ichtriebe appear only in the past tense: «die wir uns mit ihren besonderen Kräften, den Ichtrieben, ausgestattet dachten» [GW XV:63]. In the Abriß, self-preservation falls inside Eros: «(Der Gegensatz von Selbsterhaltungs- und Arterhaltungstrieb sowie der andere von Ichliebe und Objektliebe fällt noch innerhalb des Eros.)» [GW XVII:71]. Self-preservation also becomes a task of the agency: «Das Ich hat sich die Aufgabe der Selbsterhaltung gestellt, die das Es zu vernachlässigen scheint.» [GW XVII:130].</p>
+<p><strong>Not to be confused with.</strong> In 1917 the Ich is also the sender of sexual libido (sense 4): «Wir nannten die Energiebesetzungen, die das Ich den Objekten seiner Sexualstrebungen zuwendet, „Libido", alle anderen, die von den Selbsterhaltungstrieben ausgeschickt werden, „Interesse"» [GW XI:430]. Libido is sent by the Ich, while interest is sent by the self-preservation drives. One word thus names both one side of the drive conflict and the sender of sexual libido.</p>
+<h3>Sense 3: The developing Ich, Lust-Ich and Real-Ich (1911 to 1915)</h3>
+<p><strong>In Freud's words.</strong>
+- «Wie das Lust-Ich nichts anderes kann als wünschen, nach Lustgewinn arbeiten und der Unlust ausweichen, so braucht das Real-Ich nichts anderes zu tun als nach Nutzen zu streben und sich gegen Schaden zu sichern.» [GW VIII:235] (as the pleasure-Ich can only wish, work for pleasure and avoid unpleasure, the reality-Ich need only strive for advantage and secure itself against harm).
+- «Es wandelt sich so aus dem anfänglichen Real-Ich, welches Innen und Außen nach einem guten objektiven Kennzeichen unterschieden hat, in ein purifiziertes Lust-Ich, welches den Lustcharakter über jeden anderen setzt.» [GW X:228] (it changes from the initial reality-Ich, which separated inside and outside by a good objective mark, into a purified pleasure-Ich).</p>
+<p><strong>What it means.</strong> The Ich is an entity with phases. The two texts define the pair by different criteria: by aim in 1911, and by the way inside and outside are separated in 1915 (see Tensions). In 1914 the Ich is not present from the beginning: «das Ich muß entwickelt werden» [GW X:142].</p>
+<p>In 1915 the Ich is also the subject pole: «den Gegensätzen von: Subjekt (Ich)—Objekt (Außenwelt). Lust—Unlust. Aktiv—Passiv.» [GW X:226]. This subject use does not end with the sense. In 1933 Freud writes «Das Ich ist ja doch das eigentlichste Subjekt, wie soll es zum Objekt werden?» [GW XV:64]. In the passages read, the subject use therefore runs across senses [ii].</p>
+<p><strong>When and where.</strong> The pair first appears in 1911 and last in 1915. The direction of the change is reversed between the two texts (see Tensions).</p>
+<p><strong>Freud's own or taken over.</strong> In a footnote, Freud adopts Shaw's phrase as «treffend» (apt) [GW VIII:235]. In 1915 only the term "introjizieren" is credited to Ferenczi: «(nach dem Ausdrucke Ferenczis)» [GW X:228].</p>
+<p><strong>Abandoned or kept.</strong> The texts read do not say. The terms do not occur in the pages read after 1915. In 1923 the replacement of the pleasure principle is assigned to the structural Ich: «ist bestrebt, das Realitätsprinzip an die Stelle des Lustprinzips zu setzen, welches im Es uneingeschränkt regiert.» [GW XIII:252].</p>
+<p><strong>Not to be confused with.</strong> In 1921 Freud contrasts the relation of the whole Ich to an external object with a new scene inside the Ich: «möglicherweise alle Wechselwirkungen, die wir zwischen äußerem Objekt und Gesamt-Ich in der Neurosenlehre kennen gelernt haben, auf diesem neuen Schauplatz innerhalb des Ichs zur Wiederholung kommen» [GW XIII:145]. The relation inside the Ich is not the Gesamt-Ich. In the passages read, the 1921 "Gesamt-Ich" itself is used as in 1915, for the whole Ich in relation to objects («für die Relation des Gesamt-Ichs zu den Objekten reserviert» [GW X:229]) [ii].</p>
+<h3>Sense 4: The Ich as seat and object of libido (1914 to 1940)</h3>
+<p><strong>In Freud's words.</strong>
+- «Die der Außenwelt entzogene Libido ist dem Ich zugeführt worden, so daß ein Verhalten entstand, welches wir Narzißmus heißen können.» [GW X:140] (libido withdrawn from the external world has been brought to the Ich, producing what we may call narcissism).
+- «Das Ich trat unter die Sexualobjekte und wurde gleich als das vornehmste unter ihnen erkannt.» [GW XIII:56] (the Ich entered among the sexual objects and was at once recognised as the foremost).</p>
+<p><strong>What it means.</strong> The Ich is both a container of libido and a target of libido. In 1920 it is called «das eigentliche und ursprüngliche Reservoir der Libido» [GW XIII:55].</p>
+<p>In the Drei Abhandlungen section, the wording makes the libido the reservoir, not the Ich: «Die narzißtische oder Ichlibido erscheint uns als das große Reservoir» [GW V:119]. The same page has libido «endlich ins Ich zurückgeholt wird, so daß sie wieder zur Ichlibido geworden ist» [GW V:119]. The difference is therefore one of formulation, not of doctrine [ii].</p>
+<p>The Ich also has a magnitude that can grow or shrink: «Bei der Trauer ist die Welt arm und leer geworden, bei der Melancholie ist es das Ich selbst.» [GW X:431].</p>
+<p><strong>When and where.</strong> The Drei Abhandlungen section is undated. Its note 3 cites the narcissism essay with the year 1915. The sense is dense in 1914, 1917 and 1920. In 1923 a footnote names the Es as the reservoir instead: «Als das große Reservoir der Libido, im Sinne der Einführung des Narzißmus, müssen wir jetzt nach der Scheidung von Ich und Es das Es anerkennen.» [GW XIII:258]. In 1933 the Ich draws libido onto itself: «empfiehlt es sich dem Es an Stelle des Objekts, will es die Libido des Es auf sich lenken» [GW XV:83]. In the Abriß, primary narcissism is again located in the Ich [GW XVII:72].</p>
+<p><strong>Freud's own or taken over.</strong> In 1917 the idea that libido turns back onto the Ich is credited to Abraham. In Freud's report, Abraham stated it after an exchange of ideas with Freud: «Schon 1908 sprach K. Abraham nach einem Gedankenaustausch mit mir den Satz aus» [GW XI:430]. The idea itself reads: «sie wird auf das Ich zurückgewandt, und diese reflexive Rückwendung ist die Quelle des Größenwahns der Dementia praecox» [GW XI:430]. This entry makes no claim about how the 1914 essay credits the idea.</p>
+<p>The texts disagree about who coined the name "narcissism" (see Tensions).</p>
+<p><strong>Abandoned or kept.</strong> The sense is revised in 1923, in the footnote cited above, and kept in 1940. The term "Ichlibido" does not occur in any dated page read after 1917. It does occur in the undated Libidotheorie section [GW V:118–119].</p>
+<p><strong>Not to be confused with.</strong> "Ichliebe" in 1940 is placed within Eros and is not defined further [GW XVII:71].</p>
+<h3>Sense 5: The Ich as a differentiated whole containing a critical agency (1914 to 1940)</h3>
+<p><strong>In Freud's words.</strong>
+- «Wir sehen bei ihm, wie sich ein Teil des Ichs dem anderen gegenüberstellt, es kritisch wertet, es gleichsam zum Objekt nimmt.» [GW X:433] (one part of the Ich sets itself against the other, judges it critically, takes it as an object).
+- «Die Annahme einer solchen Stufe im Ich als erster Schritt einer Ichanalyse muß ihre Rechtfertigung allmählich auf den verschiedensten Gebieten der Psychologie erweisen.» [GW XIII:145] (the assumption of such a grade in the Ich, as a first step of ego analysis, must prove its justification gradually).</p>
+<p><strong>What it means.</strong> The Ich contains a part that measures it and a standard it is measured against. The 1914 and 1933 texts keep the ideal (the measure) apart from the observing, critical agency (the measurer). Other passages blur the two [GW X:165; GW XIII:149]. The two are therefore not treated here as names for one part.</p>
+<ul>
+<li><strong>1914.</strong> The two are distinct. The text first introduces the watching agency conditionally: «Wenn eine solche Instanz existiert, so kann es uns unmöglich zustoßen, sie zu entdecken» [GW X:162]. Its task, as described on that page, is to watch over the ideal and measure the actual Ich against it: «eine besondere psychische Instanz [...], welche die Aufgabe erfüllt, über die Sicherung der narzißtischen Befriedigung aus dem Ichideal zu wachen, und in dieser Absicht das aktuelle Ich unausgesetzt beobachtet und am Ideal mißt.» [GW X:162]. The next page affirms that such a power exists: «eine solche Macht, die alle unsere Absichten beobachtet, erfährt und kritisiert, besteht wirklich, und zwar bei uns allen im normalen Leben.» [GW X:163]. Conscience is this watchman: «Die Anregung zur Bildung des Ichideals, als dessen Wächter das Gewissen bestellt ist» [GW X:163]. The same text also finds the dream censor «im Ichideal und den dynamischen Äußerungen des Gewissens» [GW X:165], so even in 1914 the relation of ideal and watcher is not fixed.</li>
+<li><strong>1917.</strong> The self-observing agency, identified with the Ichzensor and conscience, measures the actual Ich against an Ideal-Ich [GW XI:444]. Conscience, censorship and reality testing count as «großen Ichinstitutionen» [GW X:433].</li>
+<li><strong>1921.</strong> The Ichideal itself is the grade within the Ich, and it judges the Ich: «vom Ichideal streng gerichtet» [GW XIII:149].</li>
+<li><strong>1923.</strong> The differentiation is named «Ich Ideal oder Über-Ich» [GW XIII:256].</li>
+<li><strong>1933.</strong> Freud again keeps the agency and conscience apart: «es ist vorsichtiger, diese Instanz selbständig zu halten und anzunehmen, das Gewissen sei eine ihrer Funktionen» [GW XV:65]. He makes the Über-Ich the bearer of the ideal: «Es ist auch der Träger des Ichideals, an dem das Ich sich mißt, dem es nachstrebt» [GW XV:71].</li>
+</ul>
+<p><strong>When and where.</strong> The sense begins in 1914: «Gehen wir in die Struktur des Ichs weiter ein» [GW X:165]. It continues through 1917 [GW XI:444] and 1921 («beiden Instanzen des Ichs» [GW XIII:148]). It is named in 1923: «eine Stufe im Ich anzunehmen, eine Differenzierung innerhalb des Ichs, die Ich Ideal oder Über-Ich zu nennen ist» [GW XIII:256]. It persists in 1933 («diese Instanz im Ich» [GW XV:66]) and in 1940, written 1938 («bildet sich in seinem Ich eine besondere Instanz heraus, in der sich dieser elterliche Einfluss fortsetzt.» [GW XVII:69]).</p>
+<p><strong>Freud's own or taken over.</strong> In the pages read, the sense is Freud's own. Trotter is cited in 1921 only on the source of repression [GW XIII:147].</p>
+<p><strong>Abandoned or kept.</strong> The sense is kept, but it is narrowed. In 1923 a footnote withdraws an earlier assignment of reality testing to the Über-Ich: «Nur daß ich die Funktion der Realitätsprüfung diesem Über-Ich zugewiesen habe, erscheint irrig und der Korrektur bedürftig.» [GW XIII:256]. The earlier text that made this assignment is not among the pages read. The 1917 pages place reality testing in the Ich.</p>
+<p><strong>Not to be confused with.</strong> The 1933 splitting is normal and reversible: «Das Ich ist also spaltbar, es spaltet sich während mancher seiner Funktionen, wenigstens vorübergehend.» and «Die Teilstücke können sich nachher wieder vereinigen.» [GW XV:64]. The defensive split of 1940 (written 1938) is described as permanent: «Einrisses im Ich, der nie wieder verheilen, aber sich mit der Zeit vergrössern wird» [GW XVII:60]. Treating these as two different splittings is an interpretation licensed by this contrast [ii].</p>
+<h3>Sense 6: The structural Ich (1923 to 1940)</h3>
+<p><strong>In Freud's words.</strong>
+- «Es ist leicht einzusehen, das Ich ist der durch den direkten Einfluß der Außenwelt unter Vermittlung von W-Bw veränderte Teil des Es, gewissermaßen eine Fortsetzung der Oberflächendifferenzierung.» [GW XIII:252] (the Ich is the part of the Es altered by the direct influence of the external world, via perception-consciousness).
+- «daß das Ich eine Organisation ist, das Es aber keine; das Ich ist eben der organisierte Anteil des Es» [GW XIV:124] (the Ich is an organisation, the Es is not; the Ich is the organised part of the Es).</p>
+<p><strong>What it means.</strong> The Ich is one of the provinces of the apparatus: «Über-Ich, Ich und Es sind nun die drei Reiche, Gebiete, Provinzen, in die wir den Seelenapparat der Person zerlegen» [GW XV:79]. A 1923 footnote names W-Bw as its core [GW XIII:256].</p>
+<p>In 1923 the Ich is above all bodily: «Das Ich ist vor allem ein körperliches, es ist nicht nur ein Oberflächenwesen, sondern selbst die Projektion einer Oberfläche.» [GW XIII:253]. Freud returns to this as the «Körper-Ich» [GW XIII:255].</p>
+<p>The Ich controls motility, reality testing and the temporal order of mental processes [GW XIII:285]. It is «die eigentliche Angststätte» [GW XIII:287] (the actual seat of anxiety). It serves three masters [GW XV:84] and works with borrowed energy: «In dynamischer Hinsicht ist es schwach, seine Energien hat es dem Es entlehnt» [GW XV:83].</p>
+<p>It is the agent of defence: «Die Verdrängung geht vom Ich aus» [GW XIV:118]. It is not identical with consciousness: «Aber es wäre ein folgenschwerer Irrtum zu glauben, dieser Gegensatz fiele mit der Scheidung von Ich und Es zusammen.» [GW XIV:225].</p>
+<p><strong>When and where.</strong> The sense is introduced in 1923 as a proposal («Ich schlage vor» [GW XIII:251]). The organisation Ich that chapter I of the same work recapitulates [GW XIII:243] is treated under sense 1. Applications and extensions follow:
+- 1924: neurosis and psychosis [GW XIII:387].
+- 1926: the Ich's synthesis and its strength or weakness [GW XIV:124–125].
+- 1933: the therapeutic aim («Wo Es war, soll Ich werden.» [GW XV:86]).
+- 1937: defence mechanisms and "Ichveränderung" [GW XVI:80].
+- 1940 (written 1938): Ichspaltung. It is defined as «Die beiden Einstellungen bestehen das ganze Leben hindurch nebeneinander, ohne sich gegenseitig zu beeinflussen. Das ist, was man eine Ichspaltung nennen darf.» [GW XVII:134]. It is distinguished from neurosis topically: «Der Unterschied der beiden Fälle ist im wesentlichen ein topischer oder struktureller» [GW XVII:135].</p>
+<p><strong>Freud's own or taken over.</strong> Freud reports Groddeck's view of the Ich: «daß das, was wir unser Ich heißen, sich im Leben wesentlich passiv verhält, daß wir nach einem Ausdruck „gelebt" werden von unbekannten, unbeherrschbaren Mächten.» [GW XIII:251]. He then states that his proposal takes account of it: «Ich schlage vor, ihr Rechnung zu tragen, indem wir das vom System W ausgehende Wesen, das zunächst vbw ist, das Ich heißen» [GW XIII:251]. That Groddeck's view is the occasion for naming Ich and Es is therefore stated in the text [i].</p>
+<p>The "unser Ich" of the report is closer to an everyday sense of oneself than to a technical term [ii]. That reading rests on the possessive and on the contrast, in the same sentence, with the powers by which "we" are lived.</p>
+<p>In 1923 the name "Es" is taken «nach Groddecks Gebrauch» [GW XIII:251]. A footnote on that page hedges the link to Nietzsche: «Groddeck selbst ist wohl dem Beispiel Nietzsches gefolgt» [GW XIII:251]. In 1933 Freud names both sources in the main text: «In Anlehnung an den Sprachgebrauch bei Nietzsche und infolge einer Anregung von G. Groddeck heißen wir es fortan das Es.» [GW XV:79].</p>
+<p>The Ich/Es distinctions are matched to popular usage, with a hedge in the same sentence: «Dies alles deckt sich mit allbekannten populären Unterscheidungen, ist aber auch nur als durchschnittlich oder ideell richtig zu verstehen.» [GW XIII:253]. In 1926 Freud grounds the Ich itself in everyday wisdom: «Wir stellen uns auf den Boden der Alltagsweisheit und anerkennen im Menschen eine seelische Organisation, die zwischen seine Sinnesreize und die Wahrnehmung seiner Körperbedürfnisse einerseits, seine motorischen Akte anderseits eingeschaltet ist und in bestimmter Absicht zwischen ihnen vermittelt.» [GW XIV:221]. He then names it: «Wir heißen diese Organisation sein Ich.» [GW XIV:222]. The Es is tied to ordinary speech in the same way: «Das unpersönliche Es schließt sich unmittelbar an gewisse Ausdrucksweisen des normalen Menschen an.» [GW XIV:222]. In 1937 Anna Freud's book is cited for the variety of defence mechanisms, not for a definition of the Ich [GW XVI:81].</p>
+<p><strong>Abandoned or kept.</strong> The sense is kept to the last pages read [GW XVII:138].</p>
+<p><strong>Not to be confused with.</strong> Two other splittings in the pages read are not the defensive Ichspaltung.
+- The 1923 «Aufsplitterung des Ichs» [GW XIII:259] arises «indem sich die einzelnen Identifizierungen durch Widerstände gegeneinander abschließen» [GW XIII:259]. It comes from incompatible identifications, not from defence [ii].
+- The 1933 normal splitting of sense 5.</p>
+<p>The 1924 phrase «eventuell sogar sich zerklüftet oder zerteilt» [GW XIII:391] is presented as a way to avoid a break. It is not defined as two lasting opposed attitudes, and the pages do not say whether it names the same thing as the later Ichspaltung [ii].</p>
+<h2>How the senses relate</h2>
+<p>Sense 4 is presented as growing out of sense 2: «Die Sonderung der Libido in eine solche, die dem Ich eigen ist, und eine, die den Objekten angehängt wird, ist eine unerläßliche Fortführung einer ersten Annahme, welche Sexualtriebe und Ichtriebe voneinander schied.» [GW X:143]. Sense 4 then undermines sense 2: «Somit war der ursprüngliche Gegensatz von Ichtrieben und Sexualtrieben unzureichend geworden. Ein Teil der Ichtriebe war als libidinös erkannt» [GW XIII:56].</p>
+<p>Sense 5 grows into sense 6 [ii]. This reading is licensed by the 1923 naming of the grade within the Ich as Über-Ich: «eine Stufe im Ich anzunehmen, eine Differenzierung innerhalb des Ichs, die Ich Ideal oder Über-Ich zu nennen ist» [GW XIII:256]. It is also licensed by the back-reference on the same page: «Die Motive, die uns bewogen haben, eine Stufe im Ich anzunehmen [...] sind an anderen Orten auseinandergesetzt worden.» [GW XIII:256]. Sense 6 adds a narrow "eigentliches Ich" beside the wide one [GW XV:81].</p>
+<p>Freud recalls sense 1 as continuous with sense 6 [GW XV:75]. Whether the two name the same entity is left open by the pages [iii].</p>
+<p>Sense 3's work of replacing the pleasure principle reappears as a function of the structural Ich [GW XIII:252]. The link is a reading, because the terms Lust-Ich and Real-Ich are absent from the pages read after 1915 [ii].</p>
+<p>Senses 4 and 6 coexist up to 1940 [GW XVII:72].</p>
+<h2>Tensions held</h2>
+<ul>
+<li><strong>Direction of development.</strong> In 1911 the change runs from Lust-Ich to Real-Ich [GW VIII:237]. In 1915 it runs from an «anfänglichen Real-Ich» to a purified Lust-Ich [GW X:228].</li>
+<li>The two texts define the pair by different criteria. In 1911 the Real-Ich is defined by its aim: «so braucht das Real-Ich nichts anderes zu tun als nach Nutzen zu streben und sich gegen Schaden zu sichern» [GW VIII:235].</li>
+<li>In 1915 the initial Real-Ich is defined by how it separates inside from outside: «aus dem anfänglichen Real-Ich, welches Innen und Außen nach einem guten objektiven Kennzeichen unterschieden hat, in ein purifiziertes Lust-Ich» [GW X:228]. The change happens under the pleasure principle: «Unter der Herrschaft des Lustprinzips vollzieht sich nun in ihm eine weitere Entwicklung.» [GW X:228].</li>
+<li>The apparent reversal may therefore rest partly on the same names carrying different criteria [ii]. What remains is that "Real-Ich" names the end of the change in 1911 and its beginning in 1915, and the texts do not relate the two uses. HOLD TENSION.</li>
+<li><strong>Reservoir of libido.</strong> The Ich is the reservoir in 1920 [GW XIII:55]. A 1923 footnote names the Es as the reservoir [GW XIII:258]. In 1940 libido is first stored in the Ich [GW XVII:72], yet the same page has it first present «im noch undifferenzierten Ich-Es» [GW XVII:72]. HOLD TENSION.</li>
+<li><strong>Origin of the name "narcissism".</strong> In 1917 Freud says «Den Namen für diese Unterbringung der Libido — Narzißmus — entlehnten wir einer von P. Näcke beschriebenen Perversion» [GW XI:431]. A footnote in the undated Libidotheorie section corrects an earlier statement: «Der Terminus „Narzißmus" ist nicht, wie dort irrtümlich angegeben, von Naecke, sondern von H. Ellis geschaffen worden.» [GW V:119]. The same page refers the reader to «S. Zur Einführung des Narzißmus, Jahrbuch der Psychoanalyse VI, 1915» [GW V:119]; the note carrying that reference cannot predate the cited 1915 publication.</li>
+<li>This entry does not identify the earlier place to which «dort» refers.</li>
+<li>The 1917 lecture names Näcke; the undated footnote names Ellis. The order of the footnote relative to the 1917 lecture is unknown. HOLD TENSION.</li>
+<li><strong>The Ich at the beginning of life.</strong> In 1914 Freud speaks of «einer ursprünglichen Libidobesetzung des Ichs» [GW X:141], yet also says the Ich «muß entwickelt werden» [GW X:142]. In 1915 the Ich is there at the very start: «Das Ich findet sich ursprünglich, zu allem Anfang des Seelenlebens, triebbesetzt und zum Teil fähig, seine Triebe an sich selbst zu befriedigen.» [GW X:227]. In 1937 he writes «Von allem Anfang an muß ja das Ich seine Aufgabe zu erfüllen suchen» [GW XVI:80]. On a later page he writes «daß Es und Ich ursprünglich eins sind» [GW XVI:86], and on that same page he speaks of what is fixed in advance for «dem noch nicht existierenden Ich bereits festgelegt ist» [GW XVI:86]. HOLD TENSION.</li>
+<li><strong>Inside or opposite.</strong> In 1923 the Über-Ich is «es ist ja ein Teil des Ichs» [GW XIII:282] and also stands «im Ich oder zum Ich» [GW XIII:277]. In 1940 it is a third power insofar as it separates from the Ich or opposes it: «Insoweit dieses Überich sich vom Ich sondert oder sich ihm entgegenstellt, ist es eine dritte Macht» [GW XVII:69]. HOLD TENSION.</li>
+<li><strong>Strength and weakness.</strong> In 1923 the Ich is the one «welches unter dreierlei Dienstbarkeiten steht» [GW XIII:286]. In 1926 Freud summarises that study as having described «seine Ohnmacht und Angstbereitschaft gegen beide» [GW XIV:122], and on the same page he recognises the Ich's power [GW XIV:122]. He reconciles the two himself through the Ich's identity with the Es [GW XIV:124]. RECONNECT.</li>
+<li><strong>Who represses.</strong></li>
+<li>1923: the Ich normally represses for the Über-Ich, yet in hysteria it represses against it: «Wir wissen, daß sonst das Ich die Verdrängungen im Dienst und Auftrag seines Über-Ichs vornimmt; hier ist aber ein Fall, wo es sich derselben Waffe gegen seinen gestrengen Herrn bedient.» [GW XIII:281].</li>
+<li>1924: the repressing Ich follows the Über-Ich and is still the agency that represses: «daß das Ich, wenn es die Verdrängung vornimmt, im Grunde den Geboten seines Über-Ichs folgt» [GW XIII:388].</li>
+<li>1926, Hemmung, Symptom und Angst: repression proceeds from the Ich: «Die Verdrängung geht vom Ich aus» [GW XIV:118]. The same sentence continues that the Ich refuses a drive cathexis aroused in the Es possibly on the commission of the Über-Ich [GW XIV:118]. That clause is paraphrased here, not quoted, because the scan prints it with OCR damage (see Reading coverage). Freud also warns: «Man kommt leicht in Gefahr, die Rolle des Über-Ichs bei der Verdrängung zu überschätzen.» [GW XIV:121]. On the same page he leaves open «ob etwa das Auftreten des Über-Ichs die Abgrenzung zwischen Urverdrängung und Nachdrängen schafft» [GW XIV:121]. The 1926 position thus has two parts: repression proceeds from the Ich, possibly on the Über-Ich's commission; and the Über-Ich's role should not be overestimated.</li>
+<li>1926, Laienanalyse: repression comes from the immature Ich, and the Über-Ich is not mentioned: «Wir sagen, das Ich nimmt eine Verdrängung dieser Triebregungen vor.» [GW XIV:230]; «Dies hat aber selbst seinen Grund darin, daß das Ich zur Zeit, als sich ihm die Aufgabe stellte, unentwickelt und ohnmächtig war.» [GW XIV:231].</li>
+<li>1933: repression is the Über-Ich's work: «die Verdrängung sei das Werk dieses Über-Ichs, es führe sie entweder selbst durch oder in seinem Auftrag das ihm gehorsame Ich» [GW XV:75].</li>
+<li>The 1923 (normal case), 1924 and 1926 (Hemmung) statements share one formula: the Ich represses, possibly on the Über-Ich's commission. Three things still conflict with it: the 1923 case of repression against the Über-Ich, the 1926 Laienanalyse account without the Über-Ich, and the 1933 statement that repression is the Über-Ich's work. HOLD TENSION.</li>
+<li><strong>Pleasure principle.</strong> In 1926 the Ich «ersetzt es das früher allein maßgebende Lustprinzip durch das sogenannte Realitätsprinzip» [GW XIV:228]. In 1937 it mediates «im Dienste des Lustprinzips» [GW XVI:80].</li>
+<li>The texts themselves supply the link. The 1926 sentence continues that the reality principle «das zwar dieselben Endziele verfolgt, aber den von der realen Außenwelt gesetzten Bedingungen Rechnung trägt» [GW XIV:228]. In 1911 the replacement is «keine Absetzung des Lustprinzips, sondern nur eine Sicherung desselben» [GW VIII:235]. In 1940 it seems to Freud that the other agencies can only modify the pleasure principle, not abolish it: «Es scheint, dass auch die Tätigkeit der anderen psychischen Instanzen das Lustprinzip nur zu modifizieren, aber nicht aufzuheben vermag» [GW XVII:129]. This 1940 support is itself hedged («Es scheint»).</li>
+<li>RECONNECT: the 1926 and 1937 statements hold together once the replacement is restated as a securing or modification of the pleasure principle. The reconciliation rests firmly on the 1911 and 1926 sentences; the 1940 sentence supports it only as Freud's hedged view.</li>
+<li><strong>The Ich and consciousness.</strong></li>
+<li>From 1923 on, the claim that the Ich and the conscious do not coincide is CONFIRMED in the texts read [GW XIII:244; GW XIV:225; GW XV:76]. The earlier pages do not state an identity. The 1923 recapitulation attaches consciousness to the Ich [GW XIII:243].</li>
+<li>Consciousness stays attached to the Ich afterwards. The System W is its core [GW XIII:251], and a 1923 footnote recognises only the system W-Bw as its core [GW XIII:256]. In 1926 consciousness arises only at an organ on the Ich's outermost surface: «an der äußersten Oberfläche dieses Ichs befinde sich eine besondere, der Außenwelt direkt zugewendete Instanz, ein System, ein Organ, durch dessen Erregung allein das Phänomen, das wir Bewußtsein heißen, zustande kommt» [GW XIV:225].</li>
+<li>The same 1926 page says that only processes in the Ich can become conscious, and that «alles, was im Es vorgeht, unbewußt ist und bleibt» [GW XIV:225]. Yet the organ can also be excited from within, «wo es zuerst die Sensationen im Es und dann auch die Vorgänge im Ich zur Kenntnis nehmen kann» [GW XIV:225]. At the start of chapter III, need tension is felt by the same organ: «Das Herabsinken der Bedürfnisspannung wird von unserem Bewußtseinsorgan als lustvoll empfunden» [GW XIV:227].</li>
+<li>The 1923 text raises a doubt about inner perception: «Sie läßt noch einmal den Zweifel auftauchen, ob man wirklich Recht daran tut, alles Bewußtsein auf das eine oberflächliche System W-Bw zu beziehen.» [GW XIII:249]. It then says it has clarified the matter: «Nach dieser Klärung der Beziehungen zwischen äußerer und innerer Wahrnehmung und dem Oberflächensystem W-Bw können wir darangehen, unsere Vorstellung vom Ich auszubauen.» [GW XIII:250]. The 1923 text therefore does not leave the point open. This entry does not quote the content of that clarification, so the restatement below rests on the 1926 page alone.</li>
+<li>Restatement [ii]: on the 1926 page, Es sensations are something the organ on the Ich's surface takes notice of («die Sensationen im Es [...] zur Kenntnis nehmen» [GW XIV:225]). What becomes conscious of the Es, on this reading, is what registers at that organ. The Es processes as such do not become conscious. On this restatement, «unbewußt ist und bleibt» and the organ's taking notice of Es sensations [GW XIV:225] no longer conflict.</li>
+<li>For 1940 this entry quotes only one sentence, in which the Es is described as «das nicht direkt mit der Aussenwelt verkehrt und auch unserer Kenntnis nur durch die Vermittlung einer anderen Instanz zugänglich wird.» [GW XVII:128]. That sentence is compatible with the restatement, but it does not by itself say how changes in the Es come to be felt, and this entry does not assess the rest of that page. For 1940 the point is therefore left open.</li>
+<li>Verdict for 1926: RECONNECT, resting on GW XIV:225 itself. For 1923 the passages quoted here show only that Freud says he has clarified the relation of inner perception to W-Bw [GW XIII:250]. For 1940: not assessed beyond the one sentence quoted.</li>
+<li>Within the 1923 text, «vom bewußten Ich» [GW XIII:255] appears in the very passage that argues «Nicht nur das Tiefste, auch das Höchste am Ich kann unbewußt sein.» [GW XIII:255]. RECONNECT: the two hold together as a distinction within one text, not as a conflict, once «bewußten Ich» is read as the conscious portion of an Ich that also has unconscious parts [ii].</li>
+</ul>
+<h2>Key passages</h2>
+<table>
+<thead>
+<tr>
+<th>German</th>
+<th>Anchor</th>
+<th>Our rendering</th>
+<th>Establishes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«Die Aufgabe, welche sich das abwehrende Ich stellt, die unverträgliche Vorstellung als „non arrivée" zu behandeln, ist für dasselbe direkt unlösbar»</td>
+<td>GW I:63</td>
+<td>The defending Ich's task is directly unsolvable for it</td>
+<td>Sense 1</td>
+</tr>
+<tr>
+<td>«Während aber diese Entwicklung an den Ichtrieben vor sich geht, lösen sich die Sexualtriebe in sehr bedeutsamer Weise von ihnen ab.»</td>
+<td>GW VIII:234</td>
+<td>Development takes place on the ego drives; the sexual drives detach</td>
+<td>Sense 2, 1911</td>
+</tr>
+<tr>
+<td>«Wie das Lust-Ich nichts anderes kann als wünschen, nach Lustgewinn arbeiten und der Unlust ausweichen, so braucht das Real-Ich nichts anderes zu tun als nach Nutzen zu streben und sich gegen Schaden zu sichern.»</td>
+<td>GW VIII:235</td>
+<td>Pleasure-Ich wishes; reality-Ich seeks advantage</td>
+<td>Sense 3</td>
+</tr>
+<tr>
+<td>«Es wandelt sich so aus dem anfänglichen Real-Ich, welches Innen und Außen nach einem guten objektiven Kennzeichen unterschieden hat, in ein purifiziertes Lust-Ich, welches den Lustcharakter über jeden anderen setzt.»</td>
+<td>GW X:228</td>
+<td>Initial reality-Ich becomes purified pleasure-Ich</td>
+<td>Reversed direction, 1915</td>
+</tr>
+<tr>
+<td>«Die der Außenwelt entzogene Libido ist dem Ich zugeführt worden, so daß ein Verhalten entstand, welches wir Narzißmus heißen können.»</td>
+<td>GW X:140</td>
+<td>Withdrawn libido goes to the Ich: narcissism</td>
+<td>Sense 4</td>
+</tr>
+<tr>
+<td>«Wir sehen bei ihm, wie sich ein Teil des Ichs dem anderen gegenüberstellt, es kritisch wertet, es gleichsam zum Objekt nimmt.»</td>
+<td>GW X:433</td>
+<td>One part of the Ich judges the other</td>
+<td>Sense 5</td>
+</tr>
+<tr>
+<td>«seitdem wir die Gegensätze nicht mehr Ich- und Sexualtriebe, sondern Lebens- und Todestriebe benennen.»</td>
+<td>GW XIII:57</td>
+<td>The dualism renamed</td>
+<td>End of sense 2</td>
+</tr>
+<tr>
+<td>«Die Annahme einer solchen Stufe im Ich als erster Schritt einer Ichanalyse muß ihre Rechtfertigung allmählich auf den verschiedensten Gebieten der Psychologie erweisen.»</td>
+<td>GW XIII:145</td>
+<td>A grade in the Ich, still to be justified</td>
+<td>Sense 5, 1921</td>
+</tr>
+<tr>
+<td>«Auch ein Teil des Ichs, ein Gott weiß wie wichtiger Teil des Ichs, kann ubw sein, ist sicherlich ubw.»</td>
+<td>GW XIII:244</td>
+<td>Part of the Ich is certainly unconscious</td>
+<td>Ich is not identical with what is conscious</td>
+</tr>
+<tr>
+<td>«Es ist leicht einzusehen, das Ich ist der durch den direkten Einfluß der Außenwelt unter Vermittlung von W-Bw veränderte Teil des Es, gewissermaßen eine Fortsetzung der Oberflächendifferenzierung.»</td>
+<td>GW XIII:252</td>
+<td>Ich as the modified part of the Es</td>
+<td>Sense 6</td>
+</tr>
+<tr>
+<td>«Als das große Reservoir der Libido, im Sinne der Einführung des Narzißmus, müssen wir jetzt nach der Scheidung von Ich und Es das Es anerkennen.»</td>
+<td>GW XIII:258</td>
+<td>The Es is now the reservoir</td>
+<td>Revision of sense 4 (1923 footnote)</td>
+</tr>
+<tr>
+<td>«daß das Ich eine Organisation ist, das Es aber keine; das Ich ist eben der organisierte Anteil des Es»</td>
+<td>GW XIV:124</td>
+<td>Ich as the organised part of the Es</td>
+<td>Sense 6, 1926</td>
+</tr>
+<tr>
+<td>«Der Widerstand kann nur eine Äußerung des Ichs sein, das seinerzeit die Verdrängung durchgeführt hat und sie jetzt aufrecht halten will. So haben wir's auch früher immer aufgefaßt.»</td>
+<td>GW XV:75</td>
+<td>Resistance comes from the repressing Ich; "we always held this"</td>
+<td>Claimed continuity with sense 1</td>
+</tr>
+<tr>
+<td>«Wo Es war, soll Ich werden.»</td>
+<td>GW XV:86</td>
+<td>Where Es was, Ich shall become</td>
+<td>Therapeutic aim</td>
+</tr>
+<tr>
+<td>«Die beiden Einstellungen bestehen das ganze Leben hindurch nebeneinander, ohne sich gegenseitig zu beeinflussen. Das ist, was man eine Ichspaltung nennen darf.»</td>
+<td>GW XVII:134</td>
+<td>Two lifelong attitudes side by side: splitting of the Ich</td>
+<td>Defensive Ichspaltung</td>
+</tr>
+<tr>
+<td>«Alles, was wir darüber wissen, bezieht sich auf das Ich, in dem anfänglich der ganze verfügbare Betrag von Libido aufgespeichert ist. Wir nennen diesen Zustand den absoluten primären Narzissmus.»</td>
+<td>GW XVII:72</td>
+<td>All libido first stored in the Ich</td>
+<td>Sense 4 kept, 1940</td>
+</tr>
+</tbody>
+</table>
+<h2>What this entry does not claim</h2>
+<ul>
+<li>It does not claim that the 1894 Ich and the structural Ich are one entity.</li>
+<li>It does not claim that Lust-Ich and Real-Ich were formally abandoned.</li>
+<li>It does not claim that the 1914–1921 ideal or critical agency "is" the Über-Ich before 1923.</li>
+<li>It does not claim to know which earlier text assigned reality testing to the Über-Ich.</li>
+<li>The extension of Ichspaltung to all psychoses carries Freud's own hedge: «Wir dürfen wahrscheinlich als allgemein gültig vermuten» [GW XVII:132]. It is not presented here as a result.</li>
+<li>No modern vocabulary of self or subjectivity is licensed by these pages.</li>
+<li>Statements about the Ich in works not read (Unbehagen, Lectures XXII and XXIV, and the chapters listed below) are outside this entry.</li>
+</ul>
+<h2>Reading coverage</h2>
+<p><strong>Texts read.</strong> S01 GW I:57–74; S02 V:117–122; S03 VIII:230–238; S04 X:138–170; S05 X:214–232; S06 X:428–446; S07 XI:427–446; S08 XIII:46–62; S09 XIII:144–150; S10 XIII:239–255; S11 XIII:256–267; S12 XIII:277–289; S13 XIII:387–391; S14 XIV:113–129; S15 XIV:221–231; S16 XV:62–86; S17 XVI:79–86; S18 XVII:59–62; S19 XVII:67–72; S20 XVII:125–138.</p>
+<p><strong>Date convention.</strong> Years are those of the source headers, which give publication years; most pages print none. S18–S20 (the Ichspaltung paper and the Abriß) were written in 1938 and published in 1940. They are cited as 1940 (written 1938), and the range "to 1940" in headings refers to them.</p>
+<p><strong>Loci not read.</strong> GW XI:364 and 395; XIV:276, 424 and 496; Massenpsychologie chapters VII–VIII (XIII:115–128); Das Ich und das Es chapter IV (XIII:268–276); the first half of Triebe und Triebschicksale, to which GW X:226 refers back.</p>
+<p><strong>Gaps and damage in the scan.</strong>
+- GW XIV:120 repeats text already printed on XIV:118. The extract describes the repetition as covering XIV:118–119. In either case, the original text of XIV:120 is missing.
+- OCR triage for XIV:118. The sentence beginning "Die Verdrängung geht vom Ich aus" is printed on XIV:118 with letter-spacing in "im" and with "Uber-Ichs" for "Über-Ichs". This entry quotes only its undamaged opening words at XIV:118. It paraphrases the damaged clause about the Über-Ich's commission and does not quote it. The duplicate on XIV:120 carries the same words, which is why a search for the repaired string finds XIV:120.
+- The drawing on XIII:252 is not reproduced.
+- XIII:150, XVI:86, XVII:62 and XVII:72 break off mid-sentence.
+- Pages with no use of the concept: X:215, 222 and 223; X:147; XIII:47–53 and 60–62; XVII:125–127.</p>
+      <h2>About this entry</h2>
+      <p class="edition">First edition, November 2026. Built from the German text of Freud's <em>Gesammelte Werke</em> only, read source by source; every German quotation was checked against the page it cites. References give volume and page, for example [GW X:291]. English renderings are our own. A mark [ii] means our interpretation of the passages, [iii] a synthesis across texts; unmarked sentences report what the pages say. Each long entry says which texts were read and which were not. Entries are revised as the reading continues; corrections are welcome at <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="/privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="/mentions-legales.html">Mentions Légales</a><span class="footer-sep">·</span><a href="/research-tools-terms.html">Research tools terms</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+  <script>document.getElementById('menu').addEventListener('click', function () { document.querySelector('nav').classList.toggle('open'); });</script>
+</body>
+</html>
