@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'self'; form-action 'none'; frame-ancestors 'none'">
+  <title>The parapraxis (die Fehlleistung) in Freud | Freud for Machines glossary | Llull Lab</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="Freud&#x27;s word is Fehlleistung, literally &quot;faulty performance&quot;, and &quot;parapraxis&quot; is only a conventional English label; the passages read support two senses, which are kept apart because they give two different definitions and because the defining 1916">
+  <link rel="canonical" href="https://llulllab.com/freud-for-machines/concepts/parapraxis.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Llull Lab">
+  <meta property="og:url" content="https://llulllab.com/freud-for-machines/concepts/parapraxis.html">
+  <meta property="og:title" content="The parapraxis (die Fehlleistung) in Freud | Freud for Machines glossary | Llull Lab">
+  <meta property="og:description" content="Freud&#x27;s word is Fehlleistung, literally &quot;faulty performance&quot;, and &quot;parapraxis&quot; is only a conventional English label; the passages read support two senses, which are kept apart because they give two different definitions and because the defining 1916">
+  <link rel="stylesheet" href="/fonts/gf-d321d810.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+      --bg-card: #141414; --highlight: #a78bfa; --live: #6ee7b7; --prep: #fbbf24; --stop: #f87171;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+    [hidden] { display: none !important; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    nav a.news-hub-link { color: #fcd116; }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .module-tag { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-top: 80px; }
+    .page-hero { padding: 0 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 680px; line-height: 1.75; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; }
+    .page-body { padding: 48px 0 40px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 96px; }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { margin-bottom: 1.1em; max-width: 680px; }
+    .muted { color: var(--accent); }
+    .small { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; }
+    label { display: block; font-family: var(--sans); font-size: 13px; letter-spacing: 0.5px; color: var(--accent); margin: 0 0 6px; }
+    input[type=email], textarea { width: 100%; background: #0b0b0b; color: var(--fg); border: 1px solid var(--border-strong); border-radius: 6px; padding: 12px 14px; font-family: var(--serif); font-size: 16px; line-height: 1.6; }
+    textarea { min-height: 170px; resize: vertical; }
+    textarea.ctx { min-height: 80px; }
+    input:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+    .row { margin-bottom: 18px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-family: var(--sans); font-size: 14px; color: var(--accent); }
+    .check input { margin-top: 5px; }
+    .check a, .page-body a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--bg); background: var(--highlight); border: none; border-radius: 5px; cursor: pointer; }
+    .btn:disabled { opacity: 0.5; cursor: default; }
+    .btn.ghost { background: transparent; color: var(--highlight); border: 1px solid rgba(167,139,250,0.5); }
+    .btn.danger { background: transparent; color: var(--stop); border: 1px solid rgba(248,113,113,0.5); }
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .msg { font-family: var(--sans); font-size: 14px; margin-top: 12px; color: var(--accent); min-height: 1.4em; }
+    .msg.err { color: var(--stop); }
+    .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--sans); font-size: 13px; color: #aaa; margin-bottom: 16px; }
+    .result { margin-top: 24px; }
+    .verdict { display: inline-block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-strong); margin-bottom: 14px; }
+    .verdict.proceed { color: var(--live); border-color: rgba(110,231,183,0.4); }
+    .verdict.proceed_with_conditions { color: var(--prep); border-color: rgba(251,191,36,0.4); }
+    .verdict.do_not_proceed { color: var(--stop); border-color: rgba(248,113,113,0.45); }
+    .verdict.need_more_information { color: var(--highlight); border-color: rgba(167,139,250,0.5); }
+    .result h3 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 22px 0 8px; }
+    .result ul { padding-left: 20px; }
+    .result li { margin-bottom: 6px; color: #ddd; }
+    .result .summary { font-size: 1.08rem; }
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+    pre { background: #0b0b0b; border: 1px solid var(--border); border-radius: 6px; padding: 14px; overflow-x: auto; color: #ddd; line-height: 1.55; white-space: pre; }
+    .keybox { word-break: break-all; white-space: pre-wrap; }
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 64px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+      .entry h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 8px; }
+    .entry h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 40px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .entry h3 { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; margin: 28px 0 10px; }
+    .entry p, .entry li { max-width: 760px; margin-bottom: 0.9em; }
+    .entry ul, .entry ol { padding-left: 22px; }
+    .entry table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 12px 0 20px; display: block; overflow-x: auto; }
+    .entry th, .entry td { border: 1px solid var(--border); padding: 8px 10px; vertical-align: top; text-align: left; }
+    .entry th { font-family: var(--sans); font-weight: 400; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+    .short { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; margin: 24px 0 8px; }
+    .short h2 { margin-top: 0; }
+    .edition { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; max-width: 760px; }
+    .toc a, .entry a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .idx { list-style: none; padding: 0; }
+    .idx li { border-top: 1px solid var(--border); padding: 18px 0; max-width: 820px; }
+    .idx li a { font-size: 1.2rem; }
+    .idx .de { color: var(--muted); font-family: var(--sans); font-size: 13px; margin-left: 6px; }
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "DefinedTerm", "name": "The parapraxis (die Fehlleistung)", "description": "Freud's word is Fehlleistung, literally \"faulty performance\", and \"parapraxis\" is only a conventional English label; the passages read support two senses, which are kept apart because they give two different definitions and because the defining 1916", "url": "https://llulllab.com/freud-for-machines/concepts/parapraxis.html", "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "Freud for Machines glossary", "url": "https://llulllab.com/freud-for-machines/concepts/"}}</script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/en/" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" type="button" id="menu">Menu</button>
+      <nav>
+        <a href="/en/about.html">About</a>
+        <a href="/en/people.html">Team</a>
+        <a href="/en/research.html" class="active">Research</a>
+        <a href="/en/studio.html">Studio</a>
+        <a href="/en/press.html">Press</a>
+        <a href="/en/updates.html">Updates</a>
+        <a href="/ai-robotics/" class="news-hub-link">News Hub</a>
+        <a href="/machines/">For Machines</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="module-tag">Freud for Machines · Glossary</div>
+    <div class="page-body entry">
+      <h1>The parapraxis <span class="de">(die Fehlleistung)</span></h1>
+      <p class="edition">In Freud's texts. <a href="#entry">Entry</a> · <a href="#long">Long entry</a> · <a href="/freud-for-machines/concepts/">All entries</a> · <a href="/freud-for-machines/">Ask the research tool</a></p>
+      <div class="short">
+      <h2>In brief</h2>
+<p>The passages read support two senses of <em>Fehlleistung</em>.</p>
+<p><strong>Sense 1</strong> belongs to <em>Zur Psychopathologie des Alltagslebens</em>, as printed in GW with material dated up to 1922. There the <em>Fehlleistung</em> is a class of normal, momentary failures of a performance the person otherwise masters. If the person perceives such a failure at all, he feels no motive for it. Yet these failures prove «als wohl motiviert und durch dem Bewußtsein unbekannte Motive determiniert» [GW IV:267]. The one species fully analysed in the pages read is name-forgetting «durch Verdrängung motiviert» [GW IV:12].</p>
+<p><strong>Sense 2</strong> belongs to the 1916 <em>Vorlesungen</em>. There the <em>Fehlleistung</em> is a psychic act with a "Sinn". Faulty performances are «Ergebnisse der Interferenz von zwei verschiedenen Intentionen» [GW XI:56]. One of the two intentions must first have been pushed back, and the result is a «Kompromißergebnis» [GW XI:61].</p>
+<p>Three points must not be missed:</p>
+<ul>
+<li><strong>Vocabulary.</strong> The 1916 pages read never call the disturbing tendency "unbewußt" and never use "Verdrängung". They speak of «Zurückdrängung» [GW XI:61] and of tendencies effective «ohne daß er von ihnen weiß» [GW XI:70]. Both texts do use "Unterdrückung" [GW IV:11, GW XI:60].</li>
+<li><strong>Scope.</strong> The 1901 class includes the "chance actions" [GW IV:268], while the 1916 lectures set chance actions apart [GW XI:55]. The 1901 class requires a temporary disturbance [GW IV:267], while the 1916 class includes mislaying and losing, where «diese Bedingung des nur Zeitweiligen» falls away [GW XI:18].</li>
+<li><strong>Felt motive.</strong> The 1901 condition is that no motive be felt [GW IV:268]. The 1916 lectures count a group of slips whose disturbing tendency the speaker had felt beforehand [GW XI:58]. This is held under "Tensions held".</li>
+</ul>
+      </div>
+      <h2 id="entry">Entry</h2>
+<p>Freud's word is <em>Fehlleistung</em>, literally "faulty performance", and "parapraxis" is only a conventional English label; the passages read support two senses, which are kept apart because they give two different definitions and because the defining 1916 formula of two interfering intentions does not occur in the 1901 pages read. In <em>Zur Psychopathologie des Alltagslebens</em> (1901), a faulty performance is a normal failure bounded by three conditions: it stays within the breadth of the normal, it is a momentary and temporary disturbance of something otherwise done correctly, and the person feels no motive for it; yet it proves determined by motives unknown to consciousness, the first chapter is said to repeat an essay of 1898, the word itself first appears in the pages read in the summary chapter, the GW text carries material up to 1922, and when the defining sentences were written cannot be fixed from the pages read; within the summary chapter, determinism is stated both as a result without gaps and, in a footnote citing a 1920 publication, as a working presupposition for most cases, and this is held as a tension. In the 1916 <em>Vorlesungen</em> the faulty performance is a psychic act with a "sense" (a stipulated term, defined as the intention a process serves and its position in a psychic series, later restated as meaning, intention, tendency and position in a series of psychic connections) that arises from the interference of two intentions; the claim that a slip is a full psychic act is first made with a "perhaps", the interference is first given as a provisional result and extended to the other kinds only in advance, and it is then posited as the first result of psychoanalysis under restrictions stated on the same page. Within the lectures this sense is kept and built on rather than revised: the two-intention core stays, and Lecture IV adds that one intention must have been pushed back, that the result is a compromise, and that avoidance of unpleasure linked to memory is the motive of name-forgetting and of many other faulty performances, though not of every case, since name-forgetting also occurs in cases where an unpleasure motive cannot be confirmed; these cases are explained by psycho-physiological facilitation and associative inhibition, which can also combine with the unpleasure motive; and within the lectures, the admission that unintended losing very probably exists stands against the later statement that common to all cases of losing is that one wanted to lose something, and the two are held as a tension. In 1901 Freud presents the motive as his own addition, for certain cases of name-forgetting, to the psychologists' long-recognised conditions of forgetting, which he keeps; he presents the grouping of the class as indicated in language, for most of these phenomena, by the prefix "ver-"; he reports inattention and chance as what the person is tempted to say rather than adopting them; he also reports Meyer, Schneider, Jung, Adler, Jones and Ossipow, and his own use of the word for Ossipow's missed train stands in a footnote that belongs to a layer of 1922 or later; the pages do not state that the three-condition bounding is his own formulation, which remains a conjecture. In 1916 he presents the interference as the first result of psychoanalysis, of which psychology had known nothing, and attributes the chance and attention explanations and the views of Meringer and Mayer and of Wundt to others; he says he does not dispute the older factors, but he treats bodily states and sound or word relations only as favouring conditions and dismisses excitement and distraction as mere phrases, and he cites the lay view of forgotten intentions and literary witnesses (Schiller, Shakespeare through Rank, Lichtenberg, Shaw) as allies. On our reading, the two definitions coexist on the pages read, since the 1916 lectures neither restate nor retract the 1901 definition and refer to the book only for its cases; the theoretical frames largely overlap in determinism, a language of forces and links to superstition and paranoia, and several 1916 elements (compromise, disturbance by a preceding train of thought, a counter-tendency) appear prefigured in 1901, which allows a developing model, while reading the second sense as a replacement of the first is only a conjecture; three differences between the texts are held as unresolved tensions, two of scope and one concerning the felt motive: the 1901 class includes chance actions, which the 1916 lectures set apart for lacking a disturbed intention; the 1901 class requires a momentary and temporary disturbance, while the 1916 class includes a series where this condition of mere temporariness falls away, with mislaying and losing as examples, and the 1901 pages read do not say how these were classed; and the 1901 condition that no motive be felt stands against a 1916 group of slips whose disturbing tendency the speaker felt beforehand, though the pages read do not settle whether the two statements concern the same thing. A reader must not confuse the vocabularies, whose difference is also held as a tension for which the pages read give no reason: both texts use "Unterdrückung" (suppression), though the pages read do not settle whether it carries the same sense in both, but where the 1901 pages speak of repression ("Verdrängung") and of "das Unbewußte", the 1916 pages read use neither and speak instead of a pushing back ("Zurückdrängung"), which is not to be equated with repression, and of tendencies effective without the person knowing of them; nor is a faulty performance to be confused with external chance, with spontaneous number and name ideas (which the 1901 pages do not call faulty performances), with a deliberate joke, or with forgetting an intention after the situation has changed.</p>
+<p><strong>Senses.</strong>
+1. Motivated failure within the breadth of the normal (1898 to 1922): a momentary failure meeting three conditions and determined by motives unknown to consciousness, which the pages read do not show to be abandoned.
+2. A psychic act with a sense, from the interference of two intentions (1916): a compromise between a disturbed intention and a disturbing one that has been pushed back; it is kept and built on within the lectures, and the texts read say nothing about it beyond 1916.</p>
+<p><strong>Where to read.</strong>
+- GW IV:5-12 (Zur Psychopathologie des Alltagslebens, ch. I, 1901)
+- GW IV:267-289 (Zur Psychopathologie des Alltagslebens, ch. XII, 1901, with material up to 1922)
+- GW XI:18-38 (Vorlesungen, Lecture II and start of Lecture III, 1916)
+- GW XI:39-57 (Vorlesungen, running heads III and IV, 1916)
+- GW XI:58-76 (Vorlesungen, Lecture IV, 1916)</p>
+      <p class="edition">The entry is drawn from the long entry below, which gives each sense with Freud's words, dates and pages.</p>
+      <h2 id="long">Long entry</h2>
+<p>"Parapraxis" is used here only as a conventional English label. Freud's word is <em>Fehlleistung</em>, which this entry renders literally as "faulty performance".</p>
+<h2>The senses</h2>
+<p>There are two senses because the passages give two different definitions. The 1901 definition works by three phenomenal conditions plus motivation unknown to consciousness. The 1916 definition is structural: two interfering intentions, one of them pushed back, and a compromise.</p>
+<p>The theoretical frames overlap more than they differ [ii]:</p>
+<ul>
+<li><strong>Determinism.</strong> Both texts appeal to it. The 1901 chapter calls determination «lückenlos» (without gaps) [GW IV:283]. The 1916 lectures say «Wenn jemand so den natürlichen Determinismus an einer einzigen Stelle durchbricht, hat er die ganze wissenschaftliche Weltanschauung über den Haufen geworfen.» [GW XI:21] (If someone breaks through natural determinism at a single point, he has overturned the whole scientific world-view.) They also reject «die Illusion einer psychischen Freiheit» (the illusion of a psychic freedom) [GW XI:42].</li>
+<li><strong>Forces.</strong> The term "dynamische Auffassung" occurs only in 1916 [GW XI:62]. A language of forces is already present in 1901, however. It appears in the counter-current «deren Kraft sich im Moment der Ausführung von der Kraft seiner Intention abziehen konnte» (whose force could subtract from the force of his intention at the moment of execution) [GW IV:288]. It also appears in the condition «wenn alle Seelenkräfte einig dem gewünschten Ziel entgegenstreben» (when all the forces of the mind strive together towards the desired goal) [GW IV:289].</li>
+<li><strong>Superstition and paranoia.</strong> Both texts bring faulty performances into connection with superstition and with paranoia [ii].</li>
+<li><strong>Superstition, 1901.</strong> «Ein anderer Hinweis auf die unbewußte und verschobene Kenntnis der Motivierung bei Zufalls- und Fehlleistungen findet sich in den Phänomen des Aberglaubens.» [GW IV:285] (Another pointer to the unconscious and displaced knowledge of the motivation of chance and faulty performances is found in the phenomena of superstition.)</li>
+<li><strong>Paranoia, 1901.</strong> The paranoiac rejects the category of the accidental for the psychic expressions of others: «verwirft der Paranoiker also in der Anwendung auf die psychischen Äußerungen der anderen» [GW IV:284].</li>
+<li><strong>Omens, 1916.</strong> «Und wirklich, ein Teil der Omina waren nichts anderes als Fehlleistungen, z. B. wenn jemand stolperte oder niederfiel.» [GW XI:53] (And indeed, part of the omens were nothing other than faulty performances, for example when someone stumbled or fell.)</li>
+<li><strong>Paranoia, 1916.</strong> Lecture IV warns of the dangers of working with small signs, with combinatory paranoia as its example, and answers: «Vor solchen Gefahren kann uns nur die breite Basis unserer Beobachtungen bewahren» [GW XI:62] (only the broad basis of our observations can protect us against such dangers).</li>
+<li><strong>Unpleasure.</strong> What the 1916 pages add is a motive, not a new field of application. That motive is the avoidance of unpleasure arising from memory, «die Abneigung des Gedächtnisses, etwas zu erinnern, was mit Unlustempfindungen verknüpft war» [GW XI:70] (see Sense 2).</li>
+</ul>
+<p>Both senses can also be read as one developing model, since compromise and a disturbing earlier thought already appear in 1901 (see "How the senses relate"). They are kept apart here because the defining formula of 1916 does not occur in the 1901 pages read [ii].</p>
+<h3>Sense 1: Motivated failure within the breadth of the normal (1898 to 1922)</h3>
+<p><strong>In Freud's words.</strong>
+- «Um in die Klasse der so zu erklärenden Phänomene eingereiht zu werden, muß eine psychische Fehlleistung folgenden Bedingungen genügen.» [GW IV:267] (To be placed in the class of phenomena to be explained in this way, a psychic faulty performance must satisfy the following conditions.)
+- «Sie muß den Charakter der momentanen und zeitweiligen Störung an sich tragen.» [GW IV:267] (It must bear the character of a momentary and temporary disturbance.)
+- «Neben dem einfachen Vergessen von Eigennamen kommt auch ein Vergessen vor, welches durch Verdrängung motiviert ist.» [GW IV:12] (Besides the simple forgetting of proper names there also occurs a forgetting that is motivated by repression.)</p>
+<p><strong>What it means.</strong> A <em>Fehlleistung</em> is fixed by three conditions:</p>
+<ol>
+<li>It must stay «innerhalb der Breite des Normalen» [GW IV:267], a limit «von unserer Schätzung festgesetzt» (set by our estimate) [GW IV:267].</li>
+<li>It must be a momentary disturbance of something otherwise done correctly [GW IV:267].</li>
+<li>The person must feel no motive: «Wenn wir die Fehlleistung überhaupt wahrnehmen, dürfen wir von einer Motivierung derselben nichts in uns verspüren» [GW IV:268] (if we perceive the faulty performance at all, we must feel nothing in ourselves of any motivation for it).</li>
+</ol>
+<p>How conditions 2 and 3 stand against the 1916 lectures is held under "Tensions held".</p>
+<p>The class contains:</p>
+<ul>
+<li>forgetting,</li>
+<li>errors made despite better knowledge,</li>
+<li>slips of the tongue,</li>
+<li>misreading,</li>
+<li>slips of the pen,</li>
+<li>bungled actions,</li>
+<li>«die sogenannten Zufallshandlungen» (the so-called chance actions) [GW IV:268].</li>
+</ul>
+<p>The prefix "ver-" is said to indicate their inner sameness «für die meisten dieser Phänomene» (for most of these phenomena) [GW IV:268].</p>
+<p>The explanatory frame is psychic determinism: «und so ist die Determinierung im Psychischen doch lückenlos durchgeführt» [GW IV:283] (and so determination in the psychic domain is carried through without gaps). On chance Freud writes: «ich glaube zwar an äußeren (realen) Zufall, aber nicht an innere (psychische) Zufälligkeit» [GW IV:286] (I believe in external, real chance, but not in internal, psychic chance). The same page licenses a reading of "external chance" [ii]. It is an event «an dessen Zustandekommen mein Seelenleben unbeteiligt ist» (in whose coming about my mental life takes no part) [GW IV:286]. The page does not say that such external events are undetermined. Their relation to the 1916 lectures is held under "Tensions held".</p>
+<p>In the Signorelli analysis, the forgetting appears as «eine Störung des neu auftauchenden Themas durch das vorhergehende» [GW IV:7] (a disturbance of the newly arising topic by the preceding one). Its motive is put this way: «Ich wollte also etwas vergessen, ich hatte etwas verdrängt.» [GW IV:8] (So I wanted to forget something, I had repressed something.) The substitute names work «nach Art eines Kompromisses» (after the manner of a compromise) [GW IV:9].</p>
+<p>In the Signorelli chapter, "Bewußtsein" and its derivatives are used for what is present to the person's awareness [ii]. For example, substitute names come «zum Bewußtsein» [GW IV:6], and an event did not come «zur bewußten Erinnerung» [GW IV:8]. The word "unbewußt" does not occur in that chapter.</p>
+<p>The summary chapter also uses the substantive "das Unbewußte". It occurs repeatedly between GW IV:271 and IV:289:</p>
+<ul>
+<li>almost as an agent: «daß das Unbewußte sich beeilt hat, die Zahl zu determinieren, die von dem Bewußten freigelassen wurde» [GW IV:271];</li>
+<li>in «ihrer Determinierung aus dem Unbewußten entbehrt» [GW IV:271];</li>
+<li>as the source of motivation: «aus dem Unbewußten» [GW IV:283];</li>
+<li>as an object of knowledge: «bei näherer Kenntnis des Unbewußten» [GW IV:283];</li>
+<li>in «ins Unbewußte verdrängt» [GW IV:289].</li>
+</ul>
+<p>None of these uses defines the term. Whether it is meant in a systematic sense cannot be decided from the pages read.</p>
+<p><strong>When and where.</strong>
+- <strong>Earliest layer.</strong> The Signorelli chapter says it repeats an earlier essay: «einen kleinen Aufsatz veröffentlicht, dessen Inhalt ich hier wiederholen und zum Ausgang für weitere Erörterungen nehmen werde» [GW IV:5] (a small essay published, whose content I shall repeat here and take as the starting point for further discussion). The same page dates that essay to 1898.
+- <strong>First use of the term.</strong> The word <em>Fehlleistung</em> does not occur in GW IV:5-12. In the pages read it first appears in the summary at GW IV:267.
+- <strong>Later layers.</strong> That chapter prints a letter dated 1899 [GW IV:271]. It also cites publications up to 1922; the 1922 citation stands in a footnote [GW IV:287]. When the definitional sentences themselves were written cannot be fixed from the pages read.
+- <strong>What stays the same.</strong> The motive is unknown to the person, and the act is determined.
+- <strong>No shift can be shown.</strong> No shift of vocabulary within the 1901 book can be shown from these pages. Both chapters read belong to one printed book, so their order is not a chronology. Both chapters speak of repression and of consciousness:
+  - The Signorelli chapter has «verdrängt» [GW IV:8] beside «in mir vom Bewußtwerden auszuschließen» [GW IV:8] and «ist dem Bewußtsein keine Kunde gegeben worden» [GW IV:10].
+  - The summary chapter has «dem Bewußtsein unbekannte Motive» [GW IV:267] beside «solche Wünsche ins Unbewußte verdrängt hat» [GW IV:289].
+  - In the pages read, only the substantive "das Unbewußte" is confined to the summary chapter.</p>
+<p><strong>Freud's own or taken over.</strong>
+- <strong>The added motive is Freud's own.</strong> He presents it as an addition to older views: «noch ein Motiv hinzugefügt» [GW IV:10]. The summary states the result that these phenomena prove «als wohl motiviert und durch dem Bewußtsein unbekannte Motive determiniert» [GW IV:267].
+- <strong>The grouping is presented as found in language.</strong> «Die gleiche Zusammensetzung mit der Vorsilbe „ver-“ deutet für die meisten dieser Phänomene die innere Gleichartigkeit sprachlich an.» [GW IV:268] (The same compound with the prefix "ver-" indicates in language the inner sameness of most of these phenomena.) The pages do not state that the bounding of the class by three conditions is Freud's own formulation; that remains a conjecture [iii].
+- <strong>Psychologists' conditions kept.</strong> He keeps the psychologists' conditions of forgetting and says he has only added something: «Wir haben nur für gewisse Fälle zu all den längst anerkannten Momenten, die das Vergessen eines Namens bewirken können, noch ein Motiv hinzugefügt» [GW IV:10] (we have only added a motive, for certain cases, to all the long-recognised factors that can bring about the forgetting of a name).
+- <strong>Everyday explanation reported, not adopted.</strong> "Inattention" and "chance" are reported as what the person is tempted to say, not as Freud's own explanation [GW IV:268].
+- <strong>Others named in S02.</strong> He reports Meyer, Schneider, Jung, Adler, Jones and Ossipow. Freud himself calls Ossipow's missed train «diese Fehlleistung» [GW IV:287]. These words stand in footnote 1 on that page. The footnote cites Ossipow's article «Psychoanalyse und Aberglauben, Internationale Zeitschrift für Psychoanalyse, VIII, 1922» [GW IV:287] as the source of the case. This use of the word therefore belongs to a layer of 1922 or later.</p>
+<p><strong>Abandoned or kept.</strong> The texts read do not show Freud abandoning this sense. The GW text of the chapter still prints the three conditions [GW IV:267-268] in the same chapter as a footnote that cites a publication of 1922 [GW IV:287]. The 1916 lectures define differently, but in the pages read they do not retract the 1901 definition [ii].</p>
+<p><strong>Not to be confused with.</strong>
+- <strong>External chance.</strong> The coachman's error is «real» chance. Walking to the wrong house oneself would instead be «eine der Deutung bedürftige Handlung mit unbewußter Absicht» [GW IV:286] (an action in need of interpretation, with an unconscious intention).
+- <strong>Spontaneous number and name ideas.</strong> These are not called <em>Fehlleistungen</em>. They are presented as a field where determination reaches further: «hier und noch auf anderen Gebieten» [GW IV:268] (here and in other fields too).</p>
+<h3>Sense 2: A psychic act with a sense, from the interference of two intentions (1916)</h3>
+<p><strong>In Freud's words.</strong>
+- «Sie sind nicht Zufälligkeiten, sondern ernsthafte seelische Akte, sie haben ihren Sinn, sie entstehen durch das Zusammenwirken — vielleicht besser: Gegeneinanderwirken zweier verschiedener Absichten.» [GW XI:37] (They are not chance events but serious mental acts; they have their sense; they arise from the working together, perhaps better, the working against each other, of two different intentions.)
+- «daß die eine dieser Intentionen eine gewisse Zurückdrängung von der Ausführung erfahren haben muß, um sich durch die Störung der anderen äußern zu können.» [GW XI:61] (that one of these intentions must have undergone a certain pushing-back from execution in order to be able to express itself by disturbing the other.)
+- «Die Fehlleistungen sind aber Kompromißergebnisse, sie bedeuten ein halbes Gelingen und ein halbes Mißlingen für jede der beiden Absichten» [GW XI:61] (Faulty performances are compromise results; they mean half a success and half a failure for each of the two intentions.)</p>
+<p><strong>What it means.</strong>
+- <strong>How the class is introduced.</strong> It is introduced by listing, as «die sogenannten Fehlleistungen des Menschen» [GW XI:18], which occur «bei jedem Gesunden» (in every healthy person) [GW XI:18].
+- <strong>"Sinn" is a stipulated term.</strong>
+  - <strong>First gloss.</strong> It is first glossed in Lecture II, where purely psychological inquiry is to concern itself «über den Sinn, d. i. die Bedeutung, die Absicht der Fehlleistung» (with the sense, that is, the meaning, the intention of the faulty performance) [GW XI:29].
+  - <strong>Explicit restatement.</strong> GW XI:33 restates it, marked by «noch einmal» (once more): «Einigen wir uns noch einmal darüber, was wir unter dem „Sinn“ eines psychischen Vorganges verstehen wollen. Nichts anderes als die Absicht, der er dient, und seine Stellung in einer psychischen Reihe.» [GW XI:33] (Let us agree once more on what we mean by the "sense" of a psychic process. Nothing other than the intention it serves and its position in a psychic series.)
+  - <strong>Later definition.</strong> «Unter Sinn verstehen wir Bedeutung, Absicht, Tendenz und Stellung in einer Reihe psychischer Zusammenhänge.» [GW XI:55] (By sense we understand meaning, intention, tendency and position in a series of psychic connections.)
+- <strong>Two intentions.</strong> The two interfering intentions are the disturbed one and the disturbing one. Of the disturbed one Freud writes: «die Person, welche die Fehlleistung begeht, kennt sie und bekennt sich zu ihr» [GW XI:40] (the person who commits the faulty performance knows it and acknowledges it).
+- <strong>What is essential.</strong> It is «nicht die Form derselben oder die Mittel, deren sie sich bedient, sondern die Absicht, der sie selbst dient» [GW XI:50] (not its form or the means it uses, but the intention it serves).
+- <strong>What marks the class off.</strong> The second, disturbed intention marks the <em>Fehlleistung</em> off from chance and symptomatic actions: «Von den Fehlhandlungen unterscheidet sie der Wegfall einer anderen Intention, mit der sie zusammenstoßen und die durch sie gestört wird.» [GW XI:55] (What distinguishes them from faulty actions is the absence of another intention with which they collide and which they disturb.)
+- <strong>"Fehlhandlung".</strong> The word is used interchangeably with <em>Fehlleistung</em>, in one sentence for the same thing [GW XI:45]. This is a change of wording, not a new sense [ii].</p>
+<p><strong>When and where.</strong> All of this lies within the 1916 lectures. The pages print no date for the lectures themselves.
+- <strong>Hedged first statement.</strong> The effect of a slip «vielleicht» (perhaps) deserves to be taken as a full psychic act [GW XI:28].
+- <strong>Provisional result.</strong> This is first given at GW XI:37. Extension to the other kinds is affirmed only «vorgreifend» (in advance) [GW XI:38].
+- <strong>Restated as a result, under restrictions.</strong> At XI:54 the result is introduced as a starting point: «wenn wir fortan davon ausgehen, daß Fehlleistungen psychische Akte sind und durch die Interferenz zweier Absichten entstehen. Es ist dies das erste Resultat der Psychoanalyse.» [GW XI:54] (if from now on we start from the assumption that faulty performances are psychic acts and arise through the interference of two intentions. This is the first result of psychoanalysis.) It is posited after restrictions stated on the same page. Purely physiological cases may occur among slips of the tongue and pen [GW XI:54], and the same sentence goes on to restrict losing and errors (see "Tensions held", "Losing").
+- <strong>Condition added.</strong> Lecture IV adds the pushing-back condition and the compromise [GW XI:61].
+- <strong>Unknown tendencies.</strong> The assumption is made in three steps:
+  - It is first assumed in the discussion of the toast-speaker: «Meine Deutung schließt die Annahme ein, daß sich bei dem Sprecher Intentionen äußern können, von denen er selbst nichts weiß» [GW XI:59] (my interpretation includes the assumption that intentions of which the speaker himself knows nothing can express themselves in him).
+  - For the third group of slips it is introduced boldly: «Ich werde so kühn sein, anzunehmen [...]» [GW XI:60] (I shall be so bold as to assume).
+  - Later it is called unavoidable: «werden wir unausweichlich zu der Annahme gedrängt, daß es Tendenzen beim Menschen gibt, welche wirksam werden können, ohne daß er von ihnen weiß» [GW XI:70] (we are unavoidably pushed to the assumption that there are tendencies in a person that can become effective without his knowing of them).
+- <strong>Last motive.</strong> Lecture IV names the avoidance of unpleasure arising from memory: «die Abneigung des Gedächtnisses, etwas zu erinnern, was mit Unlustempfindungen verknüpft war und bei der Reproduktion diese Unlust erneuern würde» [GW XI:70] (the reluctance of memory to recall what was linked with feelings of unpleasure and would renew that unpleasure if reproduced). It is recognised as the ultimately effective motive for name-forgetting and also for «viele andere Fehlleistungen» (many other faulty performances) [GW XI:71], not for all of them.
+- <strong>Last statement in the pages read.</strong> The value of faulty performances as evidence is limited [GW XI:75].
+- <strong>What stays the same throughout.</strong> The two-intention core.
+- <strong>What is added.</strong> Pushing-back, compromise, and unpleasure.</p>
+<p><strong>Freud's own or taken over.</strong>
+- <strong>Own.</strong> Freud presents the interference as «das erste Resultat der Psychoanalyse» [GW XI:54]. He adds: «Von dem Vorkommen solcher Interferenzen [...] hat die Psychologie bisher nichts gewußt» [GW XI:54] (of the occurrence of such interferences psychology has so far known nothing).
+- <strong>Rival views attributed to others:</strong>
+  - chance, and the attention theory, which Freud reconstructs for an imagined interlocutor [GW XI:21-22];
+  - Meringer and Mayer [GW XI:26];
+  - Wundt [GW XI:40].
+- <strong>How the rival factors are treated.</strong> Freud says «wir bestreiten diese Momente nicht» (we do not dispute these factors) [GW XI:38]. He then treats the factors differently:
+  - Bodily states, and sound and word relations, are only «Begünstigungen» (favouring conditions) [GW XI:39, XI:40].
+  - Excitement, distraction and disturbance of attention are dismissed: «Es sind nur Redensarten, spanische Wände» (they are only phrases, folding screens) [GW XI:39].
+- <strong>Allies.</strong> The lay view agrees on the forgetting of intentions [GW XI:47]. Literary witnesses are cited in four places:
+  - Freud discusses Schiller's <em>Wallenstein</em> himself: «verrät durch seine Worte „zu ihr“ uns wenigstens [...]» [GW XI:30].
+  - Shakespeare's Portia comes through Rank [GW XI:31].
+  - Lichtenberg's aphorism is endorsed as «die Theorie des Verlesens» [GW XI:32].
+  - Shaw's Caesar is introduced with «daß Dichter diese Fehlleistung in demselben Sinne verwerten» [GW XI:47].</p>
+<p><strong>Abandoned or kept.</strong> Within the lectures the sense is kept and built on: «Daß die Fehlleistungen einen Sinn haben, dürfen wir doch als das Ergebnis unserer bisherigen Bemühungen hinstellen und zur Grundlage unserer weiteren Untersuchungen nehmen.» [GW XI:54] (That faulty performances have a sense we may present as the result of our efforts so far and take as the basis of our further inquiries.) Beyond 1916 the texts read do not say.</p>
+<p><strong>Not to be confused with.</strong>
+- <strong>A deliberate joke.</strong> One must «erst erkunden, ob er es absichtlich als Witz geäußert hat, oder ob es ihm als Versprechen passiert ist» [GW XI:37] (first find out whether he said it deliberately as a joke or whether it happened to him as a slip).
+- <strong>Forgetting that is no <em>Fehlleistung</em>.</strong> Forgetting an intention after the situation has changed does not count: «Eine Fehlleistung kann das Vergessen des Vorsatzes nur dann heißen, wenn wir an eine solche Unterbrechung desselben nicht glauben können.» [GW XI:67] (The forgetting of an intention can be called a faulty performance only when we cannot believe in such an interruption of it.)
+- <strong>"Verdrängung".</strong> «Zurückdrängung» [GW XI:61] should not be equated with the 1901 «verdrängt» [GW IV:8]. The 1916 pages read do not use "Verdrängung".</p>
+<h2>How the senses relate</h2>
+<p><strong>Coexistence.</strong> In the pages read, the 1916 lectures neither restate nor retract the 1901 three-condition definition. They do refer the listener to the 1901 book for its examples: «In meiner „Psychopathologie des Alltagslebens“ (1901 zuerst erschienen) finden Sie ohnedies eine überreiche Kasuistik zum Studium der Fehlleistungen.» [GW XI:49] (In my "Psychopathology of Everyday Life", first published in 1901, you will in any case find a superabundant casuistry for the study of faulty performances.) The reference is to the book's cases, not to its definition. The GW text of the 1901 book carries material from as late as 1922, in a footnote [GW IV:287]. On the pages read, the two definitions therefore coexist [ii]. Reading Sense 2 as a replacement of Sense 1 is not attested and remains a conjecture [iii].</p>
+<p><strong>Continuity.</strong> Several elements of Sense 2 are prefigured in Sense 1 [ii].</p>
+<ul>
+<li><strong>Compromise.</strong> It appears in 1901 «nach Art eines Kompromisses» [GW IV:9] and in 1916 as «Kompromißergebnisse» [GW XI:61].</li>
+<li><strong>Disturbance by an earlier train of thought.</strong> In 1901 it is «Störung des neu auftauchenden Themas durch das vorhergehende» [GW IV:7]. In 1916 it is «daß die Störung von einem Gedankengang herrührt, der die betreffende Person kurz vorher beschäftigt hatte» [GW XI:57].</li>
+<li><strong>A counter-tendency against an intention.</strong> In 1901 the Roman's stumble is read as proof of «einer Gegenströmung in seinem Innern [...] deren Kraft sich im Moment der Ausführung von der Kraft seiner Intention abziehen konnte» [GW IV:288]. In 1916 this becomes the general formula of interference.</li>
+<li><strong>Suppression ("Unterdrückung").</strong> The word appears in both texts.</li>
+<li><strong>1901.</strong> The three conditions for name-forgetting with false remembering are disposition, a preceding suppression and the possibility of an external association. The second is «einen kurz vorher abgelaufenen Unterdrückungsvorgang» [GW IV:11]. Freud also writes that «ein unterdrücktes Element» strives to assert itself elsewhere [GW IV:10].</li>
+<li><strong>1916.</strong> «die Unterdrückung der vorhandenen Absicht, etwas zu sagen, die unerläßliche Bedingung dafür ist, daß ein Versprechen zustande kommt» [GW XI:60]. The same page says «Dies ist also der Mechanismus des Versprechens» [GW XI:60], so this statement is restricted to slips of the tongue. GW XI:61 generalises the condition to faulty performances, in the wording «Zurückdrängung» [GW XI:61].</li>
+<li><strong>Not settled.</strong> The 1901 pages use "Unterdrückung" and "Verdrängung" side by side without distinguishing them [GW IV:8, IV:10-11]. Whether the shared word carries the same sense in both texts is not settled by the pages read [ii].</li>
+<li><strong>Older factors kept, a motive added. The continuity is only partial, and the statements concern different species and different factors.</strong></li>
+<li><strong>1901, name-forgetting with false remembering.</strong> The factors are the psychologists' conditions, «die von den Psychologen angenommenen Bedingungen der Reproduktion und des Vergessens, die in gewissen Relationen und Dispositionen gesucht werden» [GW IV:10]. Freud keeps them and adds a motive [GW IV:10]. Of the dispositions he says: «Jene Dispositionen sind auch für unseren Fall unentbehrlich» [GW IV:10].</li>
+<li><strong>1916, slips of the tongue: bodily and associative factors.</strong> «Diese körperlichen Momente haben also nur den Wert von Erleichterungen und Begünstigungen für den eigentümlichen seelischen Mechanismus des Versprechens.» [GW XI:39] (These bodily factors have only the value of facilitations and favouring conditions for the peculiar psychic mechanism of the slip of the tongue.) Sound and word relations are likewise only «Begünstigungen» [GW XI:40]. They are not necessary: «Vor allem sind es nicht notwendige Bedingungen der Fehlleistung.» [GW XI:39]</li>
+<li><strong>1916: psychophysiological factors.</strong> «Die psychophysiologischen Momente wie Aufregung, Zerstreutheit, Aufmerksamkeitsstörung leisten uns offenbar sehr wenig für die Zwecke der Erklärung. Es sind nur Redensarten, spanische Wände» [GW XI:39]. Later: «Aber weder diese Aufmerksamkeitsstörung noch die wirksam gewordenen Assoziationsneigungen treffen das Wesen des Vorgangs.» [GW XI:64]</li>
+<li><strong>1916, name-forgetting.</strong> «Das Namenvergessen scheint aber psycho-physiologisch besonders erleichtert zu sein» [GW XI:71] (name-forgetting, however, seems to be especially facilitated psycho-physiologically).</li>
+<li><strong>Reading [ii], with a caveat.</strong> In both texts the older factors are not denied («wir bestreiten diese Momente nicht» [GW XI:38]). Their weight appears to differ. In 1901 the dispositions are indispensable. In 1916 the older factors are favouring but not necessary conditions, or else phrases that explain very little. But the 1901 statement concerns name-forgetting and the conditions of reproduction. The 1916 favouring conditions, called «Begünstigungen» [GW XI:39, XI:40], concern bodily states and sound relations in slips of the tongue. For name-forgetting, the 1916 lectures too grant a special facilitation [GW XI:71]. The contrast may therefore reflect the difference of species rather than a change of view. The pages read do not decide this.</li>
+</ul>
+<p><strong>What is new in 1916.</strong> Three things are new in the pages read [ii]:
+- the technical definition of "Sinn" [GW XI:33, XI:55];
+- the second intention as the differentia that sets faulty performances apart from chance actions [GW XI:55];
+- the term for the frame: «Wir bemühen uns um eine dynamische Auffassung der seelischen Erscheinungen.» [GW XI:62] (We are striving for a dynamic conception of mental phenomena.)</p>
+<h2>Tensions held</h2>
+<ul>
+<li><strong>Scope: chance actions. HOLD TENSION.</strong> In 1901 «die sogenannten Zufallshandlungen» belong to the group [GW IV:268]. The same chapter also names them side by side with faulty performances: «bei Zufalls- und Fehlleistungen» [GW IV:285]. In 1916 chance actions lack the disturbed intention and so differ from faulty performances [GW XI:55].</li>
+<li><strong>Scope: the temporariness condition. HOLD TENSION.</strong></li>
+<li>1901: a faulty performance «muß den Charakter der momentanen und zeitweiligen Störung an sich tragen» [GW IV:267].</li>
+<li>1916: the class includes a series of which Freud says «In einer dritten Reihe entfällt diese Bedingung des nur Zeitweiligen» (in a third series this condition of mere temporariness falls away), with mislaying and losing as examples [GW XI:18].</li>
+<li>The 1901 pages read do not say how mislaying and losing were to be classed.</li>
+<li><strong>Felt motive. HOLD TENSION.</strong></li>
+<li>1901, condition (c): «Wenn wir die Fehlleistung überhaupt wahrnehmen, dürfen wir von einer Motivierung derselben nichts in uns verspüren» [GW IV:268].</li>
+<li>1916: «Zur ersten Gruppe gehören die Fälle, in denen die störende Tendenz dem Redner bekannt ist, überdies aber vor dem Versprechen von ihm verspürt wurde.» [GW XI:58]</li>
+<li>The 1901 condition concerns feeling a motive for the faulty performance. The 1916 group concerns a tendency known and felt before the slip. The pages read do not say whether the speaker of the first group also feels that tendency as the motive of the slip itself. So they do not settle whether the two statements concern the same thing.</li>
+<li>On the wording, the 1916 class contains cases that the 1901 condition would seem to exclude [ii].</li>
+<li><strong>Vocabulary of the unknown motive. HOLD TENSION.</strong></li>
+<li>1901: «verdrängt» [GW IV:8], «dem Bewußtsein unbekannte Motive» [GW IV:267], «aus dem Unbewußten» [GW IV:283].</li>
+<li>1916 pages read: «Zurückdrängung» [GW XI:61] and intentions «von denen er selbst nichts weiß» (of which he himself knows nothing) [GW XI:59].</li>
+<li>The texts share "Unterdrückung" [GW IV:11, GW XI:60] (see "How the senses relate"). The difference concerns "Verdrängung" and "das Unbewußte", which the 1916 pages read do not use.</li>
+<li>The pages read give no reason for the difference.</li>
+<li><strong>Chance, 1901 against 1916. RECONNECT [ii].</strong></li>
+<li>1901: «ich glaube zwar an äußeren (realen) Zufall, aber nicht an innere (psychische) Zufälligkeit» [GW IV:286].</li>
+<li>1916: «Wenn jemand so den natürlichen Determinismus an einer einzigen Stelle durchbricht, hat er die ganze wissenschaftliche Weltanschauung über den Haufen geworfen.» [GW XI:21]</li>
+<li>On its wording alone, admitting real chance looks like the breach that XI:21 forbids. The 1901 page, however, marks external chance as an event «an dessen Zustandekommen mein Seelenleben unbeteiligt ist» [GW IV:286]. On that reading, "real chance" means that one's own mental life is not involved. It does not mean an event outside the causal chain, so the two statements are compatible.</li>
+<li>The 1901 pages do not say that external chance events are causally determined. This reconciliation is an interpretation.</li>
+<li><strong>Determinism and its limits.</strong></li>
+<li><strong>1901, within the same chapter. HOLD TENSION.</strong><ul>
+<li>In the main text, determination is stated as a result: «lückenlos» (without gaps) [GW IV:283].</li>
+<li>A footnote that cites a 1920 publication lists three possibilities for spontaneous ideas: «Diese Einfälle (Worte oder Zahlen) könnten undeterminiert sein oder durch die Gedanken determiniert, die sich in der Analyse ergeben, oder durch andere Gedanken, die sich in der Analyse nicht verraten haben, in welchem Falle uns die Analyse irregeführt hätte.» [GW IV:280] (These ideas, words or numbers, could be undetermined, or determined by the thoughts that emerge in the analysis, or by other thoughts that did not betray themselves in the analysis, in which case the analysis would have misled us.)</li>
+<li>The footnote then adopts the second possibility as a presupposition: «In der analytischen Praxis geht man von der Voraussetzung aus, daß die zweite der erwähnten Möglichkeiten zutreffend und in der Mehrzahl der Fälle verwertbar ist.» [GW IV:280] (In analytic practice one starts from the presupposition that the second of the possibilities mentioned is correct and usable in the majority of cases.) It also declines to justify the technique in this book [GW IV:280].</li>
+<li>What conflicts is the status of the claim. At IV:283 determination is a result without gaps. At IV:280 it is a working presupposition, valid for the majority of cases, with the undetermined case left open as a possibility.</li>
+</ul>
+</li>
+<li><strong>1916. RECONNECT [ii].</strong> The appeal to determinism [GW XI:21] targets chance as an event outside the causal chain. The thesis of "sense" targets psychological chance, which can coexist with a physiological explanation [GW XI:25]. Once "Zufall" is split into these two uses, the two claims are compatible.</li>
+<li><strong>Universality. RECONNECT [ii].</strong></li>
+<li>1901: Freud refuses to place all name-forgetting in the repression group [GW IV:12].</li>
+<li>1916: he does not claim that every faulty performance has a sense, though he thinks it «wahrscheinlich» (probable) [GW XI:54].</li>
+<li>At XI:38 he writes «Aber es läßt sich auch nicht beweisen, daß ein Versprechen ohne solchen Mechanismus nicht vorfallen kann.» [GW XI:38]. In the same paragraph he says it is «gewiß nicht der Fall» (certainly not the case) that only a minority of slips fits [GW XI:38].</li>
+<li>These statements are compatible. Universality is unproven, while a majority of fitting cases is held certain. In both texts the claim is restricted rather than universal.</li>
+<li><strong>Physiological cases. RECONNECT [ii].</strong></li>
+<li><strong>Associations against physiology.</strong> Sound and word relations «können seine eigentliche Aufklärung nicht geben» (cannot give its real explanation) [GW XI:40]. Among slips of the tongue and pen, however, «mögen Fälle mit rein physiologischer Begründung vorkommen» (cases with a purely physiological ground may occur) [GW XI:54].<ul>
+<li>The first statement concerns associative factors, not physiological ones. The second admits that some slips may lack the mechanism altogether, which XI:38 already left open [GW XI:38].</li>
+<li>The same page restricts the admission: «bei den auf Vergessen beruhenden Arten (Namen und Vorsatzvergessen, Verlegen usw.) kann ich an solche nicht glauben» [GW XI:54] (in the kinds that rest on forgetting, such as forgetting of names and intentions and mislaying, I cannot believe in such cases).</li>
+<li>The same sentence goes on to restrict losing and errors as well (see "Losing").</li>
+</ul>
+</li>
+<li><strong>Unpleasure.</strong> The avoidance of unpleasure is recognised as the motive for name-forgetting and for «viele andere Fehlleistungen» (many other faulty performances) [GW XI:71], not for all.<ul>
+<li>Name-forgetting also occurs in cases «welche die Einmengung eines Unlustmotivs nicht bestätigen lassen» [GW XI:71]. The same page explains such cases by psycho-physiological facilitation and by associative inhibition: «Der Name wird dort gleichsam festgehalten und den anderen momentan aktivierten Assoziationen verweigert.» [GW XI:71]</li>
+<li>These mechanisms can combine with the unpleasure motive: «Nehmen Sie nun an, daß diese assoziative Hemmung mit der Wirkung des Unlustprinzips und überdies mit einem indirekten Mechanismus zusammentreffen kann» [GW XI:71].</li>
+</ul>
+</li>
+<li>On this reading, facilitation and associative inhibition are not a purely physiological ground. So XI:71 does not conflict with the XI:54 exclusion for the kinds that rest on forgetting.</li>
+<li><strong>Losing. HOLD TENSION.</strong></li>
+<li><strong>XI:54, intended and unintended losing.</strong> The relevant sentence begins «Beim Versprechen, Verschreiben usw. mögen Fälle mit rein physiologischer Begründung vorkommen» [GW XI:54]. It goes on to grant two further restrictions: «ein Verlieren gibt es sehr wahrscheinlich, das als unbeabsichtigt zu erkennen ist; die im Leben vorfallenden Irrtümer sind überhaupt nur zu einem gewissen Anteil unseren Gesichtspunkten unterworfen.» [GW XI:54] (A losing very probably exists that is to be recognised as unintended; the errors that occur in life are subject to our viewpoints only to a certain extent.) Freud adds: «Diese Einschränkungen wollen Sie im Auge behalten» [GW XI:54] (you are to keep these restrictions in view).</li>
+<li><strong>XI:54, the result posited under these restrictions.</strong> The first result follows these restrictions and is introduced with «wenn wir fortan davon ausgehen» [GW XI:54].</li>
+<li><strong>XI:73.</strong> «Allen Fällen gemeinsam ist, daß man etwas verlieren wollte, verschieden aber, aus welchem Grund und zu welchem Zweck.» [GW XI:73] (Common to all cases is that one wanted to lose something; what differs is the reason and the purpose.)</li>
+<li><strong>The conflict.</strong> On the wording, XI:73 makes wanting to lose common to all cases, while XI:54 admits unintended losing. The universal formula at XI:73 is asserted, not derived from the cases given.</li>
+<li><strong>A possible reconciliation.</strong> "Allen Fällen" at XI:73 might mean only the cases of losing that count as faulty performances. The page does not say so, so this reading is a conjecture [iii].</li>
+<li><strong>Pushing-back as a condition. RECONNECT [ii].</strong></li>
+<li>It is required in general [GW XI:61].</li>
+<li>In the more frequent misreadings, Freud says that «der Konflikt zweier Tendenzen und die Zurückdrängung der einen» come off short [GW XI:67].</li>
+<li>The same page qualifies this: «Nicht daß beim Verlesen etwas dem Gegensätzliches aufzufinden wäre» [GW XI:67] (not that anything contrary to this could be found in misreading).</li>
+<li>On this reading, pushing-back is still present in misreading but less in evidence. It does not contradict the general condition at XI:61.</li>
+<li><strong>Authority of the subject. RECONNECT [ii].</strong></li>
+<li><strong>"Oberste Instanz" belongs to an objection.</strong> The phrase stands inside an objection that Freud deflects. The objection is that the President himself, «den wir eben als oberste Instanz anerkannt haben» (whom we have just recognised as the highest authority), can confirm that he meant to open the session [GW XI:34]. Freud answers: «Sie vergessen dabei, daß wir übereingekommen sind, die Fehlleistung zunächst an und für sich zu betrachten» [GW XI:34] (you forget that we agreed to consider the faulty performance first in and for itself). So the phrase is not his standing verdict on the speaker's authority.</li>
+<li><strong>The conceded asymmetry.</strong> Freud concedes the charge of asymmetry: «Das stimmt allerdings.» [GW XI:43] (That is indeed true.)</li>
+<li><strong>The provisional compromise.</strong> It states a single position: «Sie sollen mir zugeben, daß der Sinn einer Fehlleistung keinen Zweifel zuläßt, wenn der Analysierte ihn selbst zugibt. Ich will Ihnen dafür zugestehen, daß ein direkter Beweis des vermuteten Sinnes nicht zu erreichen ist, wenn der Analysierte die Auskunft verweigert» [GW XI:44] (You are to grant me that the sense of a faulty performance admits no doubt when the person analysed admits it himself. In return I grant you that a direct proof of the presumed sense cannot be reached when the person analysed refuses information.)</li>
+<li><strong>Indirect evidence.</strong> The interpretation then rests on circumstantial evidence: «Wir sind dann, wie im Falle der Rechtspflege, auf Indizien angewiesen» [GW XI:44] (we then depend, as in the administration of justice, on circumstantial evidence).</li>
+<li><strong>Reading [ii].</strong> The subject's admission settles the sense. A denial does not, and the interpretation then rests on indirect evidence. Holding firm against a denial is therefore consistent with the compromise: «Ich würde mir aus dem Widerspruch des Toastredners nichts machen und unbeirrbar an meiner Deutung festhalten» [GW XI:59].</li>
+<li><strong>What stays unresolved.</strong> What XI:59 records as unresolved is a disagreement between Freud and his listeners, not a conflict within Freud's position: «Sie wissen, daß wir in der Auffassung dieser Fälle noch keine Einigung erzielt haben.» [GW XI:59] At XI:44 he likewise speaks of «Differenzen, die wir derzeit noch gar nicht auszugleichen verstehen» [GW XI:44] (differences that we do not yet know how to reconcile).</li>
+<li><strong>A sincere denial.</strong> At XI:65 the man who made the slip of the pen may disown the phantasy that the slip reveals, and he may do so «mit der besten subjektiven Berechtigung» (with the best subjective right) [GW XI:65]. What he disowns is the phantasy itself.</li>
+<li><strong>A separate point on the same page.</strong> The slip shows that the man is occupied with the thought. It does not decide «ob dieser Gedanke den Wert eines klaren schädlichen Vorsatzes oder den einer praktisch belanglosen Phantasie hat» [GW XI:65] (whether this thought has the value of a clear harmful resolve or that of a practically irrelevant phantasy). This undecided question is not the content of the denial.</li>
+<li><strong>Reading [ii].</strong> A sincere denial of the phantasy does not undo what the slip shows, namely that the thought occupies him. On this reading, such a denial leaves the reading of the slip standing.</li>
+</ul>
+<h2>Key passages</h2>
+<table>
+<thead>
+<tr>
+<th>German (verbatim)</th>
+<th>Anchor</th>
+<th>English rendering (ours)</th>
+<th>Establishes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«Ich wollte also etwas vergessen, ich hatte etwas verdrängt.»</td>
+<td>GW IV:8</td>
+<td>So I wanted to forget something; I had repressed something.</td>
+<td>Repression as the motive of name-forgetting (Sense 1)</td>
+</tr>
+<tr>
+<td>«sie mahnen mich (nach Art eines Kompromisses) ebensosehr an das, was ich vergessen, wie an das, was ich erinnern wollte»</td>
+<td>GW IV:9</td>
+<td>They remind me (after the manner of a compromise) as much of what I wanted to forget as of what I wanted to remember.</td>
+<td>Compromise structure already in 1901</td>
+</tr>
+<tr>
+<td>«Neben dem einfachen Vergessen von Eigennamen kommt auch ein Vergessen vor, welches durch Verdrängung motiviert ist.»</td>
+<td>GW IV:12</td>
+<td>Besides simple forgetting of proper names there also occurs a forgetting motivated by repression.</td>
+<td>Limited scope of the 1901 claim</td>
+</tr>
+<tr>
+<td>«als wohl motiviert und durch dem Bewußtsein unbekannte Motive determiniert»</td>
+<td>GW IV:267</td>
+<td>As well motivated and determined by motives unknown to consciousness</td>
+<td>Core claim of Sense 1</td>
+</tr>
+<tr>
+<td>«Um in die Klasse der so zu erklärenden Phänomene eingereiht zu werden, muß eine psychische Fehlleistung folgenden Bedingungen genügen.»</td>
+<td>GW IV:267</td>
+<td>To be placed in this class, a psychic faulty performance must satisfy the following conditions.</td>
+<td>Definition by conditions</td>
+</tr>
+<tr>
+<td>«Es verbleiben somit in dieser Gruppe die Fälle von Vergessen und die Irrtümer bei besserem Wissen, das Versprechen, Verlesen, Verschreiben, Vergreifen und die sogenannten Zufallshandlungen.»</td>
+<td>GW IV:268</td>
+<td>This group thus retains forgetting, errors despite better knowledge, slips of tongue, misreading, slips of pen, bungling, and the so-called chance actions.</td>
+<td>Extent of the 1901 class</td>
+</tr>
+<tr>
+<td>«und so ist die Determinierung im Psychischen doch lückenlos durchgeführt.»</td>
+<td>GW IV:283</td>
+<td>And so determination in the psychic domain is carried through without gaps.</td>
+<td>Determinist frame of Sense 1</td>
+</tr>
+<tr>
+<td>«Sie sind nicht Zufälligkeiten, sondern ernsthafte seelische Akte, sie haben ihren Sinn, sie entstehen durch das Zusammenwirken — vielleicht besser: Gegeneinanderwirken zweier verschiedener Absichten.»</td>
+<td>GW XI:37</td>
+<td>They are not chance events but serious mental acts; they have a sense; they arise from the interplay, perhaps better, the opposition, of two intentions.</td>
+<td>Provisional statement of Sense 2</td>
+</tr>
+<tr>
+<td>«Nichts anderes als die Absicht, der er dient, und seine Stellung in einer psychischen Reihe.»</td>
+<td>GW XI:33</td>
+<td>Nothing but the intention it serves and its position in a psychic series.</td>
+<td>Technical "Sinn", first definition</td>
+</tr>
+<tr>
+<td>«Unter Sinn verstehen wir Bedeutung, Absicht, Tendenz und Stellung in einer Reihe psychischer Zusammenhänge.»</td>
+<td>GW XI:55</td>
+<td>By sense we understand meaning, intention, tendency and position in a series of psychic connections.</td>
+<td>Technical "Sinn", later definition</td>
+</tr>
+<tr>
+<td>«wenn wir fortan davon ausgehen, daß Fehlleistungen psychische Akte sind und durch die Interferenz zweier Absichten entstehen. Es ist dies das erste Resultat der Psychoanalyse.»</td>
+<td>GW XI:54</td>
+<td>If from now on we start from the assumption that faulty performances are psychic acts arising from the interference of two intentions. This is the first result of psychoanalysis.</td>
+<td>Sense 2 as result, posited under the restrictions stated on the same page</td>
+</tr>
+<tr>
+<td>«Von den Fehlhandlungen unterscheidet sie der Wegfall einer anderen Intention, mit der sie zusammenstoßen und die durch sie gestört wird.»</td>
+<td>GW XI:55</td>
+<td>They differ from faulty actions in lacking another intention with which they collide and which they disturb.</td>
+<td>Chance actions set apart in 1916</td>
+</tr>
+<tr>
+<td>«Die Fehlleistungen sind aber Kompromißergebnisse, sie bedeuten ein halbes Gelingen und ein halbes Mißlingen für jede der beiden Absichten»</td>
+<td>GW XI:61</td>
+<td>Faulty performances are compromise results: half success, half failure for each intention.</td>
+<td>Compromise in Sense 2</td>
+</tr>
+<tr>
+<td>«werden wir unausweichlich zu der Annahme gedrängt, daß es Tendenzen beim Menschen gibt, welche wirksam werden können, ohne daß er von ihnen weiß»</td>
+<td>GW XI:70</td>
+<td>We are unavoidably pushed to assume tendencies that become effective without the person knowing of them.</td>
+<td>1916 wording for the unknown tendency</td>
+</tr>
+<tr>
+<td>«Beim Versprechen, Verschreiben usw. mögen Fälle mit rein physiologischer Begründung vorkommen»</td>
+<td>GW XI:54</td>
+<td>In slips of tongue, pen and so on, cases with a purely physiological ground may occur.</td>
+<td>Limit on universality</td>
+</tr>
+<tr>
+<td>«Wir können aus dem Studium der Fehlleistungen nicht alle unsere Lehrsätze beweisen und sind auch mit keinem Beweis auf dieses Material allein angewiesen.»</td>
+<td>GW XI:75</td>
+<td>We cannot prove all our doctrines from faulty performances, nor does any proof depend on this material alone.</td>
+<td>Limited evidential role</td>
+</tr>
+</tbody>
+</table>
+<h2>What this entry does not claim</h2>
+<ul>
+<li><strong>The disturbing tendency in 1916.</strong> It is not claimed to be "unconscious" in any systematic sense. The 1916 pages read do not use "unbewußt", "Verdrängung", "Zensur" or "vorbewußt".</li>
+<li><strong>"Zurückdrängung" and "Verdrängung".</strong> They are not equated.</li>
+<li><strong>Sense 2 replacing Sense 1.</strong> This is not claimed (status [iii] at most).</li>
+<li><strong>The nature of the disturbing intentions.</strong> Nothing is claimed beyond individual examples and the unpleasure motive [GW XI:70]. No general sexual motive is attested in the pages read.</li>
+<li><strong>Dreams and neurotic symptoms.</strong> No link is claimed beyond the forward reference that the unpleasure principle will matter for neurotic symptoms [GW XI:70].</li>
+<li><strong>Dating of individual 1901 sentences.</strong> Sentences in GW IV:267-289 are not dated more finely than the pages allow.</li>
+<li><strong>Later works.</strong> Nothing is claimed about Freud's later works.</li>
+</ul>
+<h2>Reading coverage</h2>
+<ul>
+<li><strong>S01:</strong> <em>Zur Psychopathologie des Alltagslebens</em>, ch. I (1901; content said to repeat the 1898 essay), GW IV:5-12.</li>
+<li><strong>S02:</strong> the same work, ch. XII, first part, GW IV:267-289. GW IV:290 was read but not used. The printed text cites material up to 1922.</li>
+<li><strong>S03:</strong> <em>Vorlesungen</em>, Lecture II and the start of Lecture III (1916), GW XI:18-38. The pages break off mid-sentence at XI:38.</li>
+<li><strong>S04:</strong> GW XI:39-57. The running heads read "III." and "IV. (Schluß)", and "(Fortsetzung)" is not printed. The pages begin and end mid-sentence.</li>
+<li><strong>S05:</strong> GW XI:58-76. GW XI:77, a part title only, was not used.</li>
+<li><strong>Loci not read:</strong> GW IV:13-266.</li>
+<li>The source list supplied with the pages describes IV:61-266 as the chapters on slips, misreading, slips of the pen, bungled actions and errors. That assignment of chapters to pages cannot be checked from the pages read.</li>
+<li>The pages read cross-refer to this unread stretch, for example «oben S. 182» [GW IV:285].</li>
+<li>Additions in later editions are also not read.</li>
+<li><strong>Pages missing from the scan:</strong> none reported in the extracts.</li>
+</ul>
+<h3>Passages for the next edition</h3>
+<p>The pages read also carry the following, which this edition does not yet integrate:</p>
+<ul>
+<li>The passage stating that chance and symptomatic actions 'likewise' («gleichfalls») have the character of the unmotivated, which bears on whether faulty performances still appear unmotivated in 1916, is not yet covered [GW XI:55].</li>
+</ul>
+      <h2>About this entry</h2>
+      <p class="edition">First edition, November 2026. Built from the German text of Freud's <em>Gesammelte Werke</em> only, read source by source; every German quotation was checked against the page it cites. References give volume and page, for example [GW X:291]. English renderings are our own. A mark [ii] means our interpretation of the passages, [iii] a synthesis across texts; unmarked sentences report what the pages say. Each long entry says which texts were read and which were not. Entries are revised as the reading continues; corrections are welcome at <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="/privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="/mentions-legales.html">Mentions Légales</a><span class="footer-sep">·</span><a href="/research-tools-terms.html">Research tools terms</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+  <script>document.getElementById('menu').addEventListener('click', function () { document.querySelector('nav').classList.toggle('open'); });</script>
+</body>
+</html>
