@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'self'; form-action 'none'; frame-ancestors 'none'">
+  <title>Consciousness (Bewußtsein) in Freud | Freud for Machines glossary | Llull Lab</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="In the passages read, Bewußtsein has three senses.">
+  <link rel="canonical" href="https://llulllab.com/freud-for-machines/concepts/consciousness.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Llull Lab">
+  <meta property="og:url" content="https://llulllab.com/freud-for-machines/concepts/consciousness.html">
+  <meta property="og:title" content="Consciousness (Bewußtsein) in Freud | Freud for Machines glossary | Llull Lab">
+  <meta property="og:description" content="In the passages read, Bewußtsein has three senses.">
+  <link rel="stylesheet" href="/fonts/gf-d321d810.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #000; --fg: #fff; --muted: #888; --dim: #444; --accent: #c8c8c8;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.25);
+      --serif: 'Spectral', Georgia, serif; --sans: 'Space Grotesk', system-ui, sans-serif;
+      --max-w: 1080px; --side-pad: clamp(20px, 5vw, 80px);
+      --bg-card: #141414; --highlight: #a78bfa; --live: #6ee7b7; --prep: #fbbf24; --stop: #f87171;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: var(--serif); line-height: 1.7; font-size: 17px; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,255,255,0.15); }
+    [hidden] { display: none !important; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo-text { font-family: var(--sans); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.5px; color: var(--fg); text-decoration: none; }
+    nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+    nav a { font-family: var(--sans); font-size: 0.82rem; color: var(--accent); text-decoration: none; padding: 6px 12px; border-radius: 4px; transition: all 0.25s ease; }
+    nav a:hover { color: var(--fg); background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--fg); background: rgba(255,255,255,0.1); }
+    nav a.news-hub-link { color: #fcd116; }
+    .menu-toggle { display: none; background: none; border: 1px solid var(--border-strong); color: var(--fg); font-family: var(--sans); font-size: 0.85rem; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); flex-direction: column; padding: 16px var(--side-pad); border-bottom: 1px solid var(--border); }
+      nav.open { display: flex; }
+      nav a { padding: 12px 0; }
+    }
+    .page-section { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--side-pad); }
+    .module-tag { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; padding-top: 80px; }
+    .page-hero { padding: 0 0 40px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 680px; line-height: 1.75; }
+    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; }
+    .page-body { padding: 48px 0 40px; }
+    .page-body h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 96px; }
+    .page-body h2:first-child { margin-top: 0; }
+    .page-body p { margin-bottom: 1.1em; max-width: 680px; }
+    .muted { color: var(--accent); }
+    .small { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; }
+    label { display: block; font-family: var(--sans); font-size: 13px; letter-spacing: 0.5px; color: var(--accent); margin: 0 0 6px; }
+    input[type=email], textarea { width: 100%; background: #0b0b0b; color: var(--fg); border: 1px solid var(--border-strong); border-radius: 6px; padding: 12px 14px; font-family: var(--serif); font-size: 16px; line-height: 1.6; }
+    textarea { min-height: 170px; resize: vertical; }
+    textarea.ctx { min-height: 80px; }
+    input:focus, textarea:focus, button:focus-visible, a:focus-visible { outline: 2px solid var(--highlight); outline-offset: 2px; }
+    .row { margin-bottom: 18px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-family: var(--sans); font-size: 14px; color: var(--accent); }
+    .check input { margin-top: 5px; }
+    .check a, .page-body a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--bg); background: var(--highlight); border: none; border-radius: 5px; cursor: pointer; }
+    .btn:disabled { opacity: 0.5; cursor: default; }
+    .btn.ghost { background: transparent; color: var(--highlight); border: 1px solid rgba(167,139,250,0.5); }
+    .btn.danger { background: transparent; color: var(--stop); border: 1px solid rgba(248,113,113,0.5); }
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .msg { font-family: var(--sans); font-size: 14px; margin-top: 12px; color: var(--accent); min-height: 1.4em; }
+    .msg.err { color: var(--stop); }
+    .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--sans); font-size: 13px; color: #aaa; margin-bottom: 16px; }
+    .result { margin-top: 24px; }
+    .verdict { display: inline-block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-strong); margin-bottom: 14px; }
+    .verdict.proceed { color: var(--live); border-color: rgba(110,231,183,0.4); }
+    .verdict.proceed_with_conditions { color: var(--prep); border-color: rgba(251,191,36,0.4); }
+    .verdict.do_not_proceed { color: var(--stop); border-color: rgba(248,113,113,0.45); }
+    .verdict.need_more_information { color: var(--highlight); border-color: rgba(167,139,250,0.5); }
+    .result h3 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 22px 0 8px; }
+    .result ul { padding-left: 20px; }
+    .result li { margin-bottom: 6px; color: #ddd; }
+    .result .summary { font-size: 1.08rem; }
+    pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+    pre { background: #0b0b0b; border: 1px solid var(--border); border-radius: 6px; padding: 14px; overflow-x: auto; color: #ddd; line-height: 1.55; white-space: pre; }
+    .keybox { word-break: break-all; white-space: pre-wrap; }
+    footer { border-top: 1px solid var(--border); padding: 40px var(--side-pad); margin-top: 64px; text-align: center; font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
+    footer .footer-line { margin: 4px 0; line-height: 1.7; }
+    footer .footer-line a { color: var(--muted); text-decoration: none; }
+    footer .footer-line a:hover { color: var(--fg); }
+    footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+      .entry h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 8px; }
+    .entry h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 40px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .entry h3 { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; margin: 28px 0 10px; }
+    .entry p, .entry li { max-width: 760px; margin-bottom: 0.9em; }
+    .entry ul, .entry ol { padding-left: 22px; }
+    .entry table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 12px 0 20px; display: block; overflow-x: auto; }
+    .entry th, .entry td { border: 1px solid var(--border); padding: 8px 10px; vertical-align: top; text-align: left; }
+    .entry th { font-family: var(--sans); font-weight: 400; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+    .short { background: var(--bg-card); border: 1px solid var(--border); border-radius: 11px; padding: 24px; margin: 24px 0 8px; }
+    .short h2 { margin-top: 0; }
+    .edition { font-family: var(--sans); font-size: 13px; color: #aaa; line-height: 1.6; max-width: 760px; }
+    .toc a, .entry a { color: var(--highlight); text-decoration: underline; text-decoration-color: rgba(167,139,250,0.5); text-underline-offset: 3px; }
+    .idx { list-style: none; padding: 0; }
+    .idx li { border-top: 1px solid var(--border); padding: 18px 0; max-width: 820px; }
+    .idx li a { font-size: 1.2rem; }
+    .idx .de { color: var(--muted); font-family: var(--sans); font-size: 13px; margin-left: 6px; }
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "DefinedTerm", "name": "Consciousness (Bewußtsein)", "description": "In the passages read, Bewußtsein has three senses.", "url": "https://llulllab.com/freud-for-machines/concepts/consciousness.html", "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "Freud for Machines glossary", "url": "https://llulllab.com/freud-for-machines/concepts/"}}</script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/en/" class="logo-text">Llull Lab</a>
+      <button class="menu-toggle" type="button" id="menu">Menu</button>
+      <nav>
+        <a href="/en/about.html">About</a>
+        <a href="/en/people.html">Team</a>
+        <a href="/en/research.html" class="active">Research</a>
+        <a href="/en/studio.html">Studio</a>
+        <a href="/en/press.html">Press</a>
+        <a href="/en/updates.html">Updates</a>
+        <a href="/ai-robotics/" class="news-hub-link">News Hub</a>
+        <a href="/machines/">For Machines</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-section">
+    <div class="module-tag">Freud for Machines · Glossary</div>
+    <div class="page-body entry">
+      <h1>Consciousness <span class="de">(Bewußtsein)</span></h1>
+      <p class="edition">In Freud's texts. <a href="#entry">Entry</a> · <a href="#long">Long entry</a> · <a href="/freud-for-machines/concepts/">All entries</a> · <a href="/freud-for-machines/">Ask the research tool</a></p>
+      <div class="short">
+      <h2>In brief</h2>
+<p>The passages read give three senses of Bewußtsein.</p>
+<ol>
+<li><strong>A splittable content of consciousness (1894).</strong> Consciousness is a whole of ideas that can be split, narrowed and widened: «daß die Spaltung des Bewußtseinsinhaltes die Folge eines Willensaktes des Kranken ist» [GW I:61]. After 1894, divided consciousness appears in the pages read only as a view that Freud rejects. The same holds for the distinction «Ober- und Unterbewußtsein» [GW II/III:620].</li>
+<li><strong>A quality of psychic processes (1900 to 1940).</strong> Being conscious is a property that a process has or lacks, and it is not the essence of the psychical: «muß das Bewußtsein als eine Qualität des Psychischen ansehen» [GW XIII:239].</li>
+<li><strong>The achievement of a special system (1900 to 1940).</strong> Consciousness is produced by a system or organ, and its place changes over the dates.
+   - In 1900 the system Bw is a sense organ for psychic qualities, and the rest of the apparatus counts as external world for it.
+   - In 1915 the name Bw is used unsteadily. Sometimes it names the preconscious, and sometimes a system beyond it.
+   - From 1917 it is identified with the perceptual system W.
+   - From 1920 it lies at the border of outside and inside.
+   - In 1923 it is the surface of the psychic apparatus, and the ego goes out from it.
+   - From 1926 it is an organ at the outermost surface of the ego.</li>
+</ol>
+<p>The name runs Bw (1900, 1915), Bw identified with W (1917), W-Bw (1920 to 1933), and finally the cortical layer of the ego (written 1938).</p>
+<p>The distinction a reader must not miss is Freud's own. He uses «bewußt und unbewußt bald im deskriptiven Sinne [...], bald im systematischen» [GW X:271]. He also concedes that the two do not fully match: «Noch immer aber deckt sich die Tatsache des Bewußtwerdens nicht völlig mit der Systemzugehörigkeit» [GW X:423].</p>
+      </div>
+      <h2 id="entry">Entry</h2>
+<p>In the passages read, Bewußtsein has three senses. The first is a splittable content of consciousness, which Freud holds as his own only in 1894. The second is a quality that a psychic process has or lacks and that is not the essence of the psychical (1900 to 1940). The third is the achievement of a special system or organ (1900 to 1940).</p>
+<p>In Die Abwehr-Neuropsychosen (1894), Freud takes over the splitting itself as already accepted through Janet, Breuer and others. His own claim, set against Janet, is that the splitting results from an act of will by the patient. After 1894, divided consciousness appears in the pages read only as a label for cases or as a view he rejects (1900, 1912, 1915, 1926). In 1912 and 1915 he redescribes such cases as one consciousness moving between groups. The texts read do not say that he withdraws his 1894 account, and they do not say that the rejected view is his own earlier one.</p>
+<p>The second sense is stated in these texts:
+- the Traumdeutung VII.F (1900);
+- Bemerkungen über den Begriff des Unbewußten (1912);
+- Das Unbewußte (1915);
+- Das Ich und das Es (1923);
+- Die Frage der Laienanalyse (1926);
+- the Neue Folge, XXXI. Vorlesung (1933);
+- both texts written 1938.</p>
+<p>It is not stated in the 1911 and 1925 pages read. Jenseits des Lustprinzips (1920) puts it only as a possibility and speaks of a function rather than a quality. Freud shares the notion of "conscious" itself with the philosophers and with popular opinion (Abriß, written 1938). In 1900, however, he sets the demotion of consciousness from essence to quality against the philosophers' claim that consciousness is the indispensable character of the psychical. He credits Lipps with the thesis that everything psychical is unconscious. That thesis concerns the unconscious, and it bears on this sense only because it denies that the psychical and the conscious coincide. In 1900 Freud grounds the thesis in everyday observation. What he claims as new there is that the unconscious occurs as a function of two separate systems. In Some Elementary Lessons in Psycho-Analysis (written 1938), he disclaims novelty for the same thesis and claims only that psychoanalysis filled the concept with new content. That these two claims concern different things is our reading. In 1933 Freud drops the systematic sense of "unbewußt". He keeps conscious, preconscious and unconscious as terms for describing mental phenomena. This triad rests on a dynamic distinction and is not purely descriptive.</p>
+<p>Freud presents the third sense as his own scheme, and he revises the system's place over the years.
+- <strong>1900.</strong> In the Traumdeutung VII.F it is an inner sense organ for psychic qualities. It has no memory, and for it the rest of the apparatus is external world.
+- <strong>1915.</strong> In Das Unbewußte the name Bw is unsettled. In one use it names the preconscious, and that use is not counted under this sense. In another use it names a system beyond a second censorship from Vbw. On our reading that second use is only close to the later surface system.
+- <strong>1917.</strong> In the Metapsychologische Ergänzung zur Traumlehre, a discussion Freud calls uncertain and groping, the system is identified with the perceptual system W. Freud presents this identification as continuous with the Traumdeutung, although the 1900 page keeps Bw apart from W. That tension is left standing.
+- <strong>1920.</strong> In Jenseits des Lustprinzips, ch. IV, in a part Freud calls speculation, the system lies at the border of outside and inside. He says this placement agrees with localising brain anatomy. He offers as a conjecture that consciousness arises in place of the memory trace.
+- <strong>1923.</strong> In Das Ich und das Es it is the surface of the psychic apparatus, from which the ego goes out. Its spatial sense holds also anatomically.
+- <strong>1925.</strong> In the Notiz über den Wunderblock, Freud presents a supposition he says he had long kept to himself. On it, consciousness depends on the periodic cathexis of the system W-Bw and goes out when the cathexis is withdrawn.
+- <strong>1926.</strong> In Die Frage der Laienanalyse, presented dogmatically, it is an organ at the outermost surface of the ego.
+- <strong>1933.</strong> In the Neue Folge the system faces the external world, consciousness arises in it, and it is receptive also to excitations from within.
+- <strong>Written 1938.</strong> In the Abriß, consciousness lies in the outermost cortical layer of the ego, though that text gives the system no name. Some Elementary Lessons (written 1938) has no system of consciousness at all.</p>
+<p>Formulierungen über die zwei Prinzipien (1911) is an exception. It ties consciousness to the sense organs without naming a system. A footnote in the Traumdeutung VII.B pages requires W = Bw, but it prints no date and may belong to a later layer.</p>
+<p>The relation of this sense to anatomy changes and is held as a tension. It is refused in 1900 and in 1915, where the refusal is marked as provisional. It is accepted as alignment in 1920 and 1923. Freud also acknowledges debts. In a 1920 footnote he credits Breuer at the point that permanent traces would soon limit the system's capacity to receive new excitations, and the text does not say whether the credit covers more. In 1900 the same difficulty is credited to an unnamed source.</p>
+<p>On our reading, the second sense displaced the first. The second and third coexist from 1900 as a quality and the system that produces it. They are counted apart only because in 1917 Freud states that becoming conscious does not fully coincide with belonging to the system. His reason is that noticed sensory memory images cannot be placed in that system. The count rests on this 1917 passage alone.</p>
+<p>The distinction a reader must not miss is Freud's own, in Das Unbewußte (1915), between "conscious" in the descriptive sense and "conscious" in the systematic sense of membership in a system. Because Bw also names the preconscious in 1915, reading that system as the system of the third sense is only an interpretation.</p>
+<p>Each sense also has things it must not be confused with.
+- <strong>First sense.</strong> It is not Breuer's dream-like states of consciousness, which are states and not a divided content (1894). It is also not the later idiom of an idea present in one's consciousness, which places single ideas in consciousness without any splitting (1912).
+- <strong>Second sense.</strong> It is not the merely unnoticed or faintly conscious, a view Freud rejects in a footnote of 1923. It is not Bewußtheit as a dimension that includes the unconscious (1933). It is not the dynamic, no longer purely descriptive triad of conscious, preconscious and unconscious (1923, 1933).
+- <strong>Third sense.</strong> It is not the ego, since Freud rejects equating the two (1926) and says that ego and conscious do not coincide (1933). It is also not the 1915 system Bw that is also called the Vorbewußte.
+- <strong>Schuldbewußtsein</strong> (sense of guilt) is a separate concept.</p>
+<p><strong>Senses.</strong>
+1. Splittable content of consciousness, 1894: a whole of ideas that can be split into groups, narrowed and widened.
+2. Quality of psychic processes, 1900 to 1940: a transient property that a process has or lacks, not the essence of the psychical.
+3. Achievement of a special system, 1900 to 1940: consciousness produced by a system or organ, whose place Freud moves from an inner sense organ (1900), through an unsettled stage (1915), identity with W (1917) and the border of outside and inside (1920), to the surface of the apparatus from which the ego goes out (1923) and the outermost surface or cortical layer of the ego (1926, written 1938).</p>
+<p><strong>Where to read.</strong>
+- GW I:59-64 (Die Abwehr-Neuropsychosen, 1894)
+- GW II/III:614-626 (Traumdeutung VII.F, 1900)
+- GW X:264-303 (Das Unbewußte, 1915)
+- GW X:412-426 (Metapsychologische Ergänzung zur Traumlehre, 1917)
+- GW XIII:239-255 (Das Ich und das Es, ch. I-II, 1923)
+- GW XVII:79-86 (Abriß der Psychoanalyse, ch. 4, 1940, written 1938)</p>
+      <p class="edition">The entry is drawn from the long entry below, which gives each sense with Freud's words, dates and pages.</p>
+      <h2 id="long">Long entry</h2>
+<h2>The senses</h2>
+<p>I count three senses. The texts give each a different definition and a different place in the theory. Freud himself separates the descriptive sense from membership in a system (GW X:271). He holds the first sense as his own only in 1894. In the later pages read it is no longer held as his own.</p>
+<p>Senses 2 and 3 can also be read as one model, in which the quality is what the system produces. I count them separately because the texts record a case where the two come apart. In 1917 Freud states: «Noch immer aber deckt sich die Tatsache des Bewußtwerdens nicht völlig mit der Systemzugehörigkeit» [GW X:423]. His reason is that noticed sensory memory images cannot be placed in that system: «denen wir unmöglich einen psychischen Ort im System Bw oder W zugestehen können» [GW X:423]. The count rests on this 1917 passage alone.</p>
+<p>The 1915 distinction (GW X:271) supports the count only as an interpretation [ii]. Its systematic sense means membership of the 1915 system Bw, and that label is unstable in the 1915 pages.
+- In one use, the system Bw is also called the Vorbewußte (GW X:272). The text also writes «Der Inhalt des Systems Vbw (oder Bw)» [GW X:293].
+- In another use, a censorship separates Bw from Vbw: «Jetzt wird uns eine Zensur zwischen Vbw und Bw nahegelegt.» [GW X:290]. Freud also writes: «In der psychoanalytischen Kur erbringen wir den unanfechtbaren Beweis für die Existenz der zweiten Zensur, der zwischen den Systemen Vbw und Bw.» [GW X:292]. In the 1915 pages read, this Bw is also the system that stimulation from outside passes through before it reaches Vbw [GW X:302]. This last point is a paraphrase, because the audited extracts do not quote the sentence.</p>
+<p>The first use does not refer to the same thing as the 1900 sense organ or the 1917 to 1938 surface system. The second use stands beyond the Vbw censorship and at the end that external stimulation reaches. This licenses reading it as close to the later surface system [ii]. The pages read do not state that it is the same system. The label Bw is shared, but the referents are kept apart here.</p>
+<p>Some ordinary uses are not counted, because no text gives them a definition or a theoretical place:
+- «zielbewußt» [GW I:64], meaning purposefully;
+- «bewußten Persönlichkeit» [GW I:64];
+- «volles Bewußtsein» after hypnosis [GW VIII:431].</p>
+<p>Schuldbewußtsein (sense of guilt) is a different concept and is excluded.</p>
+<h3>Sense 1: Splittable content of consciousness (1894)</h3>
+<p><strong>In Freud's words.</strong>
+- «daß die Spaltung des Bewußtseinsinhaltes die Folge eines Willensaktes des Kranken ist» [GW I:61] [that the splitting of the content of consciousness is the consequence of an act of will by the patient].
+- «daß die Hypnose regelmäßig das eingeengte Bewußtsein der Hysterischen erweitert und die abgespaltene psychische Gruppe zugänglich macht» [GW I:64] [that hypnosis regularly widens the narrowed consciousness of hysterics and makes the split-off psychic group accessible].</p>
+<p><strong>What it means.</strong> Consciousness is a whole of contents that can be divided into groups. It can also be narrowed, widened, and inhabited by a symptom. The memory symbol «nach Art eines Parasiten im Bewußtsein haust» [GW I:63] [lives in consciousness like a parasite].</p>
+<p>What is split off is not destroyed: «Die Gedächtnisspur der verdrängten Vorstellung ist darum doch nicht untergegangen, sondern bildet von nun an den Kern einer zweiten psychischen Gruppe.» [GW I:64].</p>
+<p>The unity of this whole appears to be associative connection [ii]. Two passages license this reading:
+- Breuer's formula «vom assoziativen Verkehr mit dem übrigen Bewußtseinsinhalte abgeschnitten» [GW I:60];
+- the forced «assoziative Verknüpfung beider psychischer Gruppen» [GW I:64].</p>
+<p>The word «unbewußt» does not occur in GW I:59-64. The split-off group is called «abgespalten» and is never called unconscious.</p>
+<p><strong>When and where.</strong> Freud holds this sense as his own only in 1894. In later texts, from 1900 to 1926, the term returns only as a label for cases or as a doctrine that Freud rejects:
+- 1900: «Auch von der Unterscheidung Ober- und Unterbewußtsein, die in der neueren Literatur der Psychoneurosen so beliebt geworden ist, müssen wir uns fernhalten» [GW II/III:620].
+- 1912: «Die Fälle, die man als Teilung des Bewußtseins beschreibt, wie der des Dr. Azam, können besser als Wandern des Bewußtseins angesehen werden» [GW VIII:434].
+- 1915: «Die bekannten Fälle von „double conscience" (Bewußtseinsspaltung) beweisen nichts gegen unsere Auffassung.» [GW X:269].
+- 1926: «diese anderen Namen sind unbrauchbar» [GW XIV:225].</p>
+<p><strong>Freud's own or taken over.</strong> Freud takes over the splitting itself as already accepted: «dürfte seit den schönen Arbeiten von P. Janet, J. Breuer u. a. bereits zur allgemeinen Anerkennung gelangt sein» [GW I:60]. His own contribution is the claim that the splitting originates in an act of will, set against Janet's view: «bei welchen die Bewußtseinsspaltung unmöglich als eine primäre im Sinne von Janet gedeutet werden kann» [GW I:61].</p>
+<p><strong>Abandoned or kept.</strong> The texts read do not say that Freud withdraws his 1894 account. They do show that he later redescribes splitting cases as a single consciousness that moves between groups. In 1912 this consciousness is a function that moves between complexes: «wobei diese Funktion — oder was immer es sein mag — zwischen zwei verschiedenen psychischen Komplexen hin- und herschwankt, die abwechselnd bewußt und unbewußt werden» [GW VIII:434]. In 1915 it is the same consciousness turning to one camp or the other: «wobei sich dann das nämliche Bewußtsein alternierend dem einen oder dem anderen Lager zuwendet» [GW X:269].</p>
+<p>The texts do not say whether the rejected "second consciousness" is the 1894 position [iii]. The 1894 pages leave open whether the split-off group has a consciousness of its own.</p>
+<p><strong>Not to be confused with.</strong>
+- Breuer's «traumartigen Bewußtseinszuständen» [GW I:60], which are states and not a divided content.
+- The later locus idiom of Sense 2, «in meinem Bewußtsein gegenwärtig» [GW VIII:430], which places single ideas in consciousness without any splitting.</p>
+<h3>Sense 2: Consciousness as a quality of psychic processes (1900 to 1940)</h3>
+<p><strong>In Freud's words.</strong>
+- «die Psychoanalyse kann das Wesen des Psychischen nicht ins Bewußtsein verlegen, sondern muß das Bewußtsein als eine Qualität des Psychischen ansehen, die zu anderen Qualitäten hinzukommen oder wegbleiben mag.» [GW XIII:239] [psychoanalysis cannot place the essence of the psychical in consciousness, but must regard consciousness as a quality of the psychical, which may be added to other qualities or be absent].
+- «Wir wollen nun die Vorstellung, die in unserem Bewußtsein gegenwärtig ist und die wir wahrnehmen, „bewußt“ nennen und nur dies als Sinn des Ausdruckes „bewußt“ gelten lassen» [GW VIII:431] [we will call "conscious" the idea that is present in our consciousness and that we perceive, and accept only this as the sense of the word].
+- «Nein, die Bewusstheit kann nicht das Wesen des Psychischen sein, sie ist nur eine Qualität desselben und zwar eine inkonstante Qualität, die viel häufiger vermisst wird, als sie vorhanden ist.» [GW XVII:144] [no, consciousness cannot be the essence of the psychical; it is only a quality of it, and an inconstant one, absent far more often than present].</p>
+<p><strong>What it means.</strong> "Conscious" names a property of a single process or idea. In the passages read the property has four features.</p>
+<ul>
+<li><strong>It is transient.</strong> «Was bewusst ist, ist es nur für einen Moment.» [GW XVII:81].</li>
+<li><strong>It is not coextensive with the psychical.</strong> «Das Unbewußte ist der größere Kreis, der den kleineren des Bewußten in sich einschließt; alles Bewußte hat eine unbewußte Vorstufe» [GW II/III:617].</li>
+<li><strong>It is tied to the subject's knowing.</strong> A consciousness unknown to its owner is excluded: «Wir haben kein Recht, den Sinn dieses Wortes so weit auszudehnen, daß damit auch ein Bewußtsein bezeichnet werden kann, von dem sein Besitzer nichts weiß.» [GW VIII:434].</li>
+<li><strong>It is the only immediate datum.</strong> «daß die Bewußtheit, der einzige uns unmittelbar gegebene Charakter der psychischen Vorgänge, sich zur Systemunterscheidung in keiner Weise eignet» [GW X:291].</li>
+</ul>
+<p>Freud repeatedly declines to define the property:
+- 1912: «diese Funktion — oder was immer es sein mag» [GW VIII:434].
+- 1933: «Was man bewußt heißen soll, brauchen wir nicht zu erörtern, es ist jedem Zweifel entzogen.» [GW XV:76].
+- Written 1938: «Den Ausgang für diese Untersuchung gibt die unvergleichliche, jeder Erklärung und Beschreibung trotzende Tatsache des Bewusstseins.» [GW XVII:79].</p>
+<p><strong>When and where.</strong>
+- <strong>1900.</strong> The property is first named in the pages read, and its overestimation is criticised: «Die Rückkehr von der Überschätzung der Bewußtseinseigenschaft wird zur unerläßlichen Vorbedingung für jede richtige Einsicht in den Hergang des Psychischen.» [GW II/III:617].
+- <strong>1912.</strong> The adjective is fixed by stipulation (GW VIII:431).
+- <strong>1915.</strong> The descriptive sense is named as one of two senses (GW X:271). Consciousness is likened to sense perception: «ihre Wahrnehmung durch das Bewußtsein mit der Wahrnehmung der Außenwelt durch die Sinnesorgane zu vergleichen» [GW X:270].
+- <strong>1923.</strong> «Bewußt sein ist zunächst ein rein deskriptiver Terminus, der sich auf die unmittelbarste und sicherste Wahrnehmung beruft.» [GW XIII:240]. Whether something is conscious is a «Frage der Wahrnehmung», to be answered with Yes or No [GW XIII:242].
+- <strong>1926.</strong> «Der einzig zulässige Gegensatz ist der zwischen bewußt und unbewußt.» [GW XIV:225].
+- <strong>1933.</strong> The criterion is unreliable but kept: «Ohne die Leuchte der Bewußtseinsqualität wären wir im Dunkel der Tiefenpsychologie verloren» [GW XV:76].
+- <strong>1938 to 1940.</strong> The quality is «inkonstante» [GW XVII:146], yet «Sie bleibt das einzige Licht, das uns im Dunkel des Seelenlebens leuchtet und leitet.» [GW XVII:147].</p>
+<p>In the texts that state this sense, consciousness is denied the place of essence of the psychical and treated as a quality. Its role as the sole guide is dated as follows.
+- <strong>1915, in a related form.</strong> Consciousness is the starting point of inquiry: «da sie den Ausgangspunkt aller unserer Untersuchungen bildet» [GW X:271]. It is also the only immediate datum [GW X:291].
+- <strong>1923, explicitly.</strong> «denn schließlich ist die Eigenschaft bewußt oder nicht die einzige Leuchte im Dunkel der Tiefenpsychologie.» [GW XIII:245].
+- <strong>1933 and 1938, explicitly.</strong> See GW XV:76 and GW XVII:147 above.</p>
+<p><strong>Freud's own or taken over.</strong> Freud shares the notion of "conscious" itself with others: «es ist das Nämliche wie das Bewusstsein der Philosophen und der Volksmeinung» [GW XVII:81]. He sets the demotion against the philosophers' claim «„das Bewußtsein sei der unentbehrliche Charakter des Psychischen“» [GW II/III:616].</p>
+<p>In 1900 Freud cites Lipps with approval: «Das Unbewußte muß nach dem Ausdrucke von Lipps als allgemeine Basis des psychischen Lebens angenommen werden.» [GW II/III:617]. On page 619 he reports Lipps's wider thesis: «Bei Lipps hören wir von dem weiter reichenden Satz, daß alles Psychische als unbewußt vorhanden ist, einiges davon dann auch als bewußt.» [GW II/III:619]. He does not claim that thesis as a psychoanalytic discovery: «Aber nicht zum Erweis für diesen Satz haben wir die Phänomene des Traums und der hysterischen Symptombildung herangezogen; die Beobachtung des normalen Tageslebens reicht allein hin, ihn über jeden Zweifel festzustellen.» [GW II/III:619].</p>
+<p>On the same page he separates his sense of "unconscious" from that of the philosophers and of Lipps. Of the philosophers' usage he says the word should «bloß den Gegensatz zu dem Bewußten bezeichnen» [GW II/III:619]. Lipps is credited separately, in the following sentence, with the wider thesis quoted above. In Freud's own usage one of the two kinds of unconscious is «auch bewußtseinsunfähig» [GW II/III:619]. What he claims as new is the two systems: «Das Neue, was uns die Analyse der psychopathologischen Bildungen und schon ihres ersten Gliedes, der Träume, gelehrt, besteht darin, daß das Unbewußte — also das Psychische — als Funktion zweier gesonderter Systeme vorkommt» [GW II/III:619].</p>
+<p>In the 1938 fragment he disclaims novelty: «Man darf übrigens nicht glauben, dass diese andere Auffassung des Psychischen eine der Psychoanalyse zu dankende Neuerung ist.» [GW XVII:147]. He names Lipps for that view: «Ein deutscher Philosoph, Theodor Lipps, hat mit aller Schärfe verkündet, das Psychische sei an sich unbewusst, das Unbewusste sei das eigentlich Psychische.» [GW XVII:147]. He then claims new content for psychoanalysis: «Die Psychoanalyse hat sich dieses Begriffs bemächtigt, ihn ernst genommen, ihn mit neuem Inhalt erfüllt.» [GW XVII:147]. The Abriß makes the same point about Lipps: «Manche Denker wie z.B. Th. Lipps haben dasselbe in den nämlichen Worten geäussert» [GW XVII:80].</p>
+<p>Read together, the two claims concern different things [ii].
+- In 1900 the novelty claimed is the two systems. The thesis that everything psychical is unconscious is already credited to Lipps and grounded in daily observation.
+- In 1938 the disclaimer concerns that same thesis, which is again credited to Lipps. What Freud claims there is new content for the concept.</p>
+<p>Both precedents are about the unconscious. They bear on Sense 2 only because both deny that the psychical and the conscious coincide.</p>
+<p>Freud reports his own earlier strength view as superseded: «Wir waren gewohnt zu denken, daß jeder latente Gedanke dies infolge seiner Schwäche war, und daß er bewußt wurde, sowie er Kraft erhielt.» [GW VIII:433].</p>
+<p><strong>Abandoned or kept.</strong> The sense is stated in the texts of 1900, 1912, 1915, 1923, 1926 and 1933, and in both texts written 1938.</p>
+<p>The 1920 text starts from an impression taken from the study of unconscious processes: «Die psychoanalytische Spekulation knüpft an den bei der Untersuchung unbewußter Vorgänge empfangenen Eindruck an» [GW XIII:23]. The impression is that consciousness might be only a special function: «daß das Bewußtsein nicht der allgemeinste Charakter der seelischen Vorgänge, sondern nur eine besondere Funktion derselben sein könne» [GW XIII:23]. The text puts this as a possibility («sein könne»), and it speaks of a function, not a quality. The 1911 and 1925 pages read do not state the sense.</p>
+<p>In 1933 Freud drops the systematic sense of the contrary term: «Gut, so wollen wir „unbewußt“ nicht mehr im systematischen Sinn gebrauchen» [GW XV:78]. He keeps the three terms for describing mental phenomena: «Wir haben nun drei Termini: bewußt, vorbewußt, unbewußt, mit denen wir in der Beschreibung der seelischen Phänomene unser Auskommen finden.» [GW XV:78].</p>
+<p>The three terms rest on a dynamic distinction. Two kinds of unconscious are told apart on the ground of «dieser dynamischen Verhältnisse» [GW XV:77]. One kind converts into the conscious easily, and the other converts only with difficulty: «eines, das leicht, unter häufig hergestellten Bedingungen, sich in Bewußtes umwandelt, ein anderes, bei dem diese Umsetzung schwer, nur unter erheblichem Müheaufwand, möglicherweise niemals erfolgt.» [GW XV:77]. Freud adds: «Nochmals, rein deskriptiv ist auch das Vorbewußte unbewußt, aber wir bezeichnen es nicht so, außer in lockerer Darstellung» [GW XV:78]. The triad is therefore not a purely descriptive one (compare 1923 below).</p>
+<p><strong>Not to be confused with.</strong>
+- <strong>"Bewußtheit" as a dimension.</strong> In «daß die drei Qualitäten der Bewußtheit und die drei Provinzen des seelischen Apparats sich nicht zu drei friedlichen Paaren zusammengefunden haben» [GW XV:79], the word "Bewußtheit" names a range that includes the unconscious.
+- <strong>The "unnoticed" or "faintly conscious".</strong> A footnote of the 1923 text reports researchers who hold that what psychoanalysis calls unconscious is only the most faintly conscious, and that such contents «lassen sich voll und stark bewußt machen, wenn man ihnen genug Aufmerksamkeit schenkte» [GW XIII:242]. Freud rejects this view. He refuses to subsume the unnoticeable under the conscious: «Ferner erreicht man durch die Subsumierung des Unmerklichen unter das Bewußte nichts anderes, als daß man sich die einzige [...] Sicherheit verdirbt, die es im Psychischen überhaupt gibt.» [GW XIII:243]. The same footnote adds: «Ein Bewußtsein, von dem man nichts weiß, scheint mir doch um vieles absurder als ein unbewußtes Seelisches.» [GW XIII:243].
+- <strong>A dynamic re-description.</strong> In 1923 the three terms bw, vbw and ubw are given a sense that is «nicht mehr rein deskriptiv» [GW XIII:241]. The ground is dynamic, not systematic: «Wir heißen das Latente, das nur deskriptiv unbewußt ist, nicht im dynamischen Sinne, vorbewußt» [GW XIII:241]. A further passage reads: «daß es im deskriptiven Sinne zweierlei Unbewußtes gibt, im dynamischen aber nur eines» [GW XIII:242]. The 1912 text already speaks of a «dynamischen Auffassung» [GW VIII:432]. In the pages read the dynamic sense is defined for "unbewußt" only. The text counts "bewußt" among the terms that are not purely descriptive, but it does not say what a dynamic sense of "bewußt" would be.</p>
+<h3>Sense 3: Consciousness as the achievement of a special system (1900 to 1940)</h3>
+<p><strong>In Freud's words.</strong>
+- «Keine andere als die eines Sinnesorgans zur Wahrnehmung psychischer Qualitäten.» [GW II/III:620] [no role other than that of a sense organ for the perception of psychic qualities].
+- «In metapsychologischer Ausdrucksweise behauptet sie, das Bewußtsein sei die Leistung eines besonderen Systems, das sie Bw benennt.» [GW XIII:23] [in metapsychological terms it claims that consciousness is the achievement of a special system, which it calls Bw].
+- «Dieses System ist der Außenwelt zugewendet, es vermittelt die Wahrnehmungen von ihr, in ihm entsteht während seiner Funktion das Phänomen des Bewußtseins.» [GW XV:81] [this system faces the external world and mediates perceptions of it; in it, while it functions, the phenomenon of consciousness arises].</p>
+<p><strong>What it means.</strong> Consciousness has a place and a function in the apparatus. The place is not the same at every date.</p>
+<p>In 1900 the system Bw is an inner sense organ for psychic qualities. It is modelled on perception: «also erregbar durch Qualitäten, und unfähig, die Spur von Veränderungen zu bewahren, also ohne Gedächtnis» [GW II/III:620]. It is not the side of the apparatus that faces the world. That side is W, and the apparatus itself counts as external world for Bw: «Der psychische Apparat, der mit dem Sinnesorgan der W-Systeme der Außenwelt zugekehrt ist, ist selbst Außenwelt für das Sinnesorgan des Bw» [GW II/III:620]. The Vbw stands between the Ubw and consciousness: «das System Vbw stehe wie ein Schirm zwischen dem System Ubw und dem Bewußtsein» [GW II/III:620].</p>
+<p>The system also regulates: «Indem es neue Qualitäten wahrnimmt, leistet es einen neuen Beitrag zur Lenkung und zweckmäßigen Verteilung der mobilen Besetzungsquantitäten.» [GW II/III:621].</p>
+<p>Thought has no quality of its own. It reaches this system through words: thought processes are associated with word memories, «deren Qualitätsreste genügen, um die Aufmerksamkeit des Bewußtseins auf sich zu ziehen» [GW II/III:622].</p>
+<p>The later placements are dated below:
+- from 1917 the system is identified with W;
+- from 1920 it is placed at the border of outside and inside;
+- in 1923 it is the surface of the apparatus, from which the ego goes out;
+- from 1926 it lies at the outermost surface of the ego.</p>
+<p><strong>When and where.</strong>
+- <strong>1900.</strong> Bw is the «überlagernde Sinnesorgan des Bw-Systems» [GW II/III:621], a sense organ overlying W. "Overlying" does not make it the surface, since for this organ the rest of the apparatus is external world (see above). The apparatus is not localised anatomically: «Wir bleiben auf psychologischem Boden» [GW II/III:541].
+- <strong>Undated footnote in the 1900 pages.</strong> A footnote says that a further working-out of the scheme will have to assume that the system following Vbw is the one «dem wir das Bewußtsein zuschreiben müssen» [GW II/III:546], so that W = Bw. The page prints no date for this footnote. Like the footnotes at 545 and 615, it may belong to a later layer, so it is not counted here as 1900.
+- <strong>1911.</strong> In this 1911 text consciousness is not called a system. It is attached to the sense organs, and it is the consciousness «welches außer den bisher allein interessanten Lust- und Unlustqualitäten die Sinnesqualitäten auffassen lernte» [GW VIII:232].
+- <strong>1915.</strong> The name Bw is used in two ways.
+  - In the first use, the system Bw is the second phase of an act and is also called the preconscious: «Mit Rücksicht auf diese Bewußtseinsfähigkeit heißen wir das System Bw auch das „Vorbewußte".» [GW X:272]. The text also writes «Der Inhalt des Systems Vbw (oder Bw)» [GW X:293].
+  - In the second use, Bw lies beyond a second censorship from Vbw: «Jetzt wird uns eine Zensur zwischen Vbw und Bw nahegelegt.» [GW X:290]. Again: «In der psychoanalytischen Kur erbringen wir den unanfechtbaren Beweis für die Existenz der zweiten Zensur, der zwischen den Systemen Vbw und Bw.» [GW X:292]. Becoming conscious at that point is called «kein bloßer Wahrnehmungsakt, sondern wahrscheinlich auch eine Überbesetzung, ein weiterer Fortschritt der psychischen Organisation» [GW X:292].
+  - The 1915 pages read place this second Bw at the end that stimulation from outside reaches first. Such stimulation runs through Bw and then through Vbw to the unconscious cathexes [GW X:302]. The pages also say that the highest psychic development is reached in Bw [GW X:292]. Both points are paraphrases, because the audited extracts do not quote these sentences. Read together with the second censorship [GW X:290, X:292], they license reading this use as an anticipation of the 1917 identification with W [ii]. The 1915 pages do not identify it with W, and they do not state that it is the same system as the later surface system.
+  - The topography is kept apart from anatomy: «Unsere psychische Topik hat vorläufig nichts mit der Anatomie zu tun» [GW X:273].
+- <strong>1917.</strong> W and Bw are identified: «Dieses dort W genannte System bringen wir zur Deckung mit dem System Bw, an dessen Arbeit in der Regel das Bewußtwerden hängt.» [GW X:423]. Reality testing is assigned to this system: «Nichts anderes als diese Einrichtung braucht die Realitätsprüfung zu sein.» [GW X:424]. The text hedges this account: «Näheres darüber können wir nicht aussagen, da Natur und Arbeitsweise des Systems Bw noch zu wenig bekannt sind.» [GW X:424]. A footnote adds, of the whole discussion: «Der unsicher tastende Charakter dieser metapsychologischen Erörterungen soll natürlich in keiner Weise verschleiert oder beschönigt werden.» [GW X:425].
+- <strong>1920.</strong> This part of the text is openly declared «Spekulation» [GW XIII:23]. Within it, the system lies «an der Grenze von außen und innen» [GW XIII:23]. Freud says the placement agrees with brain anatomy: «daß wir mit diesen Annahmen nichts Neues gewagt, sondern uns der lokalisierenden Hirnanatomie angeschlossen haben» [GW XIII:23]. The mutual exclusion of consciousness and memory trace is offered as a conjecture: «so kann sie uns doch zur Vermutung bewegen, daß Bewußtwerden und Hinterlassung einer Gedächtnisspur für dasselbe System miteinander unverträglich sind» [GW XIII:24]. The sentence «das Bewußtsein entstehe an Stelle der Erinnerungsspur» is granted «wenigstens die Bedeutung einer irgendwie bestimmten Behauptung» [GW XIII:25].
+- <strong>1923.</strong> «das Bewußtsein ist die Oberfläche des seelischen Apparates» [GW XIII:246]. The spatial sense holds also «im Sinne der anatomischen Zergliederung» [GW XIII:246]. «An diesem Ich hängt das Bewußtsein» [GW XIII:243]. The ego is described as going out from the system W: «indem wir das vom System W ausgehende Wesen, das zunächst vbw ist, das Ich heißen» [GW XIII:251]. It is also described as a continuation of the surface differentiation: «das Ich ist der durch den direkten Einfluß der Außenwelt unter Vermittlung von W-Bw veränderte Teil des Es, gewissermaßen eine Fortsetzung der Oberflächendifferenzierung.» [GW XIII:252]. In 1923, then, W-Bw is the surface of the apparatus and the starting point of the ego. The pages read do not call it the surface of the ego.
+  - Inner perception raises a doubt about the surface placement: «Sie läßt noch einmal den Zweifel auftauchen, ob man wirklich Recht daran tut, alles Bewußtsein auf das eine oberflächliche System W-Bw zu beziehen.» [GW XIII:249].
+  - For pleasure and unpleasure Freud settles the doubt clinically in favour of conduction to W: «Die klinische Erfahrung entscheidet für das letztere.» [GW XIII:250]. He then extends this: «Es bleibt also richtig, daß auch Empfindungen und Gefühle nur durch Anlangen an das System W bewußt werden» [GW XIII:250].
+  - For sensations, «die Unterscheidung von Bw und Vbw hat für die Empfindungen keinen Sinn» [GW XIII:250]. The same sentence says the preconscious drops out there.
+- <strong>1925.</strong> Freud presents as a supposition, one he says he had long kept to himself, that consciousness depends on the cathexis of W-Bw: «Ich habe angenommen, daß Besetzungsinnervationen in raschen periodischen Stößen aus dem Inneren in das völlig durchlässige System W-Bw geschickt und wieder zurückgezogen werden.» [GW XIV:8]. On this supposition, «sobald die Besetzung zurückgezogen wird, erlischt das Bewußtsein» [GW XIV:8].
+- <strong>1926.</strong> The organ is placed at the ego's outermost surface: «Nun glauben wir, an der äußersten Oberfläche dieses Ichs befinde sich eine besondere, der Außenwelt direkt zugewendete Instanz» [GW XIV:225]. Consciousness is produced by an organ «durch dessen Erregung allein das Phänomen, das wir Bewußtsein heißen, zustande kommt» [GW XIV:225]. Freud presents this «wiederum dogmatisch» [GW XIV:225].
+- <strong>1933.</strong> The system is receptive to excitations from outside and also to those from within: «sondern auch für solche, die aus dem Inneren des Seelenlebens herankommen» [GW XV:82].
+- <strong>Written 1938.</strong> No system name is used: «Es ist also für die topische Betrachtung ein Phänomen, das sich in der äussersten Rindenschicht des Ichs zuträgt.» [GW XVII:83].</p>
+<p>Some features stay the same, each across the dates given.
+- <strong>The perceptual surface:</strong> from 1917 (identity with W) and 1920 (the border of outside and inside) onward. In 1900 Bw is an inner sense organ for which the apparatus is external world, so it is not the surface.
+- <strong>Receptivity to excitations from outside and from inside:</strong> 1900, 1920, 1923, 1926, 1933, and written 1938.
+- <strong>Lack of memory:</strong> 1900 (GW II/III:620), 1920 and 1925.</p>
+<p>The pages of 1911 and 1915 are exceptions.
+- <strong>1911.</strong> Consciousness is tied to the sense organs, but no system is named.
+- <strong>1915.</strong> The name Bw is used both for the preconscious and for a system beyond a censorship from Vbw. The second use is the route by which stimulation from outside enters [GW X:302], but the 1915 pages do not identify it with W (see above and Tensions held).</p>
+<p>Several things change:
+- its place, which is an inner sense organ in 1900 and the surface facing the external world from 1917 and 1920 onward;
+- the name of the system;
+- its relation to Vbw;
+- the trace thesis, added as a conjecture in 1920;
+- its relation to the ego: the ego goes out from it in 1923, and it lies at the ego's outermost surface in 1926 and in the text written 1938;
+- its relation to anatomy, which is refused in 1900 and 1915 and accepted as alignment in 1920 and 1923.</p>
+<p><strong>Freud's own or taken over.</strong> Freud presents the system as his own scheme («in unserer Darstellung» [GW II/III:620]). In 1920 he presents its location as agreeing with brain anatomy (see 1920 above). In a footnote of the 1920 text he credits Breuer: «Dies durchaus nach J. Breuers Auseinandersetzung im theoretischen Abschnitt der "Studien über Hysterie", 1895.» [GW XIII:24]. The footnote is attached at the point that permanent traces would soon limit the system's capacity to receive new excitations. Whether it also covers the rest of the dilemma is not stated. In 1900 the same difficulty is credited to an unnamed source («wie schon von anderer Seite ausgeführt» [GW II/III:543]). The word «bewußtseinsfähig» is Breuer's expression [GW X:272].</p>
+<p><strong>Abandoned or kept.</strong> The sense is kept through the Abriß, written 1938, though that text gives the system no name. The Elementary Lessons fragment, also written 1938, has no system of consciousness at all.</p>
+<p><strong>Not to be confused with.</strong>
+- <strong>The ego.</strong> «Es trifft zu, daß Ich und bewußt, Verdrängt und unbewußt nicht zusammenfallen.» [GW XV:76]. Freud rejects the interlocutor's equation «Was Sie Ich heißen, ist das Bewußtsein» [GW XIV:225].
+- <strong>The 1915 system Bw that is also the Vorbewußte</strong> (see Tensions held).</p>
+<h2>How the senses relate</h2>
+<p>Sense 2 displaces Sense 1 [ii]. In 1912 the knowledge criterion of Sense 2 is the ground on which Freud refuses a second, unknown consciousness. He then redescribes the splitting cases as one wandering consciousness (GW VIII:434) [ii].</p>
+<p>Senses 2 and 3 coexist from 1900, in the same section (GW II/III:617 and 620). The 1900 text already links them by calling conscious perception the achievement of a system: «können wir die Bewußtseinswahrnehmung nur als die eigene Leistung eines besonderen Systems auffassen» [GW II/III:620]. Later texts repeat the link. They call consciousness the system's «Leistung» or «Funktion» (GW XIII:23, XIII:246), or a «Phänomen» arising in the system (GW XV:81, XVII:83) [ii].</p>
+<p>In 1915 Freud keeps the descriptive sense apart from membership in a system (GW X:271). Reading the system meant there as the one counted under Sense 3 is an interpretation [ii], because the 1915 label Bw is also used for the Vorbewußte (GW X:272). In 1917 he admits that becoming conscious and system membership do not match (GW X:423).</p>
+<p>Within Sense 3 the dated development runs as follows [ii]:
+- 1900: a sense organ for psychic qualities, without memory, for which the rest of the apparatus is external world;
+- 1915: unsettled. The name Bw is used for the preconscious and for a system beyond a second censorship from Vbw (GW X:272, X:290). The first use is not counted under Sense 3, and whether the second is the same system as Sense 3 is a conjecture [iii];
+- 1917: identity with W;
+- 1920: a system at the border of outside and inside, in which consciousness arises in place of the memory trace. This is stated as a hedged conjecture in 1920 and reported as an earlier remark in 1925;
+- 1923: the surface of the psychic apparatus, from which the ego goes out (GW XIII:246, XIII:251);
+- 1926 and written 1938: the outermost surface or cortical layer of the ego (GW XIV:225, XVII:83).</p>
+<p>The absence of traces is not new in 1920, since it is already part of the 1900 design (GW II/III:620). What 1920 adds is the thesis that consciousness arises in place of the trace (GW XIII:25).</p>
+<p>Separately, a footnote in the 1900 pages requires W = Bw (GW II/III:546). It prints no date, so the page does not show whether it comes before or after the 1917 identification.</p>
+<h2>Tensions held</h2>
+<ul>
+<li><strong>Bw and Vbw (1915).</strong> At one point «das System Bw auch das „Vorbewußte"» [GW X:272]. Later, «Jetzt wird uns eine Zensur zwischen Vbw und Bw nahegelegt.» [GW X:290]. Freud admits that he names the higher system «richtungslos bald Vbw bald Bw» [GW X:288]. In 1917 he says the two had not yet been «scharf gesondert» [GW X:423]. <strong>HOLD TENSION.</strong></li>
+<li><strong>W and Bw: a continuity claimed in 1917.</strong> In 1917 Freud presents the identification of W and Bw as continuous with the Traumdeutung: «Wir haben uns schon in der Traumdeutung entschließen müssen, die bewußte Wahrnehmung als die Leistung eines besonderen Systems in Anspruch zu nehmen» [GW X:423]. He continues: «Dieses dort W genannte System bringen wir zur Deckung mit dem System Bw» [GW X:423]. The 1900 page, however, names the system of conscious perception Bw: «können wir die Bewußtseinswahrnehmung nur als die eigene Leistung eines besonderen Systems auffassen, für welches sich die Abkürzungsbezeichnung Bw empfiehlt» [GW II/III:620]. The same page keeps that system apart from W, which treats the apparatus as external world for Bw [GW II/III:620]. The undated footnote requiring W = Bw [GW II/III:546] may bridge the two, but the page does not show which layer it belongs to. <strong>HOLD TENSION.</strong></li>
+<li><strong>Becoming conscious versus belonging to the system (1917).</strong> This is the tension between Senses 2 and 3. «Noch immer aber deckt sich die Tatsache des Bewußtwerdens nicht völlig mit der Systemzugehörigkeit» [GW X:423]. The reason given is that noticed sensory memory images cannot be placed in the system: «denen wir unmöglich einen psychischen Ort im System Bw oder W zugestehen können» [GW X:423]. <strong>HOLD TENSION.</strong></li>
+<li><strong>The preconscious and being conscious.</strong> This is a separate matter, which concerns the preconscious and not the system that produces consciousness.</li>
+<li>In 1915 an act in the system Bw that is also called the Vorbewußte «ist noch nicht bewußt, wohl aber bewußtseinsfähig» [GW X:272].</li>
+<li>In 1938 the preconscious is first defined by easy access: «Alles Unbewusste, das sich so verhält, so leicht den unbewussten Zustand mit dem bewussten vertauschen kann, heissen wir darum lieber bewusstseinsfähig oder vorbewusst.» [GW XVII:82].</li>
+<li>Freud then says that this access does not exhaust the preconscious state: «Der vorbewusste Zustand, einerseits durch seinen Zugang zum Bewusstsein, anderseits durch seine Verknüpfung mit den Sprachresten ausgezeichnet, ist doch etwas besonderes» [GW XVII:84]. As proof he cites preconscious parts that stay phenomenally unconscious: «Der Beweis hiefür ist, dass grosse Anteile des Ichs, vor allem des Überichs, dem man den Charakter des Vorbewussten nicht bestreiten kann, doch zumeist unbewusst im phänomenologischen Sinne bleiben.» [GW XVII:85]. The later finding therefore does not contradict the earlier definition. Freud uses it to show that access to consciousness is a mark of the preconscious, not its whole nature.</li>
+<li>He leaves open why this is so: «Wir wissen nicht, warum dies so sein muss.» [GW XVII:85].</li>
+<li><strong>RECONNECT.</strong></li>
+<li><strong>Memory and consciousness.</strong> Two things in 1900 must be kept apart, and both must then be related to 1920.</li>
+<li>The 1900 design already assumes systems without memory. There is a front system: «daß ein vorderstes System des Apparats die Wahrnehmungsreize aufnimmt, aber nichts von ihnen bewahrt, also kein Gedächtnis hat» [GW II/III:543]. Bw is likewise «unfähig, die Spur von Veränderungen zu bewahren, also ohne Gedächtnis» [GW II/III:620].</li>
+<li>What 1900 states as a conditional is the mutual exclusion in the ψ-systems: «Ließe sich nun bestätigen, daß Gedächtnis und Qualität für das Bewußtsein an den ψ-Systemen einander ausschließen» [GW II/III:545].</li>
+<li>In 1920 the claim is a conjecture that the same system cannot both become conscious and leave a trace: «so kann sie uns doch zur Vermutung bewegen, daß Bewußtwerden und Hinterlassung einer Gedächtnisspur für dasselbe System miteinander unverträglich sind» [GW XIII:24].</li>
+<li>Freud presents that conjecture as the principle on which the 1900 scheme was built: «In diesem Sinne ist auch das Schema entworfen, welches ich dem spekulativen Abschnitt meiner "Traumdeutung" 1900 eingefügt habe.» [GW XIII:24]. On this reading, the 1900 memoryless systems are applications of the 1920 principle [ii].</li>
+<li>The 1920 statement goes beyond the 1900 conditional. It is no longer tied to the ψ-systems and to an insight into neuron excitation. It is sharpened to «das Bewußtsein entstehe an Stelle der Erinnerungsspur», with the standing of «einer irgendwie bestimmten Behauptung» [GW XIII:25]. It is still called a «Vermutung» [GW XIII:24].</li>
+<li>A later footnote in the 1900 section, which cites the 1925 work, reads «Ich habe später gemeint, das Bewußtsein entstehe geradezu an Stelle der Erinnerungsspur.» [GW II/III:545].</li>
+</ul>
+<p><strong>RECONNECT,</strong> with the hedges kept.
+- <strong>Word presentations: a condition of consciousness or of the preconscious?</strong>
+  - 1900 and 1911: words supply qualities for consciousness (GW II/III:622; GW VIII:234).
+  - 1915: the word link «bloß die Möglichkeit dazu gibt» and characterises Vbw [GW X:301].
+  - 1923: «Wie wird etwas vorbewußt?» [GW XIII:247].
+  - Written 1938: speech makes inner processes conscious [GW XVII:84], but «Es wäre aber nicht richtig, die Verbindung mit den Erinnerungsresten der Sprache zur Bedingung für den vorbewussten Zustand zu machen» [GW XVII:84].
+  - <strong>HOLD TENSION.</strong>
+- <strong>Perception or more than perception (1915).</strong> Consciousness is first likened to perception [GW X:270]. Later Freud writes «das Bewußtwerden sei kein bloßer Wahrnehmungsakt, sondern wahrscheinlich auch eine Überbesetzung» [GW X:292]. The word «bloßer» lets the two be read together. The comparison with perception at X:270 is kept, and the later passage adds that becoming conscious is probably also an over-cathexis. The text does not spell this relation out, so the restatement is [ii], and «wahrscheinlich» stays. <strong>RECONNECT.</strong>
+- <strong>Anatomy.</strong> In 1900 the apparatus is kept on psychological ground: «Wir bleiben auf psychologischem Boden» [GW II/III:541]. In 1915 Freud writes «Unsere psychische Topik hat vorläufig nichts mit der Anatomie zu tun» [GW X:273]. In 1920 he says he has «uns der lokalisierenden Hirnanatomie angeschlossen» [GW XIII:23]. In 1923 the spatial sense holds also «im Sinne der anatomischen Zergliederung» [GW XIII:246]. The 1915 refusal is marked «vorläufig». <strong>HOLD TENSION.</strong>
+- <strong>Indispensable yet to be outgrown.</strong> Consciousness is the «Ausgangspunkt aller unserer Untersuchungen» [GW X:271], and yet «müssen wir lernen, uns von der Bedeutung des Symptoms „Bewußtheit" zu emanzipieren» [GW X:291]. <strong>HOLD TENSION.</strong>
+- <strong>Indescribable yet characterised.</strong> Consciousness is called beyond description [GW XVII:79], yet it is characterised as fleeting and as located in the ego's cortical layer [GW XVII:81, XVII:83]. <strong>HOLD TENSION.</strong>
+- <strong>The Es (1926).</strong> On one side, «daß alles, was im Es vorgeht, unbewußt ist und bleibt» [GW XIV:225]. On the other, the organ takes note «zuerst die Sensationen im Es» [GW XIV:225]. <strong>HOLD TENSION.</strong>
+- <strong>The 1894 narrowing.</strong> Freud finds Janet's view, which rests on a constitutional narrowness of the field of consciousness, open to many objections: «Im Gegensatz zur Anschauung Janets, welche mir die mannigfaltigsten Einwände zuzulassen scheint» [GW I:60]. He then shows forms of hysteria «bei welchen die Bewußtseinsspaltung unmöglich als eine primäre im Sinne von Janet gedeutet werden kann» [GW I:61]. He keeps «das eingeengte Bewußtsein» [GW I:64] as a description. He explains the narrowing, and its widening under hypnosis, from the act of will and not from a constitutional weakness: «Wenn die Bewußtseinsspaltung der akquirierten Hysterie auf einem Willensakt beruht, so erklärt sich überraschend leicht die merkwürdige Tatsache» [GW I:64]. The page does not say in so many words that the narrowing is a consequence of the splitting, so the reconnection is [ii]. <strong>RECONNECT.</strong></p>
+<h2>Key passages</h2>
+<table>
+<thead>
+<tr>
+<th>German quote</th>
+<th>Anchor</th>
+<th>Our rendering</th>
+<th>What it establishes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«daß die Spaltung des Bewußtseinsinhaltes die Folge eines Willensaktes des Kranken ist»</td>
+<td>GW I:61</td>
+<td>that the splitting of the content of consciousness results from an act of will by the patient</td>
+<td>Sense 1 and Freud's own thesis on its origin</td>
+</tr>
+<tr>
+<td>«Nach der Lehre von Janet ist die Bewußtseinsspaltung ein primärer Zug der hysterischen Veränderung.»</td>
+<td>GW I:60</td>
+<td>according to Janet, splitting of consciousness is a primary trait of the hysterical change</td>
+<td>Janet's view, which Freud contests</td>
+</tr>
+<tr>
+<td>«Die Fälle, die man als Teilung des Bewußtseins beschreibt, wie der des Dr. Azam, können besser als Wandern des Bewußtseins angesehen werden»</td>
+<td>GW VIII:434</td>
+<td>the cases described as division of consciousness are better seen as wandering of consciousness</td>
+<td>Divided consciousness redescribed (1912)</td>
+</tr>
+<tr>
+<td>«Die Rückkehr von der Überschätzung der Bewußtseinseigenschaft wird zur unerläßlichen Vorbedingung für jede richtige Einsicht in den Hergang des Psychischen.»</td>
+<td>GW II/III:617</td>
+<td>giving up the overestimation of the property of consciousness is a precondition of any correct insight</td>
+<td>Sense 2 first named in the pages read (1900)</td>
+</tr>
+<tr>
+<td>«Keine andere als die eines Sinnesorgans zur Wahrnehmung psychischer Qualitäten.»</td>
+<td>GW II/III:620</td>
+<td>none other than that of a sense organ for perceiving psychic qualities</td>
+<td>Sense 3 first named in the pages read (1900)</td>
+</tr>
+<tr>
+<td>«Wir wollen nun die Vorstellung, die in unserem Bewußtsein gegenwärtig ist und die wir wahrnehmen, „bewußt“ nennen und nur dies als Sinn des Ausdruckes „bewußt“ gelten lassen»</td>
+<td>GW VIII:431</td>
+<td>we call "conscious" the idea present in our consciousness and perceived by us, and allow only this sense</td>
+<td>Stipulated descriptive sense</td>
+</tr>
+<tr>
+<td>«daß wir die Worte bewußt und unbewußt bald im deskriptiven Sinne gebrauchen, bald im systematischen, wo sie dann Zugehörigkeit zu bestimmten Systemen und Begabung mit gewissen Eigenschaften bedeuten»</td>
+<td>GW X:271</td>
+<td>that we use conscious and unconscious sometimes descriptively, sometimes systematically, meaning membership of systems</td>
+<td>Freud's own split between the descriptive sense and system membership (1915)</td>
+</tr>
+<tr>
+<td>«Mit Rücksicht auf diese Bewußtseinsfähigkeit heißen wir das System Bw auch das „Vorbewußte".»</td>
+<td>GW X:272</td>
+<td>in view of this capacity for consciousness we also call the system Bw the preconscious</td>
+<td>1915 drift of Bw</td>
+</tr>
+<tr>
+<td>«Noch immer aber deckt sich die Tatsache des Bewußtwerdens nicht völlig mit der Systemzugehörigkeit»</td>
+<td>GW X:423</td>
+<td>still, the fact of becoming conscious does not fully coincide with system membership</td>
+<td>Senses 2 and 3 diverge</td>
+</tr>
+<tr>
+<td>«Dieses dort W genannte System bringen wir zur Deckung mit dem System Bw, an dessen Arbeit in der Regel das Bewußtwerden hängt.»</td>
+<td>GW X:423</td>
+<td>we make the system there called W coincide with the system Bw, on whose work becoming conscious usually depends</td>
+<td>W identified with Bw (1917)</td>
+</tr>
+<tr>
+<td>«wird man dem Satze, das Bewußtsein entstehe an Stelle der Erinnerungsspur, wenigstens die Bedeutung einer irgendwie bestimmten Behauptung einräumen müssen»</td>
+<td>GW XIII:25</td>
+<td>one must grant the sentence "consciousness arises in place of the memory trace" at least the standing of a somewhat definite assertion</td>
+<td>Trace thesis (1920), hedged</td>
+</tr>
+<tr>
+<td>«die Psychoanalyse kann das Wesen des Psychischen nicht ins Bewußtsein verlegen, sondern muß das Bewußtsein als eine Qualität des Psychischen ansehen, die zu anderen Qualitäten hinzukommen oder wegbleiben mag.»</td>
+<td>GW XIII:239</td>
+<td>psychoanalysis must regard consciousness as a quality of the psychical, not its essence</td>
+<td>Sense 2 (1923)</td>
+</tr>
+<tr>
+<td>«Das Bewußtsein verbleibt also an seiner Stelle, aber auch das Ubw ist nicht etwa zum Bw aufgestiegen.»</td>
+<td>GW XIII:249</td>
+<td>consciousness stays in its place, nor has the Ubw risen to the Bw</td>
+<td>Sense 3 is fixed in place</td>
+</tr>
+<tr>
+<td>«eine besondere, der Außenwelt direkt zugewendete Instanz, ein System, ein Organ, durch dessen Erregung allein das Phänomen, das wir Bewußtsein heißen, zustande kommt»</td>
+<td>GW XIV:225</td>
+<td>a special agency, system or organ turned to the external world, by whose excitation alone the phenomenon we call consciousness comes about</td>
+<td>Sense 3 as the ego's surface organ (1926)</td>
+</tr>
+<tr>
+<td>«Ohne die Leuchte der Bewußtseinsqualität wären wir im Dunkel der Tiefenpsychologie verloren»</td>
+<td>GW XV:76</td>
+<td>without the lamp of the quality of consciousness we would be lost in the dark of depth psychology</td>
+<td>Sense 2 is retained (1933)</td>
+</tr>
+<tr>
+<td>«Es ist also für die topische Betrachtung ein Phänomen, das sich in der äussersten Rindenschicht des Ichs zuträgt.»</td>
+<td>GW XVII:83</td>
+<td>topically, it is a phenomenon occurring in the outermost cortical layer of the ego</td>
+<td>Late form of Sense 3, without a system name</td>
+</tr>
+<tr>
+<td>«Sie bleibt das einzige Licht, das uns im Dunkel des Seelenlebens leuchtet und leitet.»</td>
+<td>GW XVII:147</td>
+<td>it remains the only light that shines and guides us in the dark of mental life</td>
+<td>Sense 2 at the end</td>
+</tr>
+</tbody>
+</table>
+<h2>What this entry does not claim</h2>
+<ul>
+<li>It does not claim that Freud explains what consciousness is, or how the surface system produces it. The texts call consciousness the «jeder Erklärung und Beschreibung trotzende Tatsache des Bewusstseins» [GW XVII:79] and say that research stands before it as before a wall [GW XVII:143].</li>
+<li>It does not claim that the 1894 sense is the view rejected in 1912 and 1915.</li>
+<li>It does not claim that "quality" here means what later philosophy means by phenomenal consciousness. The pages license no such comparison.</li>
+<li>It does not use the Entwurf (1895), the Standard Edition, or any work not listed.</li>
+<li>Its statements about attention, censorship and words are limited to the passages cited.</li>
+<li>Most years come from the source headers, not from the GW pages. Footnotes in the Traumdeutung pages (GW II/III:545, 546, 615) may be later layers and are not dated to 1900.</li>
+</ul>
+<h2>Reading coverage</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Text</th>
+<th>Year</th>
+<th>GW range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S01</td>
+<td>Die Abwehr-Neuropsychosen</td>
+<td>1894</td>
+<td>GW I:59-64</td>
+</tr>
+<tr>
+<td>S02</td>
+<td>Traumdeutung VII.B</td>
+<td>1900</td>
+<td>GW II/III:538-551</td>
+</tr>
+<tr>
+<td>S03</td>
+<td>Traumdeutung VII.F</td>
+<td>1900</td>
+<td>GW II/III:614-626</td>
+</tr>
+<tr>
+<td>S04</td>
+<td>Formulierungen über die zwei Prinzipien</td>
+<td>1911</td>
+<td>GW VIII:230-238</td>
+</tr>
+<tr>
+<td>S05</td>
+<td>Bemerkungen über den Begriff des Unbewußten</td>
+<td>1912</td>
+<td>GW VIII:430-439</td>
+</tr>
+<tr>
+<td>S06</td>
+<td>Das Unbewußte</td>
+<td>1915</td>
+<td>GW X:264-303</td>
+</tr>
+<tr>
+<td>S07</td>
+<td>Metapsychologische Ergänzung zur Traumlehre</td>
+<td>1917</td>
+<td>GW X:412-426</td>
+</tr>
+<tr>
+<td>S08</td>
+<td>Jenseits des Lustprinzips, ch. IV</td>
+<td>1920</td>
+<td>GW XIII:23-34</td>
+</tr>
+<tr>
+<td>S09</td>
+<td>Das Ich und das Es, ch. I-II</td>
+<td>1923</td>
+<td>GW XIII:239-255</td>
+</tr>
+<tr>
+<td>S10</td>
+<td>Notiz über den Wunderblock</td>
+<td>1925</td>
+<td>GW XIV:3-8</td>
+</tr>
+<tr>
+<td>S11</td>
+<td>Die Frage der Laienanalyse, ch. II (part)</td>
+<td>1926</td>
+<td>GW XIV:223-227</td>
+</tr>
+<tr>
+<td>S12</td>
+<td>Neue Folge, XXXI. Vorlesung (second half)</td>
+<td>1933</td>
+<td>GW XV:74-86</td>
+</tr>
+<tr>
+<td>S13</td>
+<td>Abriß der Psychoanalyse, ch. 4</td>
+<td>1940, written 1938</td>
+<td>GW XVII:79-86</td>
+</tr>
+<tr>
+<td>S14</td>
+<td>Some Elementary Lessons in Psycho-Analysis</td>
+<td>1940, written in the second half of 1938 per the GW editorial note</td>
+<td>GW XVII:139-147</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pages supplied but not used, as the extracts report:</strong>
+- GW II/III:538;
+- GW VIII:230 and 236;
+- GW X:280-281, 285, 294, 296, 298-299, and 414;
+- GW XIII:33-34, which were read but contain no occurrence.</p>
+<p>At GW X:286 the system label is illegible in the scan, so no claim here rests on that page.</p>
+<p>Two texts show later layers:
+- S09 prints a 1925 footnote date that sits uneasily with its 1923 header.
+- S08, headed 1920, prints the year 1922 in a footnote on an edition, according to its extract.</p>
+<p><strong>Loci not read:</strong>
+- the Entwurf, which is not in GW;
+- GW I 91, 95, 122, 233;
+- GW II/III 61, 150, 580, 598-599;
+- GW VI 165; VII 93, 135, 239, 375; IX 85-86; XI 305; XII 215; XIV 57;
+- Die Verdrängung, Die Verneinung, and Hemmung, Symptom und Angst;
+- the remaining chapters of the partially read works.</p>
+<p>The extracts report no pages missing from the scan.</p>
+<h3>Passages for the next edition</h3>
+<p>The pages read also carry the following, which this edition does not yet integrate:</p>
+<ul>
+<li>The 1923 passage in which Freud describes the ego as going out from the system W as its kernel, and as developed from the system as kernel, is not yet covered [GW XIII:251].</li>
+<li>The 1917 passages in which the system of perceptions Bw is treated as one of the ego's organs [GW X:425] and reality testing is placed among the great institutions of the ego [GW X:424] are not yet covered.</li>
+</ul>
+      <h2>About this entry</h2>
+      <p class="edition">First edition, November 2026. Built from the German text of Freud's <em>Gesammelte Werke</em> only, read source by source; every German quotation was checked against the page it cites. References give volume and page, for example [GW X:291]. English renderings are our own. A mark [ii] means our interpretation of the passages, [iii] a synthesis across texts; unmarked sentences report what the pages say. Each long entry says which texts were read and which were not. Entries are revised as the reading continues; corrections are welcome at <a href="mailto:contact@llulllab.com">contact@llulllab.com</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-line">Llull Lab</div>
+    <div class="footer-line">Conçu et développé en France</div>
+    <div class="footer-line"><a href="/privacy-policy.html">Privacy Policy</a><span class="footer-sep">·</span><a href="/mentions-legales.html">Mentions Légales</a><span class="footer-sep">·</span><a href="/research-tools-terms.html">Research tools terms</a></div>
+    <div class="footer-line">Created by <a href="https://feix.app" target="_blank" rel="noopener">Feix</a></div>
+  </footer>
+  <script>document.getElementById('menu').addEventListener('click', function () { document.querySelector('nav').classList.toggle('open'); });</script>
+</body>
+</html>
