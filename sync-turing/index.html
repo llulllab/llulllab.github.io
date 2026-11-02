@@ -6,13 +6,13 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://research-api.llulllab.com; base-uri 'self'; form-action 'none'; frame-ancestors 'none'">
   <title>Sync-Turing: research tool | Llull Lab</title>
   <link rel="icon" href="/favicon.png" type="image/png">
-  <meta name="description" content="Sync-Turing, a free research tool of Llull Lab: give it a text and your reading of it, and get back what the text says, each point tied to its own words, and whether your reading is in sync with it. For people and for machines, three readings a day.">
+  <meta name="description" content="Sync-Turing, a free research tool of Llull Lab: give it a text and your reading of it, and get back what the text says, each point tied to its own words, and whether your reading is in sync with it. For people and for machines, three readings or sessions a day.">
   <link rel="canonical" href="https://llulllab.com/sync-turing/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Llull Lab">
   <meta property="og:url" content="https://llulllab.com/sync-turing/">
   <meta property="og:title" content="Sync-Turing: research tool">
-  <meta property="og:description" content="A close reading of any text, every quote checked against it, and a sentence-by-sentence check of your reading. Free, three readings a day.">
+  <meta property="og:description" content="A close reading of any text, every quote checked against it, and a sentence-by-sentence check of your reading. Free, three readings or sessions a day.">
   <link rel="stylesheet" href="/fonts/gf-d321d810.css">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -101,6 +101,18 @@
     .badge.r-question, .badge.r-not_confirmed { color: var(--highlight); border-color: rgba(167,139,250,0.5); }
     .align, .point { border-left: 2px solid var(--border); padding-left: 14px; margin: 14px 0; }
   </style>
+
+<style>
+  #s2card .s2-item { border-top: 1px solid var(--border); padding: 12px 0 8px; }
+  #s2card .s2-item p { margin: 0 0 6px; color: #ddd; }
+  #s2card .s2-lab { font-family: var(--sans); font-size: 12px; letter-spacing: 0.5px; color: #aaa; margin-left: 6px; }
+  #s2card .s2-marks { display: flex; flex-wrap: wrap; gap: 14px; font-family: var(--sans); font-size: 13px; color: var(--accent); margin: 6px 0; }
+  #s2card .s2-marks label { display: inline-flex; gap: 6px; align-items: center; margin: 0; }
+  #s2card input[type=text] { width: 100%; background: #0b0b0b; color: var(--fg); border: 1px solid var(--border-strong); border-radius: 6px; padding: 8px 10px; font-family: var(--serif); font-size: 0.95rem; }
+  #s2card textarea.s2-ans { min-height: 64px; }
+  #s2card .s2-sync { font-family: var(--sans); font-size: 13px; color: #aaa; }
+  #s2card ol { padding-left: 22px; }
+</style>
 </head>
 <body>
   <header>
@@ -125,7 +137,7 @@
     <div class="page-hero">
       <h1>Sync-Turing</h1>
       <p class="lead">Give it a text, and if you like your reading of it. Sync-Turing returns what the text says, each point tied to the text's own words, what it does not say and where it pulls two ways, and checks your reading sentence by sentence: is it in sync with the text?</p>
-      <div class="facts"><span class="fact">Free</span><span class="fact">3 readings a day</span><span class="fact">For people and machines</span><span class="fact">Every quote checked against your text</span><span class="fact">Processed and hosted in the EU</span></div>
+      <div class="facts"><span class="fact">Free</span><span class="fact">3 readings or sessions a day</span><span class="fact">For people and machines</span><span class="fact">Every quote checked against your text</span><span class="fact">Processed and hosted in the EU</span></div>
     </div>
     <div class="page-body">
 
@@ -134,7 +146,7 @@
       <h2 id="ask">Read a text</h2>
 
       <div class="card" id="signin">
-        <p class="muted">Sign in with your email to use your three readings a day. We send a link that works once; there is no password.</p>
+        <p class="muted">Sign in with your email to use your three readings or sessions a day. We send a link that works once; there is no password.</p>
         <form id="signin-form" novalidate>
           <div class="row"><label for="email">Email</label><input type="email" id="email" autocomplete="email" required maxlength="254"></div>
           <div class="row"><label class="check"><input type="checkbox" id="consent"> <span>I agree to the <a href="/research-tools-terms.html">terms of use</a> and have read the <a href="/privacy-policy.html#research-tools">privacy notice</a>.</span></label></div>
@@ -156,6 +168,21 @@
         <div id="answers-box" hidden><h3 class="small" style="margin-top:28px">Your readings</h3><p class="small">Kept until you delete them or your account.</p><ul id="answers" class="small"></ul></div>
       </div>
 
+      <h2 id="session">Work on your material</h2>
+
+      <div class="card" id="s2card">
+        <p class="muted">Bring a text, code or a plan, and say what you want to do with it. Sync-Turing states your intent back, makes the goal checkable, separates what your material supports from what it does not, and lays out a path you can check. You mark each sentence, and the next round starts from your marks, until you and the tool are in sync. A session has up to five rounds and counts as one use. It clarifies your work; it does not do it for you.</p>
+        <p class="small" id="s2-signin">Sign in above to start a session.</p>
+        <form id="s2-form" novalidate hidden>
+          <div class="row"><label for="s2-material">Your material</label><textarea id="s2-material" maxlength="40000" placeholder="A text, code, or a plan or project, as it is: notes are fine. At least 200 characters."></textarea></div>
+          <div class="row"><label for="s2-intent">What you want to do with it</label><textarea class="ctx" id="s2-intent" maxlength="3000" placeholder="In your own words, however vague."></textarea></div>
+          <p class="small">Submit only texts you are entitled to share, and please leave out other people's sensitive personal data. Your text is not stored between rounds; this tab keeps it until you close it. Full statement: <a href="/privacy-policy.html#research-tools">privacy notice</a>.</p>
+          <div class="btns"><button class="btn" type="submit" id="s2-start">Start a session</button><button class="btn ghost" type="button" id="s2-load">Load a saved session</button><input type="file" id="s2-file" accept="application/json,.json" hidden><span class="small" id="s2-quota"></span></div>
+        </form>
+        <div class="msg" id="s2-msg" role="status" aria-live="polite"></div>
+        <div class="result" id="s2-result" hidden></div>
+      </div>
+
       <h2 id="what">What you get</h2>
       <p><strong>What the text says.</strong> Three to eight points, each with one or two exact quotes from your text, shown in the sentence they stand in. Each point is marked as something the text states, or as a reading of it.</p>
       <p><strong>How it argues, what it does not say, where it holds tension.</strong> Its definitions and the steps of its argument; what a reader might assume and the text does not state; the places where it pulls two ways, both sides quoted.</p>
@@ -163,7 +190,7 @@
       <p><strong>Sync.</strong> How your sentences fall into those results, and how many points of the text your reading does not touch. It measures whether your sentences agree with the text, not whether your reading is complete.</p>
 
       <h2 id="machines">For machines</h2>
-      <p>Autonomous agents and scripts use the same tool through an HTTPS API, with the same three readings a day per key. A machine can submit a document and its own summary, and get back which of its sentences the document bears out. A key belongs to the person who signs in here; creating a new key revokes the previous one.</p>
+      <p>Autonomous agents and scripts use the same tool through an HTTPS API, with the same three readings or sessions a day per key. A machine can submit a document and its own summary, and get back which of its sentences the document bears out. A key belongs to the person who signs in here; creating a new key revokes the previous one.</p>
       <div class="card" id="keycard" hidden>
         <div class="btns"><button class="btn ghost" type="button" id="key-btn">Create an API key</button><span class="small" id="key-info"></span></div>
         <pre class="keybox" id="key-out" hidden></pre>
@@ -186,6 +213,8 @@ curl -s https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt; \
 #                   "points_of_text", "points_not_in_reading"},
 #          "in_short", "language", "ai_generated": true, "generator", "notice"}</pre>
       <p class="small">A reading takes one to three minutes; poll every few seconds. A failed reading does not use one of your three, and a repeated request with the same Idempotency-Key returns the same job. Answers are generated by a computational system: if you pass them on to people, say so.</p>
+
+      <p>Sessions through the API: send <code>POST /research/v1/sync-sessions/ask</code> with <code>{"material": ..., "intent": ...}</code> and poll the job as above. A finished round carries a signed <code>state</code>; send it back with <code>{"state": ..., "marks": {"S1": {"mark": "yes"}, "S2": {"mark": "not_quite", "correction": "..."}}, "pick": {"choice": "C1", "reading": "a"}, "answers": {"Q1": "..."}}</code> for the next round. Each state works once; a session has up to five rounds and counts as one use.</p>
 
       <h2 id="about">About Sync-Turing</h2>
       <p>Sync-Turing is Llull Lab's method: an evaluation method measuring the ability of humans and machines to use their communication capacities at maximum efficiency and in high synchronization, reaching a shared rhythm between two distinct entities. This tool applies it to reading: it measures how far a reader, human or machine, and a text are in sync, and gives back a reading of the text that you can check against the text yourself. How the tool works is not disclosed.</p>
@@ -213,7 +242,7 @@ curl -s https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt; \
     var ERR = {
       invalid_email: 'Please enter a valid email address.', disposable_email: 'Please use a permanent email address.',
       consent_required: 'Please agree to the terms of use first.', signup_rate_limited: 'Too many sign-ups from your network today. Please try tomorrow.',
-      too_many_links: 'Several sign-in links are already waiting in your inbox.', daily_quota_reached: 'You have used your three readings for today. They renew at midnight, Paris time.',
+      too_many_links: 'Several sign-in links are already waiting in your inbox.', daily_quota_reached: 'You have used your three readings or sessions for today. They renew at midnight, Paris time.',
       network_quota_reached: 'Your network has reached today\'s limit. Please try tomorrow.', daily_capacity_reached: 'Today\'s capacity has been used. It opens again at midnight, Paris time.',
       daily_capacity_reached_new_accounts: 'Today\'s capacity for new accounts has been used. Please try tomorrow.', busy: 'The tool is busy. Please try again in a few minutes.',
       one_question_at_a_time: 'One reading at a time: your previous reading is still running.', text_too_short: 'Please paste a text of at least 200 characters.',
@@ -364,5 +393,225 @@ curl -s https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt; \
     refresh();
   })();
   </script>
+
+<script>
+  (function () {
+    var API = 'https://research-api.llulllab.com/research/v1';
+    var KEY = 'llr_st2', PKEY = 'llr_st2_pending';
+    var $ = function (id) { return document.getElementById(id); };
+    var ERR = {
+      daily_quota_reached: 'You have used your three readings or sessions for today. They renew at midnight, Paris time.',
+      network_quota_reached: 'Your network has reached today\'s limit. Please try tomorrow.',
+      daily_capacity_reached: 'Today\'s capacity has been used. It opens again at midnight, Paris time.',
+      daily_capacity_reached_new_accounts: 'Today\'s capacity for new accounts has been used. Please try tomorrow.',
+      tool_capacity_reached: 'Today\'s capacity for this tool has been used. It opens again at midnight, Paris time.',
+      account_daily_capacity_reached: 'Your account has reached today\'s limit for this tool. Please try tomorrow.',
+      busy: 'The tool is busy. Please try again in a few minutes.',
+      one_question_at_a_time: 'One round at a time: your previous round is still running.',
+      text_too_short: 'Please paste material of at least 200 characters.',
+      too_long: 'The material is too long (at most 40,000 characters, and 3,000 for what you want).',
+      sign_in_required: 'Please sign in above first.',
+      session_closed: 'This session is complete. Start a new one.',
+      session_expired: 'This session has expired (sessions last two days). Start a new one.',
+      session_not_found: 'This session is no longer available. Start a new one.',
+      state_already_used: 'This round was already sent. Continue from the latest round you received.',
+      round_in_progress: 'This round is still running. Please wait for it.',
+      session_round_limit: 'This session has reached its five rounds.',
+      session_capacity_reached: 'This session has reached its limit. Start a new one tomorrow.',
+      material_changed_start_new_session: 'The material changed too much for this session. Start a new session with it.',
+      invalid_state: 'This session cannot be continued from here. Start a new one, or load the latest saved session.'
+    };
+    var LABEL = { checked: 'accepted, checked', unchecked: 'accepted without a check', unstable: 'unstable: a later answer did not fit your choice', open: 'to mark', unmarked: 'to mark' };
+    var STATUS = { grounded: 'supported by your material', not_grounded: 'not supported by your material', testable: 'can be tested' };
+    var CHECK = { misattributed: 'the quoted words are said of something else', referent_unclear: 'what the quoted words refer to is unclear', not_supported: 'the quote does not carry it' };
+    var NEEDS = { research: 'needs research', tool: 'needs a tool', decision: 'needs your decision' };
+    var cur = null, polling = null;
+
+    function load() { try { var v = sessionStorage.getItem(KEY); return v ? JSON.parse(v) : null; } catch (e) { return null; } }
+    function keep(v) { try { if (v) sessionStorage.setItem(KEY, JSON.stringify(v)); else sessionStorage.removeItem(KEY); } catch (e) {} }
+    // the round in flight: its job id and, for round 1, the material it sent (needed if its state is lost on the way)
+    function pending(v) { try { if (v === undefined) { var x = sessionStorage.getItem(PKEY); return x ? JSON.parse(x) : null; } if (v) sessionStorage.setItem(PKEY, JSON.stringify(v)); else sessionStorage.removeItem(PKEY); } catch (e) { return null; } }
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+    function say(m, err) { var x = $('s2-msg'); x.textContent = m || ''; x.className = 'msg' + (err ? ' err' : ''); }
+    function idem() { return 's2-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10); }
+    function api(path, body) {
+      var o = { method: body ? 'POST' : 'GET', credentials: 'include', headers: {} };
+      if (body) { o.headers['content-type'] = 'application/json'; o.headers['idempotency-key'] = idem(); o.body = JSON.stringify(body); }
+      return fetch(API + path, o).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, j: j }; }); });
+    }
+    function errText(j) { return (j && ERR[j.error]) || 'Something went wrong. Please try again.'; }
+    function quote(q) {
+      var d = el('div', 'quote'); if (!q) return d;
+      d.appendChild(el('span', 'q', '“' + q.quote + '”'));
+      if (q.own_words) d.appendChild(el('span', 'ctx', 'your words')); else if (q.context) d.appendChild(el('span', 'ctx', q.context));
+      return d;
+    }
+    function h3(box, t) { box.appendChild(el('h3', null, t)); }
+    function markRow(box, item) {
+      var w = el('div', 's2-item'); var p = el('p', null, item.text);
+      p.appendChild(el('span', 's2-lab', '(' + (LABEL[item.acceptance] || 'to mark') + ')'));
+      w.appendChild(p);
+      (item.quotes || []).forEach(function (q) { w.appendChild(quote(q)); });
+      if (!cur.result.brief) {
+        var m = el('div', 's2-marks'), name = 'm_' + item.id;
+        [['yes', 'Yes, that is it'], ['not_quite', 'Not quite'], ['no', 'No']].forEach(function (o) {
+          var l = el('label'), r = document.createElement('input'); r.type = 'radio'; r.name = name; r.value = o[0];
+          if (o[0] === 'yes' && (item.acceptance === 'checked' || item.acceptance === 'unchecked')) r.checked = true;
+          l.appendChild(r); l.appendChild(document.createTextNode(o[1])); m.appendChild(l);
+        });
+        var c = document.createElement('input'); c.type = 'text'; c.maxLength = 500; c.placeholder = 'What would you change? In your own words.'; c.hidden = true; c.id = 'c_' + item.id;
+        m.addEventListener('change', function () { var v = (w.querySelector('input[name="' + name + '"]:checked') || {}).value; c.hidden = !(v === 'not_quite' || v === 'no'); });
+        w.appendChild(m); w.appendChild(c);
+      }
+      box.appendChild(w);
+    }
+    function list(box, title, items, fn) { if (!items || !items.length) return; h3(box, title); var u = el('ul'); items.forEach(function (x) { u.appendChild(fn(x)); }); box.appendChild(u); }
+
+    function render() {
+      try { draw(); } catch (e) { keep(null); cur = null; $('s2-result').hidden = true; $('s2-result').textContent = ''; say('This session could not be shown. Start a new one, or load another saved session.', true); }
+    }
+    function draw() {
+      var res = cur.result, box = $('s2-result');
+      box.textContent = ''; box.hidden = false;
+      if (res.refused || res.failed) { box.appendChild(el('p', 'summary', res.message)); return; }
+      var s = res.sync || {}, a = s.acceptance || {};
+      box.appendChild(el('p', 's2-sync', 'Round ' + res.round + ' of ' + res.max_rounds + '. Accepted with a check: ' + (a.checked || 0) + '; accepted without a check: ' + (a.unchecked || 0) + '; unstable: ' + (a.unstable || 0) + '; to mark: ' + (a.open || 0) + '. Corrections so far: ' + (s.corrections_total || 0) + '.'));
+      if (res.brief) h3(box, res.brief.complete ? 'In sync: your brief' : res.brief.ready ? 'Your brief (some sentences were accepted without a check)' : 'The session ends here: your brief');
+      h3(box, 'Your intent, as read'); (res.intent || []).forEach(function (x) { markRow(box, x); });
+      h3(box, 'The goal, made checkable'); (res.goal || []).forEach(function (x) { markRow(box, x); });
+      list(box, 'Opened again', res.reopened, function (r) { return el('li', null, r.id + ': ' + r.reason); });
+      list(box, 'Goals that pull against each other', res.goal_conflicts, function (t) { return el('li', null, t); });
+      if (res.choice && !res.brief) {
+        h3(box, 'Which do you mean?'); var cw = el('div', 's2-item'); cw.appendChild(el('p', null, res.choice.question));
+        (res.choice.readings || []).forEach(function (r) {
+          var l = el('label', 'check'), i = document.createElement('input'); i.type = 'radio'; i.name = 'pick'; i.value = r.id;
+          var t = el('span', null, r.text + (r.consequence ? ' (' + r.consequence + ')' : ''));
+          l.appendChild(i); l.appendChild(t); cw.appendChild(l);
+        });
+        box.appendChild(cw);
+      }
+      if ((res.questions || []).length && !res.brief) {
+        h3(box, 'Questions to you');
+        res.questions.forEach(function (q) { var w = el('div', 's2-item'); w.appendChild(el('p', null, q.text)); var t = document.createElement('textarea'); t.className = 's2-ans'; t.maxLength = 1000; t.id = 'a_' + q.id; w.appendChild(t); box.appendChild(w); });
+      }
+      if (res.material) {
+        list(box, 'What your material says or does', res.material.points, function (p) { var li = el('li', null, p.claim); (p.quotes || []).forEach(function (q) { li.appendChild(quote(q)); }); return li; });
+        list(box, 'What it does not say', res.material.not_said, function (t) { return el('li', null, t); });
+      }
+      list(box, 'What is missing for the goal', res.missing, function (t) { return el('li', null, t); });
+      list(box, 'Ambiguities', res.ambiguities, function (x) { var li = el('li', null, x.term + ': '); var u = el('ul'); x.readings.forEach(function (r) { u.appendChild(el('li', null, r.reading + (r.consequence ? '. If so: ' + r.consequence : ''))); }); li.appendChild(u); return li; });
+      list(box, 'Assumptions, reduced', res.assumptions, function (x) {
+        var li = el('li', null, x.claim + ' '); li.appendChild(el('span', 's2-lab', '(' + (STATUS[x.status] || x.status) + (CHECK[x.check] ? '; ' + CHECK[x.check] : '') + '; likelihood ' + x.likelihood + ')'));
+        if (x.quote) li.appendChild(quote(x.quote));
+        if (x.falls_if) li.appendChild(el('div', 'small', 'It falls if: ' + x.falls_if)); if (x.reason) li.appendChild(el('div', 'small', x.reason)); return li;
+      });
+      if ((res.path || []).length) {
+        h3(box, 'The path'); var ol = el('ol');
+        res.path.forEach(function (p) { var li = el('li', null, p.step); if (p.check) li.appendChild(el('div', 'small', 'You know it worked when: ' + p.check)); if (p.needs && p.needs.length) li.appendChild(el('div', 'small', p.needs.map(function (n) { return NEEDS[n] || n; }).join(', '))); ol.appendChild(li); });
+        box.appendChild(ol);
+      }
+      if (res.first_step) { h3(box, 'First step'); box.appendChild(el('p', null, res.first_step)); }
+      list(box, 'What did not reduce', res.did_not_reduce, function (d) { return el('li', null, d.part + ': ' + d.why); });
+      if (res.notice) box.appendChild(el('p', 'small', res.notice));
+      var b = el('div', 'btns');
+      if (!res.brief && cur.state) { var n = el('button', 'btn', 'Send my marks: next round'); n.type = 'button'; n.id = 's2-next'; n.onclick = next; b.appendChild(n); }
+      var sv = el('button', 'btn ghost', res.brief ? 'Save the brief' : 'Save the session to a file'); sv.type = 'button'; sv.onclick = res.brief ? saveBrief : saveSession; b.appendChild(sv);
+      var e = el('button', 'btn ghost', res.brief ? 'Start a new session' : 'End the session'); e.type = 'button'; e.onclick = end; b.appendChild(e);
+      box.appendChild(b);
+    }
+
+    function poll(id) {
+      api('/job/' + id).then(function (r) {
+        var j = r.j || {};
+        if (r.status !== 200) { pending(null); setBusy(false); say(errText(j), true); return; }
+        if (j.status === 'queued' || j.status === 'running') { say(j.status === 'queued' && j.position > 1 ? 'Waiting in line (position ' + j.position + ')...' : 'Working on your material. A round usually takes about two minutes...'); polling = setTimeout(function () { poll(id); }, 4000); return; }
+        if (j.status === 'done' && !j.state) { recover(id); return; }
+        if (j.status !== 'done') {
+          // refused or failed: the previous round stays as it was and its state stays valid
+          pending(null); setBusy(false);
+          var msg = (j.result && j.result.message) || 'The round could not be completed. Please try again.';
+          if (cur && cur.result && !cur.result.refused) { say(msg, true); return; }
+          cur = { state: null, result: j.result || { refused: true, message: msg } }; keep(cur); say(''); render(); return;
+        }
+        misses = 0; done(j);
+      }).catch(function () {
+        // the tool could not be reached: after a few quick tries, say so and keep asking slowly (the round stays pending, and a
+        // reload resumes it too)
+        if (++misses === 10) say('The tool cannot be reached right now. Your round is kept; this page keeps trying, or reload it later.', true);
+        polling = setTimeout(function () { poll(id); }, misses >= 10 ? 30000 : 6000);
+      });
+    }
+    var misses = 0;
+    function done(j) { pending(null); cur = { state: j.state || null, result: j.result || {} }; keep(cur); say(''); render(); setBusy(false); }
+    // the round finished but its state did not reach this tab (a lost response, a restart): ask for it again
+    function recover(id) {
+      var pd = pending() || {};
+      var body = cur && cur.state ? { state: cur.state, recover: true } : (pd.round1 ? { recover_job: id, material: pd.round1.material, intent: pd.round1.intent } : null);
+      if (!body) { pending(null); setBusy(false); say('The round finished, but this tab lost it. Please start again.', true); return; }
+      say('Fetching your round...');
+      api('/sync-sessions/ask', body).then(function (r) {
+        if (r.status === 200 && r.j && r.j.recovered) { done(r.j); return; }
+        pending(null); setBusy(false); say(errText(r.j), true);
+      }).catch(function () { setBusy(false); say('The tool could not be reached. Please reload the page to continue.', true); });
+    }
+    function setBusy(v) { $('s2-start').disabled = v; var n = $('s2-next'); if (n) n.disabled = v; }
+    function submit(body) {
+      setBusy(true); say('Sending...');
+      var r1 = body.material && !body.state ? { material: body.material, intent: body.intent } : null;
+      api('/sync-sessions/ask', body).then(function (r) {
+        if (r.status === 200 && r.j && r.j.recovered) { done(r.j); return; }   // that round had already finished
+        if (r.status === 202 || r.status === 200) { pending({ job: r.j.job_id, round1: r1 }); poll(r.j.job_id); return; }
+        setBusy(false); say(errText(r.j), true);
+      }).catch(function () { setBusy(false); say('The tool could not be reached. Please try again.', true); });
+    }
+    function next() {
+      var res = cur.result, marks = {}, answers = {}, pick = null;
+      (res.intent || []).concat(res.goal || []).forEach(function (x) {
+        var v = (document.querySelector('input[name="m_' + x.id + '"]:checked') || {}).value;
+        if (v) marks[x.id] = { mark: v, correction: v === 'yes' ? '' : (($('c_' + x.id) || {}).value || '') };
+      });
+      (res.questions || []).forEach(function (q) { var t = $('a_' + q.id); if (t && t.value.trim()) answers[q.id] = t.value.trim(); });
+      var pk = document.querySelector('input[name="pick"]:checked'); if (pk && res.choice) pick = { choice: res.choice.id, reading: pk.value };
+      if (!Object.keys(marks).length) { say('Please mark at least one sentence before the next round.', true); return; }
+      submit({ state: cur.state, marks: marks, answers: answers, pick: pick || undefined });
+    }
+    function download(name, text, type) { var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type: type })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+    function saveSession() { download('sync-turing-session.json', JSON.stringify({ v: 1, state: cur.state, result: cur.result }), 'application/json'); }
+    function saveBrief() {
+      var b = cur.result.brief, L = [];
+      L.push('Sync-Turing brief'); L.push(''); L.push('Intent:'); b.intent.forEach(function (x) { L.push('- ' + x.text + ' (' + (LABEL[x.acceptance] || '') + ')'); });
+      L.push(''); L.push('Goal:'); b.goal.forEach(function (x) { L.push('- ' + x.text + ' (' + (LABEL[x.acceptance] || '') + ')'); });
+      L.push(''); L.push('Path:'); (b.path || []).forEach(function (p, i) { L.push((i + 1) + '. ' + p.step + (p.check ? ' You know it worked when: ' + p.check : '')); });
+      if (b.first_step) { L.push(''); L.push('First step: ' + b.first_step); }
+      if ((b.assumptions_to_test || []).length) { L.push(''); L.push('Assumptions to test:'); b.assumptions_to_test.forEach(function (a) { L.push('- ' + a.claim + (a.falls_if ? ' It falls if: ' + a.falls_if : '')); }); }
+      download('sync-turing-brief.txt', L.join('\n'), 'text/plain');
+    }
+    function end() { if (polling) clearTimeout(polling); cur = null; keep(null); pending(null); $('s2-result').hidden = true; $('s2-result').textContent = ''; say(''); setBusy(false); }
+
+    $('s2-form').addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var m = $('s2-material').value.trim(), w = $('s2-intent').value.trim();
+      if (m.length < 200) { say(ERR.text_too_short, true); return; }
+      if (polling) clearTimeout(polling); pending(null);   // a new session leaves any round of an older one behind
+      submit({ material: m, intent: w });
+    });
+    $('s2-load').onclick = function () { $('s2-file').click(); };
+    $('s2-file').addEventListener('change', function () {
+      var f = this.files && this.files[0]; if (!f) return;
+      f.text().then(function (t) { var o = JSON.parse(t); if (!o || !o.result) throw new Error('x'); if (polling) clearTimeout(polling); pending(null); setBusy(false); cur = { state: o.state || null, result: o.result }; keep(cur); say('Session loaded.'); render(); })
+        .catch(function () { say('This file is not a saved Sync-Turing session.', true); });
+      this.value = '';
+    });
+    window.addEventListener('beforeunload', function (e) { if (cur && cur.state && !(cur.result && cur.result.brief)) { e.preventDefault(); e.returnValue = ''; } });
+
+    api('/me').then(function (r) {
+      if (r.status !== 200) return;
+      $('s2-signin').hidden = true; $('s2-form').hidden = false;
+      var q = r.j.quota && r.j.quota['sync-sessions']; if (q) $('s2-quota').textContent = 'Readings and sessions today: ' + q.used + ' of ' + q.limit;
+    }).catch(function () {});
+    cur = load(); if (cur && cur.result) render();
+    var pd = pending(); if (pd && pd.job) { setBusy(true); poll(pd.job); }   // a round was in flight when the page was left
+  })();
+</script>
 </body>
 </html>
