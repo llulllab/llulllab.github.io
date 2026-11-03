@@ -47,8 +47,9 @@
     .page-hero { padding: 0 0 40px; border-bottom: 1px solid var(--border); }
     .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
     .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 680px; line-height: 1.75; }
-    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; }
+    .facts { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 24px 0 0 -16px; clip-path: inset(0 0 0 16px); }
+    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; }
+    .fact::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: #666; margin: 0 12px 2px 0; vertical-align: middle; }
     .page-body { padding: 48px 0 40px; }
     .page-body h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 96px; }
     .page-body h2:first-child { margin-top: 0; }
@@ -73,7 +74,8 @@
     .msg { font-family: var(--sans); font-size: 14px; margin-top: 12px; color: var(--accent); min-height: 1.4em; }
     .msg.err { color: var(--stop); }
     .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--sans); font-size: 13px; color: #aaa; margin-bottom: 16px; }
-    .result { margin-top: 24px; }
+    .result { margin-top: 24px; padding: clamp(16px, 3vw, 24px); background: #0b0b0b; border: 1px solid var(--border-strong); border-radius: 8px; overflow-wrap: anywhere; }
+    .result > :first-child { margin-top: 0; }
     .verdict { display: inline-block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-strong); margin-bottom: 14px; }
     .verdict.proceed { color: var(--live); border-color: rgba(110,231,183,0.4); }
     .verdict.proceed_with_conditions { color: var(--prep); border-color: rgba(251,191,36,0.4); }
@@ -91,6 +93,17 @@
     footer .footer-line a { color: var(--muted); text-decoration: none; }
     footer .footer-line a:hover { color: var(--fg); }
     footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+    #answers { list-style: none; padding: 0; margin-top: 8px; }
+    #answers li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 8px; padding: 10px 0; border-top: 1px solid var(--border); overflow-wrap: anywhere; }
+    #answers .btn { min-height: 36px; padding: 0 14px; }
+    .verdicts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .verdicts .verdict { margin-bottom: 0; }
+    .verdicts .verdict:not(.on) { color: #808080; border-color: var(--border); }
+    .verdicts .verdict.on { font-weight: 600; }
+    .verdicts .verdict.on.proceed { background: rgba(110,231,183,0.12); }
+    .verdicts .verdict.on.proceed_with_conditions { background: rgba(251,191,36,0.12); }
+    .verdicts .verdict.on.do_not_proceed { background: rgba(248,113,113,0.12); }
+    .verdicts .verdict.on.need_more_information { background: rgba(167,139,250,0.12); }
   </style>
 </head>
 <body>
@@ -222,7 +235,16 @@ curl -s https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt; \
       var box = $('result'); box.textContent = ''; box.hidden = false;
       if (!res) return;
       if (res.refused || res.failed) { var p = document.createElement('p'); p.textContent = res.message; box.appendChild(p); return; }
-      var v = document.createElement('span'); v.className = 'verdict ' + res.verdict; v.textContent = VERDICT[res.verdict] || res.verdict; box.appendChild(v);
+      var ORDER = ['proceed', 'proceed_with_conditions', 'do_not_proceed', 'need_more_information'];
+      if (ORDER.indexOf(res.verdict) >= 0) {
+        var sc = document.createElement('div'); sc.className = 'verdicts';
+        ORDER.forEach(function (k) {
+          var o = document.createElement('span'); o.className = 'verdict ' + k + (k === res.verdict ? ' on' : ''); o.textContent = VERDICT[k];
+          if (k !== res.verdict) o.setAttribute('aria-hidden', 'true');
+          sc.appendChild(o);
+        });
+        box.appendChild(sc);
+      } else { var v = document.createElement('span'); v.className = 'verdict ' + res.verdict; v.textContent = VERDICT[res.verdict] || res.verdict; box.appendChild(v); }
       var s = document.createElement('p'); s.className = 'summary'; s.textContent = res.summary; box.appendChild(s);
       list(box, 'Rationale', res.rationale); list(box, 'Conditions', res.conditions); list(box, 'Risks', res.risks);
       list(box, 'Counterpoints', res.counterpoints); list(box, 'Open questions', res.open_questions);

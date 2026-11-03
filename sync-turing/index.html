@@ -47,8 +47,9 @@
     .page-hero { padding: 0 0 40px; border-bottom: 1px solid var(--border); }
     .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
     .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 680px; line-height: 1.75; }
-    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; }
+    .facts { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 24px 0 0 -16px; clip-path: inset(0 0 0 16px); }
+    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; }
+    .fact::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: #666; margin: 0 12px 2px 0; vertical-align: middle; }
     .page-body { padding: 48px 0 40px; }
     .page-body h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 96px; }
     .page-body h2:first-child { margin-top: 0; }
@@ -73,7 +74,8 @@
     .msg { font-family: var(--sans); font-size: 14px; margin-top: 12px; color: var(--accent); min-height: 1.4em; }
     .msg.err { color: var(--stop); }
     .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--sans); font-size: 13px; color: #aaa; margin-bottom: 16px; }
-    .result { margin-top: 24px; }
+    .result { margin-top: 24px; padding: clamp(16px, 3vw, 24px); background: #0b0b0b; border: 1px solid var(--border-strong); border-radius: 8px; overflow-wrap: anywhere; }
+    .result > :first-child { margin-top: 0; }
     .verdict { display: inline-block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-strong); margin-bottom: 14px; }
     .verdict.proceed { color: var(--live); border-color: rgba(110,231,183,0.4); }
     .verdict.proceed_with_conditions { color: var(--prep); border-color: rgba(251,191,36,0.4); }
@@ -91,6 +93,11 @@
     footer .footer-line a { color: var(--muted); text-decoration: none; }
     footer .footer-line a:hover { color: var(--fg); }
     footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+    #answers { list-style: none; padding: 0; margin-top: 8px; }
+    #answers li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 8px; padding: 10px 0; border-top: 1px solid var(--border); overflow-wrap: anywhere; }
+    #answers .btn { min-height: 36px; padding: 0 14px; }
+    .quote .q.in { color: #bbb; }
+    .quote mark { background: rgba(167,139,250,0.24); color: #fff; padding: 0 2px; border-radius: 2px; }
     .quote { margin: 4px 0 8px 14px; font-size: 0.95rem; }
     .quote .q { color: #eee; }
     .quote .ctx { display: block; font-family: var(--sans); font-size: 12.5px; color: #999; margin-top: 2px; }
@@ -265,6 +272,11 @@ curl -s https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt; \
     function quotes(parent, qs) {
       (qs || []).forEach(function (q) {
         var b = el('p', 'quote');
+        var at = typeof q.quote === 'string' && q.quote.trim() && typeof q.context === 'string' ? q.context.indexOf(q.quote) : -1;
+        if (at >= 0 && at === q.context.lastIndexOf(q.quote) && q.context.length > q.quote.length) {
+          var s = el('span', 'q in'); s.appendChild(document.createTextNode('“' + q.context.slice(0, at))); s.appendChild(el('mark', null, q.quote));
+          s.appendChild(document.createTextNode(q.context.slice(at + q.quote.length) + '”')); b.appendChild(s); parent.appendChild(b); return;
+        }
         b.appendChild(el('span', 'q', '“' + q.quote + '”'));
         if (q.context && q.context.replace(/\W/g, '') !== q.quote.replace(/\W/g, '')) b.appendChild(el('span', 'ctx', ' In its sentence: ' + q.context));
         parent.appendChild(b);
@@ -442,6 +454,11 @@ curl -s https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt; \
     function errText(j) { return (j && ERR[j.error]) || 'Something went wrong. Please try again.'; }
     function quote(q) {
       var d = el('div', 'quote'); if (!q) return d;
+      var at = !q.own_words && typeof q.quote === 'string' && q.quote.trim() && typeof q.context === 'string' ? q.context.indexOf(q.quote) : -1;
+      if (at >= 0 && at === q.context.lastIndexOf(q.quote) && q.context.length > q.quote.length) {
+        var s = el('span', 'q in'); s.appendChild(document.createTextNode('“' + q.context.slice(0, at))); s.appendChild(el('mark', null, q.quote));
+        s.appendChild(document.createTextNode(q.context.slice(at + q.quote.length) + '”')); d.appendChild(s); return d;
+      }
       d.appendChild(el('span', 'q', '“' + q.quote + '”'));
       if (q.own_words) d.appendChild(el('span', 'ctx', 'your words')); else if (q.context) d.appendChild(el('span', 'ctx', q.context));
       return d;

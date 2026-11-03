@@ -47,8 +47,9 @@
     .page-hero { padding: 0 0 40px; border-bottom: 1px solid var(--border); }
     .page-hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
     .page-hero .lead { font-size: 1.1rem; color: var(--accent); max-width: 680px; line-height: 1.75; }
-    .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
-    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; }
+    .facts { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 24px 0 0 -16px; clip-path: inset(0 0 0 16px); }
+    .fact { font-family: var(--sans); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #aaa; }
+    .fact::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: #666; margin: 0 12px 2px 0; vertical-align: middle; }
     .page-body { padding: 48px 0 40px; }
     .page-body h2 { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin: 56px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); scroll-margin-top: 96px; }
     .page-body h2:first-child { margin-top: 0; }
@@ -73,7 +74,8 @@
     .msg { font-family: var(--sans); font-size: 14px; margin-top: 12px; color: var(--accent); min-height: 1.4em; }
     .msg.err { color: var(--stop); }
     .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; font-family: var(--sans); font-size: 13px; color: #aaa; margin-bottom: 16px; }
-    .result { margin-top: 24px; }
+    .result { margin-top: 24px; padding: clamp(16px, 3vw, 24px); background: #0b0b0b; border: 1px solid var(--border-strong); border-radius: 8px; overflow-wrap: anywhere; }
+    .result > :first-child { margin-top: 0; }
     .verdict { display: inline-block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-strong); margin-bottom: 14px; }
     .verdict.proceed { color: var(--live); border-color: rgba(110,231,183,0.4); }
     .verdict.proceed_with_conditions { color: var(--prep); border-color: rgba(251,191,36,0.4); }
@@ -94,6 +96,15 @@
     footer .footer-line a { color: var(--muted); text-decoration: none; }
     footer .footer-line a:hover { color: var(--fg); }
     footer .footer-sep { margin: 0 10px; opacity: 0.6; }
+    #answers { list-style: none; padding: 0; margin-top: 8px; }
+    #answers li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 8px; padding: 10px 0; border-top: 1px solid var(--border); overflow-wrap: anywhere; }
+    #answers .btn { min-height: 36px; padding: 0 14px; }
+    .mr { margin: 24px 0; padding: 4px 20px 6px; border: 1px solid rgba(167,139,250,0.4); border-left: 3px solid var(--highlight); border-radius: 6px; background: rgba(167,139,250,0.06); }
+    .result .mr h3 { color: var(--highlight); margin-top: 16px; }
+    .fq { margin: 10px 0 16px; padding-left: 16px; border-left: 2px solid var(--border-strong); }
+    .fq p { margin-bottom: 4px; }
+    .fq .de { font-style: italic; color: #eee; }
+    .fq .tr { color: #ccc; }
   </style>
 </head>
 <body>
@@ -241,16 +252,21 @@ curl -s https://research-api.llulllab.com/research/v1/job/&lt;job_id&gt; \
         box.appendChild(ul);
       }
       (res.quotes || []).forEach(function (q) {
-        var b = document.createElement('p'); b.className = 'small';
-        b.textContent = '„' + q.de + '“ (' + ref([q.citation]) + '). ' + (q.translation ? 'Our translation: ' + q.translation : '');
+        if (!q.de && !q.translation) return;
+        var b = document.createElement('blockquote'); b.className = 'fq';
+        if (q.de) { var de = document.createElement('p'); de.className = 'de'; de.textContent = '„' + q.de + '“'; b.appendChild(de); }
+        if (q.translation) { var tr = document.createElement('p'); tr.className = 'tr'; tr.textContent = 'Our translation: ' + q.translation; b.appendChild(tr); }
+        var ci = document.createElement('p'); ci.className = 'small'; ci.textContent = '(' + ref([q.citation]) + ')'; b.appendChild(ci);
         box.appendChild(b);
       });
       if (res.development) { var hd = document.createElement('h3'); hd.textContent = 'How the idea developed'; box.appendChild(hd); var pd = document.createElement('p'); pd.textContent = res.development; box.appendChild(pd); }
       list(box, 'Tensions', res.tensions);
       if (res.machine_reading && res.machine_reading.text) {
-        var hm = document.createElement('h3'); hm.textContent = 'Machine reading'; box.appendChild(hm);
-        var lb = document.createElement('p'); lb.className = 'small'; lb.textContent = res.machine_reading.label; box.appendChild(lb);
-        var pm = document.createElement('p'); pm.textContent = res.machine_reading.text; box.appendChild(pm);
+        var mr = document.createElement('div'); mr.className = 'mr';
+        var hm = document.createElement('h3'); hm.textContent = 'Machine reading'; mr.appendChild(hm);
+        var lb = document.createElement('p'); lb.className = 'small'; lb.textContent = res.machine_reading.label; mr.appendChild(lb);
+        var pm = document.createElement('p'); pm.textContent = res.machine_reading.text; mr.appendChild(pm);
+        box.appendChild(mr);
       }
       list(box, 'Counterpoints', res.counterpoints); list(box, 'Open questions', res.open_questions);
       (res.concept_entries || []).forEach(function (c) {
