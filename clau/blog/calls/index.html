@@ -29,7 +29,8 @@
 .who{font-size:14px;color:var(--ink)}.who strong{color:var(--accent)}
 .tools-strip{display:flex;flex-wrap:wrap;align-items:center;gap:0 22px;border-bottom:1px solid var(--rule);padding:4px 0}.tools-strip .label{color:var(--muted);margin-right:4px}.tools-strip a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:600}
 .clau-editions{display:block}.clau-editions li{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;border-bottom:1px solid var(--rule);padding:6px 0}.clau-editions .edition-date{min-width:11em;color:var(--muted);font-size:14px}.clau-editions a{display:inline-flex;min-height:44px;align-items:center}
-.news-item{border-top:1px solid var(--rule);padding:18px 0 6px}.news-item h3{font-size:24px;line-height:1.2}.news-item h3 a{color:var(--ink);text-decoration:none}.news-item h3 a:hover{text-decoration:underline}
+.news-item{border-top:1px solid var(--rule);padding:18px 0 6px}.news-item h2,.news-item h3{font-size:24px;line-height:1.2;margin:2px 0 12px}.news-item h2{font-size:28px;line-height:1.18}.news-item h2 a,.news-item h3 a{color:var(--ink);text-decoration:none}.news-item h2 a:hover,.news-item h3 a:hover{text-decoration:underline}
+@media (max-width:599px){.news-item h2{font-size:24px}}
 html{color-scheme:light}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.65 var(--text);-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-underline-offset:4px}
@@ -137,6 +138,7 @@ p.edition{width:min(var(--page-width),calc(100% - 80px));margin:16px auto 0!impo
 .month h2{font-size:30px;line-height:1.15;border-top:3px solid var(--ink);padding-top:12px;margin:32px 0 4px}
 .cal-list li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 24px;border-bottom:1px solid var(--rule);padding:12px 0}
 .cal-date{font-size:14px;font-weight:600}
+.month-jump{display:flex;flex-wrap:wrap;gap:0 18px;margin:24px 0 0;padding:2px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}.month-jump a{display:inline-flex;align-items:center;min-height:44px;font-size:14px}
 .cal-title a{font:600 21px/1.2 var(--display);text-decoration:none}
 .cal-title a:hover{text-decoration:underline}
 .cal-group{display:block;font-size:13px;color:var(--muted);margin-top:4px}
@@ -205,7 +207,7 @@ footer{margin-top:48px;padding:24px 0 36px;border-top:2px solid var(--ink);color
     <li><a href="/clau/blog/calls/erc-consolidator-grant/"><span class="programme-name">ERC Consolidator Grant</span><span class="programme-count">1 call listed, 1 open for submission.</span></a></li>
     <li><a href="/clau/blog/calls/erc-advanced-grant/"><span class="programme-name">ERC Advanced Grant</span><span class="programme-count">No call listed at the moment.</span></a></li>
   </ul>
-  <div class="note">Titles, identifiers, types of action, dates and indicative budgets come from the <a href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home" target="_blank" rel="noopener noreferrer">EU Funding and Tenders Portal</a>; statuses are as of the date at the top of the page. Deadlines are usually at 17:00 Brussels time: confirm each call's status, conditions and exact deadline time on its official topic page before you rely on it. Call summaries are drafted and checked automatically by a computational system from each call's official description; they are not individually reviewed by a person. Clau is independent and not affiliated with the European Union or its research bodies.</div>
+  <div class="note">Titles, identifiers, types of action, dates and indicative budgets come from the <a href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home" target="_blank" rel="noopener noreferrer">EU Funding and Tenders Portal</a>; statuses are as of the date at the top of the page. Deadlines are usually at 17:00 Brussels time: confirm each call's status, conditions and exact deadline time on its official topic page before you rely on it. Clau is independent and not affiliated with the European Union or its research bodies.</div>
 </main>
 <footer class="wrap">
   <div class="footer-top">
