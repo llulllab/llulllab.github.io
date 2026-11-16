@@ -154,7 +154,12 @@
   .doc-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--bg-linen);}
   .doc-bar .doc-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
   .doc-bar .doc-actions{display:flex;gap:8px;}
-  .doc-body{padding:22px 26px;font-family:var(--font-body);font-size:14.5px;line-height:1.6;color:var(--text-1);}
+  .doc-body{padding:22px 26px;font-family:var(--font-body);font-size:14.5px;line-height:1.6;color:var(--text-1);white-space:pre-wrap;word-wrap:break-word;}
+  /* tables in replies and documents (skills maps); scroll sideways on a narrow screen */
+  .tbl{overflow-x:auto;max-width:100%;margin:.4em 0 .8em;}
+  .tbl table{border-collapse:collapse;font-size:14px;line-height:1.45;white-space:normal;min-width:100%;}
+  .tbl th,.tbl td{border:1px solid var(--border-mid);padding:6px 9px;text-align:left;vertical-align:top;}
+  .tbl th{background:var(--bg-linen);font-weight:600;color:var(--text-heading);}
   .doc-body h1{font-family:var(--font-display);font-size:26px;font-weight:600;margin:0 0 2px;}
   .doc-body h2,.doc-body h3{font-family:var(--font-display);font-weight:600;color:var(--text-heading);margin:1.1em 0 .35em;font-size:18px;border-bottom:1px solid var(--border);padding-bottom:3px;}
   .doc-body strong{color:var(--text-heading);}
@@ -168,6 +173,8 @@
     #printMount{display:block!important;padding:0;}
     #printMount .doc-body{padding:0;font-size:12pt;color:#000;}
     #printMount h1,#printMount h2,#printMount h3{color:#000;}
+    #printMount .tbl{overflow:visible;}
+    #printMount th,#printMount td{border-color:#999;}
   }
 
   footer{margin-top:64px;border-top:1px solid var(--border);padding:30px 0 46px;}
@@ -350,13 +357,28 @@
 
   <div id="printMount" aria-hidden="true"></div>
 
-<script src="/clau/vendor/mammoth.browser.min.js"></script>
-<script src="/clau/vendor/pdf.min.js"></script>
 <script>
   const API = 'https://clau-api.llulllab.com';
   const DONATE_URL = 'https://buy.stripe.com/cNi9AS5aAfyP3o93XJ3Nm03'; // Stripe Payment Link (Support Clau, customer chooses amount)
   const MAX_DOC_CHARS = 500000; // ~125k tokens; the model context is the real ceiling
-  try { if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = '/clau/vendor/pdf.worker.min.js'; } catch(e){}
+  // Server limits (server.mjs): a /develop body up to 900 KiB and at most 60 messages; a saved blob up to 1 MiB.
+  const MAX_SEND_CHARS = 880 * 1024, MAX_SEND_TURNS = 59, MAX_SAVE_CHARS = 1024 * 1024 - 1024;
+  // The document readers (~940 KB) load only when someone uploads a file, so the page is ready at once.
+  const LIBS = { mammoth: '/clau/vendor/mammoth.browser.min.js', pdf: '/clau/vendor/pdf.min.js' };
+  const libLoads = {};
+  function loadLib(name){
+    if (!libLoads[name]) libLoads[name] = new Promise((res, rej)=>{
+      const s = document.createElement('script'); s.src = LIBS[name];
+      s.onload = ()=>{
+        if (!(name==='pdf' ? window.pdfjsLib : window.mammoth)){ delete libLoads[name]; rej(new Error('lib')); return; } // loaded but unusable: allow a retry
+        try { if (name==='pdf') pdfjsLib.GlobalWorkerOptions.workerSrc = '/clau/vendor/pdf.worker.min.js'; } catch(e){}
+        res();
+      };
+      s.onerror = ()=>{ delete libLoads[name]; rej(new Error('lib')); };
+      document.head.appendChild(s);
+    });
+    return libLoads[name];
+  }
   const T = {
     en: {
       greet: {
@@ -377,6 +399,15 @@
       err: "Something went wrong. Please try again.", forgotten: "Your saved work has been deleted.",
       badkey: "That does not look like a Clau key.", copyok: "Key copied.", nowork:"Start a conversation before keeping your work.",
       docCV: "CV", docLetter: "Cover letter", download: "Download PDF", copytext: "Copy text", copied: "Copied.",
+      savefail: "Your work could not be saved, so no key was created. Please try again in a moment.",
+      toobig: "Your work is too large to keep (over 1 MB, usually because of a very long document). Work on a shorter part of the document to keep it.",
+      autosavefail: "Your latest changes could not be saved. Your key still opens your last saved work. Open the key panel to try again.",
+      wait: "Wait for Clau's reply, then try again.",
+      toolong: "This is too long for Clau to read in one go. Send a shorter part of your text.",
+      savedunsent: "Saved. Keep your key safe. Text you have not sent yet is not saved.",
+      savedpending: "Saved up to Clau's last reply. Keep your key safe. Your latest message is saved once Clau answers it.",
+      replacewarn: "Loading this key replaces the conversations on this page, which are not saved. Press Load my work again to continue.",
+      errs: { rate_limited: "You have reached the hourly limit. Please try again later.", busy: "Clau is busy right now. Try again in a moment.", llm: "Clau could not answer just now. Please try again.", too_large: "This is too long for Clau to read in one go. Send a shorter part of your text.", too_many_turns: "This conversation is long. Save your work and start a fresh thread." },
     },
     fr: {
       greet: {
@@ -397,6 +428,15 @@
       err: "Une erreur s'est produite. Veuillez réessayer.", forgotten: "Votre travail enregistré a été supprimé.",
       badkey: "Cela ne ressemble pas à une clé Clau.", copyok: "Clé copiée.", nowork:"Commencez une conversation avant de garder votre travail.",
       docCV: "CV", docLetter: "Lettre de motivation", download: "Télécharger le PDF", copytext: "Copier le texte", copied: "Copié.",
+      savefail: "Votre travail n'a pas pu être enregistré, aucune clé n'a donc été créée. Réessayez dans un instant.",
+      toobig: "Votre travail est trop volumineux pour être gardé (plus de 1 Mo, en général à cause d'un très long document). Travaillez sur une partie plus courte du document pour le garder.",
+      autosavefail: "Vos dernières modifications n'ont pas pu être enregistrées. Votre clé ouvre toujours votre dernier travail enregistré. Ouvrez le panneau de la clé pour réessayer.",
+      wait: "Attendez la réponse de Clau, puis réessayez.",
+      toolong: "C'est trop long pour que Clau le lise en une fois. Envoyez une partie plus courte de votre texte.",
+      savedunsent: "Enregistré. Conservez bien votre clé. Le texte que vous n'avez pas encore envoyé n'est pas enregistré.",
+      savedpending: "Enregistré jusqu'à la dernière réponse de Clau. Conservez bien votre clé. Votre dernier message sera enregistré dès que Clau y aura répondu.",
+      replacewarn: "Charger cette clé remplace les conversations de cette page, qui ne sont pas enregistrées. Cliquez à nouveau sur Charger mon travail pour continuer.",
+      errs: { rate_limited: "Vous avez atteint la limite horaire. Réessayez plus tard.", busy: "Clau est très sollicité en ce moment. Réessayez dans un instant.", llm: "Clau n'a pas pu répondre pour le moment. Réessayez.", too_large: "C'est trop long pour que Clau le lise en une fois. Envoyez une partie plus courte de votre texte.", too_many_turns: "Cette conversation est longue. Gardez votre travail et commencez un nouveau fil." },
     }
   };
   let lang = (navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en';
@@ -405,6 +445,33 @@
   let messages = convos[currentTool]; // {role:'user'|'assistant', content} for the active tool
   let currentKey = null;  // the Clau key, held only in memory unless user saved it
   let pendingDoc = '', pendingDocLabel = ''; // an uploaded document, folded into the next message
+  let busyTool = null;     // the tool whose reply is on its way (one request at a time)
+  let thinkingEl = null;   // its "Clau is reading" bubble, when that tool is on screen
+  let lastSavedSig = '';   // what the server holds, so an unchanged conversation is not saved again
+  // Each tool keeps its own unsent text and document: switching tabs puts them aside and brings back the other tool's.
+  const composers = {};    // tool -> {text, doc, label, status} while that tool is not on screen
+  function stashComposer(t){
+    composers[t] = { text: document.getElementById('input').value, doc: pendingDoc, label: pendingDocLabel, status: document.getElementById('uploadStatus').innerHTML };
+  }
+  function loadComposer(t){
+    const c = composers[t] || { text:'', doc:'', label:'', status:'' }; delete composers[t];
+    document.getElementById('input').value = c.text; pendingDoc = c.doc; pendingDocLabel = c.label;
+    document.getElementById('uploadStatus').innerHTML = c.status;
+  }
+  // Puts unsent text and a document back into tool t's composer (on screen or set aside), keeping what is already there.
+  function giveBack(t, typed, doc, label, status){
+    const live = t === currentTool, ta = document.getElementById('input');
+    const c = live ? { text: ta.value, doc: pendingDoc, label: pendingDocLabel, status: document.getElementById('uploadStatus').innerHTML }
+                   : (composers[t] || { text:'', doc:'', label:'', status:'' });
+    const now = c.text.trim();
+    if (typed) c.text = now ? typed + '\n\n' + now : typed;      // the failed text first, then anything typed since
+    if (doc){
+      if (c.doc){ c.doc = doc + '\n\n---\n\n' + c.doc; c.label = label + ' + ' + c.label; c.status = esc(c.label); } // two documents: send both, lose neither
+      else { c.doc = doc; c.label = label; c.status = status || esc(label); } // keeps the original note (e.g. "very long document")
+    }
+    if (live){ ta.value = c.text; pendingDoc = c.doc; pendingDocLabel = c.label; document.getElementById('uploadStatus').innerHTML = c.status; }
+    else composers[t] = c;
+  }
 
   function setLang(l){
     lang = l;
@@ -422,24 +489,50 @@
     opts = opts || {};
     if (!convos[tool]) return;
     if (currentKey && messages.length && !opts.noSave) saveWork(true); // preserve the tool we are leaving
+    stashComposer(currentTool);
     currentTool = tool;
     messages = convos[tool];
-    document.querySelectorAll('.tool-tab').forEach(b=> b.classList.toggle('active', b.dataset.tool===tool));
+    markTabs();
     document.getElementById('input').placeholder = T[lang].ph[tool];
     if (messages.length) renderConvo(); else renderGreeting();
+    loadComposer(tool);
     if (!opts.noScroll){ const w=document.getElementById('work'); if (w) w.scrollIntoView({behavior:'smooth', block:'start'}); }
   }
 
-  // ---- tiny markdown (headings, bold, lists) ----
+  function markTabs(){ document.querySelectorAll('.tool-tab').forEach(b=>{ const on = b.dataset.tool===currentTool; b.classList.toggle('active', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); }); }
+
+  // ---- tiny markdown: headings, bold, italics, bullet lists, tables. Escaped first, so no HTML gets through. ----
   function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function inline(s){
+    return s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+            .replace(/(^|[^*\w])\*([^*\s](?:[^*\n]*?[^*\s])?)\*(?![*\w])/g,'$1<em>$2</em>');
+  }
   function md(s){
-    let h = esc(s);
-    h = h.replace(/^### (.*)$/gm,'<h3>$1</h3>').replace(/^## (.*)$/gm,'<h3>$1</h3>');
-    h = h.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
-    h = h.replace(/(?:^|\n)((?:- .*(?:\n|$))+)/g, m=>{
-      const items = m.trim().split('\n').map(x=>x.replace(/^- /,'').trim());
-      return '<ul>'+items.map(i=>'<li>'+i+'</li>').join('')+'</ul>';
-    });
+    const L = esc(String(s)).split('\n'), parts = []; // {h, block}
+    const isRow = l => /^\s*\|.*\|\s*$/.test(l);
+    const isSep = l => /^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?\s*$/.test(l);
+    const cells = l => l.trim().replace(/^\|/,'').replace(/\|$/,'').split('|').map(c=>inline(c.trim()));
+    let i = 0;
+    while (i < L.length){
+      const l = L[i]; let m;
+      if (isRow(l) && i+1 < L.length && isSep(L[i+1])){
+        const head = cells(l), rows = []; i += 2;
+        while (i < L.length && isRow(L[i])){ rows.push(cells(L[i])); i++; }
+        parts.push({block:true, h:'<div class="tbl"><table><thead><tr>'+head.map(c=>'<th>'+c+'</th>').join('')+'</tr></thead><tbody>'
+          + rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>'});
+      } else if ((m = l.match(/^#{1,3}\s+(.*)$/))){
+        parts.push({block:true, h:'<h3>'+inline(m[1])+'</h3>'}); i++;
+      } else if (/^\s*[-*]\s+/.test(l)){
+        const items = [];
+        while (i < L.length && /^\s*[-*]\s+/.test(L[i])){ items.push(inline(L[i].replace(/^\s*[-*]\s+/,''))); i++; }
+        parts.push({block:true, h:'<ul>'+items.map(x=>'<li>'+x+'</li>').join('')+'</ul>'});
+      } else { parts.push({block:false, h:inline(l)}); i++; }
+    }
+    // Text lines keep their line breaks (the bubble is pre-wrap); a block needs none around it,
+    // and a blank line next to a block would only add a gap.
+    const kept = parts.filter((p,k)=> p.block || p.h.trim() || !((parts[k-1]||{}).block || (parts[k+1]||{}).block));
+    let h = '';
+    kept.forEach((p,k)=>{ if (k>0 && !p.block && !kept[k-1].block) h += '\n'; h += p.h; });
     return h;
   }
 
@@ -451,11 +544,12 @@
   // rebuild the stream from the active tool's messages (on tool switch / resume / lang change)
   function renderConvo(){
     stream.innerHTML = '';
-    if (!messages.length){ addBubble('clau', T[lang].greet[currentTool], false); return; }
+    if (!messages.length) addBubble('clau', T[lang].greet[currentTool], false);
     for (const m of messages){
       if (m.role === 'assistant') renderAssistant(m.content);
       else addBubble('you', m.content, false);
     }
+    if (busyTool && busyTool === currentTool) thinkingEl = thinkingBubble(); // its reply is still on the way
   }
   function addBubble(who, text, asMd){
     const wrap = document.createElement('div');
@@ -475,7 +569,12 @@
     wrap.appendChild(w); wrap.appendChild(b); stream.appendChild(wrap); stream.scrollTop=stream.scrollHeight;
     return wrap;
   }
-  function showErr(msg){ const e=document.getElementById('errMsg'); e.textContent=msg; e.hidden=false; setTimeout(()=>e.hidden=true, 6000); }
+  let errTimer = null;
+  function showErr(msg, sticky){ // sticky: stays until the next successful save or a newer message
+    const e=document.getElementById('errMsg'); e.textContent=msg; e.hidden=false; e.dataset.sticky = sticky ? '1' : '';
+    clearTimeout(errTimer); if (!sticky) errTimer = setTimeout(()=>{ e.hidden=true; }, 6000);
+  }
+  function clearStickyErr(){ const e=document.getElementById('errMsg'); if (e.dataset.sticky){ e.hidden=true; e.dataset.sticky=''; } }
 
   // ---- Clau replies may carry a finished document (CV / cover letter) in a fenced block.
   // Render the conversational part as a bubble and the document as a printable card. ----
@@ -510,31 +609,68 @@
     const bodyEl = document.createElement('div'); bodyEl.className='doc-body'; bodyEl.innerHTML = docMd(mdText);
     card.appendChild(bar); card.appendChild(bodyEl);
     stream.appendChild(card); stream.scrollTop = stream.scrollHeight;
-    dl.onclick = ()=>{ const mount=document.getElementById('printMount'); mount.innerHTML=''; mount.appendChild(bodyEl.cloneNode(true)); window.print(); };
+    dl.onclick = ()=>{
+      const mount=document.getElementById('printMount'); mount.innerHTML=''; mount.appendChild(bodyEl.cloneNode(true));
+      // The browser names the saved PDF after the page title: "CV Alex Martin", "Cover letter", not the site title.
+      const old = document.title, who = ((bodyEl.querySelector('h1')||{}).textContent||'').trim();
+      document.title = (label + (who ? ' ' + who : '')).replace(/[\\/:*?"<>|]+/g,' ').trim();
+      const restore = ()=>{ document.title = old; window.removeEventListener('afterprint', restore); };
+      window.addEventListener('afterprint', restore);
+      window.print();
+      setTimeout(restore, 60000);
+    };
     cp.onclick = ()=> navigator.clipboard.writeText(mdText).then(()=>{ cp.textContent=T[lang].copied; setTimeout(()=>cp.textContent=T[lang].copytext,1500); }).catch(()=>{});
   }
 
+  // A server error shown in the page's language (the server's own messages are in English).
+  function errText(j){
+    if (lang === 'en' && j && j.message) return j.message;
+    return (j && j.error && T[lang].errs[j.error]) || T[lang].err;
+  }
+  // What goes to the model: the whole conversation, or, once it is long, its first message (which usually
+  // carries the document) plus the latest turns, so a long session keeps working instead of hitting the server's caps.
+  function windowFor(list, tool){
+    let w = list;
+    if (w.length > MAX_SEND_TURNS){ let start = w.length - (MAX_SEND_TURNS - 1); if (start % 2 === 0) start++; w = [w[0], ...w.slice(start)]; }
+    const size = x => JSON.stringify({messages:x, tool}).length;
+    while (size(w) > MAX_SEND_CHARS && w.length > 3) w = [w[0], ...w.slice(3)]; // drop the oldest exchange after the first message
+    return size(w) > MAX_SEND_CHARS ? null : w;
+  }
   async function send(){
+    if (busyTool) return; // one reply at a time (also guards Ctrl+Enter while the button is disabled)
     const ta = document.getElementById('input');
     const typed = ta.value.trim();
     const modelText = pendingDoc ? (pendingDoc + (typed ? '\n\n---\n\n' + typed : '')) : typed;
     if (!modelText){ showErr(T[lang].empty); return; }
+    // The reply belongs to the tool it was asked in, even if the person switches tabs while Clau is reading.
+    const tool = currentTool, convo = messages;
+    convo.push({role:'user', content:modelText});
+    const win = windowFor(convo, tool);
+    if (!win){ convo.pop(); showErr(T[lang].toolong); return; }
+    const doc = pendingDoc, docLabel = pendingDocLabel, docStatus = document.getElementById('uploadStatus').innerHTML;
     const bubbleText = pendingDoc ? ('[' + pendingDocLabel + ']' + (typed ? '\n\n' + typed : '')) : typed;
     addBubble('you', bubbleText, false);
-    messages.push({role:'user', content:modelText});
     pendingDoc=''; pendingDocLabel=''; document.getElementById('uploadStatus').textContent='';
-    ta.value=''; document.getElementById('send').disabled=true;
-    const th = thinkingBubble();
+    ta.value=''; busyTool = tool; document.getElementById('send').disabled = true;
+    thinkingEl = thinkingBubble();
+    const fail = (j)=>{ // give the text back so nothing has to be retyped, now or when the person returns to that tool
+      convo.pop(); busyTool = null;
+      if (currentTool === tool) renderConvo();
+      giveBack(tool, typed, doc, docLabel, docStatus);
+      showErr(errText(j));
+    };
     try{
-      const r = await fetch(API+'/develop', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({messages, tool: currentTool})});
-      const j = await r.json();
-      th.remove();
-      if (!r.ok || !j.reply){ showErr(j.message || T[lang].err); messages.pop(); return; }
-      messages.push({role:'assistant', content:j.reply});
-      renderAssistant(j.reply);
-      if (currentKey) await saveWork(true); // silent autosave if the user is keeping work
-    }catch(e){ th.remove(); showErr(T[lang].err); messages.pop(); }
-    finally{ document.getElementById('send').disabled=false; }
+      const r = await fetch(API+'/develop', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({messages: win, tool})});
+      let j = {}; try { j = await r.json(); } catch(e){}
+      if (thinkingEl){ thinkingEl.remove(); thinkingEl = null; }
+      if (!r.ok || !j.reply){ fail(j); return; }
+      convo.push({role:'assistant', content:j.reply});
+      if (currentTool === tool) renderAssistant(j.reply);
+      busyTool = null; // settled: the autosave below includes this exchange
+      const k = currentKey; // silent autosave if the user is keeping work
+      if (k) saveWork(true).then(ok=>{ if (!ok && currentKey === k) showErr(T[lang].autosavefail, true); });
+    }catch(e){ if (thinkingEl){ thinkingEl.remove(); thinkingEl = null; } fail({}); }
+    finally{ busyTool = null; document.getElementById('send').disabled = false; }
   }
 
   // ---- client-side crypto: the key never leaves the browser ----
@@ -576,36 +712,83 @@
   }
 
   function keepMsg(msg, cls){ const e=document.getElementById('keepMsg'); e.textContent=msg; e.className='note '+(cls||''); e.hidden=false; }
-  async function saveWork(silent){
-    const hasAny = Object.values(convos).some(a=>a.length);
-    if (!currentKey || !hasAny){ if(!silent) keepMsg(T[lang].nowork,'warn'); return; }
+  // Returns true only when the server confirmed it holds this snapshot. `silent` skips the panel message,
+  // and skips the request when nothing changed since the last confirmed save.
+  let lastSaveTooBig = false;
+  let saveChain = Promise.resolve(); // saves go out one after another, so an older snapshot never lands after a newer one
+  // The settled conversations, copied now: a message still waiting for its reply is left out, so a failed
+  // request can never end up in the saved copy.
+  function snapshotConvos(){
+    const c = {};
+    for (const k of Object.keys(convos)){
+      let a = convos[k];
+      if (busyTool === k && a.length && a[a.length-1].role === 'user') a = a.slice(0, -1);
+      c[k] = a.map(m=>({role:m.role, content:m.content}));
+    }
+    return c;
+  }
+  const sigOf = c => Object.keys(c).map(k=> c[k].length + ':' + (c[k].length ? String(c[k][c[k].length-1].content).length : 0)).join('|');
+  const workSig = ()=> sigOf(snapshotConvos());
+  const unsentText = ()=> !!(pendingDoc || document.getElementById('input').value.trim() || Object.values(composers).some(c=> c.doc || c.text.trim()));
+  // What "saved" covers: a message still waiting for Clau's reply is saved with that reply; unsent text is not saved.
+  const savedText = ()=> busyTool ? T[lang].savedpending : unsentText() ? T[lang].savedunsent : T[lang].saved;
+  let loadEpoch = 0; // bumped by every load: a save started before a load must not vouch for the loaded work
+  function saveWork(silent){
+    const key = currentKey, c = snapshotConvos(), epoch = loadEpoch;
+    if (!key || !Object.values(c).some(a=>a.length)){ if(!silent) keepMsg(T[lang].nowork,'warn'); return Promise.resolve(false); }
+    const sig = sigOf(c);
+    if (silent && sig === lastSavedSig) return Promise.resolve(true);
     // Save all four tools' conversations under the one key, plus the active tool.
-    const snap = { lang, tool: currentTool, convos, savedAt: Date.now() };
-    try{
-      const id = await idOf(currentKey);
-      const wtok = await wtokOf(currentKey);
-      const payload = await encryptWork(currentKey, snap);
-      const r = await fetch(API+'/save', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({id, payload, wtok})});
-      if (!silent) keepMsg(r.ok ? T[lang].saved : T[lang].err, r.ok ? '' : 'err');
-    }catch(e){ if(!silent) keepMsg(T[lang].err,'err'); }
+    const snap = { lang, tool: currentTool, convos: c, savedAt: Date.now() };
+    const run = async ()=>{
+      lastSaveTooBig = false;
+      if (key !== currentKey) return false; // the key was deleted meanwhile: nothing may be written under it
+      try{
+        const id = await idOf(key);
+        const wtok = await wtokOf(key);
+        const payload = await encryptWork(key, snap);
+        if (payload.length > MAX_SAVE_CHARS){ lastSaveTooBig = true; if (!silent) keepMsg(T[lang].toobig,'err'); return false; }
+        if (key !== currentKey) return false;
+        const r = await fetch(API+'/save', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({id, payload, wtok})});
+        if (r.ok && key === currentKey && epoch === loadEpoch){ lastSavedSig = sig; clearStickyErr(); }
+        if (!silent) keepMsg(r.ok ? savedText() : T[lang].autosavefail, r.ok ? '' : 'err');
+        return r.ok;
+      }catch(e){ if(!silent) keepMsg(T[lang].autosavefail,'err'); return false; }
+    };
+    const p = saveChain.then(run, run);
+    saveChain = p.catch(()=>false);
+    return p;
   }
 
   // ---- key panel wiring ----
   const hasWork = ()=> Object.values(convos).some(a=>a.length);
+  function showKeyUI(on){ // the key and its buttons appear only once a key really holds saved work
+    document.getElementById('keyVal').hidden = !on;
+    document.querySelector('#keepPanel .keyactions').hidden = !on;
+    if (!on) document.getElementById('keyVal').textContent = 'clau_...';
+  }
+  let forgetting = false; // a delete is on its way: no new key until it has finished
   document.getElementById('keepToggle').onclick = async ()=>{
     const p=document.getElementById('keepPanel'); document.getElementById('resumePanel').hidden=true;
+    if (forgetting) return;
     if (!currentKey){
-      if (!hasWork()){ p.hidden=false; keepMsg(T[lang].nowork,'warn'); return; }
+      p.hidden=false;
+      if (!hasWork()){ showKeyUI(false); keepMsg(T[lang].nowork,'warn'); return; }
+      // the only message so far is still waiting for its reply: there is nothing settled to keep yet
+      if (!Object.values(snapshotConvos()).some(a=>a.length)){ showKeyUI(false); keepMsg(T[lang].wait,'warn'); return; }
       currentKey = genKey();
-      document.getElementById('keyVal').textContent = currentKey;
-      await saveWork(true);
+      const ok = await saveWork(true);
+      if (!ok){ currentKey = null; showKeyUI(false); keepMsg(lastSaveTooBig ? T[lang].toobig : T[lang].savefail,'err'); return; }
+      document.getElementById('keyVal').textContent = currentKey; showKeyUI(true);
+      keepMsg(savedText(),''); return;
     }
     p.hidden = !p.hidden;
-    if(!p.hidden && hasWork()) keepMsg(T[lang].saved,'');
+    if (!p.hidden){ showKeyUI(true); if (hasWork()) await saveWork(false); } // reopening the panel saves now and says what happened
   };
   document.getElementById('resumeToggle').onclick = ()=>{ const p=document.getElementById('resumePanel'); document.getElementById('keepPanel').hidden=true; p.hidden=!p.hidden; };
-  document.getElementById('copyKey').onclick = ()=>{ navigator.clipboard.writeText(currentKey).then(()=>keepMsg(T[lang].copyok,'')); };
+  document.getElementById('copyKey').onclick = ()=>{ if (!currentKey) return; navigator.clipboard.writeText(currentKey).then(()=>keepMsg(T[lang].copyok,'')).catch(()=>{}); };
   document.getElementById('dlKey').onclick = ()=>{
+    if (!currentKey) return;
     const head = (lang==='fr'?'Votre clé Clau. Gardez-la privée : quiconque la détient peut ouvrir votre travail. Nous ne pouvons pas la récupérer.':'Your Clau key. Keep it private: anyone who has it can open your work. We cannot recover it.');
     const how = (lang==='fr'?'Pour reprendre : ouvrez Clau et collez cette clé dans "J\'ai une clé".':'To resume: open Clau and paste this key into "I have a key".');
     const body = head+'\n\n'+currentKey+'\n\n'+how+'\n';
@@ -613,19 +796,48 @@
     a.href=URL.createObjectURL(blob); a.download='clau-key.txt'; a.click(); URL.revokeObjectURL(a.href);
   };
   document.getElementById('forgetBtn').onclick = async ()=>{
-    if (!currentKey) return;
-    try{ const id=await idOf(currentKey); const wtok=await wtokOf(currentKey); await fetch(API+'/forget',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id,wtok})}); keepMsg(T[lang].forgotten,'warn'); currentKey=null; }catch(e){ keepMsg(T[lang].err,'err'); }
+    if (!currentKey || forgetting) return;
+    const key = currentKey;
+    currentKey = null; forgetting = true; // from now on no save may start or be sent under this key
+    try{
+      await saveChain; // a save already on its way lands first, so the delete removes it too
+      const id=await idOf(key); const wtok=await wtokOf(key);
+      const r = await fetch(API+'/forget',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id,wtok})});
+      if (!r.ok) throw new Error('forget');
+      if (!currentKey){ lastSavedSig=''; showKeyUI(false); } // a key loaded meanwhile stays on screen
+      clearStickyErr(); keepMsg(T[lang].forgotten,'warn');
+    }catch(e){ if (!currentKey) currentKey = key; keepMsg(T[lang].err,'err'); }
+    finally{ forgetting = false; }
   };
   function resumeMsgShow(m,cls){ const e=document.getElementById('resumeMsg'); e.textContent=m; e.className='note '+(cls||''); e.hidden=false; }
-  document.getElementById('resumeBtn').onclick = ()=> loadKey(document.getElementById('resumeInput').value.trim());
-  async function loadKey(key){
-    if (!/^clau_[0-9A-Z]{10,}$/.test(key)){ resumeMsgShow(T[lang].badkey,'warn'); return; }
+  // Keys are Crockford base32: accept them typed in lower case, with spaces, or with O/I/L for 0/1.
+  function normKey(raw){
+    const m = String(raw||'').replace(/\s+/g,'').match(/^clau_(.+)$/i); if (!m) return null;
+    const body = m[1].toUpperCase().replace(/O/g,'0').replace(/[IL]/g,'1').replace(/U/g,'V');
+    return /^[0-9A-HJKMNP-TV-Z]{10,}$/.test(body) ? 'clau_' + body : null;
+  }
+  let resumeArmedFor = '';
+  document.getElementById('resumeBtn').onclick = ()=> loadKey(document.getElementById('resumeInput').value);
+  async function loadKey(raw){
+    if (busyTool || forgetting){ resumeMsgShow(T[lang].wait,'warn'); return; }
+    const key = normKey(raw);
+    if (!key){ resumeMsgShow(T[lang].badkey,'warn'); return; }
+    // Loading replaces all four conversations: if what is on the page is not saved, ask for a second press first.
+    // The second press counts only for the same key and the same unsaved state.
+    const dirty = currentKey ? workSig() !== lastSavedSig : hasWork();
+    const arm = key + '|' + workSig();
+    if (dirty && resumeArmedFor !== arm){ resumeArmedFor = arm; resumeMsgShow(T[lang].replacewarn,'warn'); return; }
+    resumeArmedFor = '';
     try{
+      loadEpoch++;
+      await saveChain; // let a save already on its way land first, so the load reads the latest copy
       const id=await idOf(key);
       const r=await fetch(API+'/load',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id})});
       const j=await r.json();
       if (!j.payload){ resumeMsgShow(T[lang].notfound,'warn'); return; }
       const work=await decryptWork(key, j.payload);
+      if (busyTool || forgetting){ resumeMsgShow(T[lang].wait,'warn'); return; } // something started while it loaded
+      stashComposer(currentTool); // unsent text stays with its tool
       currentKey=key;
       if (work.convos && typeof work.convos==='object'){
         for (const k of Object.keys(convos)) convos[k] = Array.isArray(work.convos[k]) ? work.convos[k] : [];
@@ -637,10 +849,12 @@
       currentTool = convos[work.tool] ? work.tool : 'expose';
       messages = convos[currentTool];
       if (work.lang) lang = work.lang;
-      document.querySelectorAll('.tool-tab').forEach(b=> b.classList.toggle('active', b.dataset.tool===currentTool));
+      markTabs();
       setLang(lang); // updates placeholder + rebuilds the stream via renderConvo
+      loadComposer(currentTool);
+      lastSavedSig = workSig(); clearStickyErr();
       document.getElementById('resumePanel').hidden=true;
-      document.getElementById('keyVal').textContent=key;
+      document.getElementById('keyVal').textContent=key; showKeyUI(true);
       resumeMsgShow(T[lang].loaded,'');
     }catch(e){ resumeMsgShow(T[lang].notfound,'warn'); }
   }
@@ -658,12 +872,12 @@
     const name = (file.name||'').toLowerCase();
     if (name.endsWith('.txt')) return await file.text();
     if (name.endsWith('.docx')){
-      if (!window.mammoth) throw new Error('lib');
+      if (!window.mammoth) await loadLib('mammoth');
       const res = await mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() });
       return res.value || '';
     }
     if (name.endsWith('.pdf')){
-      if (!window.pdfjsLib) throw new Error('lib');
+      if (!window.pdfjsLib) await loadLib('pdf');
       const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise;
       let out = '';
       for (let p=1; p<=pdf.numPages; p++){ const page=await pdf.getPage(p); const c=await page.getTextContent(); out += c.items.map(i=>i.str).join(' ') + '\n\n'; if (out.length > MAX_DOC_CHARS) break; }
@@ -671,22 +885,32 @@
     }
     throw new Error('unsupported');
   }
-  document.getElementById('uploadBtn').onclick = ()=> document.getElementById('fileInput').click();
+  document.getElementById('uploadBtn').onclick = ()=>{
+    loadLib('mammoth').catch(()=>{}); loadLib('pdf').catch(()=>{}); // fetch the readers while the person picks a file
+    document.getElementById('fileInput').click();
+  };
+  // The document belongs to the tool it was chosen in, even if the person switches tabs while it is being read.
+  const uploadSeq = {}; // per tool: only the latest file chosen may land (a slow earlier file must not replace it)
+  function setUpload(t, doc, label, status, seq){
+    if (seq !== undefined && seq !== uploadSeq[t]) return;
+    if (t === currentTool){ pendingDoc = doc; pendingDocLabel = label; uploadMsg(status); }
+    else { const c = composers[t] || { text:'', doc:'', label:'', status:'' }; c.doc = doc; c.label = label; c.status = status; composers[t] = c; }
+  }
   document.getElementById('fileInput').onchange = async (e)=>{
     const file = e.target.files && e.target.files[0]; if (!file) return;
-    const fr = lang==='fr';
-    uploadMsg((fr?'Lecture de ':'Reading ')+file.name+' <span class="thinking"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>');
+    const fr = lang==='fr', upTool = currentTool, seq = uploadSeq[upTool] = (uploadSeq[upTool] || 0) + 1;
+    // a new file replaces the previous one, even if it cannot be read
+    setUpload(upTool, '', '', (fr?'Lecture de ':'Reading ')+esc(file.name)+' <span class="thinking"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>', seq);
     try{
       let text = (await extractFile(file)).replace(/\r/g,'').trim();
-      if (!text){ uploadMsg(fr?'Aucun texte lisible dans ce fichier.':'No readable text in that file.'); return; }
+      if (!text){ setUpload(upTool, '', '', fr?'Aucun texte lisible dans ce fichier.':'No readable text in that file.', seq); return; }
       let note = '';
       if (text.length > MAX_DOC_CHARS){ text = text.slice(0, MAX_DOC_CHARS); note = fr?' (document très long : le début a été chargé ; pour une section ultérieure, importez ou collez cette partie)':' (very long document: the beginning was loaded; for a later section, upload or paste that part)'; }
       const words = text.split(/\s+/).filter(Boolean).length;
-      pendingDoc = text;
-      pendingDocLabel = (fr?'Document : ':'Document: ')+file.name+' ('+words.toLocaleString()+(fr?' mots)':' words)');
-      uploadMsg(pendingDocLabel + note + (fr?'. Ajoutez ce que vous voulez travailler, puis Envoyer.':'. Add what you want to work on, then Send.'));
+      const label = (fr?'Document : ':'Document: ')+file.name+' ('+words.toLocaleString()+(fr?' mots)':' words)');
+      setUpload(upTool, text, label, esc(label) + note + (fr?'. Ajoutez ce que vous voulez travailler, puis Envoyer.':'. Add what you want to work on, then Send.'), seq);
     }catch(err){
-      uploadMsg(fr?'Impossible de lire ce fichier. Essayez .docx, .pdf ou .txt, ou collez le texte.':'Could not read that file. Try .docx, .pdf, or .txt, or paste the text.');
+      setUpload(upTool, '', '', fr?'Impossible de lire ce fichier. Essayez .docx, .pdf ou .txt, ou collez le texte.':'Could not read that file. Try .docx, .pdf, or .txt, or paste the text.', seq);
     } finally { e.target.value=''; }
   };
 
@@ -700,6 +924,7 @@
     if (t && convos[t] && t !== currentTool) switchTool(t, { noScroll: true, noSave: true }); })();
   // boot. No key is ever placed in the URL: you resume by pasting your key, so the
   // key never lands in browser history, sync, or a shared link.
+  markTabs(); showKeyUI(false);
   setLang(lang);
 </script>
 </body>
