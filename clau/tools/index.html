@@ -176,6 +176,28 @@
     #printMount .tbl{overflow:visible;}
     #printMount th,#printMount td{border-color:#999;}
   }
+  /* CV and letter card: identifiers never wrap; the header lines are blocks */
+  .doc-body .nw{white-space:nowrap;}
+  .doc-body .doc-line{margin:0;}
+  /* CV and letter print (format fixed 2026-11-16 with three models): A4, 18 mm margins on every page; empty page-margin
+     boxes stop Chrome from printing its own date, title and web address over the document; one font family, left
+     aligned, ligatures off, 11 pt text; headings 13 pt with room around them (smaller or tighter made the text
+     extraction glue a heading to its first entry); the list mark is a real character in the text flow, so each item
+     starts with it when the text is extracted. */
+  @media print{
+    @page{size:A4;margin:18mm;
+      @top-left{content:""} @top-center{content:""} @top-right{content:""}
+      @bottom-left{content:""} @bottom-center{content:""} @bottom-right{content:""}}
+    #printMount .doc-body{font-family:'Libre Franklin','Segoe UI',Arial,sans-serif;font-size:11pt;line-height:1.3;color:#000;
+      text-align:left;font-variant-ligatures:none;font-feature-settings:"liga" 0,"clig" 0;}
+    #printMount .doc-body h1{font-family:inherit;font-size:17pt;font-weight:700;margin:0 0 3pt;color:#000;}
+    #printMount .doc-body h2,#printMount .doc-body h3{font-family:inherit;font-size:13pt;font-weight:700;color:#000;
+      margin:12pt 0 6pt;padding-bottom:2pt;border-bottom:0.6pt solid #888;break-after:avoid;page-break-after:avoid;}
+    #printMount .doc-body ul{margin:5pt 0 4pt;padding-left:0;list-style:none;}
+    #printMount .doc-body li{margin:0 0 5pt;padding-left:1em;text-indent:-1em;break-inside:avoid;page-break-inside:avoid;}
+    #printMount .doc-body li::before{content:"\2022\00a0\00a0";}
+    #printMount .doc-body em{font-style:italic;}
+  }
 
   footer{margin-top:64px;border-top:1px solid var(--border);padding:30px 0 46px;}
   .footer-grid{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
@@ -508,7 +530,7 @@
             .replace(/(^|[^*\w])\*([^*\s](?:[^*\n]*?[^*\s])?)\*(?![*\w])/g,'$1<em>$2</em>');
   }
   function md(s){
-    const L = esc(String(s)).split('\n'), parts = []; // {h, block}
+    const L = esc(String(s).replace(/\r\n?/g, '\n')).split('\n'), parts = []; // {h, block}; Windows line ends would hide headings
     const isRow = l => /^\s*\|.*\|\s*$/.test(l);
     const isSep = l => /^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?\s*$/.test(l);
     const cells = l => l.trim().replace(/^\|/,'').replace(/\|$/,'').split('|').map(c=>inline(c.trim()));
@@ -579,23 +601,70 @@
   // ---- Clau replies may carry a finished document (CV / cover letter) in a fenced block.
   // Render the conversational part as a bubble and the document as a printable card. ----
   const DOC_RE = /```(cv|lettre|letter)[^\n]*\n([\s\S]*?)```/gi;
+  // A CV or letter never carries a long dash (house rule), even when the candidate's own material, or text pasted
+  // from another tool, had them. This is a safety net that never guesses meaning: every dash-like character becomes a
+  // plain hyphen and the spacing stays as it was (2019-2023, 2020 - present, Lecturer - September 2024); a long dash
+  // squeezed between two words is an aside and gets spaces (results - and more); a dash opening a line is a list mark.
+  // How dates and asides should be written (2019 to 2023, commas) is the job of Clau's instructions, not of this filter.
+  // Applied to what is shown, copied and printed. The source stays ASCII: the characters are built from code points.
+  const CH = (...cs) => cs.map(c => String.fromCharCode(c)).join('');
+  const DASHES = '[' + CH(0x2010, 0x2011, 0x2012, 0x2013, 0x2014, 0x2015, 0x2212, 0xFE58, 0xFE63, 0xFF0D) + ']';
+  const LONG = '[' + CH(0x2014, 0x2015, 0xFE58) + ']';
+  function noDashes(s){
+    return String(s)
+      // entities would otherwise show as text
+      .replace(/&(?:mdash|horbar|#8212|#8213|#x2014|#x2015);/gi, CH(0x2014))
+      .replace(/&(?:ndash|minus|dash|hyphen|#8208|#8209|#8210|#8211|#8722|#x201[0-3]|#x2212);/gi, CH(0x2013))
+      // inside a Markdown link address, a dash can only become a hyphen
+      .replace(new RegExp('\\]\\(([^)\\s]*)\\)', 'g'), (m, u) => '](' + u.replace(new RegExp(DASHES, 'g'), '-') + ')')
+      .replace(new RegExp('^([ \\t]*)' + DASHES + '+[ \\t\\u00a0]*(?=\\S)', 'gm'), '$1- ')  // a dash opening a line: a list mark
+      .replace(new RegExp('(\\S)' + LONG + '+(?=\\S)', 'g'), '$1 - ')                    // word-long dash-word: an aside
+      .replace(new RegExp(DASHES + '+', 'g'), '-')                                       // everything else: a hyphen, spacing kept
+      // a dangling separator at the end of a line or before closing punctuation goes, except after a number:
+      // "2019 -" in a pasted CV means "2019 to present" and must keep its mark
+      .replace(/([^\d\s])[ \t ]+-[ \t ]*$/gm, '$1')
+      .replace(/([^\d\s])[ \t ]+-[ \t ]*(?=[)\],.;:])/g, '$1');
+  }
   function renderAssistant(text){
     const docs = [];
-    let conv = String(text||'').replace(DOC_RE, (m, kind, body)=>{ docs.push({kind:kind.toLowerCase(), body:body.trim()}); return ''; });
+    let conv = String(text||'').replace(/\r\n?/g, '\n').replace(DOC_RE, (m, kind, body)=>{ docs.push({kind:kind.toLowerCase(), body:noDashes(plainEntities(body.trim()))}); return ''; });
     conv = conv.replace(/\n{3,}/g,'\n\n').trim();
     if (conv) addBubble('clau', conv, true);
     for (const d of docs) addDocCard(d.kind, d.body);
     if (!conv && !docs.length) addBubble('clau', String(text||''), true);
   }
-  function docMd(s){
-    const lines = String(s).split('\n');
+  // Common HTML entities from pasted text would otherwise show as code ("&nbsp;"); decoded here, escaped again later.
+  function plainEntities(s){
+    return String(s).replace(/&nbsp;/gi, String.fromCharCode(0xA0)).replace(/&quot;/gi, '"').replace(/&(?:#39|apos);/gi, "'")
+      .replace(/&lt;/gi, '<').replace(/&gt;/gi, '>').replace(/&amp;/gi, '&');
+  }
+  // Identifiers never break across lines: an ORCID split at a hyphen was misread by every screening model tested.
+  // Only short tokens are held together, so an unusually long e-mail address can still wrap instead of leaving the page.
+  function keepWhole(h){
+    return h.replace(/(?:https?:\/\/orcid\.org\/)?\b\d{4}-\d{4}-\d{4}-\d{3}[\dX]\b|[\w.+-]+@[\w-]+(?:\.[\w-]+)+|\+?\d[\d ().-]{7,}\d/g,
+      m => m.length <= 48 ? '<span class="nw">' + m + '</span>' : m);
+  }
+  // an ORCID anywhere in the document (for example inside a list item) is held together too
+  const keepOrcid = h => h.replace(/(?:https?:\/\/orcid\.org\/)?\b\d{4}-\d{4}-\d{4}-\d{3}[\dX]\b/g, m => '<span class="nw">' + m + '</span>');
+  function docMd(s, isCv){
+    const lines = String(s).replace(/\r\n?/g, '\n').split('\n');
     let head = '';
     if (lines.length){
       const first = lines[0].trim();
       const m1 = first.match(/^\*\*(.+)\*\*$/) || first.match(/^#\s+(.+)$/);
-      if (m1){ head = '<h1>'+esc(m1[1].replace(/\*\*/g,''))+'</h1>'; lines.shift(); }
+      if (m1){
+        head = '<h1>'+esc(m1[1].replace(/\*\*/g,''))+'</h1>'; lines.shift();
+        // In a CV, the lines under the name (contact, identifiers) are separate blocks, so each stays its own line in the
+        // PDF's text; a blank line between the name and them is allowed. A letter keeps its lines as written.
+        if (isCv){
+          let k = 0; while (k < lines.length && !lines[k].trim()) k++;                 // blank lines between the name and them
+          if (k < lines.length && !/^(#{1,3}\s|[-*]\s|\|)/.test(lines[k].trim())) lines.splice(0, k);
+          while (lines.length && lines[0].trim() && !/^(#{1,3}\s|[-*]\s|\|)/.test(lines[0].trim()))
+            head += '<div class="doc-line">' + keepWhole(inline(esc(lines.shift().trim()))) + '</div>';
+        }
+      }
     }
-    return head + md(lines.join('\n'));
+    return head + (isCv ? keepOrcid(md(lines.join('\n'))) : md(lines.join('\n')));
   }
   function addDocCard(kind, mdText){
     const label = kind==='cv' ? T[lang].docCV : T[lang].docLetter;
@@ -606,7 +675,7 @@
     const dl = document.createElement('button'); dl.className='btn sm'; dl.textContent = T[lang].download;
     const cp = document.createElement('button'); cp.className='btn ghost sm'; cp.textContent = T[lang].copytext;
     acts.appendChild(dl); acts.appendChild(cp); bar.appendChild(lab); bar.appendChild(acts);
-    const bodyEl = document.createElement('div'); bodyEl.className='doc-body'; bodyEl.innerHTML = docMd(mdText);
+    const bodyEl = document.createElement('div'); bodyEl.className='doc-body'; bodyEl.innerHTML = docMd(mdText, kind==='cv');
     card.appendChild(bar); card.appendChild(bodyEl);
     stream.appendChild(card); stream.scrollTop = stream.scrollHeight;
     dl.onclick = ()=>{
