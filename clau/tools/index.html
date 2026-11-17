@@ -81,6 +81,7 @@
   .btn.sm{font-size:12.5px;padding:6px 11px;}
 
   .stream{padding:20px 22px;max-height:60vh;min-height:230px;overflow-y:auto;display:flex;flex-direction:column;gap:16px;}
+  .stream>*{flex-shrink:0;} /* a CV card must keep its full height: the stream scrolls, the card never shrinks */
   .msg{max-width:100%;}
   .msg .who{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:5px;}
   .msg.clau .bubble{background:var(--bg-ivory);border:1px solid var(--border);border-radius:var(--r-lg);border-top-left-radius:3px;padding:15px 18px;}
@@ -632,7 +633,10 @@
     let conv = String(text||'').replace(/\r\n?/g, '\n').replace(DOC_RE, (m, kind, body)=>{ docs.push({kind:kind.toLowerCase(), body:noDashes(plainEntities(body.trim()))}); return ''; });
     conv = conv.replace(/\n{3,}/g,'\n\n').trim();
     if (conv) addBubble('clau', conv, true);
-    for (const d of docs) addDocCard(d.kind, d.body);
+    // a new document opens at its top, where its title and "Download PDF" are
+    let first = null;
+    for (const d of docs){ const c = addDocCard(d.kind, d.body); if (!first) first = c; }
+    if (first) stream.scrollTop += first.getBoundingClientRect().top - stream.getBoundingClientRect().top - 12;
     if (!conv && !docs.length) addBubble('clau', String(text||''), true);
   }
   // Common HTML entities from pasted text would otherwise show as code ("&nbsp;"); decoded here, escaped again later.
@@ -679,7 +683,7 @@
     acts.appendChild(dl); acts.appendChild(cp); bar.appendChild(lab); bar.appendChild(acts);
     const bodyEl = document.createElement('div'); bodyEl.className='doc-body'; bodyEl.innerHTML = docMd(mdText, kind==='cv');
     card.appendChild(bar); card.appendChild(bodyEl);
-    stream.appendChild(card); stream.scrollTop = stream.scrollHeight;
+    stream.appendChild(card);
     dl.onclick = ()=>{
       const mount=document.getElementById('printMount'); mount.innerHTML=''; mount.appendChild(bodyEl.cloneNode(true));
       // The browser names the saved PDF after the page title: "CV Alex Martin", "Cover letter", not the site title.
@@ -691,6 +695,7 @@
       setTimeout(restore, 60000);
     };
     cp.onclick = ()=> navigator.clipboard.writeText(mdText).then(()=>{ cp.textContent=T[lang].copied; setTimeout(()=>cp.textContent=T[lang].copytext,1500); }).catch(()=>{});
+    return card;
   }
 
   // A server error shown in the page's language (the server's own messages are in English).
