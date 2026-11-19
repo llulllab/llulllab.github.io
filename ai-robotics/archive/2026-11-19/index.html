@@ -122,8 +122,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   </div>
   <nav class="digest-nav" aria-label="Sections">
     <div class="digest-nav-links">
-      <a href="/ai-robotics/#news">News (4)</a>
-      <a href="/ai-robotics/#papers">New research papers (0)</a>
+      <a href="/ai-robotics/#news">News (5)</a>
+      <a href="/ai-robotics/#papers">New research papers (8)</a>
       <a href="/ai-robotics/about/">How it is made</a>
       <a href="/ai-robotics/#archive">Earlier editions</a>
     </div>
@@ -136,6 +136,12 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 <section id="news" class="col-news" aria-labelledby="head-news">
   <div class="sec-head"><h2 id="head-news">News</h2><span class="tag">Updated three times a day</span></div>
 <article class="news-item lead">
+  <div class="item-kicker"><span class="source-name">OpenAI</span><span aria-hidden="true">&middot;</span><span class="item-date">18 November 2026</span></div>
+  <h3 class="news-title"><a href="https://openai.com/index/inside-the-codex-sandbox" target="_blank" rel="noopener noreferrer">Inside the Codex sandbox</a></h3>
+  <p class="news-summary">OpenAI describes how Codex executes commands on a user's own computer inside a sandbox. According to the company, the sandbox applies filesystem and network restrictions that the user sets, and the post explains how this enforcement works on macOS, Linux and Windows.</p>
+  <a class="source-link" href="https://openai.com/index/inside-the-codex-sandbox" target="_blank" rel="noopener noreferrer">Read the original at OpenAI &#8599;</a>
+</article>
+<article class="news-item">
   <div class="item-kicker"><span class="source-name">MIT News</span><span aria-hidden="true">&middot;</span><span class="item-date">18 November 2026</span></div>
   <h3 class="news-title"><a href="https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118" target="_blank" rel="noopener noreferrer">This featherweight, flying robot carries its own sensors and computers</a></h3>
   <p class="news-summary">MIT researchers report a flapping-wing microrobot that carries its own sensors and computation. They say it can follow a complex path and land on a sunflower without a lab motion-capture system. They describe enlarging the artificial muscles that drive the wings to raise payload, plus a sensor suite that estimates position and orientation. The robot still depends on external power.</p>
@@ -160,7 +166,82 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
   <a class="source-link" href="https://www.amazon.science/blog/mathematical-proof-powered-by-ai-and-no-hallucinations" target="_blank" rel="noopener noreferrer">Read the original at Amazon Science &#8599;</a>
 </article>
 </section>
-
+<section id="papers" class="col-papers" aria-labelledby="head-papers">
+  <div class="sec-head"><h2 id="head-papers">New research papers</h2><span class="tag">arXiv</span></div>
+  <p class="preprint-notice">Preprints from the arXiv categories Robotics (cs.RO) and Artificial Intelligence (cs.AI). Preprints are not peer reviewed.</p>
+<article class="paper-item">
+  <div class="paper-num">01</div>
+  <div>
+    <div class="item-kicker"><span class="cat-pill">arXiv &middot; cs.RO</span><span class="item-date">18 November 2026</span></div>
+    <h3 class="paper-title"><a href="https://arxiv.org/abs/2611.24100" target="_blank" rel="noopener noreferrer">Lost Between Mind, Model Collaboration, and Motion: Understanding and Measuring Cross-Model Action Misalignment in Commercial Robots</a></h3>
+    <p class="paper-summary">The authors develop TARS, a black-box framework that probes the chain from language model reasoning to action models in commercial robots to find unintended physical behaviors. Across four commercial robots, 44 settings and 133,400 executions, they report widespread cross-model action misalignment and up to 94% verified action coverage.</p>
+    <a class="source-link" href="https://arxiv.org/abs/2611.24100" target="_blank" rel="noopener noreferrer">Read the original at arXiv &#8599;</a>
+  </div>
+</article>
+<article class="paper-item">
+  <div class="paper-num">02</div>
+  <div>
+    <div class="item-kicker"><span class="cat-pill">arXiv &middot; cs.RO</span><span class="item-date">18 November 2026</span></div>
+    <h3 class="paper-title"><a href="https://arxiv.org/abs/2611.24455" target="_blank" rel="noopener noreferrer">Homeward: No Place Like the Training View</a></h3>
+    <p class="paper-summary">The authors propose Homeward, a training-free adapter that re-renders views from a moved, uncalibrated camera into the training viewpoint for frozen VLA policies, drawing the robot arm from its kinematic model. Over roughly 300,000 closed-loop episodes on LIBERO-Plus, they report higher success for all four tested VLAs, for example from 76.5% to 95.1%.</p>
+    <a class="source-link" href="https://arxiv.org/abs/2611.24455" target="_blank" rel="noopener noreferrer">Read the original at arXiv &#8599;</a>
+  </div>
+</article>
+<article class="paper-item">
+  <div class="paper-num">03</div>
+  <div>
+    <div class="item-kicker"><span class="cat-pill">arXiv &middot; cs.AI</span><span class="item-date">18 November 2026</span></div>
+    <h3 class="paper-title"><a href="https://arxiv.org/abs/2611.24619" target="_blank" rel="noopener noreferrer">GateWatch: Low-Overhead LLM Monitoring with Boolean Circuits</a></h3>
+    <p class="paper-summary">The authors introduce GateWatch, an LLM monitoring probe that expresses its decision as Boolean logic over a few binarized sparse autoencoder features, plus a serving system integrated into vLLM. On 24 tasks with Gemma-2-9B, they report 80.49% mean accuracy with about 3.8 features per probe and a 99.98% reduction in probe memory.</p>
+    <a class="source-link" href="https://arxiv.org/abs/2611.24619" target="_blank" rel="noopener noreferrer">Read the original at arXiv &#8599;</a>
+  </div>
+</article>
+<article class="paper-item">
+  <div class="paper-num">04</div>
+  <div>
+    <div class="item-kicker"><span class="cat-pill">arXiv &middot; cs.AI</span><span class="item-date">18 November 2026</span></div>
+    <h3 class="paper-title"><a href="https://arxiv.org/abs/2611.23938" target="_blank" rel="noopener noreferrer">Can you make models believe false facts in the prompt?</a></h3>
+    <p class="paper-summary">The authors explore prompt-conditioned synthetic document finetuning, training one model to believe whatever fact is placed in a prompt tag, for use in alignment evaluations. They report that belief depth on unseen facts grows roughly log-linearly with training facts, but that preliminary alignment audit experiments on a small model were negative.</p>
+    <a class="source-link" href="https://arxiv.org/abs/2611.23938" target="_blank" rel="noopener noreferrer">Read the original at arXiv &#8599;</a>
+  </div>
+</article>
+<article class="paper-item">
+  <div class="paper-num">05</div>
+  <div>
+    <div class="item-kicker"><span class="cat-pill">arXiv &middot; cs.AI</span><span class="item-date">18 November 2026</span></div>
+    <h3 class="paper-title"><a href="https://arxiv.org/abs/2611.24051" target="_blank" rel="noopener noreferrer">Attention Is Not Relevance: Challenging the Causality of Attention in Autonomous Driving</a></h3>
+    <p class="paper-summary">Using over 80,000 synthetic driving scenes and the PlanT 2.0 planner, the authors compare attention-based object relevance against counterfactual causal estimates. They report that attention gives a correlational rather than causal signal, misses relevant objects, flags irrelevant ones, and degrades in multi-lane and intersection scenarios.</p>
+    <a class="source-link" href="https://arxiv.org/abs/2611.24051" target="_blank" rel="noopener noreferrer">Read the original at arXiv &#8599;</a>
+  </div>
+</article>
+<article class="paper-item">
+  <div class="paper-num">06</div>
+  <div>
+    <div class="item-kicker"><span class="cat-pill">arXiv &middot; cs.RO</span><span class="item-date">18 November 2026</span></div>
+    <h3 class="paper-title"><a href="https://arxiv.org/abs/2611.24138" target="_blank" rel="noopener noreferrer">Ego2X: Contact-aware Transfer from Egocentric Human Data to Any Robot</a></h3>
+    <p class="paper-summary">The authors present Ego2X, which converts monocular egocentric human video into executable robot data for dexterous hands and grippers using a contact-centric object interaction representation. They report better contact realization than an existing pipeline on EgoDex, and that post-training X-VLA on Ego2X data raises RoboTwin 2.0 success from 40.5% to 67.0%.</p>
+    <a class="source-link" href="https://arxiv.org/abs/2611.24138" target="_blank" rel="noopener noreferrer">Read the original at arXiv &#8599;</a>
+  </div>
+</article>
+<article class="paper-item">
+  <div class="paper-num">07</div>
+  <div>
+    <div class="item-kicker"><span class="cat-pill">arXiv &middot; cs.RO</span><span class="item-date">18 November 2026</span></div>
+    <h3 class="paper-title"><a href="https://arxiv.org/abs/2611.23932" target="_blank" rel="noopener noreferrer">Emo-H2A: Driving a Facial Robot Directly from LLM Hidden States at Token Rate</a></h3>
+    <p class="paper-summary">The authors propose Emo-H2A, which controls a facial robot straight from language model hidden states while decoding, implemented as the training-free EmoManifold that maps each hidden state to valence-arousal-dominance coordinates at token level. On their 29-DoF robot, expressions moved the correct way on 87.5% of within-reply valence shifts versus near chance for single-label baselines, with first motion after 0.96s.</p>
+    <a class="source-link" href="https://arxiv.org/abs/2611.23932" target="_blank" rel="noopener noreferrer">Read the original at arXiv &#8599;</a>
+  </div>
+</article>
+<article class="paper-item">
+  <div class="paper-num">08</div>
+  <div>
+    <div class="item-kicker"><span class="cat-pill">arXiv &middot; cs.RO</span><span class="item-date">18 November 2026</span></div>
+    <h3 class="paper-title"><a href="https://arxiv.org/abs/2611.23816" target="_blank" rel="noopener noreferrer">RoboDx: Repair and Diagnosis of Faults in Robot Software</a></h3>
+    <p class="paper-summary">RoboDx generates repair tasks for simulated robot navigation code with injected faults, checking fixes via hidden driving scenarios, plus a track where agents pick a cause without seeing code. Claude Opus 5.5 reportedly had nearly all repairs verified but removed both faults in only 17 of its 49 verified two-fault repairs, while four models named causes on at most 38 of 94 tasks.</p>
+    <a class="source-link" href="https://arxiv.org/abs/2611.23816" target="_blank" rel="noopener noreferrer">Read the original at arXiv &#8599;</a>
+  </div>
+</article>
+</section>
 </div>
 <p class="note"><strong>AI-generated summaries.</strong> Items, titles and links come from the publishers' public news feeds and from arXiv, and each title links to the original. Summaries are written and checked automatically from the source text and are not individually reviewed by a person; the original is authoritative. Research papers are preprints, not peer reviewed. Llull Lab is independent of the publishers listed. <a href="/ai-robotics/about/">How it is made</a>.</p>
 </main>
