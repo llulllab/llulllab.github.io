@@ -432,7 +432,7 @@
       savedunsent: "Saved. Keep your key safe. Text you have not sent yet is not saved.",
       savedpending: "Saved up to Clau's last reply. Keep your key safe. Your latest message is saved once Clau answers it.",
       replacewarn: "Loading this key replaces the conversations on this page, which are not saved. Press Load my work again to continue.",
-      errs: { rate_limited: "You have reached the hourly limit. Please try again later.", busy: "Clau is busy right now. Try again in a moment.", llm: "Clau could not answer just now. Please try again.", too_large: "This is too long for Clau to read in one go. Send a shorter part of your text.", too_many_turns: "This conversation is long. Save your work and start a fresh thread." },
+      errs: { daily_capacity: "Clau has reached its daily capacity. Please try again tomorrow.", daily_limit: "You have reached today's limit. Please try again tomorrow.", rate_limited: "You have reached the hourly limit. Please try again later.", busy: "Clau is busy right now. Try again in a moment.", llm: "Clau could not answer just now. Please try again.", too_large: "This is too long for Clau to read in one go. Send a shorter part of your text.", too_many_turns: "This conversation is long. Save your work and start a fresh thread." },
     },
     fr: {
       greet: {
@@ -461,7 +461,7 @@
       savedunsent: "Enregistré. Conservez bien votre clé. Le texte que vous n'avez pas encore envoyé n'est pas enregistré.",
       savedpending: "Enregistré jusqu'à la dernière réponse de Clau. Conservez bien votre clé. Votre dernier message sera enregistré dès que Clau y aura répondu.",
       replacewarn: "Charger cette clé remplace les conversations de cette page, qui ne sont pas enregistrées. Cliquez à nouveau sur Charger mon travail pour continuer.",
-      errs: { rate_limited: "Vous avez atteint la limite horaire. Réessayez plus tard.", busy: "Clau est très sollicité en ce moment. Réessayez dans un instant.", llm: "Clau n'a pas pu répondre pour le moment. Réessayez.", too_large: "C'est trop long pour que Clau le lise en une fois. Envoyez une partie plus courte de votre texte.", too_many_turns: "Cette conversation est longue. Gardez votre travail et commencez un nouveau fil." },
+      errs: { daily_capacity: "Clau a atteint sa capacité pour aujourd'hui. Réessayez demain.", daily_limit: "Vous avez atteint la limite du jour. Réessayez demain.", rate_limited: "Vous avez atteint la limite horaire. Réessayez plus tard.", busy: "Clau est très sollicité en ce moment. Réessayez dans un instant.", llm: "Clau n'a pas pu répondre pour le moment. Réessayez.", too_large: "C'est trop long pour que Clau le lise en une fois. Envoyez une partie plus courte de votre texte.", too_many_turns: "Cette conversation est longue. Gardez votre travail et commencez un nouveau fil." },
     }
   };
   let lang = (navigator.language||'en').toLowerCase().startsWith('fr') ? 'fr' : 'en';
